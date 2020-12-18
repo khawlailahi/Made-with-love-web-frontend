@@ -12,17 +12,17 @@ import Login from './component/Login.js';
 import Nav from './component/Nav.js';
 import Notification from './component/Notification.js';
 import order from './component/order.js';
-import signUpBuyer from './component/signUpBuyer.js';
+import SignUpBuyer from './component/signUpBuyer.js';
 import signUpSeller from './component/signUpSeller.js';
 import Store from './component/Store.js';
 import update from './component/update.js';
 import view from './component/view.js';
 import Visit from './component/Visit.js';
-
+import store from './store../index'
 function App() {
   return (
     <div className="App">
-    
+    <SignUpBuyer store ={store}/>
     </div>
   );
 }
