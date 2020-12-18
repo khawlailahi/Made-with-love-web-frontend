@@ -13,26 +13,29 @@ import About from './component/aboutus'
 import Navbar from './component/layout/Navbar.js'
 // import Notification from './component/Notification.js'
 // import order from './component/order.js'
-// import signUpBuyer from './component/signUpBuyer.js'
-// import signUpSeller from './component/signUpSeller.js'
+import SignUpSeller from './component/signUpSeller.js'
+ import SignUpBuyer from './component/signUpBuyer.js'
 // import Store from './component/Store.js'
 // import update from './component/update.js'
 // import view from './component/view.js'
 // import Visit from './component/Visit.js'
 import "bootstrap/dist/css/bootstrap.min.css";
- 
+import store from './component/Store.js'
 
 function App() {
   return (
    
     <Router>
-   <Navbar/>
-     <Switch>
-       <Route  path ='/about' exact  component ={About}></Route>
-      
-     </Switch>
-
+    <Navbar/>
+      <Switch>
+        <Route  path ='/about' exact  component ={About}></Route>
+      </Switch>
+  <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
+  <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
     </Router>
+
+  
+  
    
   );
 }
