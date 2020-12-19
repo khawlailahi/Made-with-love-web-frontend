@@ -19,7 +19,8 @@ import Navbar from './component/layout/Navbar.js'
 // import update from './component/update.js'
 // import view from './component/view.js'
 // import Visit from './component/Visit.js'
-import './Style/app.css'
+import './Style/app.css';
+// import combineReducers from './reducsers/index'
 import "bootstrap/dist/css/bootstrap.min.css";
  
 
