@@ -1,7 +1,9 @@
 import { createStore } from 'redux'; 
 import { combineReducers } from 'redux';
 
-
+var pageCategory ={
+    cat:""
+}
 
 var signUpSeller = {
  email :"",
