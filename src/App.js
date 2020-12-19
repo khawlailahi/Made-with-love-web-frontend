@@ -28,11 +28,11 @@ import store from './component/Store.js'
 import CatBuyer from './component/categoryBuyer.js'
 import Order from './component/order.js'
 function App() {
-  console.log(store.getState())
+  
   return (
    <div className="page-container">
      <div className="content-wrap">
-    <Router>
+    <Router>  
    <Navbar/>
      <Switch>
        <Route  path ='/about' exact  component ={About}></Route>

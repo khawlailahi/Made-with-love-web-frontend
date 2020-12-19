@@ -4,12 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 
+
 import store from './component/Store'
 
 import {createStore} from 'redux';
 
 // import rootReducer from './reducsers'
 // const store = createStore(rootReducer)
+
 
 
 
