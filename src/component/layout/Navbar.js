@@ -1,20 +1,46 @@
 import React from 'react';
-import { Link }  from 'react-router-dom';
+import * as ReactBootStrap from "react-bootstrap";
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
 
-
+import '../../Style/navbar.css'
 const Navbar = () => {
-    return (
-        // <Navbar bg="dark" variant="dark">
-        // <Navbar.Brand href="#home">Made With Love</Navbar.Brand>
-        <nav >
-            <div>
-                <Link to='/'>Home</Link>
-                <Link to='/category'>Category</Link>
-                <Link to='/about'>About Us</Link>
-            </div>
-        </nav>
-        // </Navbar>
+    return(
+        <div className="App">
+    <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="danger" variant="dark">
+  <ReactBootStrap.Navbar.Brand href="/view">Made With Love</ReactBootStrap.Navbar.Brand>
+  <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+    <ReactBootStrap.Nav className="mr-auto"> 
+    
+    <Link to="/about">
+    <ReactBootStrap.Nav.Link href="#pricing">About Us</ReactBootStrap.Nav.Link>
+    </Link>
+      <ReactBootStrap.NavDropdown title="Categories" id="collasible-nav-dropdown">
+        <ReactBootStrap.NavDropdown.Item href="/category/food">Food</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/category/clothes">Clothes</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/category/accessories">Accessories</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/category/baby">Baby Shower Accessories</ReactBootStrap.NavDropdown.Item>
+
+        <ReactBootStrap.NavDropdown.Divider />
+      </ReactBootStrap.NavDropdown>
+    </ReactBootStrap.Nav>
+    <ReactBootStrap.Nav>
+    <Link to="/signin">
+    <ReactBootStrap.Nav.Link href="/signin">Sign In</ReactBootStrap.Nav.Link>
+    </Link>
+    {/* <Link to="/dankmemes"> */}
+    {/* <ReactBootStrap.Nav.Link eventKey={2} href="#memes">
+        Dank memes
+      </ReactBootStrap.Nav.Link> */}
+    {/* </Link> */}
+    </ReactBootStrap.Nav>
+  </ReactBootStrap.Navbar.Collapse>
+</ReactBootStrap.Navbar>
+        </div>
     )
 }
 
-export default Navbar
+export default Navbar;
