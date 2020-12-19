@@ -21,8 +21,10 @@ import Navbar from './component/layout/Navbar.js'
 // import Visit from './component/Visit.js'
 import './Style/app.css'
 import "bootstrap/dist/css/bootstrap.min.css";
- 
-
+import store from './component/Store.js'
+import SignUpSeller from './component/signUpSeller.js'
+import CatBuyer from './component/categoryBuyer.js'
+import Order from './component/order.js'
 function App() {
   return (
    <div className="page-container">
@@ -31,7 +33,9 @@ function App() {
    <Navbar/>
      <Switch>
        <Route  path ='/about' exact  component ={About}></Route>
-      
+       <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
+       <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
+       <Route  path ='/order' exact   component={() => <Order/>}></Route>
      </Switch>
    <Footer/>
     </Router>
