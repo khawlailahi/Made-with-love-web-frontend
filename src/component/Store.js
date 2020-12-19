@@ -1,26 +1,30 @@
-import { createStore } from 'redux'; 
+import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
-
-
-
+import {combineForms, createForms} from 'react-redux-form';
+  
 var signUpSeller = {
- email :"",
- password : "",
- storeName : "",
- category : "",
- description : "",
- location : "",
- deliveryOrder : "",
- image:""
-};
-
-var signUpBuyer = {
+    email :"",
+    password : "",
+    storeName : "",
+    category : "",
+    description : "",
+    location : "",
+    deliveryOrder : "",
+    image:""
+   };
+   
+   var signUpBuyer = {
+       email:"",
+       password:"",
+       userName:"",
+       location:"",
+       phoneNumber:""
+   } 
+   
+var loginState={
     email:"",
-    password:"",
-    userName:"",
-    location:"",
-    phoneNumber:""
-} 
+    password:""
+}
 
 var reducerBuyer = (state =signUpBuyer, action) =>{
     switch (action.type) {
@@ -54,12 +58,46 @@ var reducer = (state = signUpSeller, action) =>{
     }
     
 }
-const allReducers = combineReducers({
-    reducer,
-    // addItem: reducerAddItem
-    reducerBuyer
- })
+var initialState ={
+    product: "" ,
+    description:"",
+    price:"",
+    image:""
+}
+var orderForm={
+    quantity:"",
+    location:"",
+    phoneNumber:""
+}
 
-var store = createStore(allReducers);
 
+var reducerAddItem =(state = initialState ,action) =>{
+    switch(action.type){
+        case 'ADD_ITEM':
+      return Object.assign({}, state,{product :action.product}, { description:action.description}, { price:action.price},{ image:action.image})
+      default:
+          return state
+
+    }
+}
+
+
+
+
+
+// const allReducers = 
+const store = createStore(combineReducers({
+    reducer :reducer,
+    addItem: reducerAddItem,
+    reducerBuyer:reducerBuyer
+ ,
+    ...createForms({
+        user: initialState,
+        login:loginState,
+        order:orderForm
+
+      })})
+
+
+    );
 export default store;

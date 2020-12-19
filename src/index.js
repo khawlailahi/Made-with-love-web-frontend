@@ -4,6 +4,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 
+<<<<<<< HEAD
+import store from './component/Store.js'
+=======
 import store from './component/Store'
 
 import {createStore} from 'redux';
@@ -13,6 +16,7 @@ import {createStore} from 'redux';
 
 
 
+>>>>>>> 8763a6f0c7dcc9a0cbba83ccac93cc2a699b5f08
 ReactDOM.render(
   <React.StrictMode>
     <Provider store ={store}>

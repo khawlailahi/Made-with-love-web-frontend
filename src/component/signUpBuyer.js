@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form,Button  } from 'react-bootstrap';
@@ -109,3 +111,4 @@ function SignUpBuyer (props){
 
 } 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpBuyer);
+>>>>>>> 8763a6f0c7dcc9a0cbba83ccac93cc2a699b5f08
