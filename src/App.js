@@ -14,7 +14,8 @@ import Navbar from './component/layout/Navbar.js'
 // import Notification from './component/Notification.js'
 // import order from './component/order.js'
 import SignUpSeller from './component/signUpSeller.js'
- import SignUpBuyer from './component/signUpBuyer.js'
+import SignUpBuyer from './component/signUpBuyer.js'
+
 // import Store from './component/Store.js'
 // import update from './component/update.js'
 // import view from './component/view.js'
@@ -23,13 +24,9 @@ import './Style/app.css';
 // import combineReducers from './reducsers/index'
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from './component/Store.js'
-<<<<<<< HEAD
-import SignUpSeller from './component/signUpSeller.js'
+
 import CatBuyer from './component/categoryBuyer.js'
 import Order from './component/order.js'
-=======
-
->>>>>>> fb4d4b0c5dc996064918f16c069d88bc2a93f172
 function App() {
   return (
    <div className="page-container">
