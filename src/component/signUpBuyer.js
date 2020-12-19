@@ -5,7 +5,7 @@ import store from './Store';
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import { storage } from '../firebase/index';
 //call the state I need from the store
 var mapStateToProps = (state) => {
     console.log(state, 'staaaaat')
