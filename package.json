@@ -7,10 +7,7 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "bootstrap": "^4.5.3",
-<<<<<<< HEAD
-=======
     "firebase": "^8.2.1",
->>>>>>> 8763a6f0c7dcc9a0cbba83ccac93cc2a699b5f08
     "jquery": "^3.5.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",

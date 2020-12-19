@@ -26,6 +26,10 @@ var loginState={
     password:""
 }
 
+var category = {
+    name:""
+}
+
 var reducerBuyer = (state =signUpBuyer, action) =>{
     switch (action.type) {
         case 'INPUT_BUYER':
@@ -58,6 +62,51 @@ var reducer = (state = signUpSeller, action) =>{
     }
     
 }
+
+var catReducer = (state = category,action) => {
+    console.log(action)
+    switch (action.type){
+        case 'food_category':
+         
+            // console.log("objj",obj)
+            category = Object.assign({}, state, {name:'food'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'food'})
+            
+         case 'clothes_category':
+            category = Object.assign({}, state, {name:'clothes'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'clothes'})
+            case 'babyshower_category':
+                category = Object.assign({}, state, {name:'baby'})
+                console.log(state,'state')
+                console.log('cat', category)
+  
+                return Object.assign({}, state, {name:'babyshower accessories'})   
+            case 'accesories_category':
+            category = Object.assign({}, state, {name:'accesories'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'accesories'})
+        default:
+            return state;
+    }
+    
+}
+
+
+const allReducers = combineReducers({
+    reducer,
+    // addItem: reducerAddItem
+    reducerBuyer,
+    catReducer
+
+ })
 var initialState ={
     product: "" ,
     description:"",
