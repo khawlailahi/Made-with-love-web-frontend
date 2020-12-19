@@ -10,7 +10,8 @@ var signUpSeller = {
  category : "",
  description : "",
  location : "",
- deliveryOrder : ""
+ deliveryOrder : "",
+ image:""
 };
 
 var signUpBuyer = {
