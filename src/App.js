@@ -13,8 +13,8 @@ import Footer from './component/Footer.js'
 import Navbar from './component/layout/Navbar.js'
 // import Notification from './component/Notification.js'
 // import order from './component/order.js'
-// import signUpBuyer from './component/signUpBuyer.js'
-// import signUpSeller from './component/signUpSeller.js'
+import SignUpSeller from './component/signUpSeller.js'
+ import SignUpBuyer from './component/signUpBuyer.js'
 // import Store from './component/Store.js'
 // import update from './component/update.js'
 // import view from './component/view.js'
@@ -22,19 +22,20 @@ import Navbar from './component/layout/Navbar.js'
 import './Style/app.css';
 // import combineReducers from './reducsers/index'
 import "bootstrap/dist/css/bootstrap.min.css";
- 
+import store from './component/Store.js'
 
 function App() {
   return (
    <div className="page-container">
      <div className="content-wrap">
     <Router>
-   <Navbar/>
-     <Switch>
-       <Route  path ='/about' exact  component ={About}></Route>
-      
-     </Switch>
-   <Footer/>
+    <Navbar/>
+      <Switch>
+        <Route  path ='/about' exact  component ={About}></Route>
+      </Switch>
+  <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
+  <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
+  <Route  path ='/about' exact  component ={About}></Route>
     </Router>
     </div>
  </div>
