@@ -145,14 +145,9 @@ var reducerAddItem =(state = initialState ,action) =>{
 const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
-<<<<<<< HEAD
-    reducerBuyer:reducerBuyer
- , 
-=======
     reducerBuyer:reducerBuyer,
     catReducer: catReducer
  ,
->>>>>>> aa8d58c429e932c37153c70a6f85208e89912dec
     ...createForms({
         user: initialState,
         login:loginState,
