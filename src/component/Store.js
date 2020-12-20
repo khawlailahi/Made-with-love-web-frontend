@@ -28,6 +28,10 @@ var loginState={
     password:""
 }
 
+var category = {
+    name:""
+}
+
 var reducerBuyer = (state =signUpBuyer, action) =>{
     switch (action.type) {
         case 'INPUT_BUYER':
@@ -65,6 +69,51 @@ var reducer = (state = signUpSeller, action) =>{
     }
     
 }
+
+var catReducer = (state = category,action) => {
+    console.log(action)
+    switch (action.type){
+        case 'food_category':
+         
+            // console.log("objj",obj)
+            category = Object.assign({}, state, {name:'food'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'food'})
+            
+         case 'clothes_category':
+            category = Object.assign({}, state, {name:'clothes'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'clothes'})
+            case 'babyshower_category':
+                category = Object.assign({}, state, {name:'babyproducts'})
+                console.log(state,'state')
+                console.log('cat', category)
+  
+                return Object.assign({}, state, {name:'babyproducts'})   
+            case 'accesories_category':
+            category = Object.assign({}, state, {name:'accessories'})
+            console.log(state,'state')
+            console.log('cat', category)
+
+            return Object.assign({}, state, {name:'accessories'})
+        default:
+            return category;
+    }
+    
+}
+
+
+// const allReducers = combineReducers({
+//     reducer,
+//     // addItem: reducerAddItem
+//     reducerBuyer,
+//     catReducer
+
+//  })
 var initialState ={
     product: "" ,
     description:"",
@@ -96,8 +145,14 @@ var reducerAddItem =(state = initialState ,action) =>{
 const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
+<<<<<<< HEAD
     reducerBuyer:reducerBuyer
  , 
+=======
+    reducerBuyer:reducerBuyer,
+    catReducer: catReducer
+ ,
+>>>>>>> aa8d58c429e932c37153c70a6f85208e89912dec
     ...createForms({
         user: initialState,
         login:loginState,

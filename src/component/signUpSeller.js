@@ -142,4 +142,9 @@ function SignUpSeller(props){
      </div>
     )
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> aa8d58c429e932c37153c70a6f85208e89912dec
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpSeller);

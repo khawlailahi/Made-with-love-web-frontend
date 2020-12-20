@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa8d58c429e932c37153c70a6f85208e89912dec
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form,Button  } from 'react-bootstrap';
