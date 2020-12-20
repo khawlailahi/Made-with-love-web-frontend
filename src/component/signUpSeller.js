@@ -68,52 +68,71 @@ function SignUpSeller(props){
     }
     
     return (
-        <div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>
+<div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>   
+<div className="card w-100">
+  {/* <div className="card-body"> */}
+    <div className = "container">
    
-<div class="card w-100">
-  <div class="card-body">
-  <Form>
+  <Form action="/action_page.php" class="needs-validation" novalidate>
   <Form.Group controlId="formGroupEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" name ="email" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  />
-  </Form.Group>
+    <Form.Control placeholder="Enter email" name ="email"  id="email" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
+   </Form.Group>
 
-  <Form.Group controlId="formGroupPassword">
+
+   <Form.Group controlId="formGroupPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password"  name ="password" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}/>
-  </Form.Group>
+    <Form.Control placeholder="Enter Password" name ="password"  id="password" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
+   </Form.Group> 
 
-  <Form.Group controlId="formGroupStore Name">
+
+
+   <Form.Group controlId="formGroupStore Name">
+  <div className = 'valid-feedback'>Valid</div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
     <Form.Label>Store Name</Form.Label>
-    <Form.Control type="text" placeholder="Enter Store Name"  name ="storeName" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} />
-  </Form.Group>
-  
+    <Form.Control placeholder="Enter Store Name" name ="storeName"  id="storeName" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
+   </Form.Group>
+
+
    <Form.Group controlId="formGroupDescription">
     <Form.Label>Description</Form.Label>
-    <Form.Control type="text" placeholder="Enter description"  name ="description" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} />
-  </Form.Group>
+    <Form.Control placeholder="Enter Description" name ="description"  id="Description" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
+   </Form.Group>
 
    <Form.Group controlId="formGroupLocation">
     <Form.Label>Location</Form.Label>
-    <Form.Control type="text" placeholder="Enter Location" name ="location" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} />
-  </Form.Group>
+    <Form.Control placeholder="Enter Location" name ="Location"  id="Location" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
+   </Form.Group>
 
 
-  <Form.Group controlId="exampleForm.SelectCategory"  onChange = {props.inputChanged}>
-    <Form.Label>Choose Category</Form.Label>
-    <Form.Control as="select" custom name ="category" style ={{padding:"2px 2px 2px 2px"}}>
-        
-    <option></option>
+   <Form.Group controlId="exampleForm.SelectCategory"  onChange = {props.inputChanged} required>
+   <Form.Label>Choose Category</Form.Label>
+   <Form.Control as="select" custom name ="category" style ={{padding:"2px 2px 2px 2px"}} required>
+   <option></option>
       <option value ="Foods">Foods</option>
       <option value ="clothes">clothes</option>
       <option value ="Baby Show Product">Baby Shower Products</option>
       <option value ="Accessories">Accessories</option>
     </Form.Control>
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
-
-  <Form.Group controlId="exampleForm.SelectDelivery"  name ="deliveryOrder" onChange = {props.inputChanged}>
+    
+  
+  <Form.Group controlId="exampleForm.SelectDelivery"  name ="deliveryOrder" onChange = {props.inputChanged} required>
     <Form.Label>Delivery Order WithIn</Form.Label>
-    <Form.Control as="select" custom name ="deliveryOrder" style ={{padding:"2px 2px 2px 2px"}}>
+    <Form.Control as="select" custom name ="deliveryOrder" style ={{padding:"2px 2px 2px 2px"}} required>
         
     <option></option>
       <option value ="12 Hours">12 Hours</option>
@@ -121,21 +140,21 @@ function SignUpSeller(props){
       <option value ="Day">Day</option>
      
     </Form.Control>
+    <div className = 'valid-feedback'></div>
+   <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
+  
 
-  <Form.Group controlId="formGroupimage">
-    <Form.Label>image</Form.Label>
-    <Form.Control type="file" placeholder="Enter image" name ="image" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} />
-  </Form.Group>
-  {/* <button onClick={}>Upload</button> */}
+  
+  <button type="submit" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
 
 </Form>
-<button type="button" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
+
   </div>
+
+
+
 </div>
-
-
-
      </div>
     )
 }
