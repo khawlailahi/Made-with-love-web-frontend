@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { storage } from '../firebase/index';
+import NavbarSeller from './layout/NavbarSeller'
 var mapStateToProps = (state) => {
 return {
     email : state.reducer.email,
@@ -84,7 +85,11 @@ function SignUpSeller(props){
       // )
     }
     return (
+    <div>
+       <NavbarSeller/>
+    
 <div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>   
+
 <div className="card w-100">
   {/* <div className="card-body"> */}
     <div className = "container">
@@ -167,7 +172,7 @@ function SignUpSeller(props){
 
   </div>
 
-
+  </div> 
 
 </div>
      </div>
