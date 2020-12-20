@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { storage } from '../firebase/index';
+import NavbarBuyer from './layout/NavbarBuyer'
 //call the state I need from the store
 var mapStateToProps = (state) => {
     console.log(state, 'staaaaat')
@@ -67,6 +68,9 @@ function SignUpBuyer (props){
     }
   
     return (
+
+      <div>
+        <NavbarBuyer/>
         <div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>
    
         <div class="card w-100">
@@ -114,7 +118,7 @@ function SignUpBuyer (props){
 </div>
 
 
-
+</div>
      </div>
     )
 
