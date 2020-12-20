@@ -1,5 +1,7 @@
 import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
+import thunk from "redux-thunk";
+
 import {combineForms, createForms} from 'react-redux-form';
   
 var signUpSeller = {
@@ -43,7 +45,12 @@ var reducerBuyer = (state =signUpBuyer, action) =>{
            return state;
     }
 }
-
+//  var fetchUsersRequest = () => {
+//     return {
+//       type: FETCH_USERS_REQUEST,
+//       payload: []
+//     }
+//   }
 
 var reducer = (state = signUpSeller, action) =>{
     // console.log('reducer', state);
@@ -146,7 +153,8 @@ const store = createStore(combineReducers({
         login:loginState,
         order:orderForm
 
-      })})
+     } )
+    } )
 
 
     );
