@@ -36,7 +36,7 @@ function App() {
    <div className="page-container">
      <div className="content-wrap">
     <Router>
-   <Navbar/>
+   {/* <Navbar/> */}
      <Switch>
        <Route  path ='/about' exact  component ={About}></Route>
        <Route  path ='/addItem' exact  component ={addItem}></Route>
