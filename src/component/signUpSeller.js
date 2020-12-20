@@ -14,8 +14,8 @@ return {
     category:state.reducer.category,
     description:state.reducer.description,
     location:state.reducer.location,
-    deliveryOrder : state.reducer.deliveryOrder
-    
+    deliveryOrder : state.reducer.deliveryOrder,
+    image :state.reducer.image
   }
 }
 
@@ -47,6 +47,7 @@ function SignUpSeller(props){
       obj.description=props.description;
       obj.location=props.location;
       obj.deliveryOrder = props.deliveryOrder;
+      obj.image = props.image;
       console.log(obj)
         $.ajax({
             url: "/seller/signup",
@@ -121,8 +122,15 @@ function SignUpSeller(props){
      
     </Form.Control>
   </Form.Group>
+
+  <Form.Group controlId="formGroupimage">
+    <Form.Label>image</Form.Label>
+    <Form.Control type="file" placeholder="Enter image" name ="image" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} />
+  </Form.Group>
+  {/* <button onClick={}>Upload</button> */}
+
 </Form>
-<button type="button" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px'}}>Sign Up</button>
+<button type="button" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
   </div>
 </div>
 

@@ -19,10 +19,10 @@ const Navbar = () => {
     <ReactBootStrap.Nav.Link href="#pricing">About Us</ReactBootStrap.Nav.Link>
     </Link>
       <ReactBootStrap.NavDropdown title="Categories" id="collasible-nav-dropdown">
-        <ReactBootStrap.NavDropdown.Item href="/category/food">Food</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/category/clothes">Clothes</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/category/accessories">Accessories</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/category/baby">Baby Shower Accessories</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/item/food">Food</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/item/clothes">Clothes</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/item/accessories">Accessories</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/item/babyaccessories">Baby Shower Accessories</ReactBootStrap.NavDropdown.Item>
 
         <ReactBootStrap.NavDropdown.Divider />
       </ReactBootStrap.NavDropdown>
