@@ -2,7 +2,7 @@ import { createStore ,applyMiddleware} from 'redux';
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
 
-import {combineForms, createForms} from 'react-redux-form';
+// import {combineForms, createForms} from 'react-redux-form';
   
 var signUpSeller = {
     email :"",
@@ -148,12 +148,12 @@ const store = createStore(combineReducers({
     reducerBuyer:reducerBuyer,
     catReducer: catReducer
  ,
-    ...createForms({
-        user: initialState,
-        login:loginState,
-        order:orderForm
+    // ...createForms({
+    //     user: initialState,
+    //     login:loginState,
+    //     order:orderForm
 
-     } )
+    //  } )
     } )
 
 
