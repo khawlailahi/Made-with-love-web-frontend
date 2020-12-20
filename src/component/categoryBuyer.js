@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import $ from 'jquery';
 import ItemList from "./itemList.js"
+
+
+
+
+
  class CatBuyer extends Component {
      
      state = {

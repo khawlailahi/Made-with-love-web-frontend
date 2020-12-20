@@ -1,4 +1,4 @@
-import { createStore , applyMiddleware} from 'redux'; 
+import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
 import {combineForms, createForms} from 'react-redux-form';
   
@@ -82,31 +82,31 @@ var catReducer = (state = category,action) => {
 
             return Object.assign({}, state, {name:'clothes'})
             case 'babyshower_category':
-                category = Object.assign({}, state, {name:'baby'})
+                category = Object.assign({}, state, {name:'babyproducts'})
                 console.log(state,'state')
                 console.log('cat', category)
   
-                return Object.assign({}, state, {name:'babyshower accessories'})   
+                return Object.assign({}, state, {name:'babyproducts'})   
             case 'accesories_category':
-            category = Object.assign({}, state, {name:'accesories'})
+            category = Object.assign({}, state, {name:'accessories'})
             console.log(state,'state')
             console.log('cat', category)
 
-            return Object.assign({}, state, {name:'accesories'})
+            return Object.assign({}, state, {name:'accessories'})
         default:
-            return state;
+            return category;
     }
     
 }
 
 
-const allReducers = combineReducers({
-    reducer,
-    // addItem: reducerAddItem
-    reducerBuyer,
-    catReducer
+// const allReducers = combineReducers({
+//     reducer,
+//     // addItem: reducerAddItem
+//     reducerBuyer,
+//     catReducer
 
- })
+//  })
 var initialState ={
     product: "" ,
     description:"",
@@ -138,7 +138,8 @@ var reducerAddItem =(state = initialState ,action) =>{
 const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
-    reducerBuyer:reducerBuyer
+    reducerBuyer:reducerBuyer,
+    catReducer: catReducer
  ,
     ...createForms({
         user: initialState,

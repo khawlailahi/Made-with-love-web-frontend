@@ -44,7 +44,7 @@ export default function Home(props) {
     return (
         <div>
            <div className="row" style={{margin:"0 auto"}}>
-         <Link to='/item/food'>
+         <Link to='/buyer/food'>
            <div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryfood()) }} >
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
@@ -86,7 +86,7 @@ export default function Home(props) {
         </div><br/><br/>
         </div> 
         </Link>
-        <Link to='/item/clothes'>
+        <Link to='/buyer/clothes'>
           <div className="col-sm-6"  onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryclothes()) }} >
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
@@ -128,7 +128,7 @@ export default function Home(props) {
         </div><br/><br/>
         </div> 
         </Link>
-        <Link to='/item/accessories'><div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryacc()) }}>
+        <Link to='/buyer/accessories'><div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryacc()) }}>
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
   <Carousel.Item interval={1000}>
@@ -169,7 +169,7 @@ export default function Home(props) {
         </div><br/><br/>
         </div> 
         </Link>
-          <Link to='/item/babyproducts'><div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategorybaby()) }}>
+          <Link to='/buyer/babyproducts'><div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategorybaby()) }}>
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
   <Carousel.Item interval={1000}>
