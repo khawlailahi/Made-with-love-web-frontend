@@ -31,29 +31,27 @@ import CatBuyer from './component/categoryBuyer.js'
 import Order from './component/order.js'
 import View from './component/view.js'
 function App() {
+  console.log(store.getState())
   return (
    <div className="page-container">
      <div className="content-wrap">
     <Router>
    <Navbar/>
      <Switch>
-<Route  path ='/about' exact  component ={About}></Route> 
-<Route  path ='/addItem' exact  component ={addItem}></Route>
-<Route  path ='/login' exact  component ={Login}></Route>
-<Route  path ='/order' exact  component ={Order}></Route>
-<Route  path ='/home' exact   component={home}></Route>
-<Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
-<Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
-<Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
-<Route  path ='/order' exact   component={() => <Order/>}></Route>
-<Route path = '/view' exact component ={() => <View/>}></Route>
-</Switch>
+       <Route  path ='/about' exact  component ={About}></Route>
+       <Route  path ='/addItem' exact  component ={addItem}></Route>
+       <Route  path ='/login' exact  component ={Login}></Route>
+       <Route  path ='/order' exact  component ={Order}></Route>
+       <Route  path ='/home' exact   component={home}></Route>
+       <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
+       <Route  path ='/view' exact   component={View}></Route>
+       <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
+       <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
+     </Switch>
    <Footer/>
     </Router>
     </div>
  </div>
-   
   );
 }
-
 export default App;
