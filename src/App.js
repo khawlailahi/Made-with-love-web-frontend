@@ -31,7 +31,7 @@ import store from './component/Store.js'
 import CatBuyer from './component/categoryBuyer.js'
 import Order from './component/order.js'
 var mapStateToProps = (state) => {
-  // console.log(state, 'staaaaat')
+  console.log(state, 'staaaaat')
 return {
   name: state.catReducer.name,
   
@@ -54,12 +54,11 @@ function App(props) {
        <Route  path ='/login' exact  component ={Login}></Route>
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/home' exact   component={home}></Route>
-
-
        <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
        <Route  path ={''+url}  exact   component={() => <CatBuyer store={store} cat={props.name} />}></Route>
-       {/* <Route  path ='/buyer/clothes'  exact   component={() => <CatBuyer store={store} cat="clothes" />}></Route>
+       {/* <Route  path ='/buyer/food'  exact   component={() => <CatBuyer store={store} cat="food" />}></Route>
+       <Route  path ='/buyer/clothes'  exact   component={() => <CatBuyer store={store} cat="clothes" />}></Route>
        <Route  path ='/buyer/babyproducts'  exact   component={() => <CatBuyer store={store} cat = "babyproducts"/>}></Route>
        <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route> */}
        <Route  path ='/order' exact   component={() => <Order/>}></Route>
