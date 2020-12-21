@@ -30,8 +30,19 @@ import store from './component/Store.js'
 import CatBuyer from './component/categoryBuyer.js'
 import Order from './component/order.js'
 import View from './component/view.js'
-function App() {
-  console.log(store.getState())
+var mapStateToProps = (state) => {
+  console.log(state, 'staaaaat')
+return {
+  name: state.catReducer.name,
+  
+}
+}
+function App(props) {
+  
+
+  console.log("caaaat",props)
+  var url = `/buyer/${props.name}`
+  console.log(url)
   return (
    <div className="page-container">
      <div className="content-wrap">
@@ -44,9 +55,14 @@ function App() {
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/home' exact   component={home}></Route>
        <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
-       <Route  path ='/view' exact   component={View}></Route>
+       <Route  path ='/' exact   component={View}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
-       <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
+       <Route  path ={''+url}  exact   component={() => <CatBuyer store={store} cat={props.name} />}></Route>
+       <Route  path ='/buyer/food'  exact   component={() => <CatBuyer store={store} cat="food" />}></Route>
+       <Route  path ='/buyer/clothes'  exact   component={() => <CatBuyer store={store} cat="clothes" />}></Route>
+       <Route  path ='/buyer/babyproducts'  exact   component={() => <CatBuyer store={store} cat = "babyproducts"/>}></Route>
+       <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route>
+       <Route  path ='/order' exact   component={() => <Order/>}></Route>
      </Switch>
    <Footer/>
     </Router>
