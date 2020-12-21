@@ -31,11 +31,7 @@ const Navbar = () => {
     <Link to="/signin">
     <ReactBootStrap.Nav.Link href="/signin">Sign In</ReactBootStrap.Nav.Link>
     </Link>
-    {/* <Link to="/dankmemes"> */}
-    {/* <ReactBootStrap.Nav.Link eventKey={2} href="#memes">
-        Dank memes
-      </ReactBootStrap.Nav.Link> */}
-    {/* </Link> */}
+  
     </ReactBootStrap.Nav>
   </ReactBootStrap.Navbar.Collapse>
 </ReactBootStrap.Navbar>
