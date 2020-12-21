@@ -55,7 +55,7 @@ function App(props) {
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/home' exact   component={home}></Route>
        <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
-       <Route  path ='/view' exact   component={View}></Route>
+       <Route  path ='/' exact   component={View}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
        <Route  path ={''+url}  exact   component={() => <CatBuyer store={store} cat={props.name} />}></Route>
        <Route  path ='/buyer/food'  exact   component={() => <CatBuyer store={store} cat="food" />}></Route>

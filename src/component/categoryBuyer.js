@@ -5,6 +5,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import {useDispatch} from 'react-redux'
 import { connect } from 'react-redux';
+import NavbarBuyer from "./layout/NavbarBuyer.js";
 // const dispatch = useDispatch()
 
 var mapStateToProps = (state) => {
@@ -231,7 +232,7 @@ if (this.props.cat === 'babyproducts'){
         
         return (
             <div>
-                
+                <NavbarBuyer/>
            
             <div className="d-flex">
     
