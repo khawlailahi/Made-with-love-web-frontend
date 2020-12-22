@@ -1,19 +1,23 @@
-import { connect } from 'react-redux';
+
 import React, { useState ,useEffect} from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';   
+
 import $ from "jquery";
 import { Form,Button  } from 'react-bootstrap';
+
+ 
 const useFetch = url => {
-    const [data, setData] = useState('');
+    const [data, setData] = useState('');  
     useEffect(async () => {
       const response = await fetch(url);
       const responses = await response.json();
-      setData((responses));
-    //   console.log(responses,'fdfdfdesf')
+      setData((responses)); 
+    //   console.log(responses,'fdfdfdesf') 
+
     }, []);
      return {data}}
 
-
+  
 export default () => {
     const {data} = useFetch("https://jsonplaceholder.typicode.com/users/1/todos")
     console.log(Array.isArray(data) ,"typedata")

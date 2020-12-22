@@ -24,6 +24,19 @@ function deleteItem(id) {
     type: delete_item,
     id
   }
+  // $.ajax({
+  //   url: "/delete/item",
+  //   method: "Delete",
+
+  //   success: function (data) {
+  //       //redirect to login page
+  //     console.log("POST sent successfully!");
+
+  //   },
+  //   error: function (err) {
+  //     console.log(err);
+  //   }
+  // })
 }
 
 // function deleteTodoAPI (id) {

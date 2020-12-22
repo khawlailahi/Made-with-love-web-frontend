@@ -1,6 +1,9 @@
 import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
+import thunk from "redux-thunk";
 import {combineForms, createForms} from 'react-redux-form';
+
+// import {combineForms, createForms} from 'react-redux-form';
   
 var signUpSeller = {
     email :"",
@@ -39,6 +42,84 @@ var signUpSeller = {
     items : []
 
   }
+
+var filters = {
+    gender:'',
+    size:'',
+    food:'',
+    acc:'',
+    babyGender:''
+}
+
+var categoryData={
+    data:[]
+}
+
+var filteredData={
+    filteredData:categoryData.data
+}
+
+var filteringReducer= (state = filteredData, action) =>{
+    console.log('default',filteredData)
+    switch (action.type){                                                                                                                                                                                                
+        case 'filtering':
+            var obj={}
+            obj.filteredData=action.text
+            filteredData = Object.assign({}, state, obj)
+            console.log('filteredData', filteredData)
+            return Object.assign({}, state, obj)
+            default:
+                return categoryData;}
+            }
+
+var categoryReducer = (state = categoryData, action) =>{
+    switch (action.type){                                                                                                                                                                                                
+        case 'getdata':
+            var obj={}
+            obj.data=action.text
+            categoryData = Object.assign({}, state, obj)
+            console.log('categoryData', categoryData)
+            return Object.assign({}, state, obj)
+            default:
+                return state;}
+            }
+        
+var filterReducer = (state = filters, action) =>{
+    
+    switch (action.type){                                                                                                                                                                                                
+        case 'food':
+            var obj = {}
+            obj.food= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'accessories':
+            var obj = {}
+            obj.acc= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'babyproducts':
+            var obj = {}
+            obj.babyGender= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'clothes':
+            console.log("iiiiiin")
+            var obj = {}
+            if(action.filter === 'size')
+            obj.size= action.text
+            else if (action.filter === 'gender')
+            obj.gender= action.text
+
+            filters = Object.assign({}, state, obj)
+            console.log("filters",filters)
+            return Object.assign({}, state, obj)
+        default:
+           return state;
+    }
+}
 
 var reducerBuyer = (state =signUpBuyer, action) =>{
     switch (action.type) {
@@ -92,19 +173,19 @@ var catReducer = (state = category,action) => {
 
             return Object.assign({}, state, {name:'clothes'})
             case 'babyshower_category':
-                category = Object.assign({}, state, {name:'baby'})
+                category = Object.assign({}, state, {name:'babyproducts'})
                 console.log(state,'state')
                 console.log('cat', category)
   
-                return Object.assign({}, state, {name:'babyshower accessories'})   
+                return Object.assign({}, state, {name:'babyproducts'})   
             case 'accesories_category':
-            category = Object.assign({}, state, {name:'accesories'})
+            category = Object.assign({}, state, {name:'accessories'})
             console.log(state,'state')
             console.log('cat', category)
 
-            return Object.assign({}, state, {name:'accesories'})
+            return Object.assign({}, state, {name:'accessories'})
         default:
-            return state;
+            return category;
     }
     
 }
@@ -121,12 +202,15 @@ var initialState ={
     product: "" ,
     description:"",
     price:"",
-    image:""
+    type:"",
+    size:"",
+    gender:"",
+    material:""
 }
 var orderForm={
     quantity:"",
     location:"",
-    phoneNumber:""
+    phoneNumber:"",
 }
 
 
@@ -157,7 +241,14 @@ var resducerProfile = (state =sellerProfile, action) => {
 
 
 
-
+var orderFormReducer=(state = {},action) =>{
+    switch(action.types){
+        case 'RECEIVE_DATA':
+        return Object.assign({},...state,{ data: action.data}) 
+        default:
+           return state
+    }
+ }
 
 
 // const allReducers = 
@@ -165,15 +256,19 @@ const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
     reducerBuyer:reducerBuyer,
-    catReducer:  catReducer,
-    resducerProfile : resducerProfile
+    catReducer: catReducer,
+    orderFormReducer:orderFormReducer,
+    categoryReducer:categoryReducer,
+    filterReducer:filterReducer,
+    filteringReducer:filteringReducer
  ,
-    ...createForms({
-        user: initialState,
-        login:loginState,
-        order:orderForm
+    // ...createForms({
+    //     user: initialState,
+    //     login:loginState,
+    //     order:orderForm
 
-      })})
+    //  } )
+    } )
 
 
     );
