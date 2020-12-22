@@ -25,8 +25,8 @@ export default function ItemList(props) {
             <p className="card-text">Store: {item.description}</p>
             <p className="card-text">Price: {item.description}</p>
             <p className="card-text">Delievering within: {item.description}</p> */}
-            {/* <Link to={{pathname: '/order', state: car.id }}> */}
-                <button onClick={()=>{clicked(item._id)}}>Order</button>
+            {/* <Link to={{pathname: '/order', info: {id:item._id, name:item.name, url:item.url }}> */}
+                <button onClick={()=>{clicked(item._id,item.name ,item.url)}}>Order</button>
                 {/* </Link> */}
         </div>
         </div><br/><br/>

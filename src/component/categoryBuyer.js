@@ -243,7 +243,7 @@ if (this.props.cat === 'babyproducts'){
 <div className="row"  style={{margin:"0 auto"}}>
     
  {/* <ItemList items ={ this.state.data} />  */}
- <ItemList items ={[{title:"kjbdljb"}]} /> 
+ <ItemList items ={[{title:"kjbdljb", _id:2}]} /> 
 </div></div>
 <div className="d-flex toggled" id="wrapper" >
     <div className="p-2">
