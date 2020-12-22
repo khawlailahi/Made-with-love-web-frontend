@@ -1,18 +1,18 @@
 import firebase from 'firebase/app';
 import "firebase/storage";
+
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAMPwlFUFiT3E0E3L1ChhJJRcpJec9o_ac",
-    authDomain: "made-with-love-ae166.firebaseapp.com",
-    projectId: "made-with-love-ae166",
-    storageBucket: "made-with-love-ae166.appspot.com",
-    messagingSenderId: "810386719078",
-    appId: "1:810386719078:web:29712908412bc0aca508a7",
-    measurementId: "G-0MFB5T75NK"
-  };
+  apiKey: "AIzaSyAf2vopbuepiwP03Egu0xx05ubEeh3_kWA",
+  authDomain: "made-with-love-1cf70.firebaseapp.com",
+  projectId: "made-with-love-1cf70",
+  storageBucket: "made-with-love-1cf70.appspot.com",
+  messagingSenderId: "111854230578",
+  appId: "1:111854230578:web:f33170ba76fdd9d8daf02b",
+  measurementId: "G-GR8TV17FNB"
+};
 
 
 firebase.initializeApp(firebaseConfig);
-
 var storage = firebase.storage();
-
 export { storage, firebase as default }

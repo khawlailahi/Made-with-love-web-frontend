@@ -1,6 +1,7 @@
 import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
+import {combineForms, createForms} from 'react-redux-form';
 
 // import {combineForms, createForms} from 'react-redux-form';
   
@@ -23,14 +24,24 @@ var signUpSeller = {
        phoneNumber:""
    } 
    
-var loginState={
+  var loginState={
     email:"",
     password:""
-}
+ }
 
-var category = {
+ var category = {
     name:""
-}
+ }
+
+  var sellerProfile = {
+    id: "",
+    name :"",
+    image : "",
+    product_Name : "",
+    description : "",
+    items : []
+
+  }
 
 var filters = {
     gender:'',
@@ -123,12 +134,7 @@ var reducerBuyer = (state =signUpBuyer, action) =>{
            return state;
     }
 }
-//  var fetchUsersRequest = () => {
-//     return {
-//       type: FETCH_USERS_REQUEST,
-//       payload: []
-//     }
-//   }
+
 
 var reducer = (state = signUpSeller, action) =>{
     // console.log('reducer', state);
@@ -196,12 +202,15 @@ var initialState ={
     product: "" ,
     description:"",
     price:"",
-    image:""
+    type:"",
+    size:"",
+    gender:"",
+    material:""
 }
 var orderForm={
     quantity:"",
     location:"",
-    phoneNumber:""
+    phoneNumber:"",
 }
 
 
@@ -215,8 +224,31 @@ var reducerAddItem =(state = initialState ,action) =>{
     }
 }
 
+var resducerProfile = (state =sellerProfile, action) => {
+    switch(action.type){
+        case 'fetch_seller':
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+        case 'delete_item':
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+            // let newItems = [...state.sellerProfile.items[]]
+            // newItems = newItems.filter(item=>item.id != action.id)
+            // return newItems;
+    default :
+    return state
+    }
+}
 
 
+
+
+var orderFormReducer=(state = {},action) =>{
+    switch(action.types){
+        case 'RECEIVE_DATA':
+        return Object.assign({},...state,{ data: action.data}) 
+        default:
+           return state
+    }
+ }
 
 
 // const allReducers = 
@@ -225,6 +257,7 @@ const store = createStore(combineReducers({
     addItem: reducerAddItem,
     reducerBuyer:reducerBuyer,
     catReducer: catReducer,
+    orderFormReducer:orderFormReducer,
     categoryReducer:categoryReducer,
     filterReducer:filterReducer,
     filteringReducer:filteringReducer

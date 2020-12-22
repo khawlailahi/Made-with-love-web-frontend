@@ -28,8 +28,8 @@ const Navbar = () => {
       </ReactBootStrap.NavDropdown>
     </ReactBootStrap.Nav>
     <ReactBootStrap.Nav>
-    <Link to="/signin">
-    <ReactBootStrap.Nav.Link href="/signin">Sign In</ReactBootStrap.Nav.Link>
+    <Link to="/login">
+    <ReactBootStrap.Nav.Link href="/login">Sign In</ReactBootStrap.Nav.Link>
     </Link>
   
     </ReactBootStrap.Nav>
