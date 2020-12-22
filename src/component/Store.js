@@ -1,7 +1,6 @@
 import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
-
 import {combineForms, createForms} from 'react-redux-form';
   
 var signUpSeller = {
@@ -45,12 +44,7 @@ var reducerBuyer = (state =signUpBuyer, action) =>{
            return state;
     }
 }
-//  var fetchUsersRequest = () => {
-//     return {
-//       type: FETCH_USERS_REQUEST,
-//       payload: []
-//     }
-//   }
+
 
 var reducer = (state = signUpSeller, action) =>{
     // console.log('reducer', state);
@@ -107,23 +101,20 @@ var catReducer = (state = category,action) => {
 }
 
 
-// const allReducers = combineReducers({
-//     reducer,
-//     // addItem: reducerAddItem
-//     reducerBuyer,
-//     catReducer
 
-//  })
 var initialState ={
     product: "" ,
     description:"",
     price:"",
-    image:""
+    type:"",
+    size:"",
+    gender:"",
+    material:""
 }
 var orderForm={
     quantity:"",
     location:"",
-    phoneNumber:""
+    phoneNumber:"",
 }
 
 
@@ -138,7 +129,14 @@ var reducerAddItem =(state = initialState ,action) =>{
 }
 
 
-
+var orderFormReducer=(state = {},action) =>{
+    switch(action.types){
+        case 'RECEIVE_DATA':
+        return Object.assign({},...state,{ data: action.data}) 
+        default:
+           return state
+    }
+ }
 
 
 // const allReducers = 
@@ -146,7 +144,8 @@ const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
     reducerBuyer:reducerBuyer,
-    catReducer: catReducer
+    catReducer: catReducer,
+    orderFormReducer:orderFormReducer
  ,
     ...createForms({
         user: initialState,

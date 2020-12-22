@@ -45,6 +45,8 @@ function App() {
        <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
        <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
+       <Route  path ='/orderList' exact   component={listOfOrder}></Route>
+
      </Switch>
    <Footer/>
     </Router>
