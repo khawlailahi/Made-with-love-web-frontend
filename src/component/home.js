@@ -1,43 +1,36 @@
-import React from 'react';
-import Carousel from 'react-bootstrap/Carousel'
-import {Link} from "react-router-dom";
-import {useDispatch} from 'react-redux'
+import React from "react";
+import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-
-var action = {type : 'food_category'}
-var actionclothes = {type : 'clothes_category'}
-var actionbaby = {type : 'babyshower_category'}
-var actionacc = {type : 'accesories_category'}
+var action = { type: "food_category" };
+var actionclothes = { type: "clothes_category" };
+var actionbaby = { type: "babyshower_category" };
+var actionacc = { type: "accesories_category" };
 const getcategoryfood = () => {
-  
   return action;
-  }
+};
 
-  const getcategoryclothes = () => {
-  
-    return actionclothes;
-    }
+const getcategoryclothes = () => {
+  return actionclothes;
+};
 const getcategorybaby = () => {
-
-    return actionbaby;
-    }
+  return actionbaby;
+};
 const getcategoryacc = () => {
-  
-      return actionacc;
-      }
+  return actionacc;
+};
 // var mapDispatchToProps = (dispatch) =>{
 //     return {
-        
+
 //     //     onclickCat : (cat) => {
 //     //         action = {type : 'change_category', text:cat}
 //     //         dispatch(action);
-            
+
 //     //      }
 //     // }
 //     const
 // }
-
-
 
 export default function Home(props) {
   const dispatch = useDispatch()
@@ -210,11 +203,7 @@ export default function Home(props) {
         </div><br/><br/>
         </div> 
         </Link>
-      
-     
-        </div>
-        
-        </div>
-        
-    ) 
+      </div>
+    </div>
+  );
 }
