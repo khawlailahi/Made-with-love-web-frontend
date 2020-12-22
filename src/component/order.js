@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
-import $ from 'jquery';
-import React from 'react';
-import { Control, Form, actions } from 'react-redux-form';
+// import { connect } from 'react-redux';
+// import $ from 'jquery';
+// import React from 'react';
+// import { Control, Form, actions } from 'react-redux-form';
 
    var  time =new Date().toDateString() 
 class Order extends React.Component {
@@ -62,4 +62,3 @@ render() {
 //
 }
   export default Order
-

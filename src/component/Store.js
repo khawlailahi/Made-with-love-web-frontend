@@ -2,6 +2,8 @@ import { createStore ,applyMiddleware} from 'redux';
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
 import {combineForms, createForms} from 'react-redux-form';
+
+// import {combineForms, createForms} from 'react-redux-form';
   
 var signUpSeller = {
     email :"",
@@ -29,6 +31,84 @@ var loginState={
 
 var category = {
     name:""
+}
+
+var filters = {
+    gender:'',
+    size:'',
+    food:'',
+    acc:'',
+    babyGender:''
+}
+
+var categoryData={
+    data:[]
+}
+
+var filteredData={
+    filteredData:categoryData.data
+}
+
+var filteringReducer= (state = filteredData, action) =>{
+    console.log('default',filteredData)
+    switch (action.type){                                                                                                                                                                                                
+        case 'filtering':
+            var obj={}
+            obj.filteredData=action.text
+            filteredData = Object.assign({}, state, obj)
+            console.log('filteredData', filteredData)
+            return Object.assign({}, state, obj)
+            default:
+                return categoryData;}
+            }
+
+var categoryReducer = (state = categoryData, action) =>{
+    switch (action.type){                                                                                                                                                                                                
+        case 'getdata':
+            var obj={}
+            obj.data=action.text
+            categoryData = Object.assign({}, state, obj)
+            console.log('categoryData', categoryData)
+            return Object.assign({}, state, obj)
+            default:
+                return state;}
+            }
+        
+var filterReducer = (state = filters, action) =>{
+    
+    switch (action.type){                                                                                                                                                                                                
+        case 'food':
+            var obj = {}
+            obj.food= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'accessories':
+            var obj = {}
+            obj.acc= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'babyproducts':
+            var obj = {}
+            obj.babyGender= action.text
+            filters = Object.assign({}, state, obj)
+            console.log(filters)
+            return Object.assign({}, state, obj)
+        case 'clothes':
+            console.log("iiiiiin")
+            var obj = {}
+            if(action.filter === 'size')
+            obj.size= action.text
+            else if (action.filter === 'gender')
+            obj.gender= action.text
+
+            filters = Object.assign({}, state, obj)
+            console.log("filters",filters)
+            return Object.assign({}, state, obj)
+        default:
+           return state;
+    }
 }
 
 var reducerBuyer = (state =signUpBuyer, action) =>{
@@ -145,14 +225,17 @@ const store = createStore(combineReducers({
     addItem: reducerAddItem,
     reducerBuyer:reducerBuyer,
     catReducer: catReducer,
-    orderFormReducer:orderFormReducer
+    orderFormReducer:orderFormReducer,
+    categoryReducer:categoryReducer,
+    filterReducer:filterReducer,
+    filteringReducer:filteringReducer
  ,
-    ...createForms({
-        user: initialState,
-        login:loginState,
-        order:orderForm
+    // ...createForms({
+    //     user: initialState,
+    //     login:loginState,
+    //     order:orderForm
 
-     } )
+    //  } )
     } )
 
 
