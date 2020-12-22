@@ -145,10 +145,10 @@ var resducerProfile = (state =sellerProfile, action) => {
         case 'fetch_seller':
             return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
         case 'delete_item':
-            // return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
-            let newItems = [...state.sellerProfile.items]
-            newItems = newItems.filter(item=>item.id != action.id)
-            return newItems;
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+            // let newItems = [...state.sellerProfile.items[]]
+            // newItems = newItems.filter(item=>item.id != action.id)
+            // return newItems;
     default :
     return state
     }
