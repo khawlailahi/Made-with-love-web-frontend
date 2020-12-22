@@ -21,14 +21,24 @@ var signUpSeller = {
        phoneNumber:""
    } 
    
-var loginState={
+  var loginState={
     email:"",
     password:""
-}
+ }
 
-var category = {
+ var category = {
     name:""
-}
+ }
+
+  var sellerProfile = {
+    id: "",
+    name :"",
+    image : "",
+    product_Name : "",
+    description : "",
+    items : []
+
+  }
 
 var reducerBuyer = (state =signUpBuyer, action) =>{
     switch (action.type) {
@@ -100,13 +110,13 @@ var catReducer = (state = category,action) => {
 }
 
 
-const allReducers = combineReducers({
-    reducer,
-    // addItem: reducerAddItem
-    reducerBuyer,
-    catReducer
+// const allReducers = combineReducers({
+//     reducer,
+//     // addItem: reducerAddItem
+//     reducerBuyer,
+//     catReducer
 
- })
+//  })
 var initialState ={
     product: "" ,
     description:"",
@@ -130,6 +140,22 @@ var reducerAddItem =(state = initialState ,action) =>{
     }
 }
 
+var resducerProfile = (state =sellerProfile, action) => {
+    switch(action.type){
+        case 'fetch_seller':
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+        case 'delete_item':
+            // return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+            let newItems = [...state.sellerProfile.items]
+            newItems = newItems.filter(item=>item.id != action.id)
+            return newItems;
+    default :
+    return state
+    }
+}
+
+
+
 
 
 
@@ -138,7 +164,9 @@ var reducerAddItem =(state = initialState ,action) =>{
 const store = createStore(combineReducers({
     reducer :reducer,
     addItem: reducerAddItem,
-    reducerBuyer:reducerBuyer
+    reducerBuyer:reducerBuyer,
+    catReducer:  catReducer,
+    resducerProfile : resducerProfile
  ,
     ...createForms({
         user: initialState,

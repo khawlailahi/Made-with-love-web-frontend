@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import React from 'react';
+import {Link} from "react-router-dom";
 import { Control, Form, actions } from 'react-redux-form';
 
 class ItemForm extends React.Component {
@@ -39,10 +40,15 @@ render() {
      
       <label htmlFor="user.image">Add Picture:</label>
       <Control.text model="user.image" id="user.image" />
-
+     
       <button type="submit">
         Finish registration!
       </button>
+       <Link to='/seller/profile'>
+      <button>
+        Cancle
+      </button>
+      </Link>
     </Form>
   );
 }
