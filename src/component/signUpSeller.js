@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import $ from "jquery";
 import NavbarSeller from './layout/NavbarSeller'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 var mapStateToProps = (state) => {
+    console.log(state, 'staaaaat')
 return {
     email : state.reducer.email,
     password :state.reducer.password,
@@ -15,19 +17,24 @@ return {
     image :state.reducer.image
   }
 }
+
 var action = {type : 'INPUT_CANGE', text:'' }
+
 var mapDispatchToProps = (dispatch) =>{
     return {
+        
         inputChanged : (event) => {
              action = {type : 'INPUT_CANGE', text:event.target.value, name:event.target.name}
             dispatch(action);
+            
          }
-        //  imageChange : (event) =>{
-        //   action = {type : 'IMAGE_CHANGE', text: event.target.files[0]}
-        //  }
     }
 }
+
+
 function SignUpSeller(props){
+
+    
     var clickButton =() =>{
         // console.log( props.email)
       var obj = {};
@@ -39,23 +46,26 @@ function SignUpSeller(props){
       obj.description=props.description;
       obj.location=props.location;
       obj.deliveryOrder = props.deliveryOrder;
-      obj.image =props.image
+      obj.image = props.image;
       console.log(obj)
         $.ajax({
             url: "/seller/signup",
             method: "POST",
             data: JSON.stringify(obj),
             contentType: "application/json",
+
             success: function (data) {
                 //redirect to login page
               console.log("POST sent successfully!");
              // <Route  path ='/login' exact  component ={Login}></Route>
+              
             },
             error: function (err) {
               console.log(err);
             }
       });   
     }
+<<<<<<< HEAD
     // var handleUpload =()=>{
       //console.log(event.target.files[0])
       // var image = props.image
@@ -83,14 +93,18 @@ function SignUpSeller(props){
     return (
     <div>
        <NavbarSeller/>
+=======
+>>>>>>> 97272e94f2960b23ebc9d49db3d779a84684058e
     
+    return (
+      <div>
+        <NavbarSeller/>
 <div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>   
-
 <div className="card w-100">
   {/* <div className="card-body"> */}
     <div className = "container">
    
-  <Form action="/action_page.php" class="needs-validation" novalidate>
+  <Form className = "needs-validation"action ="">
   <Form.Group controlId="formGroupEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control placeholder="Enter email" name ="email"  id="email" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required />
@@ -137,9 +151,9 @@ function SignUpSeller(props){
    <Form.Label>Choose Category</Form.Label>
    <Form.Control as="select" custom name ="category" style ={{padding:"2px 2px 2px 2px"}} required>
    <option></option>
-      <option value ="Foods">Foods</option>
+      <option value ="Foods">Food</option>
       <option value ="clothes">clothes</option>
-      <option value ="Baby Show Product">Baby Shower Products</option>
+      <option value ="Baby Show Product">Baby Products</option>
       <option value ="Accessories">Accessories</option>
     </Form.Control>
     <div className = 'valid-feedback'></div>
@@ -148,33 +162,34 @@ function SignUpSeller(props){
     
   
   <Form.Group controlId="exampleForm.SelectDelivery"  name ="deliveryOrder" onChange = {props.inputChanged} required>
-    <Form.Label>Delivery Order WithIn</Form.Label>
+    <Form.Label>Deliver Order WithIn</Form.Label>
     <Form.Control as="select" custom name ="deliveryOrder" style ={{padding:"2px 2px 2px 2px"}} required>
         
     <option></option>
       <option value ="12 Hours">12 Hours</option>
       <option value ="24 Hours">24 Hours</option>
       <option value ="Day">Day</option>
+     
     </Form.Control>
     <div className = 'valid-feedback'></div>
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
   
-
   
-  <button type="submit" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
-
+  
+   <button type="submit" className="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
+   <br/><br/>  
+   <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link> 
 </Form>
 
   </div>
 
-  </div> 
 
+  </div>
 </div>
      </div>
     )
 }
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpSeller);
