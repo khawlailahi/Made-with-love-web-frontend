@@ -1,11 +1,8 @@
 
 import React, { useState ,useEffect} from "react";
 import ReactDOM from 'react-dom';   
-
 import $ from "jquery";
-import { Form,Button  } from 'react-bootstrap';
 
- 
 const useFetch = url => {
     const [data, setData] = useState('');  
     useEffect(async () => {

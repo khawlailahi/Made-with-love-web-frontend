@@ -3,15 +3,11 @@ import $ from 'jquery';
 import ItemList from "./itemList.js"
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import {useDispatch} from 'react-redux'
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux'
 import NavbarBuyer from "./layout/NavbarBuyer.js";
-// const dispatch = useDispatch()
 
 var mapStateToProps = (state) => {
-    console.log(state, 'staaaaat') 
-
-return {
+  return {
     gender:state.filterReducer.gender,
     size:state.filterReducer.size,
     food:state.filterReducer.food,
@@ -78,7 +74,6 @@ return {
              url:` http://127.0.0.1:8000/accounts/seller/signup`,
             // url:'https://jsonplaceholder.typicode.com/users/1/todos',
             // headers: {"Authorization": localStorage.getItem('token')},
-           
             // headers: { 'x-my-custom-header': 'some value' },
             success: function(data) {
              console.log("data fom get request",data);
@@ -93,9 +88,9 @@ return {
             error: function(err) {
               console.log('error:' ,err)
             }
-        })
-        // console.log("dataaaa",this.props.store.getState().categoryReducer.data)
+        })      
     }
+
     filter=()=>{
         var filter 
         var filteredData = []
@@ -139,13 +134,14 @@ return {
         
         //filter it depending on page and on filter 
         filter = 'delectus aut autem'
-for(var i = 0; i < data.length; i++){
-    if(data[i].title=== filter)
-    filteredData.push(data[i])
-}
-var action ={
-    type:'filtering',
-    text:filteredData
+        for(var i = 0; i < data.length; i++){
+          if(data[i].title=== filter)
+            filteredData.push(data[i])
+        }
+
+        var action ={
+        type:'filtering',
+       text:filteredData
 }
 this.setState({
     data:filteredData
@@ -155,16 +151,12 @@ console.log("filtereddataaa", this.props)
         // render it 
     }
 
-
-
-
     render() {
         console.log("prooops",this.props.cat)
 
         var content = null ; 
         var filter = null;
 
-        
         if (this.props.cat === 'clothes'){
             
             filter = <div style={{textAlign:"center"}} >
@@ -187,8 +179,7 @@ console.log("filtereddataaa", this.props)
               </div>}
 
 
-if (this.props.cat === 'food'){
-          
+if (this.props.cat === 'food'){ 
   filter = <div style={{textAlign:"center"}} >
           <label  style={{textAlign:"center"}}>Select a Category </label><br/>
             <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >
