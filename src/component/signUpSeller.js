@@ -4,6 +4,7 @@ import { Form,Button  } from 'react-bootstrap';
 import store from './Store';
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import NavbarSeller from './layout/NavbarSeller'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 var mapStateToProps = (state) => {
     console.log(state, 'staaaaat')
@@ -68,6 +69,8 @@ function SignUpSeller(props){
     }
     
     return (
+      <div>
+        <NavbarSeller/>
 <div style ={{maxWidth :"500px", margin:'auto', padding:'0px 10px 10px 10px'}}>   
 <div className="card w-100">
   {/* <div className="card-body"> */}
@@ -120,9 +123,9 @@ function SignUpSeller(props){
    <Form.Label>Choose Category</Form.Label>
    <Form.Control as="select" custom name ="category" style ={{padding:"2px 2px 2px 2px"}} required>
    <option></option>
-      <option value ="Foods">Foods</option>
+      <option value ="Foods">Food</option>
       <option value ="clothes">clothes</option>
-      <option value ="Baby Show Product">Baby Shower Products</option>
+      <option value ="Baby Show Product">Baby Products</option>
       <option value ="Accessories">Accessories</option>
     </Form.Control>
     <div className = 'valid-feedback'></div>
@@ -131,7 +134,7 @@ function SignUpSeller(props){
     
   
   <Form.Group controlId="exampleForm.SelectDelivery"  name ="deliveryOrder" onChange = {props.inputChanged} required>
-    <Form.Label>Delivery Order WithIn</Form.Label>
+    <Form.Label>Deliver Order WithIn</Form.Label>
     <Form.Control as="select" custom name ="deliveryOrder" style ={{padding:"2px 2px 2px 2px"}} required>
         
     <option></option>
@@ -144,16 +147,17 @@ function SignUpSeller(props){
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
   
-
+  
   
    <button type="submit" className="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
-
+   <br/><br/>  
+   <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link> 
 </Form>
 
   </div>
 
 
-
+  </div>
 </div>
      </div>
     )

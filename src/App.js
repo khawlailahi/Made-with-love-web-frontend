@@ -28,7 +28,7 @@ function App(props) {
   var url = `/buyer/${props.name}`
 
   return (
-    
+
    <div className="page-container">
      <div className="content-wrap">
     <Router>
@@ -40,7 +40,7 @@ function App(props) {
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/home' exact   component={home}></Route>
        <Route  path ='/seller/signup' exact   component={() => <SignUpSeller store={store} />}></Route>
-       <Route  path ='/' exact   component={View}></Route>
+       <Route  path ='/view' exact   component={View}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
        <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
        <Route  path ='/orderList' exact   component={listOfOrder}></Route>

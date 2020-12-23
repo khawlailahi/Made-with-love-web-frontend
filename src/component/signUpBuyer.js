@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form,Button  } from 'react-bootstrap';
@@ -7,9 +8,9 @@ import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { storage } from '../firebase/index';
 import NavbarBuyer from './layout/NavbarBuyer'
-
 //call the state I need from the store
 var mapStateToProps = (state) => {
+    console.log(state, 'staaaaat')
 return {
     email : state.reducerBuyer.email,
     password :state.reducerBuyer.password,
@@ -75,7 +76,7 @@ function SignUpBuyer (props){
         <div className="card w-100">
           <div className="card-body">
 
-          <Form action="/action_page.php" className="needs-validation" noValidate>
+          <Form action="/action_page.php" className="needs-Validation" novalidate>
         <Form.Group controlId="formGroupEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" name ="email" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required  />
@@ -111,14 +112,21 @@ function SignUpBuyer (props){
     <div className = 'valid-feedback'></div>
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>  
-  
-  <button type="submit" className="btn btn-danger"  onClick ={clickButton} style = {{margin:'0px 180px', width:"100px"}}>Sign Up</button>
-        </Form>  
+
+  <button type="submit" className="btn btn-danger"  onClick ={clickButton} style = {{margin:'0px 150px 0px 150px', width:"100px"}}>Sign Up</button>
+<br/><br/>
+  <div>
+  <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link> 
+  </div>
+        </Form> 
+      
         </div>
-</div>
+       
+     </div>
 
 
 </div>
+
      </div>
     )
 

@@ -7,8 +7,8 @@ import {Button  } from 'react-bootstrap';
      return (
          <div>
         <Navbar/> 
-           
-      <ReactPlayer url ="https://www.youtube.com/watch?v=JwVBbAXN0hg" width ="100%" height= "500px"/><br/>
+        
+     <ReactPlayer url ='https://www.youtube.com/watch?v=JwVBbAXN0hg'  width ="100%" height= "500px"/><br/>
       <Link to="/buyer/signup">
 
 
