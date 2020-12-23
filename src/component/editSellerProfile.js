@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import $ from 'jquery';
-
-import { Form, Button, FormGroup, FormControl, ControlLabel,Col } from "react-bootstrap";
+import { Form, Button, FormControl, ControlLabel,Col } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import { Control} from 'react-redux-form';
 
@@ -29,7 +28,7 @@ error: function(err){
   console.log('error:' ,err)
 }
 })
-// console.log(product)
+
 }
 
  console.log(props.location.info.title)

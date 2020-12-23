@@ -30,7 +30,7 @@ var NavbarBuyer = () =>{
      
     <ReactBootStrap.Nav className="ml-auto"> 
     
-    <ReactBootStrap.Navbar.Brand href="/signout"  class="glyphicon glyphicon-user" >SignOut</ReactBootStrap.Navbar.Brand>
+    <ReactBootStrap.Navbar.Brand href="/signout"  className="glyphicon glyphicon-user" >SignOut</ReactBootStrap.Navbar.Brand>
     
 
       

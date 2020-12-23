@@ -16,10 +16,10 @@ var NavbarSeller = () =>{
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
     <ReactBootStrap.Nav className="mr-auto"> 
     <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view" >HOME</ReactBootStrap.Navbar.Brand></Link>
-    <Link to="/profile"><ReactBootStrap.Navbar.Brand href="/signout"  class="glyphicon glyphicon-user" ><i style={{fontSize:"35px" , color:'white'}} className="fas fa-user-circle"></i></ReactBootStrap.Navbar.Brand></Link>
+    <Link to="/profile"><ReactBootStrap.Navbar.Brand href="/signout"  className="glyphicon glyphicon-user" ><i style={{fontSize:"35px" , color:'white'}} className="fas fa-user-circle"></i></ReactBootStrap.Navbar.Brand></Link>
     
    
-      <ReactBootStrap.NavDropdown  title=  {<i class="fas fa-bars"></i>} class="glyphicon glyphicon-log-in" style ={{}}>
+      <ReactBootStrap.NavDropdown  title=  {<i className="fas fa-bars"></i>} className="glyphicon glyphicon-log-in" style ={{}}>
         <ReactBootStrap.NavDropdown.Item href="/orders">Orders</ReactBootStrap.NavDropdown.Item>
         <ReactBootStrap.NavDropdown.Item href="/setting">Setting</ReactBootStrap.NavDropdown.Item>
         <ReactBootStrap.NavDropdown.Item href="/signOut">SignOut</ReactBootStrap.NavDropdown.Item>
