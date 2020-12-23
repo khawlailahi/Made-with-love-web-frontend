@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form,Button  } from 'react-bootstrap';
-import store from './Store';
-import ReactDOM from "react-dom";
+import { Form } from 'react-bootstrap';
+// import store from './Store';
+// import ReactDOM from "react-dom";
 import $ from "jquery";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { storage } from '../firebase/index';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { storage } from '../firebase/index';
 import NavbarBuyer from './layout/NavbarBuyer'
 //call the state I need from the store
 var mapStateToProps = (state) => {

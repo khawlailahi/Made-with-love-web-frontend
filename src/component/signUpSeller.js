@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form,Button  } from 'react-bootstrap';
-import store from './Store';
-import ReactDOM from "react-dom";
+import { Form } from 'react-bootstrap';
 import $ from "jquery";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { storage } from '../firebase/index';
 import NavbarSeller from './layout/NavbarSeller'
 var mapStateToProps = (state) => {
 return {
@@ -60,10 +56,10 @@ function SignUpSeller(props){
             }
       });   
     }
-    var handleUpload =()=>{
+    // var handleUpload =()=>{
       //console.log(event.target.files[0])
       // var image = props.image
-       console.log('image', props.image)
+      //  console.log('image', props.image)
       // // event.preventDefault();
       // var uploadTask = storage.ref(`images/${image.name}`).put(image);
       // console.log(image.name)
@@ -83,7 +79,7 @@ function SignUpSeller(props){
       //      })
       //    }
       // )
-    }
+    // }
     return (
     <div>
        <NavbarSeller/>
