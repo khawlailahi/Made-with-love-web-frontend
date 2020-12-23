@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import * as Icon from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-import ListItems from "./listItems";
+import VisitItems from "./VisitItems";
 
 const styles = {
   card: {
@@ -19,30 +15,9 @@ const styles = {
   }
 }
 
-const Items = (props) => (
-  <Card>
-  <td>{props.Item.product_Name}</td>
-  <td>{props.Item.price}</td>
-  <td>{props.Item.description}</td>
-   <td>
-   <Button variant="success" color="#ffffff"><Link to={"/seller/editProfile"+props.Item.item_id}>edit</Link></Button> 
-  </td>
-  <td>
-  <Button variant="danger" color="#ffffff"> <a href="#" onClick={() => { props.deleteItem(props.Item.item_id) }}>delete</a></Button>
-  </td>
-</Card>
-)
- class SellerProfile extends React.Component{
+ class VisitSeller extends React.Component{
  constructor(props){
    super(props)
-  //  this.state={
-  //    store_name: '',
-  //    image:'',
-  //    title:'',
-  //    location:'',
-  //    delivery_time:'',
-  //    items:[]
-  //  }
 this.state={data:[],
   items:[]}
  }
@@ -52,7 +27,7 @@ this.state={data:[],
   console.log(id)
   console.log(1111111111111111)
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/profile/1'),
+   url:('http://127.0.0.1:8000/seller/visit/1'),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -74,7 +49,7 @@ fetchItems =(id)=>{
   console.log(id)
   console.log(1111111111111111)
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/profile/items/1'),
+   url:('http://127.0.0.1:8000/seller/visit/items/1'),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -106,15 +81,7 @@ upState =(data)=>{
 
   })
 }
-
-// ItemList(){
-//   return this.state.items.map(item => {
-
-//     return 
-//     <Items item={item} deleteItem={this.deleteItem} key={item.item_id}/>;
-//   })
-// }    
-
+  
 render(){
 console.log(this.state,"staaaaaaaate")
 if(this.state.data[0])
@@ -143,7 +110,7 @@ var x =  <div> <Container fluid>
   </Card>
 </CardGroup>
 </Container>
-<ListItems items={this.state.items}/></div>
+<VisitItems items={this.state.items}/></div>
   return(
     <div>
       {x}
@@ -154,4 +121,4 @@ var x =  <div> <Container fluid>
 
 }
 
-export default SellerProfile; 
+export default VisitSeller; 
