@@ -11,25 +11,23 @@ var NavbarSeller = () =>{
 <div className="App">
 
    <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="danger" variant="dark" >
-    <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view" style ={{padding: '0px 20px 0px 0px'}}>Made With Love</ReactBootStrap.Navbar.Brand></Link>
+    <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view" >Made With Love</ReactBootStrap.Navbar.Brand></Link>
+     <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view"  style={{padding:'0px 1100px 0px 0px'}}>HOME</ReactBootStrap.Navbar.Brand></Link>
   <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
     <ReactBootStrap.Nav className="mr-auto"> 
-    <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view" style ={{padding: '0px 100px 0px 0px'}}>HOME</ReactBootStrap.Navbar.Brand></Link>
-   
-   
-   
-        <ReactBootStrap.NavDropdown title=  {<i class="fas fa-bars"></i>}  id="collasible-nav-dropdown" style ={{margin:'0px 0px 0px 800px', padding:"0px 30px 0px 0px"}}>
-        <ReactBootStrap.NavDropdown.Item href="/Orders">Orders</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/Setting">Setting</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/SignOut">SignOut</ReactBootStrap.NavDropdown.Item>
+    
+    <ReactBootStrap.NavDropdown  class="nav navbar-nav float-md-right"   >
+        <ReactBootStrap.NavDropdown.Item href="/orders"> Views Orders</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/setting">Setting</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="/signOut">Sign Out</ReactBootStrap.NavDropdown.Item>
       
 
         <ReactBootStrap.NavDropdown.Divider />
       </ReactBootStrap.NavDropdown>
-      <Link to="/profile"><i style={{fontSize:"35px" , color:'black'}} className="fas fa-user-circle"></i></Link>
-      
-    
+     
+      <Link to="/profile"><ReactBootStrap.Navbar.Brand href="/signout"  className="glyphicon glyphicon-user"  ><i style={{fontSize:"35px" , color:'white', padding:'0px 0px 0px 30px'}} className="fas fa-user-circle"></i></ReactBootStrap.Navbar.Brand></Link>
+     
     </ReactBootStrap.Nav>
   </ReactBootStrap.Navbar.Collapse>
 </ReactBootStrap.Navbar>
