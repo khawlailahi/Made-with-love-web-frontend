@@ -1,148 +1,150 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
-import { Form, Button, Card } from "react-bootstrap";
+import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-
-const useFetch = (url) => {
-  const [data, setData] = useState("");
-  useEffect(async () => {
-    const response = await fetch(url);
-    const responses = await response.json();
-    setData(responses);
-    //   console.log(responses,'fdfdfdesf')
-  }, []);
-  return { data };
-};
-
-const delete_item = "delete_item";
-
-function deleteItem(id) {
-  return {
-    type: delete_item,
-    id
+import ListItems from "./listItems";
+const styles = {
+  card: {
+    backgroundColor: '#B7E0F2',
+    borderRadius: 55,
+    padding: '3rem'
+  },
+  cardImage: {
+    objectFit: 'cover',
+    borderRadius: 55
   }
-  // $.ajax({
-  //   url: "/delete/item",
-  //   method: "Delete",
-
-  //   success: function (data) {
-  //       //redirect to login page
-  //     console.log("POST sent successfully!");
-
-  //   },
-  //   error: function (err) {
-  //     console.log(err);
-  //   }
-  // })
 }
-
-// function deleteTodoAPI (id) {
-//   return fetch(`delete/item/${id}`, {
-//     method: 'DELETE'
+const Items = (props) => (
+  <Card>
+  <td>{props.Item.product_Name}</td>
+  <td>{props.Item.price}</td>
+  <td>{props.Item.description}</td>
+   <td>
+   <Button variant="success" color="#ffffff"><Link to={"/seller/editProfile"+props.Item.item_id}>edit</Link></Button> 
+  </td>
+  <td>
+  <Button variant="danger" color="#ffffff"> <a href="#" onClick={() => { props.deleteItem(props.Item.item_id) }}>delete</a></Button>
+  </td>
+</Card>
+)
+ class SellerProfile extends React.Component{
+ constructor(props){
+   super(props)
+  //  this.state={
+  //    store_name: '',
+  //    image:'',
+  //    title:'',
+  //    location:'',
+  //    delivery_time:'',
+  //    items:[]
+  //  }
+this.state={data:[],
+  items:[]}
+ }
+ fetchData =(id)=>{
+  var that = this;
+  console.log(id)
+  console.log(1111111111111111)
+  // console.log(this.props.id,'iiiidddd')
+ $.ajax({
+   url:`http://127.0.0.1:8000/seller/profile/${this.props.match.params.id}`,
+   type:'GET',
+   success:function(data){
+     console.log(data, 'Fetch the data')
+     var data1 = JSON.parse(data)
+    // var data1 = data
+     that.setState({data:data1},()=>{console.log("22222222222222",that.state)})
+     // that.setState(data
+     // console.log(that.state,'staaate')
+   },
+   error : function(error){
+     console.log(error, 'error in fetch the data')
+   }
+ })
+ console.log("hhhhhhhhhhhh")
+}
+fetchItems =(id)=>{
+  var that = this;
+  console.log(id)
+  console.log(1111111111111111)
+ $.ajax({
+   url:('http://127.0.0.1:8000/seller/profile/items/1'),
+   type:'GET',
+   success:function(data){
+     console.log(data, 'Fetch the data')
+     var data1 = JSON.parse(data)
+    // var data1 = data
+     that.setState({ items:data1},()=>{console.log("itemsss",that.state)})
+     // that.setState(data
+     // console.log(that.state,'staaate')
+   },
+   error : function(error){
+     console.log(error, 'error in fetch the data')
+   }
+ })
+ console.log("hhhhhhhhhhhh")
+}
+ componentDidMount=()=>{
+  this.fetchData()
+  this.fetchItems()
+ }
+upState =(data)=>{
+  this.setState ({
+   store_name : data['fields']
+  })
+}
+// ItemList(){
+//   return this.state.items.map(item => {
+//     return 
+//     <Items item={item} deleteItem={this.deleteItem} key={item.item_id}/>;
 //   })
-//   .then(res => res.json())
-//   .catch(err => throw err);
-// }
-
-
-
-export default ({ item }) => {
-  let dispatch = useDispatch();
-  const { data } = useFetch(
-    "https://jsonplaceholder.typicode.com/users/1/todos"
-  );
-  console.log(Array.isArray(data), "typedata");
-  console.log(data, "iteeeeeem");
-
-  if (data)
-    var c = data.map((item, i) => (
-      // <h1>{tr1.title}</h1>
-      <Card style={{ width: "300px", marginTop: "50px" }}>
-        <Card.Img
-          variant="top"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDKmrZJ_8n79cqNTWRLZah6XxPJCzEEwx8Xw&usqp=CAU"
-        />
+// }    
+render(){
+console.log(this.state,"staaaaaaaate")
+if(this.state.data[0])
+var x =  <div> <Container fluid>
+<CardGroup className="m-5 d-block">
+  <Card className="m-5 border-0 shadow" style={styles.card}>
+    <Row>
+      <Col>
+        <Card.Img src={this.state.data[0]['fields'].image} style={styles.cardImage} />
+      </Col>
+      <Col>
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
-          <Card.Text>{item.description}</Card.Text>
-          <Card.Text>{item.price}</Card.Text>
-          <Button
-            variant="primary"
-            style={{ backgroundColor: "red" }}
-            onClick={() => dispatch(deleteItem(item.id))}
-          >
-            Delete
-          </Button>
-          <Link
-            to={{
-              pathname: "/seller/editProfile",
-              info: { title: item.title },
-            }}
-          >
-            <Button
-              variant="primary"
-              style={{ backgroundColor: "green", marginLeft: "100px" }}
-            >
-              Edite
-            </Button>
-          </Link>
+        <Card.Title as="h1">Store Name :{this.state.data[0]['fields'].store_name}</Card.Title>
+        <Card.Text as="h4" style={styles.cardText}>Description :
+        {this.state.data[0]['fields'].description}
+        </Card.Text>
+        <Card.Text as="h4" style={styles.cardText}>Location :
+          {this.state.data[0]['fields'].location}
+        </Card.Text>
+        <Card.Text as="h4" style={styles.cardText}>Delievery Time :
+          {this.state.data[0]['fields'].delivery_time}
+        </Card.Text>
         </Card.Body>
-      </Card>
-    ));
-  return (
+      </Col>
+    </Row>
+  </Card>
+</CardGroup>
+</Container>
+<ListItems items={this.state.items}/></div>
+ if(this.state.data[0])
+ var a = <Link to={{
+  pathname: "/seller/addItem",
+  info: { id :"accessories"},
+  //  info: { id :this.state.data[0]['fields']['category']},
+  }}>
+<Button>Add Item</Button>
+</Link>
+  return(
     <div>
-      <h1 style={{ textAlign: "center" }}>Welcome to </h1>
-      <img
-        src="https://thearchitecturedesigns.com/wp-content/uploads/2019/05/23-small-shop-design-ideas-1024x648.jpeg"
-        width="100%"
-      />
-      {c}
-      {/* {data.map(tr1=>
- <h1>{tr1.title}</h1>
- )} */}
-      {/* <h1>{data[0].title}</h1> */}
-      <Link to="/seller/addItem">
-        <i className="bi bi-plus-square"></i>
-      </Link>
-    </div>
-  );
-};
-
-// import React from 'react';
-// import {Card, Button} from 'react-bootstrap'
-
-// var action = {type : 'fetch_seller'}
-// const getSellerProfile = () => {
-
-//     return action;
-//     }
-
-// export default function SellerProfile() {
-//     return (
-
-//         <div>
-//          <h1 style={{textAlign:'center'}}>Welcome to </h1>
-//          <img src="https://thearchitecturedesigns.com/wp-content/uploads/2019/05/23-small-shop-design-ideas-1024x648.jpeg" width='100%'/>
-
-//          <div>
-//          <Card style={{ width: '18rem', marginTop:'50px' }}>
-//   <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDKmrZJ_8n79cqNTWRLZah6XxPJCzEEwx8Xw&usqp=CAU" />
-//   <Card.Body>
-//     <Card.Title>Card Title</Card.Title>
-//     <Card.Text>
-//       Some quick example text to build on the card title and make up the bulk of
-//       the card's content.
-//     </Card.Text>
-//     <Button variant="primary" style={{backgroundColor:'red'}}>Delete</Button>
-//   </Card.Body>
-// </Card>
-
-//          </div>
-
-//         </div>
-
-//     )
-// }
+      {x}
+      {a}
+    </div> 
+  )
+}
+}
+export default SellerProfile; 

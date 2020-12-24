@@ -72,11 +72,12 @@ return {
     componentDidMount(){
         var cat = this.props.cat
         var that = this;
+        console.log("ajax", cat)
         $.ajax({
             type: 'GET',
-            // url:`http://localhost:8000/buyer/${cat}`,
-             url:` http://127.0.0.1:8000/accounts/seller/signup`,
-            // url:'https://jsonplaceholder.typicode.com/users/1/todos',
+             url:`http://127.0.0.1:8000/buyer/${cat}`,
+            //  url:` http://127.0.0.1:8000/buyer/food`,
+            
             // headers: {"Authorization": localStorage.getItem('token')},
            
             // headers: { 'x-my-custom-header': 'some value' },
@@ -84,11 +85,11 @@ return {
              console.log("data fom get request",data);
              var action ={type:'getdata', text:data}
              that.props.store.dispatch(that.disp(action))
-             console.log("dataaaa",that.props.store.getState().categoryReducer.data)
+            //  console.log("dataaaa",that.props.store.getState().categoryReducer.data)
              that.setState({
                  data:data
-             })
-             console.log(that.state.data,"statee")
+             },()=>{console.log(that.state.data,"staaaaaaaaaaate")})
+             
             },
             error: function(err) {
               console.log('error:' ,err)
@@ -102,56 +103,77 @@ return {
         var data = this.props.store.getState().categoryReducer.data
         console.log(this.props.cat)
         console.log(this.props)
-        if(this.props.cat === 'food')
+        if(this.props.cat === 'food'){
             filter = this.props.food
-        // if(this.props.cat === 'clothes'){
-        //     if(this.props.size && this.props.gender ){
-        //     filter = this.props.size
-        //     var filter2 = this.props.gender 
-        // for(var i = 0; i < data.length; i++){
-        //     if(data[i].size=== filter && data[i].gender=== filter2)
-        //     filteredData.push(data[i])
-        // }
-            //}
-        //     if(this.props.size){
-        //         filter = this.props.size;
-         // for(var i = 0; i < data.length; i++){
-        //     if(data[i].size=== filter )
-        //     filteredData.push(data[i])
-        // }
-        //     }
-        //     if(this.props.gender){
-        //         filter = this.props.gender;
-         // for(var i = 0; i < data.length; i++){
-        //     if( data[i].gender=== filter)
-        //     filteredData.push(data[i])
-        // }
-        //     }
-        // }
+            for(var i = 0; i < data.length; i++){
+                console.log(data[i]['fields'].types )
             
-        if(this.props.cat === 'babyproducts')
+                if(data[i]['fields'].types === filter)
+                filteredData.push(data[i])
+            }
+        }
+        if(this.props.cat === 'clothes'){
+           
+            if(this.props.size && this.props.gender ){
+            filter = this.props.size
+            var filter2 = this.props.gender 
+        for(var i = 0; i < data.length; i++){
+            if(data[i]['fields'].size=== filter && data[i]['fields'].gender=== filter2)
+            
+            filteredData.push(data[i])
+        }
+            }
+           else if(this.props.size){
+                filter = this.props.size;
+         for(var i = 0; i < data.length; i++){
+            if(data[i]['fields'].size=== filter )
+            filteredData.push(data[i])
+        }
+            }
+           else if(this.props.gender){
+                filter = this.props.gender;
+         for(var i = 0; i < data.length; i++){
+            if( data[i]['fields'].gender=== filter)
+            filteredData.push(data[i])
+        }
+            }
+        }
+            
+        if(this.props.cat === 'babyproducts'){ 
             filter = this.props.babyGender
-        if(this.props.cat === 'accessories')
+            for(var i = 0; i < data.length; i++){
+                console.log(data[i]['fields'].gender )
+            
+                if(data[i]['fields'].gender === filter)
+                filteredData.push(data[i])
+            }
+        }
+        if(this.props.cat === 'accessories'){ 
+            console.log("dataaaafilteeer", data)
             filter = this.props.acc
-
+            for(var i = 0; i < data.length; i++){
+                console.log(data[i]['fields'].material )
+            
+                if(data[i]['fields'].material === filter)
+                filteredData.push(data[i])
+            }
+ }
         //get data from store 
         
         
         //filter it depending on page and on filter 
-        filter = 'delectus aut autem'
-for(var i = 0; i < data.length; i++){
-    if(data[i].title=== filter)
-    filteredData.push(data[i])
-}
+
+        console.log("fixing", filter, filter2, filteredData)
+
 var action ={
     type:'filtering',
     text:filteredData
 }
 this.setState({
     data:filteredData
-})
+},()=>{console.log(this.state.data)})
 // this.props.store.dispatch(this.disp(action))
-console.log("filtereddataaa", this.props)
+// console.log("filtereddataaa", this.props)
         // render it 
     }
 
@@ -171,9 +193,9 @@ console.log("filtereddataaa", this.props)
             <label style={{textAlign:"center"}}>Select a gender </label><br/>
 
             <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >
-                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='women' onChange={this.handleClothesGender}>Women</ToggleButton ><br/>
-                <ToggleButton className= 'btn-dark' value='men' onChange={this.handleClothesGender}>Men</ToggleButton><br/>
-                <ToggleButton className= 'btn-dark' value='children' onChange={this.handleClothesGender}>Children</ToggleButton>
+                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='Female' onChange={this.handleClothesGender}>Women</ToggleButton ><br/>
+                <ToggleButton className= 'btn-dark' value='Male' onChange={this.handleClothesGender}>Men</ToggleButton><br/>
+                {/* <ToggleButton className= 'btn-dark' value='children' onChange={this.handleClothesGender}>Children</ToggleButton> */}
             </ToggleButtonGroup>
             <br /><br/>
             <label  style={{textAlign:"center"}}>Select a Size </label><br/>
@@ -181,7 +203,7 @@ console.log("filtereddataaa", this.props)
                 <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='S' onChange={this.handleClothesSize}>S</ToggleButton><br/>
                 <ToggleButton  className= 'btn-dark' value='M' onChange={this.handleClothesSize} >M</ToggleButton><br/>
                 <ToggleButton  className= 'btn-dark' value='L' onChange={this.handleClothesSize}>L</ToggleButton><br/>
-                <ToggleButton  className= 'btn-dark' value='xL' onChange={this.handleClothesSize}>xL</ToggleButton>
+                {/* <ToggleButton  className= 'btn-dark' value='xL' onChange={this.handleClothesSize}>xL</ToggleButton> */}
             </ToggleButtonGroup>
 
               </div>}
@@ -192,8 +214,8 @@ if (this.props.cat === 'food'){
   filter = <div style={{textAlign:"center"}} >
           <label  style={{textAlign:"center"}}>Select a Category </label><br/>
             <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >
-                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='salty' onChange={this.handlefood}>Salty</ToggleButton><br/>
-                <ToggleButton  className= 'btn-dark' value='sweet' onChange={this.handlefood} >Sweet</ToggleButton><br/>
+                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='Salty' onChange={this.handlefood}>Salty</ToggleButton><br/>
+                <ToggleButton  className= 'btn-dark' value='Sweet' onChange={this.handlefood} >Sweet</ToggleButton><br/>
             </ToggleButtonGroup>
               </div>}
 
@@ -202,8 +224,8 @@ if (this.props.cat === 'accessories'){
   filter = <div style={{textAlign:"center"}} >
       <label  style={{textAlign:"center"}}>Select the Material</label><br/>
             <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >
-                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='gold' onChange={this.handleacc}>Gold</ToggleButton><br/>
-                <ToggleButton  className= 'btn-dark' value='silver' onChange={this.handleacc} >Silver</ToggleButton><br/>
+                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='Gold' onChange={this.handleacc}>Gold</ToggleButton><br/>
+                <ToggleButton  className= 'btn-dark' value='Silver' onChange={this.handleacc} >Silver</ToggleButton><br/>
             </ToggleButtonGroup>
               </div>}
 
@@ -213,8 +235,8 @@ if (this.props.cat === 'babyproducts'){
   filter = <div style={{textAlign:"center"}} >
          <label  style={{textAlign:"center",fontWeight:'bold', size:"600px"}}>Select a gender </label> 
           <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >
-                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='girl' onChange={this.handlebaby}>Girl</ToggleButton><br/>
-                <ToggleButton  className= 'btn-dark' value='boy' onChange={this.handlebaby} >Boy</ToggleButton><br/>
+                <ToggleButton className= 'btn-dark' style={{width: "200px"}} value='Female' onChange={this.handlebaby}>Girl</ToggleButton><br/>
+                <ToggleButton  className= 'btn-dark' value='Male' onChange={this.handlebaby} >Boy</ToggleButton><br/>
             </ToggleButtonGroup>
 
               </div>
@@ -229,7 +251,11 @@ if (this.props.cat === 'babyproducts'){
             </div>
           </div> }
 
-        
+console.log(this.state)
+        if(this.state.data.length >0){
+            console.log ('i got dataa')
+            var z= <ItemList items ={ this.state.data} /> 
+        }
         return (
             <div>
                 <NavbarBuyer/>
@@ -241,9 +267,9 @@ if (this.props.cat === 'babyproducts'){
 
 <br/><br/>
 <div className="row"  style={{margin:"0 auto"}}>
-    
+    {z}
  {/* <ItemList items ={ this.state.data} />  */}
- <ItemList items ={[{title:"kjbdljb", _id:2}]} /> 
+ {/* <ItemList items ={[{title:"kjbdljb", _id:2}]} />  */}
 </div></div>
 <div className="d-flex toggled" id="wrapper" >
     <div className="p-2">

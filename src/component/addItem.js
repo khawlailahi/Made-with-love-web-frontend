@@ -1,36 +1,36 @@
-import { connect } from 'react-redux';
+
 import $ from 'jquery';
 
 import React, { useState ,useEffect} from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
 function ItemForm (props)  {
-
+  console.log("caaaat",props.location.info)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
-    var obj1={category:'food', url:"" ,user:{}}  
+    var obj1={category:props.location.info.id, url:"" ,user:{}}  
 
  
 
-const ajax=(user)=>{
-  
-   obj1.user= {user}
-   console.log(obj1.url)
- obj1.url=url
- console.log(url)
-  $.ajax({
-    method: 'POST',
-    url:'http://localhost:3000/addItem',//fix it later
-    data : JSON.stringify(obj1),
-    contentType: "application/json",
-    success:function(){
-      console.log('success')
-    },
-    error: function(err){
-      console.log(obj1)
-    }
-  })
-}
+    const ajax=(user)=>{
+      obj1= Object.assign({} ,user)
+    console.log(url)
+    obj1['url'] = url
+    obj1.category=props.location.info.id
+    console.log(obj1)
+     $.ajax({
+       method: 'POST',
+       url:'http://127.0.0.1:8000/seller/addItem',//fix it later
+       data : JSON.stringify(obj1),
+       contentType: "application/json",
+       success:function(){
+         console.log(obj1)
+       },
+       error: function(err){
+         console.log(obj1)
+       }
+     })
+   }
 const handleUpload=(e)=>{ 
   console.log(this)  
     const uploadTask = storage.ref(`imagee/${image.name}`).put(image);
@@ -81,7 +81,7 @@ const food=() => {
     <div class="col-md-3">
     <label  className="form-label">Category:</label><br></br>
     <Control.select model="user.type" className="form-select"  required>
-      <option selected disabled value="" >Choose the type</option>
+      <option selected disabled value="" >Choose The Type</option>
       <option  value ="Salty">Salty</option>
       <option  value ="Sweet">Sweet</option>     
        </Control.select>
@@ -89,7 +89,7 @@ const food=() => {
   </div><br></br>
 
     <div className="col-md-4">
-      <label htmlFor="user.product"  className="form-label" >Name Of Product:</label>
+      <label htmlFor="user.product"  className="form-label" >Name Of The Product:</label>
       <Control.text model="user.product" id="user.product" className="form-control" required/>
       </div>
 
@@ -178,8 +178,8 @@ const clothes=()=>{
           <label  className="form-label">Gender:</label><br></br>
           <Control.select model="user.gender" className="form-select"  required>
             <option selected disabled value="" >Choose the gender</option>
-            <option  value ="Male">Male</option>
-            <option  value ="Female">Female</option>
+            <option  value ="Male">Boy</option>
+            <option  value ="Female">Girl</option>
              </Control.select>
         </div><br></br>
         <div className="col-md-4">
@@ -216,7 +216,7 @@ const clothes=()=>{
              >
           <div class="col-md-3">
          <label  className="form-label">Material:</label><br></br>
-         <Control.select model="user.gender" className="form-select"  required>
+         <Control.select model="user.material" className="form-select"  required>
            <option selected disabled value="" >Choose the material</option>
            <option  value ="Silver">Silver</option>
            <option  value ="Gold">Gold</option>

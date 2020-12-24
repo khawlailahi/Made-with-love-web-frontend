@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from "react"
+import { Link } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
 export default function ItemList(props) {
     
     function clicked(id){
@@ -11,23 +12,21 @@ export default function ItemList(props) {
           {props.items.map((item,i) =>{
          return  (
       
-          <div className="col-sm-6" key= {item._id} >
+          <div className="col-sm-6" key= {item['pk']} >
       
-        <div className="card"  style={{border: "solid  black 2px",width:'800px',cursor: 'pointer',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
-        <img src ={item.url} alt="car" style={{width:'100%', height:"500px", margin:" 0 auto"}}/>
+        <div className="card"  style={{border: "solid  black 2px",width:'600px',cursor: 'pointer',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
+        <img src ={item['fields'].image} alt="car" style={{width:'100%', height:"500px", margin:" 0 auto"}}/>
           <div className="card-body">
-          <h6  className="card-title">product: {item.userId}</h6>
-            <h6 className="card-text">Description: {item.title} $</h6>
-            <p className="card-text">Store: {item.completed}</p>
-            
-            {/* <h6  className="card-title">product: {item.brand}</h6>
-            <h6 className="card-text">Description: {item.price} $</h6>
-            <p className="card-text">Store: {item.description}</p>
-            <p className="card-text">Price: {item.description}</p>
-            <p className="card-text">Delievering within: {item.description}</p> */}
-            {/* <Link to={{pathname: '/order', info: {id:item._id, name:item.name, url:item.url }}> */}
-                <button onClick={()=>{clicked(item._id,item.name ,item.url)}}>Order</button>
-                {/* </Link> */}
+          <h2  className="card-title">product: {item['fields'].productname}</h2>
+          <h3 className="card-text">Price: {item['fields'].price} $</h3>
+            <h5 className="card-text">Description: {item['fields'].description} </h5>
+
+            <p className="card-text">Store: {item['fields'].store}</p>
+            {/* <button onClick={()=>{clicked(item['pk'])}}> <Link to={{pathname: "/order", info: item.pk}}>
+                Order
+                </Link></button> */}
+                <button><Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>Order</Link></button>
+                {/* <Link to={{pathname: '/order', info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}></Link> */}
         </div>
         </div><br/><br/>
         </div> )

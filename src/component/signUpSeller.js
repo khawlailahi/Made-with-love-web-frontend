@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form,Button  } from 'react-bootstrap';
-import store from './Store';
-import ReactDOM from "react-dom";
+import { Link} from 'react-router-dom';
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { storage } from '../firebase/index';
@@ -36,17 +35,17 @@ function SignUpSeller(props){
         // console.log( props.email)
       var obj = {};
       obj.email = props.email;
-      obj.email = props.email;
+      // obj.email = props.email;
       obj.password =props.password;
       obj.storeName=props.storeName;
       obj.category=props.category;
       obj.description=props.description;
       obj.location=props.location;
-      obj.deliveryOrder = props.deliveryOrder;
-      obj.image =props.image
+      obj.delieveryTime = props.deliveryOrder;
+      obj.url ="alallalaalla"
       console.log(obj)
         $.ajax({
-            url: "/seller/signup",
+            url: "http://127.0.0.1:8000/seller/signup",
             method: "POST",
             data: JSON.stringify(obj),
             contentType: "application/json",
@@ -167,7 +166,7 @@ function SignUpSeller(props){
 
   
   <button type="submit" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
-
+  <Link to='/login'><p style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Sign In</p></Link>
 </Form>
 
   </div>
