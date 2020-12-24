@@ -90,13 +90,14 @@ function App(props) {
             ></Route>
             <Route
               path="/buyer/accessories"
-              exact
+              exactf
               component={() => <CatBuyer store={store} cat="accessories" />}
             ></Route>
             <Route path="/order" exact component={() => <Order />}></Route>
+          
           </Switch>
-          <Footer />
-        </Router>
+        </Router> 
+         <Footer />
       </div>
     </div>
   );

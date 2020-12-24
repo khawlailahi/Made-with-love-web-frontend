@@ -18,6 +18,7 @@ const ListItems = (props) => {
         //   items: props.items.filter(item => item.pk !== pk)
         // })
         console.log(pk)
+        window.location = 'http://127.0.0.1:8000/seller/profile/'+props.id
 
       };
 
@@ -36,7 +37,8 @@ const ListItems = (props) => {
            <Card style={{ width: "400px", marginTop: "50px", marginLeft:'50px' }}>
                    <Card.Img
                      variant="top"
-                     src={item['fields']['image']}
+                     src={item['fields']['image'] }
+                     width = '200px' height = '200px'
                    />
                    <Card.Body>
                      <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>

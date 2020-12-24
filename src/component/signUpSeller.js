@@ -4,6 +4,14 @@ import { Form } from 'react-bootstrap';
 import $ from "jquery";
 import NavbarSeller from './layout/NavbarSeller'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { storage } from '../firebase';
+import { useState ,useEffect} from "react";
+
+
+
+
+
+ 
 var mapStateToProps = (state) => {
     console.log(state, 'staaaaat')
 return {
@@ -14,7 +22,6 @@ return {
     description:state.reducer.description,
     location:state.reducer.location,
     deliveryOrder : state.reducer.deliveryOrder,
-    image :state.reducer.image
   }
 }
 
@@ -33,10 +40,28 @@ var mapDispatchToProps = (dispatch) =>{
 
 
 function SignUpSeller(props){
+ const [url, setUrl] = useState("");
+ const [image, setImage] = useState("");
 
+
+
+      var onChangeimage=(e)=>{
+        if (e.target.files[0]) {
+       setImage(e.target.files[0])
+        }
+      }
     
     var clickButton =() =>{
         // console.log( props.email)
+        
+
+
+        console.log(image)
+
+
+
+
+
       var obj = {};
       obj.email = props.email;
       obj.email = props.email;
@@ -130,6 +155,7 @@ function SignUpSeller(props){
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
     
+
   
   <Form.Group controlId="exampleForm.SelectDelivery"  name ="deliveryOrder" onChange = {props.inputChanged} required>
     <Form.Label>Deliver Order WithIn</Form.Label>
@@ -144,12 +170,16 @@ function SignUpSeller(props){
     <div className = 'valid-feedback'></div>
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>
+    <div className="mb-3">   
+     <label htmlFor="user.image" className="form-label">Add Picture:</label>
+    <input type='file' className="form-control" aria-label="file example" onChange={onChangeimage} required/>
+ 
+ </div>
+  <button onClick ={clickButton}>signup</button>
   
-  
-  
-   <button type="submit" className="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
+   {/* <button type="submit" className="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button> */}
    <br/><br/>  
-   <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link> 
+   {/* <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link>  */}
 </Form>
 
   </div>
@@ -158,6 +188,7 @@ function SignUpSeller(props){
   </div>
 </div>
      </div>
+
     )
 }
 

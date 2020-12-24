@@ -1,7 +1,7 @@
 import { createStore ,applyMiddleware} from 'redux'; 
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
-// import {combineForms, createForms} from 'react-redux-form';
+import {combineForms, createForms} from 'react-redux-form';
 
 
   
@@ -262,12 +262,12 @@ const store = createStore(combineReducers({
     filterReducer:filterReducer,
     filteringReducer:filteringReducer
  ,
-    // ...createForms({
-    //     user: initialState,
-    //     login:loginState,
-    //     order:orderForm
+    ...createForms({
+        user: initialState,
+        login:loginState,
+        order:orderForm
 
-    //  } )
+     } )
     } )
 
 

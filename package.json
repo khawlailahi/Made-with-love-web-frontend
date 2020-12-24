@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-pay/button-element": "^2.1.5",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
@@ -21,7 +24,6 @@
     "react-redux-axios": "^1.1.0",
     "react-redux-form": "^1.16.14",
     "react-router-dom": "^5.2.0",
-    "react-redux-form": "^1.16.14",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
