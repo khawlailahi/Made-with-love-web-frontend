@@ -3,15 +3,11 @@ import $ from 'jquery';
 import ItemList from "./itemList.js"
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import {useDispatch} from 'react-redux'
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux'
 import NavbarBuyer from "./layout/NavbarBuyer.js";
-// const dispatch = useDispatch()
 
 var mapStateToProps = (state) => {
-    console.log(state, 'staaaaat') 
-
-return {
+  return {
     gender:state.filterReducer.gender,
     size:state.filterReducer.size,
     food:state.filterReducer.food,
@@ -79,7 +75,6 @@ return {
             //  url:` http://127.0.0.1:8000/buyer/food`,
             
             // headers: {"Authorization": localStorage.getItem('token')},
-           
             // headers: { 'x-my-custom-header': 'some value' },
             success: function(data) {
              console.log("data fom get request",data);
@@ -94,9 +89,9 @@ return {
             error: function(err) {
               console.log('error:' ,err)
             }
-        })
-        // console.log("dataaaa",this.props.store.getState().categoryReducer.data)
+        })      
     }
+
     filter=()=>{
         var filter 
         var filteredData = []
@@ -177,16 +172,12 @@ this.setState({
         // render it 
     }
 
-
-
-
     render() {
         console.log("prooops",this.props.cat)
 
         var content = null ; 
         var filter = null;
 
-        
         if (this.props.cat === 'clothes'){
             
             filter = <div style={{textAlign:"center"}} >
@@ -209,8 +200,7 @@ this.setState({
               </div>}
 
 
-if (this.props.cat === 'food'){
-          
+if (this.props.cat === 'food'){ 
   filter = <div style={{textAlign:"center"}} >
           <label  style={{textAlign:"center"}}>Select a Category </label><br/>
             <ToggleButtonGroup type="radio" name="options"  className='btn-group-vertical'  >

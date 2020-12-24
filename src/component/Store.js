@@ -1,9 +1,9 @@
 import { createStore } from 'redux'; 
 import { combineReducers } from 'redux';
-
+import thunk from "redux-thunk";
 import {combineForms, createForms} from 'react-redux-form';
 
-// import {combineForms, createForms} from 'react-redux-form';
+
   
 var signUpSeller = {
     email :"",

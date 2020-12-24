@@ -7,6 +7,7 @@ var action = { type: "food_category" };
 var actionclothes = { type: "clothes_category" };
 var actionbaby = { type: "babyshower_category" };
 var actionacc = { type: "accesories_category" };
+
 const getcategoryfood = () => {
   return action;
 };

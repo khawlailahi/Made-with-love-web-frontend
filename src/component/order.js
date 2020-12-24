@@ -4,6 +4,8 @@ import React from 'react';
 import { Control, Form, actions } from 'react-redux-form';
 
    var  time =new Date().toDateString() 
+
+   
 class Order extends React.Component {
   constructor(props) {
     super(props)
@@ -22,7 +24,6 @@ console.log(obj)
       url:'http://127.0.0.1:8000/buyer/order',
         method:'POST',
         
-        data : JSON.stringify(obj),
         contentType: "application/json",
         success:function(){
           console.log('success')

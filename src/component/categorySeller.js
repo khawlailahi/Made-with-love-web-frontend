@@ -5,6 +5,7 @@ import $ from 'jquery';
 // import ToggleButton from 'react-bootstrap/ToggleButton'
 // import {useDispatch} from 'react-redux'
 // import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import NavbarSeller from "./layout/NavbarSeller.js";
 export default class CategorySeller extends Component {
         constructor(){
@@ -60,10 +61,10 @@ export default class CategorySeller extends Component {
 
             <h5 className="card-text">Location : {item['fields'].location}</h5>
             
-            
-            {/* <Link to={{pathname: '/order', info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image }}> */}
-                <button onClick={()=>{this.clicked(item['pk'],item.name ,item.url)}}>Visit</button>
-                {/* </Link> */}
+                 <button onClick={()=>{this.clicked(item['pk'],item.name ,item.url)}}>
+            <Link to={{pathname: `/seller/visit/${item['pk']}`, id: item['pk']}}>
+           Visit
+                </Link></button>
         </div>
         </div><br/><br/>
         </div> )

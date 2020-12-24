@@ -1,35 +1,27 @@
 import React from 'react';
-import * as ReactBootStrap from "react-bootstrap";
-
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import '../../Style/navbar.css'
 var NavbarBuyer = () =>{
   return (
 <div className="App">
-
-    <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="danger" variant="dark">
-    <Link to="/view"><ReactBootStrap.Navbar.Brand href="/view">Made With Love</ReactBootStrap.Navbar.Brand></Link>
-  <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
-    <ReactBootStrap.Nav className="mr-auto"> 
-    <ReactBootStrap.Navbar.Brand href="/view">SignOut</ReactBootStrap.Navbar.Brand>
-
-    <ReactBootStrap.NavDropdown title="Categories" id="collasible-nav-dropdown">
-        <ReactBootStrap.NavDropdown.Item href="/item/food">Food</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/item/clothes">Clothes</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/item/accessories">Accessories</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="/item/babyaccessories">Baby Shower Accessories</ReactBootStrap.NavDropdown.Item>
-
-        <ReactBootStrap.NavDropdown.Divider />
-      </ReactBootStrap.NavDropdown>
-    </ReactBootStrap.Nav>
-  </ReactBootStrap.Navbar.Collapse>
-</ReactBootStrap.Navbar>
-
-
+<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar.Brand href="/view" >Made With Love</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="mr-auto">
+      <NavDropdown title="category" id="collasible-nav-dropdown">
+        <NavDropdown.Item href="/buyer/food">Food</NavDropdown.Item>
+        <NavDropdown.Item href="/buyer/clothes">Clothes</NavDropdown.Item>
+        <NavDropdown.Item href="/buyer/accessories">Accessories</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="/buyer/babyproducts">Baby  Accessories</NavDropdown.Item>
+      </NavDropdown>
+    </Nav>
+    <Nav>
+      <Nav.Link href="/view"onClick ={()=>{console.log('Sign Out')}}>Sign Out</Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
         </div>
         )
 }
