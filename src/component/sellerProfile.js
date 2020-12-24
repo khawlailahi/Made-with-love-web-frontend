@@ -32,6 +32,7 @@ const Items = (props) => (
   </td>
 </Card>
 )
+
  class SellerProfile extends React.Component{
  constructor(props){
    super(props)
@@ -51,8 +52,9 @@ this.state={data:[],
   var that = this;
   console.log(id)
   console.log(1111111111111111)
+  // console.log(this.props.id,'iiiidddd')
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/profile/1'),
+   url:`http://127.0.0.1:8000/seller/profile/${this.props.match.params.id}`,
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -144,10 +146,19 @@ var x =  <div> <Container fluid>
 </CardGroup>
 </Container>
 <ListItems items={this.state.items}/></div>
+ if(this.state.data[0])
+ var a = <Link to={{
+  pathname: "/seller/addItem",
+   info: { id :this.state.data[0]['fields']['category']},
+  }}>
+<Button>Add Item</Button>
+</Link>
+
   return(
     <div>
       {x}
-      
+      {a}
+     
     </div> 
   )
 }
