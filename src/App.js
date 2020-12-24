@@ -58,13 +58,13 @@ function App(props) {
             ></Route>
             <Route path="/orderList" exact component={listOfOrder}></Route>
             <Route
-              path="/seller/profile/1"
+              path='/seller/profile/:id'
               exact
               component={sellerProfile}
             ></Route>
             <Route path="/seller/visit/1" exact component={VisitSeller}></Route>
             <Route
-              path="/seller/editProfile"
+              path="/seller/editProfile/:id"
               exact
               component={editSellerProfile}
             ></Route>

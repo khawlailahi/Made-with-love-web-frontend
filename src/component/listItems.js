@@ -10,14 +10,16 @@ import axios from 'axios';
 
 const ListItems = (props) => {
 
-    // deleteItems=(pk) =>{
-    //     axios.delete('http://127.0.0.1:8000/seller/profile/items/'+pk)
-    //       .then(response => { console.log(response.data)});
+    var deleteItems=(pk) =>{
+        axios.delete('http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
+          .then(response => { console.log(response.data)});
     
-    //     this.setState({
+        // this.setState({
         //   items: props.items.filter(item => item.pk !== pk)
-    //     })
-    //   };
+        // })
+        console.log(pk)
+
+      };
 
   console.log((props))
   return(
@@ -49,15 +51,15 @@ const ListItems = (props) => {
                      <Button
                        variant="primary"
                        style={{ backgroundColor: "red" }}
-                     onClick={() => { props.deleteItems(props.item['pk'] )}}
+                     onClick={() => {deleteItems(item['pk'] )}}
                      >
                        Delete
                      </Button>
                      </Link>
                      <Link
                        to={{
-                         pathname: "/seller/editProfile",
-                         info: { id: item['pk'] },
+                         pathname: "/seller/editProfile/"+item['pk'] ,
+                        //  info: { id: item['pk'] },
                        }}
                      >
                        <Button

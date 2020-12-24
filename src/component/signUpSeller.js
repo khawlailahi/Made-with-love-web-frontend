@@ -65,36 +65,6 @@ function SignUpSeller(props){
             }
       });   
     }
-<<<<<<< HEAD
-    // var handleUpload =()=>{
-      //console.log(event.target.files[0])
-      // var image = props.image
-      //  console.log('image', props.image)
-      // // event.preventDefault();
-      // var uploadTask = storage.ref(`images/${image.name}`).put(image);
-      // console.log(image.name)
-      // uploadTask.on(
-      //   "state_changed",
-      //    snapshot => {},
-      //    error =>{
-      //      console.log(error);
-      //    },
-      //    ()=>{
-      //      storage
-      //      .ref("images")
-      //      .child(image.name)
-      //      .getDownloadURL()
-      //      .then(url =>{
-      //        console.log(url)
-      //      })
-      //    }
-      // )
-    // }
-    return (
-    <div>
-       <NavbarSeller/>
-=======
->>>>>>> 97272e94f2960b23ebc9d49db3d779a84684058e
     
     return (
       <div>
