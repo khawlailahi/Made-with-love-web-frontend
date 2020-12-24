@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import ListItems from "./listItems";
-
 const styles = {
   card: {
     backgroundColor: '#B7E0F2',
@@ -18,7 +17,6 @@ const styles = {
     borderRadius: 55
   }
 }
-
 const Items = (props) => (
   <Card>
   <td>{props.Item.product_Name}</td>
@@ -32,7 +30,6 @@ const Items = (props) => (
   </td>
 </Card>
 )
-
  class SellerProfile extends React.Component{
  constructor(props){
    super(props)
@@ -47,7 +44,6 @@ const Items = (props) => (
 this.state={data:[],
   items:[]}
  }
-
  fetchData =(id)=>{
   var that = this;
   console.log(id)
@@ -70,7 +66,6 @@ this.state={data:[],
  })
  console.log("hhhhhhhhhhhh")
 }
-
 fetchItems =(id)=>{
   var that = this;
   console.log(id)
@@ -116,7 +111,6 @@ upState =(data)=>{
 //     <Items item={item} deleteItem={this.deleteItem} key={item.item_id}/>;
 //   })
 // }    
-
 render(){
 console.log(this.state,"staaaaaaaate")
 if(this.state.data[0])

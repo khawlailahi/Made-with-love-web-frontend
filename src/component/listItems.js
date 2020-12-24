@@ -37,6 +37,7 @@ const ListItems = (props) => {
                    <Card.Img
                      variant="top"
                      src={item['fields']['image']}
+                     width = '200px' height = '200px'
                    />
                    <Card.Body>
                      <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>
