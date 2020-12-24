@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form } from 'react-bootstrap';
+import { Form,Button  } from 'react-bootstrap';
+// import { Link} from 'react-router-dom';
 import $ from "jquery";
 import NavbarSeller from './layout/NavbarSeller'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
@@ -64,17 +65,17 @@ function SignUpSeller(props){
 
       var obj = {};
       obj.email = props.email;
-      obj.email = props.email;
+      // obj.email = props.email;
       obj.password =props.password;
       obj.storeName=props.storeName;
       obj.category=props.category;
       obj.description=props.description;
       obj.location=props.location;
-      obj.deliveryOrder = props.deliveryOrder;
-      obj.image = props.image;
+      obj.delieveryTime = props.deliveryOrder;
+      obj.url ="alallalaalla"
       console.log(obj)
         $.ajax({
-            url: "/seller/signup",
+            url: "http://127.0.0.1:8000/seller/signup",
             method: "POST",
             data: JSON.stringify(obj),
             contentType: "application/json",
@@ -177,9 +178,9 @@ function SignUpSeller(props){
  </div>
   <button onClick ={clickButton}>signup</button>
   
-   {/* <button type="submit" className="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button> */}
-   <br/><br/>  
-   {/* <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link>  */}
+  
+  <button type="submit" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
+  <Link to='/login'><p style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Sign In</p></Link>
 </Form>
 
   </div>

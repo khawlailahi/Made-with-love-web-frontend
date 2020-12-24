@@ -50,7 +50,7 @@ function SignUpBuyer (props){
   
       console.log(obj)
         $.ajax({
-            url: "/buyer/signup",
+            url: "http://127.0.0.1:8000/buyer/signup",
             method: "POST",
             data: JSON.stringify(obj),
             contentType: "application/json",

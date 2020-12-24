@@ -26,8 +26,9 @@ this.state={data:[],
   var that = this;
   console.log(id)
   console.log(1111111111111111)
+  
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/visit/1'),
+   url:(`http://127.0.0.1:8000/seller/visit/${this.props.location.id}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -49,7 +50,7 @@ fetchItems =(id)=>{
   console.log(id)
   console.log(1111111111111111)
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/visit/items/1'),
+   url:(`http://127.0.0.1:8000/seller/visit/items/${this.props.location.id}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')

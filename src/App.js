@@ -4,7 +4,7 @@ import About from "./component/aboutus";
 import home from "./component/home.js";
 import SignUpSeller from "./component/signUpSeller.js";
 import addItem from "./component/addItem.js";
-import Footer from "./component/Footer.js";
+// import Footer from "./component/Footer.js";
 import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 // import Navbar from "./component/layout/Navbar.js";
@@ -18,6 +18,10 @@ import Order from "./component/order.js";
 import View from "./component/view.js";
 import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
+
+
+
+
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
   return {
@@ -97,7 +101,7 @@ function App(props) {
           
           </Switch>
         </Router> 
-         <Footer />
+         {/* <Footer /> */}
       </div>
     </div>
   );
