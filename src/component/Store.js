@@ -1,9 +1,9 @@
-import { createStore ,applyMiddleware} from 'redux'; 
+import { createStore } from 'redux'; 
 import { combineReducers } from 'redux';
 import thunk from "redux-thunk";
 import {combineForms, createForms} from 'react-redux-form';
 
-// import {combineForms, createForms} from 'react-redux-form';
+
   
 var signUpSeller = {
     email :"",
@@ -24,14 +24,24 @@ var signUpSeller = {
        phoneNumber:""
    } 
    
-var loginState={
+  var loginState={
     email:"",
     password:""
-}
+ }
 
-var category = {
+ var category = {
     name:""
-}
+ }
+
+  var sellerProfile = {
+    id: "",
+    name :"",
+    image : "",
+    product_Name : "",
+    description : "",
+    items : []
+
+  }
 
 var filters = {
     gender:'',
@@ -181,7 +191,13 @@ var catReducer = (state = category,action) => {
 }
 
 
+// const allReducers = combineReducers({
+//     reducer,
+//     // addItem: reducerAddItem
+//     reducerBuyer,
+//     catReducer
 
+//  })
 var initialState ={
     product: "" ,
     description:"",
@@ -207,6 +223,22 @@ var reducerAddItem =(state = initialState ,action) =>{
 
     }
 }
+
+var resducerProfile = (state =sellerProfile, action) => {
+    switch(action.type){
+        case 'fetch_seller':
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+        case 'delete_item':
+            return Object.assign({}, state, {name :action.name}, {image: action.image}, {product_Name : action.product_Name}, {description : action.description}, {item_image: action.image})
+            // let newItems = [...state.sellerProfile.items[]]
+            // newItems = newItems.filter(item=>item.id != action.id)
+            // return newItems;
+    default :
+    return state
+    }
+}
+
+
 
 
 var orderFormReducer=(state = {},action) =>{
