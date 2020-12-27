@@ -8,23 +8,24 @@ function ItemForm (props)  {
 
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
-    var obj1={category:'food', url:"" ,user:{}}  
-
+    var obj={category:"food"}
+var obj1;
  
 
 const ajax=(user)=>{
   
-   obj1.user= {user}
-   console.log(obj1.url)
- obj1.url=url
+   obj1= Object.assign({} ,user)
  console.log(url)
+ obj1['url'] = url
+ obj1['category'] ='food'
+ console.log(obj1)
   $.ajax({
     method: 'POST',
-    url:'http://localhost:3000/addItem',//fix it later
+    url:'http://127.0.0.1:8000/seller/addItem',//fix it later
     data : JSON.stringify(obj1),
     contentType: "application/json",
     success:function(){
-      console.log('success')
+      console.log(obj1)
     },
     error: function(err){
       console.log(obj1)
@@ -64,19 +65,19 @@ const uploadImage=(e)=>{
   if(image !== ""){
 return <div>
 <img src={url}/>
-<button onClick={handleUpload}>Upload</button>
+<input type="button"   value="Add to favorites" onClick={handleUpload}></input>
 </div>
   }
 }
 
 
 const food=() => {
-  if (obj1.category === 'food'){
+  if (obj.category === 'food'){
     return(
     <div>
       <Form
       model="user"
-      onSubmit={(user) => ajax(user)}
+     onSubmit={(user) => ajax(user)}
     >
     <div class="col-md-3">
     <label  className="form-label">Category:</label><br></br>
@@ -112,7 +113,7 @@ const food=() => {
  </div>
   
       <div className="col-12">
-    <button className="btn btn-primary" type="submit"  >Submit</button>
+    <button className="btn btn-primary" type="submit"   >Submit</button>
   </div>
     </Form></div>
     )
@@ -120,7 +121,7 @@ const food=() => {
 }
 
 const clothes=()=>{
-  if (obj1.category === 'clothes'){
+  if (obj.category === 'clothes'){
     return(
     <div>
       <Form
@@ -158,7 +159,7 @@ const clothes=()=>{
       </div>
       <div className="mb-3">
      <label htmlFor="user.image" className="form-label">Add Picture:</label>
-    <Control.file model="user.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    <Control.file className="form-control" aria-label="file example" onChange={uploadImage}  required/>
     {tr2()}
  </div>
       <div className="col-12">
@@ -167,7 +168,7 @@ const clothes=()=>{
     </Form></div>
     )}}
     const babyproducts=() => {
-        if (obj1.category === 'babyproducts'){
+        if (obj.category === 'babyproducts'){
          return(
         <div>
                 <Form
@@ -207,7 +208,7 @@ const clothes=()=>{
            }
          }
   const accessories=() => {
-    if (obj1.category === 'accessories'){
+    if (obj.category === 'accessories'){
      return(
        <div>
        <Form
@@ -236,7 +237,7 @@ const clothes=()=>{
      </div>
      <div className="mb-3">
     <label htmlFor="user.image" className="form-label">Add Picture:</label>
-   <Control.file model="user.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+   <Control.file model="user.image" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
    {tr2()}
  </div>
      <div className="col-12">

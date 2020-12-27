@@ -8,11 +8,12 @@ class Login extends React.Component {
     ajax(login){
         $.ajax({
             method: 'POST',
-            url:'http://localhost:3000/login',//fix it later
+            url:'http://127.0.0.1:8000/login',//fix it later
             data : JSON.stringify(login),
             contentType: "application/json",
-            success:function(){
-              console.log('success')
+            success:function(res){
+              localStorage.setItem('token', JSON.stringify(res));
+              console.log(JSON.parse(localStorage.getItem('token')))
             },
             error: function(err){
               console.log('error:' ,err)

@@ -230,12 +230,12 @@ const store = createStore(combineReducers({
     filterReducer:filterReducer,
     filteringReducer:filteringReducer
  ,
-    // ...createForms({
-    //     user: initialState,
-    //     login:loginState,
-    //     order:orderForm
+    ...createForms({
+        user: initialState,
+        login:loginState,
+        order:orderForm
 
-    //  } )
+     } )
     } )
 
 
