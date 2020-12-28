@@ -5,6 +5,8 @@ import $ from "jquery";
 // import { Form,Button  } from 'react-bootstrap';
 import { Button,Card, Container, CardGroup, Row , Col} from 'react-bootstrap';
 import NavbarSeller from './layout/NavbarSeller'
+// import StripeCheckout from "react-stripe-checkout";
+
 
 
 export default class listOfOrder extends Component {
@@ -35,6 +37,11 @@ export default class listOfOrder extends Component {
     })
     
 }
+
+async handleToken(token, addresses){
+  console.log({token,addresses}, 'handle toooookeeen')
+
+}
   render() {
     if(this.state.data.length>0)
 console.log(this.state.data.length,"dataa")
@@ -50,6 +57,17 @@ var c = <Row>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Location : </label> {item['fields']['location']}</Card.Text>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Buyer : </label> {item['fields']['buyer']}</Card.Text>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Phone Number : </label> {item['fields']['phonenumber']}</Card.Text>
+            <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Total Price : </label> {item['fields']['price']}</Card.Text>
+
+            {/* <StripeCheckout
+            stripeKey = 'pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq'
+            token = {this.handleToken}
+            amount = {item['fields']['price']}
+            name={item['fields']['item']}
+            billingAddress
+            shippingAddress
+            /> */}
+
             </Card.Body>
                  </Card>
                  </Col> <br/></div>

@@ -3,7 +3,6 @@ import $ from 'jquery';
 import React from 'react';
 import { Control, actions,Form } from 'react-redux-form';
 
-
 class Login extends React.Component {
     ajax(login){
         $.ajax({
