@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+ import React  from "react";
+// import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import * as Icon from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import NavbarSeller from './layout/NavbarSeller';
 import ListItems from "./listItems";
 const styles = {
   card: {
@@ -50,11 +50,12 @@ this.state={data:[],
   console.log(1111111111111111)
   // console.log(this.props.id,'iiiidddd')
  $.ajax({
-   url:`http://127.0.0.1:8000/seller/profile/${this.props.match.params.id}`,
+   url:` http://127.0.0.1:8000/seller/profile/${this.props.match.params.id}`,
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
      var data1 = JSON.parse(data)
+    //  window.location =`/seller/profile/${JSON.parse(localStorage.getItem('token')['id'])}`
     // var data1 = data
      that.setState({data:data1},()=>{console.log("22222222222222",that.state)})
      // that.setState(data
@@ -71,7 +72,7 @@ fetchItems =(id)=>{
   console.log(id)
   console.log(1111111111111111)
  $.ajax({
-   url:('http://127.0.0.1:8000/seller/profile/items/1'),
+   url:(`http://127.0.0.1:8000/seller/profile/items/${this.props.match.params.id}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -145,11 +146,13 @@ var x =  <div> <Container fluid>
   pathname: "/seller/addItem",
    info: { id :this.state.data[0]['fields']['category']},
   }}>
+     
 <Button>Add Item</Button>
 </Link>
 
   return(
     <div>
+      <NavbarSeller/>
       {x}
       {a}
      

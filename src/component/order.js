@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
+
 import $ from 'jquery';
 import React from 'react';
-import { Control, Form, actions } from 'react-redux-form';
+import { Control, Form } from 'react-redux-form';
 
    var  time =new Date().toDateString() 
 
@@ -16,17 +16,19 @@ ajax(order){
 
 
   var obj={order}
+  console.log(this.props)
   obj["item_id"]=this.props.location.info.id
   obj["store_id"]=this.props.location.info.store
 obj['date']=time
 console.log(obj)
     $.ajax({
-      url:'http://127.0.0.1:8000/buyer/order',
+      url:'https://backend-made-with-love.herokuapp.com/buyer/order',
         method:'POST',
         
         contentType: "application/json",
         success:function(){
           console.log('success')
+          window.location =`/home`
         },
         error: function(err){
           console.log(err)

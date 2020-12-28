@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Button,Card, Container, CardGroup, Row , Col} from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import {Card, Row , Col} from 'react-bootstrap';
+// import { Link } from "react-router-dom";
+// import axios from 'axios';
 
   
   
@@ -47,5 +47,4 @@ const VisitItems = (props) => {
  )  
 }
 
-export default VisitItems
-
+export default VisitItems;

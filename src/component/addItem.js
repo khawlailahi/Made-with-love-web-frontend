@@ -1,9 +1,9 @@
-
 import $ from 'jquery';
 
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
+import NavbarSeller from './layout/NavbarSeller';
 function ItemForm (props)  {
   console.log("caaaat",props.location.info)
   const [url, setUrl] = useState("");
@@ -13,10 +13,12 @@ function ItemForm (props)  {
  
 
     const ajax=(user)=>{
+      var tokenObj = JSON.parse(localStorage.getItem('token'))
       obj1= Object.assign({} ,user)
     console.log(url)
     obj1['url'] = url
     obj1.category=props.location.info.id
+    obj1.user = tokenObj['id']
     console.log(obj1)
      $.ajax({
        method: 'POST',
@@ -24,10 +26,14 @@ function ItemForm (props)  {
        data : JSON.stringify(obj1),
        contentType: "application/json",
        success:function(){
-         console.log(obj1)
+         console.log(obj1,'success')
+         window.location =`/seller/profile/${JSON.parse(localStorage.getItem('token'))['id']}`
+        //  console.log(`${JSON.parse(localStorage.getItem('token')['id'])}`)
+        // window.location = `/seller/profile/:id`
+
        },
        error: function(err){
-         console.log(obj1)
+         console.log(err)
        }
      })
    }
@@ -61,10 +67,11 @@ const uploadImage=(e)=>{
 
 
  const tr2=()=>{
+   console.log(url)
   if(image !== ""){
 return <div>
 <img src={url}/>
-<button onClick={handleUpload}>Upload</button>
+<input type ='button' value ='Upload' onClick={handleUpload}/>
 </div>
   }
 }
@@ -123,6 +130,7 @@ const clothes=()=>{
   if (obj1.category === 'clothes'){
     return(
     <div>
+        <NavbarSeller/>
       <Form
       model="user"
       onSubmit={(user) => ajax(user)}
@@ -257,82 +265,4 @@ const clothes=()=>{
   )
   }
 
-  export default  ItemForm
-
-// import { connect } from 'react-redux';
-// import $, { data } from 'jquery';
-// import React from 'react';
-// import { Control, Form, actions } from 'react-redux-form';
-
-// class ItemForm extends React.Component {
-
-//   //  fetchUsers = () => {
-//       // axios.get('https://jsonplaceholder.typicode.com/users')
-//       //   .then(response => {
-//       //     // response.data is the users
-//       //     const users = response.id
-//       //     console.log(users)
-//       //   })}
-  
- 
-//   handleSubmit(user) {
-//       console.log('jjj', user)
-
-// }
-
-// fetch(){
-// $.ajax({
-//     method: 'GET',
-//     url:'https://jsonplaceholder.typicode.com/users',//fix it later
-//     contentType: "application/json",
-//     success:function(data){
-//       console.log(data[0].id)
-//     },
-//     error: function(err){
-//       console.log('error:' ,err)
-//     }
-//   })}
-// ajax(user){
-  
-//   $.ajax({
-//     method: 'POST',
-//     url:'http://localhost:3000/addItem',//fix it later
-//     data : JSON.stringify(user),
-//     contentType: "application/json",
-//     success:function(){
-//       console.log('success')
-//     },
-//     error: function(err){
-//       console.log('error:' ,err)
-//     }
-//   })
-// }
-// componentDidMount() {
-//   this.fetch()
-// }
-// render() {
-//   return (
-// <h1></h1>
-//     // <Form
-//     //   model="user"
-//     //   onSubmit={(user) => this.ajax(user)}
-//     // >
-//     //   <label htmlFor="user.product">Name Of Product:</label>
-//     //   <Control.text model="user.product" id="user.product" />
-//     //    <label htmlFor="user.description">Description:</label>
-//     //   <Control.text model="user.description" id="user.description" />
-//     //   <label htmlFor="user.price">Price:</label>
-//     //   <Control.text model="user.price" id="user.price" />
-     
-//     //   <label htmlFor="user.image">Add Picture:</label>
-//     //   <Control.text model="user.image" id="user.image" />
-
-//     //   <button type="submit">
-//     //     Finish registration!
-//     //   </button>
-//     // </Form>
-//   );
-// }
-// }
-
-// export default ItemForm
+  export default  ItemForm;
