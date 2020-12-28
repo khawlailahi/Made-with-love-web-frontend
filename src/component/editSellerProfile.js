@@ -6,78 +6,110 @@ import { Control} from 'react-redux-form';
 
 
 
-export default function EditSellerProfile(props)  {
+export default class EditSellerProfile {
 
-
-function handleSubmit(product) {
-  console.log('jjj', product)
-
-}
-function ajax(product) {
-
-$.ajax({
-method: 'POST',
-url:'http://localhost:3000/edit/profile',//fix it later
-data : JSON.stringify(product),
-contentType: "application/json",
-
-success:function(){
-  console.log('success')
-},
-error: function(err){
-  console.log('error:' ,err)
-}
-})
-
+  constructor(props){
+    
+    this.state= {
+        item_id :'',
+        store_id: '',
+        category_id: '',
+        productName  :'',
+        description     :'',
+        price     :''
 }
 
- console.log(props.location.info.title)
+  }
+   
+
+
+
+
+render() {
+
 return (
-  <div>
-  <Form.Group model="product"
-  onSubmit={(product) => ajax(product)}>
 
-     <Form.Row style={{marginTop:'20px'}}>
-  
+  <div></div>
+)
 
-     <Form.Label column="lg" lg={2} htmlFor="product.product_Name">Name Of Product: </Form.Label>
-  <Col>
-  <Control.text model="product.product_Name" id="product.product_Name" value= {props.location.info.title} />
-  </Col>
-  </Form.Row>
-  <br/>
 
-  <Form.Row>
-  <Form.Label column="lg" lg={2} htmlFor="product.product_description">Description:</Form.Label>
-   <Col>
-  <Control.text model="product.product_description" id="product.product_description" />
-  </Col>
-  </Form.Row>
-  <br/>
-  <Form.Row>
-  <Form.Label column="lg" lg={2} htmlFor="product.price">Price:</Form.Label>
-  <Col>
-  <Control.text model="product.price" id="product.price" />
-  </Col>
- </Form.Row>
- <br/>
-  {/* <label htmlFor="pro.image">Add Picture:</label>
-  <Control.text model="user.image" id="user.image" /> */}
- 
- 
-  <button type="submit" style={{marginLeft:'50px', width:'70px'}}>
-    Edit
-  </button>
-   <Link to='/seller/profile'>
-  <button style={{marginLeft:'50px', width:'70px'}}>
-    Cancle
-  </button>
-  </Link>
-  
- </Form.Group>
- </div>
-);
 }
+
+
+};
+
+// export default function EditSellerProfile(props)  {
+
+
+// function handleSubmit(product) {
+//   console.log('jjj', product)
+
+// }
+// function ajax(product) {
+
+// $.ajax({
+// method: 'POST',
+// url:'http://localhost:3000/edit/profile',//fix it later
+// data : JSON.stringify(product),
+// contentType: "application/json",
+
+// success:function(){
+//   console.log('success')
+// },
+// error: function(err){
+//   console.log('error:' ,err)
+// }
+// })
+
+// }
+
+//  console.log(props,'proooooooops')
+// return (
+//   <div>
+//   <Form.Group model="product"
+//   onSubmit={(product) => ajax(product)}>
+
+//      <Form.Row style={{marginTop:'20px'}}>
+  
+
+//      <Form.Label column="lg" lg={2} htmlFor="product.product_Name">Name Of Product: </Form.Label>
+//   <Col>
+//   {/* <Control.text model="product.product_Name" id="product.product_Name" value= {props.location.info.title} /> */}
+//   </Col>
+//   </Form.Row>
+//   <br/>
+
+//   <Form.Row>
+//   <Form.Label column="lg" lg={2} htmlFor="product.product_description">Description:</Form.Label>
+//    <Col>
+//   <Control.text model="product.product_description" id="product.product_description" />
+//   </Col>
+//   </Form.Row>
+//   <br/>
+//   <Form.Row>
+//   <Form.Label column="lg" lg={2} htmlFor="product.price">Price:</Form.Label>
+//   <Col>
+//   <Control.text model="product.price" id="product.price" />
+//   </Col>
+//  </Form.Row>
+//  <br/>
+//   {/* <label htmlFor="pro.image">Add Picture:</label>
+//   <Control.text model="user.image" id="user.image" /> */}
+ 
+ 
+//   <button type="submit" style={{marginLeft:'50px', width:'70px'}}>
+//     Edit
+//   </button>
+//    <Link to='/seller/profile'>
+//   <button style={{marginLeft:'50px', width:'70px'}}>
+//     Cancle
+//   </button>
+//   </Link>
+  
+//  </Form.Group>
+//  </div>
+// );
+// }
 
 
 // export default function EditSellerProfile(props) {

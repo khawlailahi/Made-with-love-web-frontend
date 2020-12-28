@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
+
 export default function ItemList(props) {
+
+  console.log(props,'iteeeem props')
     
     function clicked(id){
         console.log(id)
@@ -25,7 +28,7 @@ export default function ItemList(props) {
             {/* <button onClick={()=>{clicked(item['pk'])}}> <Link to={{pathname: "/order", info: item.pk}}>
                 Order
                 </Link></button> */}
-                <button><Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>Order</Link></button>
+                <button><Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store, price:item['fields'].price }}}>Order</Link></button>
                 {/* <Link to={{pathname: '/order', info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}></Link> */}
         </div>
         </div><br/><br/>

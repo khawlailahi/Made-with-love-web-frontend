@@ -18,6 +18,7 @@ import Order from "./component/order.js";
 import View from "./component/view.js";
 import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
+import Checkout from './component/checkout'
 
 
 
@@ -66,7 +67,7 @@ function App(props) {
               exact
               component={sellerProfile}
             ></Route>
-            <Route path="/seller/visit/1" exact component={VisitSeller}></Route>
+            <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
             <Route
               path="/seller/editProfile/:id"
               exact
@@ -87,6 +88,11 @@ function App(props) {
               exact
               component={() => <CatBuyer store={store} cat="clothes" />}
             ></Route>
+             <Route
+              path="/buyer/checkout"
+              exact
+              exact component={()=> <Checkout store = {store}  />}
+            ></Route>
             <Route
               path="/buyer/babyproducts"
               exact
@@ -97,7 +103,7 @@ function App(props) {
               exactf
               component={() => <CatBuyer store={store} cat="accessories" />}
             ></Route>
-            <Route path="/order" exact component={() => <Order />}></Route>
+            <Route path="/order" exact component={() => <Order  store={store}/>}></Route>
           
           </Switch>
         </Router> 

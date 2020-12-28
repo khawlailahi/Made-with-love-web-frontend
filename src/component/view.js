@@ -12,11 +12,11 @@ import {Button  } from 'react-bootstrap';
       <Link to="/buyer/signup">
 
 
-             <Button variant="primary" size="lg" active style={{width:'50%', backgroundColor:'black'}}>
+             <Button variant="primary" size="lg" active style={{width:'48%', backgroundColor:'#b5aeae',borderRadius:'9px', marginLeft:'20px',borderColor:'black',borderStyle:'solid', borderWidth:'2px'}}>
    Find The Best Homemade Products
   </Button></Link>
   <Link  to="/seller/signup">
-  <Button  size="lg" active style={{width:'50%', backgroundColor:'black'}} >
+  <Button  size="lg" active style={{width:'48%', backgroundColor:'#b5aeae',borderRadius:'9px', marginLeft:'20px', borderColor:'black',borderStyle:'solid', borderWidth:'2px'}} >
  Get Started With Your Business
   </Button></Link>
 

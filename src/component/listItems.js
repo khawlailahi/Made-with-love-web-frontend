@@ -3,26 +3,62 @@ import React from "react";
 import { Button,Card, Container, CardGroup, Row , Col} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import $ from "jquery";
 
   
   
+
+// var componentDidMount=() =>{
+//   this.deleteItems();
+// }
 
 
 const ListItems = (props) => {
 
+
+  
     var deleteItems=(pk) =>{
         axios.delete('http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
           .then(response => { console.log(response.data)});
     
         // this.setState({
-        //   items: props.items.filter(item => item.pk !== pk)
+        //   items: this.props.items.filter(item => item['pk'] !== pk)
         // })
         console.log(pk)
-        window.location = 'http://127.0.0.1:8000/seller/profile/'+props.id
+        // window.location = 'http://127.0.0.1:8000/seller/profile/'+props.id
+        // window.location.reload();
+        // loadData()
+           
 
       };
 
-  console.log((props))
+      var getDerivedStateFromProps = () => {
+        deleteItems()
+      }
+
+      // var loadData = (id) => {
+      //   var that = this;
+      //   console.log(id)
+      //   console.log(1111111111111111)
+      //  $.ajax({
+      //    url:('http://127.0.0.1:8000/seller/profile/items/1'),
+      //    type:'GET',
+      //    success:function(data){
+      //      console.log(data, 'Fetch the data')
+      //      var data1 = JSON.parse(data)
+      //     // var data1 = data
+      //     //  that.setState({ items:data1},()=>{console.log("itemsss",that.state)})
+      //      // that.setState(data
+      //      // console.log(that.state,'staaate')
+      //    },
+      //    error : function(error){
+      //      console.log(error, 'error in fetch the data')
+      //    }
+      //  })
+      //  console.log("hhhhhhhhhhhh")
+      // }
+
+  console.log(props)
   return(
     <div>
    {/* <h1>{item['pk']}</h1> */}
