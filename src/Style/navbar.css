@@ -3,8 +3,9 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
     font-family: 'Lobster', cursive;
+    /* color: #800000; */
 
-
+     background-color: #800000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 

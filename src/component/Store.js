@@ -239,11 +239,17 @@ var resducerProfile = (state =sellerProfile, action) => {
 }
 
 
+var order = {
+
+}
+
 
 
 var orderFormReducer=(state = {},action) =>{
     switch(action.types){
         case 'RECEIVE_DATA':
+          order=  Object.assign({},...state,{ data: action.data}) 
+          console.log(order,"gshdjgkh")
         return Object.assign({},...state,{ data: action.data}) 
         default:
            return state

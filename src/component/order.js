@@ -2,28 +2,49 @@ import { connect } from 'react-redux';
 import $ from 'jquery';
 import React from 'react';
 import { Control, Form, actions } from 'react-redux-form';
+import StripeCheckout from "react-stripe-checkout";
+import axios from 'axios'
+// import { Link } from 'react-bootstrap-icons';
+import { Link,Redirect } from 'react-router-dom';
+import {toast} from 'react-toastify'
+
 
    var  time =new Date().toDateString() 
 
-   
+
+   toast.configure();
 class Order extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props,'prooooops')
+ this.state = {
+   data:{}
+ }
 }
 
 
+
+
+
+
 ajax(order){
-
-
-  var obj={order}
-  obj["item_id"]=this.props.location.info.id
+  toast('Hiiiiiiiii')
+console.log(order, 'ordeeeeer')
+var obj={order}
+obj["item_id"]=this.props.location.info.id
   obj["store_id"]=this.props.location.info.store
-obj['date']=time
-console.log(obj)
+  obj['date']=time
+this.setState({data:obj})
+  
+  
+  // obj["item_id"]=this.props.location.info.id
+  // obj["store_id"]=this.props.location.info.store
+  // obj['date']=time
+  console.log(obj,'objjjjj')
     $.ajax({
       url:'http://127.0.0.1:8000/buyer/order',
         method:'POST',
-        
+        data:JSON.stringify(obj),
         contentType: "application/json",
         success:function(){
           console.log('success')
@@ -36,13 +57,59 @@ console.log(obj)
 
 
 
+    async handleToken(token, addresses){
+    //  var that = this;
+    
+      console.log({token,addresses}, 'handle toooookeeen')
+      const response = await axios.post('http://127.0.0.1:8000/payments/checkout',{token,addresses})
+      const {status} = response.data;
+
+      if(status === 'success') {
+        toast('Success! check email for details', {type:"success"})
+      }
+
+      else {
+        toast('somthing went wrong', {type:"error"})
+      }
+
+    //  var obj = this.state.data
+    //   $.ajax({
+    //     url:'http://127.0.0.1:8000/buyer/order',
+    //       method:'POST',
+    //       data:JSON.stringify(obj),
+    //       contentType: "application/json",
+    //       success:function(){
+    //         console.log('success')
+    //       },
+    //       error: function(err){
+    //         console.log(err)
+    //       }
+    //     })
+        
+      
+      }    
+  
+    
+
+
 render() {
+// var x;
+//   {this.state.data ?  x = <Redirect to={'/seller/profile'}/>
+//   :'not'}
+//   console.log(this.props,'proooooops')
+
+console.log(this.props.location.info.price, 'priiiiiiiice')
+  
+
     return ( 
+      
+      
+      
       <div style={{maxWidth:'900px' , margin :"0 auto", border :'solid #dcdcdc 2px', border: '2px solid gray',
       borderRadius: "3px", padding:"6px"}}>
        <div >
         <h4 style= {{textAlign:"center"}}>YOUR ORDER</h4>
-        {/* <br/><br/> */}
+        <br/><br/>
         <h5 style= {{textAlign:"center", marginTop :"40px"}}>{this.props.location.info.name}</h5>
         </div>
       <div className="d-flex"  >
@@ -52,7 +119,7 @@ render() {
         
         
         <h5>{this.props.location.info.store}</h5><br/><br/>
-        <img src = {this.props.location.info.url} style= {{width:"300px", height:"300px", marginBottton:"30px"}}/>
+         <img src = {this.props.location.info.url} style= {{width:"300px", height:"300px", marginBottton:"30px"}}/>
           </div>
       <div className="p-2">
         {/* <h5>{this.props.location.info.name}</h5> */}
@@ -76,10 +143,25 @@ render() {
         <Control.text className="form-control" model="order.phoneNumber" id="order.phoneNumber" required/>
      
         <br/><br/><br/><br/>
-        <button class="btn btn-success" type="submit" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%"}}>
-         Confirm Order
-        </button> 
-      </Form></div></div> </div>
+        
+        <StripeCheckout
+            stripeKey = 'pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq'
+            token = {this.handleToken}
+            amount = {this.props.location.info.price}
+            name={this.props.location.info.productname}
+            billingAddress
+            shippingAddress
+            style={{marign:"0 auto", width:"200px" ,textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}
+            />
+          <button class="btn btn-success" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}>
+        Pay Cash
+        </button>
+      
+      </Form> 
+      
+      </div></div> </div>
+
+      
     )
  }
 //
