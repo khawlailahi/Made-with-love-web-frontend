@@ -1,9 +1,6 @@
 
 import $ from 'jquery';
 import React from 'react';
-<<<<<<< HEAD
-import { Control, Form } from 'react-redux-form';
-=======
 import { Control, Form, actions } from 'react-redux-form';
 import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios'
@@ -11,7 +8,6 @@ import axios from 'axios'
 import { Link,Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify'
 
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 
    var  time =new Date().toDateString() 
 
@@ -29,11 +25,6 @@ class Order extends React.Component {
 
 
 
-<<<<<<< HEAD
-  var obj={order}
-  console.log(this.props)
-  obj["item_id"]=this.props.location.info.id
-=======
 
 
 ajax(order){
@@ -41,7 +32,6 @@ ajax(order){
 console.log(order, 'ordeeeeer')
 var obj={order}
 obj["item_id"]=this.props.location.info.id
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
   obj["store_id"]=this.props.location.info.store
   obj['date']=time
 this.setState({data:obj})

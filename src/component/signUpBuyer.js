@@ -72,59 +72,9 @@ function SignUpBuyer(props) {
 
   return (
 
-<<<<<<< HEAD
     <div>
       <NavBar />
       <div style={{ maxWidth: "500px", margin: 'auto', padding: '0px 10px 10px 10px' }}>
-=======
-          <Form action="/action_page.php" className="needs-Validation" novalidate>
-        <Form.Group controlId="formGroupEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" name ="email" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}}  required  />
-    <div className = 'valid-feedback'></div>
-   <div className ="invalid-feedback">Please Fill Out This Field</div>
-  </Form.Group>  
-
-  
-  <Form.Group controlId="formGroupPassword">
-    <Form.Label>password</Form.Label>
-    <Form.Control type="password" placeholder="Enter password" name ="password" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} required  />
-    <div className = 'valid-feedback'></div>
-   <div className ="invalid-feedback">Please Fill Out This Field</div>
-  </Form.Group>
-
-  <Form.Group controlId="formGroupuserName">
-    <Form.Label>userName</Form.Label>
-    <Form.Control type="userName" placeholder="Enter userName" name ="userName" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} required />
-    <div className = 'valid-feedback'></div>
-   <div className ="invalid-feedback">Please Fill Out This Field</div>
-  </Form.Group>
-
-   <Form.Group controlId="formGroupLocation">
-    <Form.Label>Location</Form.Label>
-    <Form.Control type="location" placeholder="Enter location" name ="location" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} required />
-    <div className = 'valid-feedback'></div>
-   <div className ="invalid-feedback">Please Fill Out This Field</div>
-  </Form.Group>  
-
-  <Form.Group controlId="formGroupPhoneNumber">
-    <Form.Label>Phone Number</Form.Label>
-    <Form.Control type="phoneNumber" placeholder="Enter phone Number" name ="phoneNumber" onChange = {props.inputChanged} style ={{padding:"2px 2px 2px 2px"}} required />
-    <div className = 'valid-feedback'></div>
-   <div className ="invalid-feedback">Please Fill Out This Field</div>
-  </Form.Group>  
-
-  <button type="submit" className="btn btn-danger"  onClick ={clickButton} style = {{margin:'0px 150px 0px 150px', width:"100px"}}>Sign Up</button>
-<br/><br/>
-  <div>
-  {/* <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link>  */}
-  </div>
-        </Form> 
-      
-        </div>
-       
-     </div>
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 
         <div className="card w-100">
           <div className="card-body">

@@ -16,19 +16,11 @@ import $ from "jquery";
 
 const ListItems = (props) => {
 
-<<<<<<< HEAD
     var deleteItems=(pk,i) =>{
       console.log(i)
         axios.delete(' http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
           .then(response => { console.log(response.data) 
           });
-=======
-
-  
-    var deleteItems=(pk) =>{
-        axios.delete('http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
-          .then(response => { console.log(response.data)});
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
     
     props.items.splice(i,1)
 

@@ -250,13 +250,9 @@ var order = {
 var orderFormReducer = (state = {}, action) => {
     switch (action.types) {
         case 'RECEIVE_DATA':
-<<<<<<< HEAD
-            return Object.assign({}, ...state, { data: action.data })
-=======
           order=  Object.assign({},...state,{ data: action.data}) 
           console.log(order,"gshdjgkh")
         return Object.assign({},...state,{ data: action.data}) 
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
         default:
             return state
     }

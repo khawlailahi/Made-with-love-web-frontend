@@ -1,10 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
-import  { Redirect } from 'react-router-dom'
-
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 export default function ItemList(props) {
 
   console.log(props,'iteeeem props')
@@ -28,18 +23,12 @@ export default function ItemList(props) {
             <p className="card-text">Store: {item['fields'].store}</p>
             {/* <button onClick={()=>{clicked(item['pk'])}}> 
                 Order
-<<<<<<< HEAD
                 </button> */}
                 <button>
                   <Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>
                   Order
                   </Link>
                   </button> 
-=======
-                </Link></button> */}
-                <button><Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store, price:item['fields'].price }}}>Order</Link></button>
-                {/* <Link to={{pathname: '/order', info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}></Link> */}
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
         </div>
         </div><br/><br/>
         </div> )
