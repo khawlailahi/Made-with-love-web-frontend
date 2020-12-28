@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+
 import $ from 'jquery';
 import React from 'react';
 import { Control, Form, actions } from 'react-redux-form';
@@ -42,12 +42,13 @@ this.setState({data:obj})
   // obj['date']=time
   console.log(obj,'objjjjj')
     $.ajax({
-      url:'http://127.0.0.1:8000/buyer/order',
+      url:'https://backend-made-with-love.herokuapp.com/buyer/order',
         method:'POST',
         data:JSON.stringify(obj),
         contentType: "application/json",
         success:function(){
           console.log('success')
+          window.location =`/home`
         },
         error: function(err){
           console.log(err)

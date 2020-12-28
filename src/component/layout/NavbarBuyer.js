@@ -2,6 +2,9 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import '../../Style/navbar.css'
 var NavbarBuyer = () =>{
+  var signout=()=>{
+    localStorage.removeItem('token')
+  }
   return (
 <div className="App">
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -18,7 +21,13 @@ var NavbarBuyer = () =>{
       </NavDropdown>
     </Nav>
     <Nav>
-      <Nav.Link href="/view"onClick ={()=>{console.log('Sign Out')}}>Sign Out</Nav.Link>
+    <NavDropdown  id="collasible-nav-dropdown" style ={{margin :'0px 80px 0px 0px'}}>
+        <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item>
+        <NavDropdown.Item href="/setting">Setting</NavDropdown.Item>
+        <NavDropdown.Item href="/" onClick={signout}>Sign Out</NavDropdown.Item>
+        <NavDropdown.Divider />
+      
+      </NavDropdown>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

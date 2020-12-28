@@ -1,7 +1,8 @@
+  
 import React from "react";
 
-import { Button,Card, Container, CardGroup, Row , Col} from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Button,Card, Row , Col} from 'react-bootstrap';
+import {Link } from "react-router-dom";
 import axios from 'axios';
 import $ from "jquery";
 
@@ -15,12 +16,14 @@ import $ from "jquery";
 
 const ListItems = (props) => {
 
-
-  
-    var deleteItems=(pk) =>{
-        axios.delete('http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
-          .then(response => { console.log(response.data)});
+    var deleteItems=(pk,i) =>{
+      console.log(i)
+        axios.delete(' http://127.0.0.1:8000/seller/profile/deleteitems/'+pk)
+          .then(response => { console.log(response.data) 
+          });
     
+    props.items.splice(i,1)
+
         // this.setState({
         //   items: this.props.items.filter(item => item['pk'] !== pk)
         // })
@@ -66,9 +69,9 @@ const ListItems = (props) => {
    <Row>
         {
            
-         props.items.map((item )=>{
+         props.items.map((item,i )=>{
            return (
-              <Col>
+              <Col key={i}>
        
            <Card style={{ width: "400px", marginTop: "50px", marginLeft:'50px' }}>
                    <Card.Img
@@ -89,7 +92,7 @@ const ListItems = (props) => {
                      <Button
                        variant="primary"
                        style={{ backgroundColor: "red" }}
-                     onClick={() => {deleteItems(item['pk'] )}}
+                     onClick={() => {deleteItems(item['pk'],i)}}
                      >
                        Delete
                      </Button>
@@ -104,7 +107,7 @@ const ListItems = (props) => {
                          variant="primary"
                          style={{ backgroundColor: "green", marginLeft: "100px" }}
                        >
-                         Edite
+                         Edit
                        </Button>
                      </Link>
                    </Card.Body>
@@ -122,4 +125,3 @@ const ListItems = (props) => {
 }
 
 export default ListItems
-
