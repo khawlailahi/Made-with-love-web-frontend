@@ -2,24 +2,58 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import NavbarSeller from './layout/NavbarSeller'
+import NavbarBuyer from './layout/NavbarBuyer'
 var action = { type: "food_category" };
 var actionclothes = { type: "clothes_category" };
 var actionbaby = { type: "babyshower_category" };
 var actionacc = { type: "accesories_category" };
 
 const getcategoryfood = () => {
+  var tokenObj = JSON.parse(localStorage.getItem('token'))
+      console.log(tokenObj)
+              // if the user is a buyer redirect to home 
+      if (tokenObj.type === 'buyer')
+      window.location.replace('/buyer/food')
+              //if the user if a seller 
+      if (tokenObj.type === 'seller')
+      window.location.replace(`/seller/food`)
   return action;
 };
 
 const getcategoryclothes = () => {
+  var tokenObj = JSON.parse(localStorage.getItem('token'))
+      console.log(tokenObj)
+              // if the user is a buyer redirect to home 
+      if (tokenObj.type === 'buyer')
+      window.location.replace('/buyer/clothes')
+              //if the user if a seller 
+      if (tokenObj.type === 'seller')
+      window.location.replace(`/seller/clothes`)
   return actionclothes;
 };
 const getcategorybaby = () => {
+  var tokenObj = JSON.parse(localStorage.getItem('token'))
+      console.log(tokenObj)
+              // if the user is a buyer redirect to home 
+      if (tokenObj.type === 'buyer')
+      window.location.replace('/buyer/babyproducts')
+              //if the user if a seller 
+      if (tokenObj.type === 'seller')
+      window.location.replace(`/seller/babyproducts`)
   return actionbaby;
 };
 const getcategoryacc = () => {
+  var tokenObj = JSON.parse(localStorage.getItem('token'))
+      console.log(tokenObj)
+              // if the user is a buyer redirect to home 
+      if (tokenObj.type === 'buyer')
+      window.location.replace('/buyer/accessories')
+              //if the user if a seller 
+      if (tokenObj.type === 'seller')
+      window.location.replace(`/seller/accessories`)
   return actionacc;
+
 };
 // var mapDispatchToProps = (dispatch) =>{
 //     return {
@@ -35,8 +69,16 @@ const getcategoryacc = () => {
 
 export default function Home(props) {
   const dispatch = useDispatch()
+  var tokenObj = JSON.parse(localStorage.getItem('token'))
+  console.log(tokenObj['type'])
+  if(tokenObj.type ==='buyer')
+  var nav = <NavbarBuyer/>
+  if(tokenObj.type === 'seller')
+  var nav = <NavbarSeller/>
     return (
         <div>
+          {nav}
+          <br/>
            <div className="row" style={{margin:"0 auto"}}>
          <Link to='/buyer/food'>
            <div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryfood()) }} >
@@ -49,8 +91,8 @@ export default function Home(props) {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3>Category Food</h3>
+      
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={500}>
@@ -60,8 +102,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Category Food</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -71,8 +113,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>Category Food</h3>
+
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
@@ -91,8 +133,7 @@ export default function Home(props) {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3>Category Clothes</h3>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={500}>
@@ -102,8 +143,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Category Clothes</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -113,8 +154,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>Category Clothes</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
@@ -132,8 +173,8 @@ export default function Home(props) {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>Accessories</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3> Category Accessories</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={500}>
@@ -143,8 +184,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Category Accessories</h3>
+      
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -154,8 +195,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>Category Accessories</h3>
+      
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
@@ -173,8 +214,8 @@ export default function Home(props) {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3>Category Baby products</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={500}>
@@ -184,8 +225,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Category Baby productsl</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -195,8 +236,8 @@ export default function Home(props) {
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>Category Baby products</h3>
+     
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
