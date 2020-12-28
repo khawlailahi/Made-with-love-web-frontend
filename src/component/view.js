@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import Navbar from "./layout/Navbar.js";
+import NavBar from "./layout/Navbar.js";
 import { Link } from 'react-router-dom'
 import {Button  } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,8 +24,10 @@ import "../Style/view.css";
      </div>
 
      <div style={{marginTop:"120px"}}>
-      <Link to="/buyer/signup">
+      
 
+      <ReactPlayer url='https://www.youtube.com/watch?v=JwVBbAXN0hg' width="100%" height="500px" /><br />
+            <Link to="/buyer/signup">
 
              <Button variant="primary" size="lg" active style={{width:'48%', backgroundColor:'#807978',borderRadius:'9px', marginLeft:'20px',borderColor:'black',borderStyle:'solid', borderWidth:'2px'}}>
    Find The Best Homemade Products
@@ -35,9 +37,12 @@ import "../Style/view.css";
  Get Started With Your Business
   </Button></Link>
 
-  </div>
-         </div>
-     )
- }
 
- export default View;
+        
+        
+        </div>
+        </div>
+    )
+}
+
+export default View;

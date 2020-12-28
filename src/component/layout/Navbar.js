@@ -1,12 +1,10 @@
 import React from 'react';
-import * as ReactBootStrap from "react-bootstrap";
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
+import { Navbar, Nav } from 'react-bootstrap';
+import '../../Style/navbar.css';  
+import { Link } from 'react-router-dom';
+// import {ReactBootStrap} from 'react-bootstrap'
 
-import '../../Style/navbar.css'
-const Navbar = () => {
+var NavBar = () => {
     return(
         <div className="App">
     <ReactBootStrap.Navbar collapseOnSelect expand="xl"  variant="dark" style={{backgroundColor:'#800000'}}>
@@ -30,4 +28,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default NavBar;

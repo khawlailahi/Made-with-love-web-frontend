@@ -1,9 +1,8 @@
-
-import React, { useState ,useEffect,  Component} from "react";
-import ReactDOM from 'react-dom';   
+import React, { Component} from "react";
+// import ReactDOM from 'react-dom';   
 import $ from "jquery";
 // import { Form,Button  } from 'react-bootstrap';
-import { Button,Card, Container, CardGroup, Row , Col} from 'react-bootstrap';
+import { Card, Row , Col} from 'react-bootstrap';
 import NavbarSeller from './layout/NavbarSeller'
 // import StripeCheckout from "react-stripe-checkout";
 
@@ -87,6 +86,3 @@ var c = <Row>
     )
   }
 }
-
-
-
