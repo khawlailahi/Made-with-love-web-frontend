@@ -1,8 +1,13 @@
 //import { connect } from 'react-redux';
 import $ from 'jquery';
 import React from 'react';
+<<<<<<< HEAD
 import { Control,Form } from 'react-redux-form';
 import Navbar from './layout/Navbar'
+=======
+import { Control, actions,Form } from 'react-redux-form';
+
+>>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 class Login extends React.Component {
     ajax(login){
         $.ajax({

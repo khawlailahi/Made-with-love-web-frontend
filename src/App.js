@@ -3,9 +3,17 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./component/aboutus";
 import home from "./component/home.js";
 import SignUpSeller from "./component/signUpSeller.js";
+<<<<<<< HEAD
 import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js"
+=======
+import addItem from "./component/addItem.js";
+// import Footer from "./component/Footer.js";
+import listOfOrder from "./component/listOfOrder.js";
+import Login from "./component/Login.js";
+// import Navbar from "./component/layout/Navbar.js";
+>>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
 import EditSellerProfile from "./component/editeSellerProfile";
@@ -14,11 +22,15 @@ import store from "./component/Store.js";
 import CatBuyer from "./component/categoryBuyer.js";
 import Order from "./component/order.js";
 import View from "./component/view.js";
-import SellerProfile from "./component/sellerProfile";
+import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
 import CategorySeller from "./component/categorySeller";
 import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
+
+
+
+
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -38,7 +50,7 @@ function App(props) {
      <Route
               path='/seller/profile/:id'
               exact
-              component={SellerProfile}
+              component={sellerProfile}
             ></Route>
               <Route
               path='/seller/editProfile/:id'

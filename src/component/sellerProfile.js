@@ -67,6 +67,8 @@ this.state={data:[],
  })
  console.log("hhhhhhhhhhhh")
 }
+
+
 fetchItems =(id)=>{
   var that = this;
   console.log(id)
