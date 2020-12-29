@@ -3,7 +3,6 @@ import React from 'react';
 import { Control, Form, actions } from 'react-redux-form';
 import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios'
-// import { Link } from 'react-bootstrap-icons';
 import { Link,Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify'
 import NavbarBuyer from "./layout/NavbarBuyer.js";
@@ -130,7 +129,7 @@ render() {
             // shippingAddress
             style={{marign:"0 auto", width:"200px" ,textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}
             />
-          <button class="btn btn-success" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}>
+          <button className="btn btn-success" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}>
         Pay Cash
         </button>
       </Form> 

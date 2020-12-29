@@ -39,24 +39,24 @@ class Login extends React.Component {
         
 <div style ={{marginLeft : "700px"}}>
       <br></br><br></br>
-<Form class="row g-3 needs-validation"  model="login" type="submit" onSubmit={(login) => this.ajax(login)}
+<Form className="row g-3 needs-validation"  model="login" type="submit" onSubmit={(login) => this.ajax(login)}
              novalidate>
-  <div class="col-md-4">
-  <label for="validationCustom01" class="form-label">Email address</label>
+  <div className="col-md-4">
+  <label for="validationCustom01" className="form-label">Email address</label>
   <b></b><br></br>
             <Control.text className="form-control" type="email" placeholder="Enter email" model="login.email" id="login.email" required style ={{padding:"2px 2px 2px 2px"}}/>
-            <div class="valid-feedback">
+            <div className="valid-feedback">
       Looks good!
     </div>
     <b></b><br></br>
     <label for="validationCustom01" className="form-label">Password</label>
 <Control.text className="form-control" type="password" placeholder="Enter email" model="login.password" id="login.password" required style ={{padding:"7px 2px 2px 2px"}}/>
-<div class="valid-feedback">
+<div className="valid-feedback">
 Looks good!
 </div>
 <b></b><br></br>
-<div class="col-12" >
-            <button class="btn btn-primary" type="submit" >
+<div className="col-12" >
+            <button className="btn btn-primary" type="submit" >
              Log in
             </button></div>
         </div>  </Form></div>  </div>

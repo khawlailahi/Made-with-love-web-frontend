@@ -7,9 +7,6 @@ import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js"
 import addItem from "./component/addItem.js";
-// import Footer from "./component/Footer.js";
-
-// import Navbar from "./component/layout/Navbar.js";
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
 import EditProfile from "./component/editSellerProfile";
