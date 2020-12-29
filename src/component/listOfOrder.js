@@ -14,11 +14,12 @@ export default class listOfOrder extends Component {
     this.state={data:[]}
   }
   componentDidMount(){
-  
+    var id = JSON.parse(localStorage.getItem('token'))['id']
     var that = this;
     $.ajax({
         type: 'GET',
-         url:'http://127.0.0.1:8000/seller/order/list/1',
+        url:'http://127.0.0.1:8000/seller/order/list/'+id,
+        //  url:'http://127.0.0.1:8000/seller/order/list/1',
         // headers: {"Authorization": localStorage.getItem('token')},
        
         // headers: { 'x-my-custom-header': 'some value' },
