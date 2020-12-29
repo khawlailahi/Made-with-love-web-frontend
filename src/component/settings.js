@@ -474,7 +474,7 @@ const takevalueLoc=(e)=>{
       }
     }
     const ajaxImage=()=>{
-      const obj = {Image : url}
+      const obj = {image : url}
         $.ajax({
            method: 'POST',
             url:'http://127.0.0.1:8000/seller/image',
