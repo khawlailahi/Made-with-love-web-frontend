@@ -8,6 +8,9 @@ import { Link,Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify'
 import NavbarBuyer from "./layout/NavbarBuyer.js";
    var  time =new Date().toDateString() 
+   var price ;
+   var quan;
+   var total;
    toast.configure();
 class Order extends React.Component {
   constructor(props) {
@@ -18,9 +21,13 @@ class Order extends React.Component {
  }
 }
 ajax(order){
-  toast('Hiiiiiiiii')
+  console.log(this.props.location.info.price,"pay price")
+  price= this.props.location.info.price
+  var obj={order}
+  quan= obj.order.quantity
+  total = quan * price * 100
 console.log(order, 'ordeeeeer')
-var obj={order}
+
 obj["item_id"]=this.props.location.info.id
   obj["store_id"]=this.props.location.info.store
   obj['date']=time
@@ -46,7 +53,9 @@ this.setState({data:obj})
     }    
     async handleToken(token, addresses){
     //  var that = this;
+      price= 
       console.log({token,addresses}, 'handle toooookeeen')
+      token.total = total
       const response = await axios.post('http://127.0.0.1:8000/payments/checkout',{token,addresses})
       const {status} = response.data;
       if(status === 'success') {
@@ -75,7 +84,7 @@ render() {
 //   {this.state.data ?  x = <Redirect to={'/seller/profile'}/>
 //   :'not'}
 //   console.log(this.props,'proooooops')
-console.log(this.props.location.info.price, 'priiiiiiiice')
+// console.log(this.props.location.info.price, 'priiiiiiiice')
     return ( 
       <div>
       < NavbarBuyer/><br/><br/>
@@ -115,10 +124,10 @@ console.log(this.props.location.info.price, 'priiiiiiiice')
         <StripeCheckout
             stripeKey = 'pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq'
             token = {this.handleToken}
-            amount = {this.props.location.info.price}
+            amount = {total}
             name={this.props.location.info.productname}
-            billingAddress
-            shippingAddress
+            // billingAddress
+            // shippingAddress
             style={{marign:"0 auto", width:"200px" ,textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}
             />
           <button class="btn btn-success" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}>

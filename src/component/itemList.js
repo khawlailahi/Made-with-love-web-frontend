@@ -25,7 +25,7 @@ export default function ItemList(props) {
                 Order
                 </button> */}
                 <button>
-                  <Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>
+                  <Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store, price: item['fields'].price }}}>
                   Order
                   </Link>
                   </button> 
