@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import AutoComplete from './AutoComplete';
 import Marker from './Marker';
-
+import '../Style/map.css';
 const Wrapper = styled.main`
   width: 100%;
   height: 100%;

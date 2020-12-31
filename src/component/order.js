@@ -1,9 +1,8 @@
 import $ from 'jquery';
 import React from 'react';
-import { Control, Form, actions } from 'react-redux-form';
+import { Control, Form } from 'react-redux-form';
 import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios'
-import { Link,Redirect } from 'react-router-dom';
 import {toast} from 'react-toastify'
 import NavbarBuyer from "./layout/NavbarBuyer.js";
    var  time =new Date().toDateString() 
