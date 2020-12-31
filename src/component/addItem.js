@@ -1,5 +1,4 @@
 import $ from 'jquery';
-
 import React, { useState } from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
@@ -9,9 +8,6 @@ function ItemForm (props)  {
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
     var obj1={category:props.location.info.id, url:"" ,user:{}}  
-
- 
-
     const ajax=(user)=>{
       var tokenObj = JSON.parse(localStorage.getItem('token'))
       obj1= Object.assign({} ,user)
@@ -30,7 +26,6 @@ function ItemForm (props)  {
          window.location =`/seller/profile/${JSON.parse(localStorage.getItem('token'))['id']}`
         //  console.log(`${JSON.parse(localStorage.getItem('token')['id'])}`)
         // window.location = `/seller/profile/:id`
-
        },
        error: function(err){
          console.log(err)
@@ -43,7 +38,6 @@ const handleUpload=(e)=>{
       uploadTask.on(
         "state_changed",
         snapshot => {
-         
         },
         error => {
           console.log(error);
@@ -59,13 +53,10 @@ const handleUpload=(e)=>{
             });
         }
       );}
-    
 const uploadImage=(e)=>{
    if (e.target.files[0]) {
         setImage(e.target.files[0])
    }}
-
-
  const tr2=()=>{
    console.log(url)
   if(image !== ""){
@@ -75,8 +66,6 @@ return <div>
 </div>
   }
 }
-
-
 const food=() => {
   if (obj1.category === 'food'){
     return(
@@ -92,32 +81,24 @@ const food=() => {
       <option  value ="Salty">Salty</option>
       <option  value ="Sweet">Sweet</option>     
        </Control.select>
-
   </div><br></br>
-
     <div className="col-md-4">
       <label htmlFor="user.product"  className="form-label" >Name Of The Product:</label>
       <Control.text model="user.product" id="user.product" className="form-control" required/>
       </div>
-
       <div className="col-md-3">
        <label htmlFor="user.description" className="form-label">Description:</label>
       <Control.text model="user.description" id="user.description" className="form-control" required />
       </div>
-
       <div className="col-md-3">
       <label htmlFor="user.price" className="form-label">Price:</label>
       <Control.text model="user.price" id="user.price" className="form-control" required/>
       </div>
-
-
-
       <div className="mb-3">   
      <label htmlFor="user.image" className="form-label">Add Picture:</label>
     <Control.file model="user.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
     {tr2()}
  </div>
-  
       <div className="col-12">
     <button className="btn btn-primary" type="submit"  >Submit</button>
   </div>
@@ -125,7 +106,6 @@ const food=() => {
     )
   }
 }
-
 const clothes=()=>{
   if (obj1.category === 'clothes'){
     return(
@@ -254,8 +234,6 @@ const clothes=()=>{
             )
           }
         }
-
-
   return (
     <div>
      <div>{food()}</div>
@@ -264,5 +242,4 @@ const clothes=()=>{
      <div>{accessories()}</div></div> 
   )
   }
-
   export default  ItemForm;

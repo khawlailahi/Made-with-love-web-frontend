@@ -66,14 +66,14 @@ const ListItems = (props) => {
     <div>
    {/* <h1>{item['pk']}</h1> */}
   
-   <Row>
+   {/* <Row> */}
         {
            
          props.items.map((item,i )=>{
            return (
               <Col key={i}>
        
-           <Card style={{ width: "400px", marginTop: "50px", marginLeft:'50px' }}>
+           <Card style={{ width: "400px", marginTop: "50px", marginLeft:'90px', padding:'0px 20px 0px 20px' }}>
                    <Card.Img
                      variant="top"
                      src={item['fields']['image']}
@@ -81,8 +81,9 @@ const ListItems = (props) => {
                    />
                    <Card.Body>
                      <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>
-                     <Card.Text> <label style={{color:'red', fontWeight:'bold'}}>Product Name :</label>Product Description : {item['fields']['description']}</Card.Text>
-                     <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label>Product Price : {item['fields']['price']}</Card.Text>
+                     <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> {item['fields']['description']}</Card.Text>
+                     <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price :</label> {item['fields']['price']}</Card.Text>
+                     
                      <Link
                        to={{
                          pathname: "/seller/profile/1",
@@ -117,7 +118,7 @@ const ListItems = (props) => {
          )})
          
         }
-        </Row>
+        {/* </Row> */}
         
      
  </div> 

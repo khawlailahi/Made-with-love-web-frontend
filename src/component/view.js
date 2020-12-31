@@ -15,7 +15,7 @@ import "../Style/view.css";
  function View(){
      return (
          <div>
-        <Navbar/> 
+        <NavBar/> 
         
      <ReactPlayer  url ='https://www.youtube.com/watch?v=5yOwCsF7KU8'  width ="50%" height= "500px" style={{marginTop:"20px"}} /><br/>
      <div className='styleFont' style={{marginLeft:"55%", marginTop:'-400px'}}>
@@ -26,7 +26,7 @@ import "../Style/view.css";
      <div style={{marginTop:"120px"}}>
       
 
-      <ReactPlayer url='https://www.youtube.com/watch?v=JwVBbAXN0hg' width="100%" height="500px" /><br />
+      
             <Link to="/buyer/signup">
 
              <Button variant="primary" size="lg" active style={{width:'48%', backgroundColor:'#807978',borderRadius:'9px', marginLeft:'20px',borderColor:'black',borderStyle:'solid', borderWidth:'2px'}}>

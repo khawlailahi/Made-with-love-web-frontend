@@ -8,9 +8,12 @@ import NavbarSeller from './layout/NavbarSeller';
 import ListItems from "./listItems";
 const styles = {
   card: {
-    backgroundColor: '#B7E0F2',
+    backgroundColor: '#e6dcdc',
     borderRadius: 55,
-    padding: '3rem'
+    padding: '3rem',
+    
+    
+    
   },
   cardImage: {
     objectFit: 'cover',
@@ -119,7 +122,7 @@ console.log(this.state,"staaaaaaaate")
 if(this.state.data[0])
 var x =  <div> <Container fluid>
 <CardGroup className="m-5 d-block">
-  <Card className="m-5 border-0 shadow" style={styles.card}>
+  <Card className="m-5 border-0 shadow" style={styles.card} content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <Row>
       <Col>
         <Card.Img src={this.state.data[0]['fields'].image} style={styles.cardImage} />
@@ -134,29 +137,30 @@ var x =  <div> <Container fluid>
           {this.state.data[0]['fields'].location}
         </Card.Text>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
-          {this.state.data[0]['fields'].delivery_time}
+          {this.state.data[0]['fields'].deliverytime}
         </Card.Text>
+        <Link to={{
+  pathname: "/seller/addItem",
+   info: { id :this.state.data[0]['fields']['category']},
+  }}><Button style={{backgroundColor:'#800000'}} bg='#80000' >Add Item</Button></Link>
         </Card.Body>
       </Col>
     </Row>
   </Card>
 </CardGroup>
 </Container>
-<ListItems items={this.state.items}/></div>
- if(this.state.data[0])
- var a = <Link to={{
-  pathname: "/seller/addItem",
-   info: { id :this.state.data[0]['fields']['category']},
-  }}>
-     
-<Button>Add Item</Button>
-</Link>
 
+     
+
+<ListItems items={this.state.items}/></div>
+//   if(this.state.data[0])
+//  var a =
   return(
     <div>
       <NavbarSeller/>
+    
       {x}
-      {a}
+      
      
     </div> 
   )

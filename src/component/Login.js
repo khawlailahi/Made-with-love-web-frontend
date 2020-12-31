@@ -7,20 +7,18 @@ class Login extends React.Component {
     ajax(login){
         $.ajax({
             method: 'POST',
-            url:'https://backend-made-with-love.herokuapp.com/login',//fix it later
+            url:'http://127.0.0.1:8000/login',//fix it later
             data : JSON.stringify(login),
             contentType: "application/json",
             success:function(res){
               localStorage.setItem('token', JSON.stringify(res));
               console.log(JSON.parse(localStorage.getItem('token')))
               var tokenObj = JSON.parse(localStorage.getItem('token'))
-            
               if (tokenObj.type === 'buyer')
               window.location= '/home'
               //if the user if a seller 
               if (tokenObj.type === 'seller')
               window.location=`/seller/profile/${tokenObj.id}`
-              
             },
             error: function(err){
               // window.location.replace('/login')
@@ -36,7 +34,6 @@ class Login extends React.Component {
         return (
           <div>
             <Navbar/>
-        
 <div style ={{marginLeft : "700px"}}>
       <br></br><br></br>
 <Form class="row g-3 needs-validation"  model="login" type="submit" onSubmit={(login) => this.ajax(login)}

@@ -64,7 +64,7 @@ var mapStateToProps = (state) => {
         console.log("ajax", cat)
         $.ajax({
             type: 'GET',
-             url:`https://backend-made-with-love.herokuapp.com/buyer/${cat}`,
+             url:`http://127.0.0.1:8000/buyer/${cat}`,
             //  url:` http://127.0.0.1:8000/buyer/food`,
             // headers: {"Authorization": localStorage.getItem('token')},
             // headers: { 'x-my-custom-header': 'some value' },
