@@ -28,6 +28,13 @@ var loginState = {
     email: "",
     password: ""
 }
+var settingsBuyer ={
+    email:"",
+    password:"",
+    userName:"",
+    location:"",
+    phoneNumber:""
+   }
 
 var category = {
     name: ""
@@ -214,7 +221,19 @@ var orderForm = {
     location: "",
     phoneNumber: "",
 }
-
+var editProfile ={
+    product: "" ,
+    description:"",
+    price:"",
+    type:"",
+    size:"",
+    gender:"",
+    material:""
+}
+var password ={
+    newPassword:"",
+    oldPassword :"",
+}
 
 var reducerAddItem = (state = initialState, action) => {
     switch (action.type) {
@@ -273,7 +292,9 @@ const store = createStore(combineReducers({
     ...createForms({
         user: initialState,
         login:loginState,
-        order:orderForm
+        order:orderForm,
+        edit : editProfile,
+        password:password
 
      } )
 })

@@ -7,7 +7,7 @@ class Login extends React.Component {
     ajax(login){
         $.ajax({
             method: 'POST',
-            url:'https://backend-made-with-love.herokuapp.com/login',//fix it later
+            url:'http://127.0.0.1:8000/login',//fix it later
             data : JSON.stringify(login),
             contentType: "application/json",
             success:function(res){
@@ -19,7 +19,7 @@ class Login extends React.Component {
               window.location= '/home'
               //if the user if a seller 
               if (tokenObj.type === 'seller')
-              window.location=`/seller/profile/${tokenObj.id}`
+              window.location=`/seller/profile/${tokenObj['id']}`
               
             },
             error: function(err){
