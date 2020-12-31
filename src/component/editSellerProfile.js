@@ -15,8 +15,8 @@ function EditProfile (props)  {
     var obj={category:"food"}
 var obj1;
  
-
-
+​
+​
     const ajax=(edit)=>{
       obj1= Object.assign({} ,edit)
     console.log(url)
@@ -64,8 +64,8 @@ const uploadImage=(e)=>{
    if (e.target.files[0]) {
         setImage(e.target.files[0])
    }}
-
-
+​
+​
  const tr2=()=>{
   if(image !== ""){
 return <div>
@@ -74,8 +74,8 @@ return <div>
 </div>
   }
 }
-
-
+​
+​
 const food=() => {
   if (category === 100){
     return(
@@ -91,26 +91,26 @@ const food=() => {
       <option  value ="Salty">Salty</option>
       <option  value ="Sweet">Sweet</option>     
        </Control.select>
-
+​
   </div><br></br>
-
+​
     <div className="col-md-4">
       <label htmlFor="edit.product" className="form-label" >Name Of The Product:</label>
       <Control.text model="edit.product" defaultValue={product} id="edit.product" className="form-control" required/>
       </div>
-
+​
       <div className="col-md-3">
        <label htmlFor="edit.description" className="form-label">Description:</label>
       <Control.text model="edit.description"  defaultValue={desc} id="edit.description" className="form-control" required />
       </div>
-
+​
       <div className="col-md-3">
       <label htmlFor="edit.price" className="form-label">Price:</label>
       <Control.text model="edit.price" defaultValue={price} id="edit.price" className="form-control" required/>
       </div>
-
-
-
+​
+​
+​
       <div className="mb-3">   
      <label htmlFor="edit.image" className="form-label">Add Picture:</label>
     <input type="file" model="edit.image" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
@@ -124,7 +124,7 @@ const food=() => {
     )
   }
 }
-
+​
 const clothes=()=>{
   // console.log(obj1,'obbbbjjj1')
 if (category === 200) 
@@ -254,8 +254,8 @@ if (category === 200)
             )
           }
         }
-
-
+​
+​
   return (
     
     <div>
@@ -266,5 +266,23 @@ if (category === 200)
   </div> 
   )
   }
-
+​
   export default  EditProfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

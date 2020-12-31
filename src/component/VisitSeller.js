@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import $ from "jquery";
-import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
-import VisitItems from "./VisitItems";
+import { Container, CardGroup, Card, Row, Col } from 'react-bootstrap';
+import VisitItems from "./VisitItem";
+import NavbarSeller from './layout/NavbarSeller'
 
 const styles = {
   card: {
@@ -28,15 +29,14 @@ this.state={data:[],
   console.log(1111111111111111)
   
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/${this.props.location.id}`),
+   url:(`http://127.0.0.1:8000/seller/visit/1`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
      var data1 = JSON.parse(data)
-    // var data1 = data
+    
      that.setState({data:data1},()=>{console.log("22222222222222",that.state)})
-     // that.setState(data
-     // console.log(that.state,'staaate')
+    
    },
    error : function(error){
      console.log(error, 'error in fetch the data')
@@ -50,7 +50,11 @@ fetchItems =(id)=>{
   console.log(id)
   console.log(1111111111111111)
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/items/${this.props.location.id}`),
+<<<<<<< HEAD
+   url:(`https://backend-made-with-love.herokuapp.com/seller/visit/items/${this.props.location.id}`),
+=======
+   url:(`http://127.0.0.1:8000/seller/visit/items/1`),
+>>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -114,6 +118,7 @@ var x =  <div> <Container fluid>
 <VisitItems items={this.state.items}/></div>
   return(
     <div>
+      <NavbarSeller/>
       {x}
       
     </div> 

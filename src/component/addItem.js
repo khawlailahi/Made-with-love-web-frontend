@@ -1,21 +1,25 @@
 import $ from 'jquery';
+
 import React, { useState } from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
 import NavbarSeller from './layout/NavbarSeller';
-function ItemForm(props)  {
 
+
+function ItemForm (props)  {
   console.log("caaaat",props.location.info)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
     var obj1={category:props.location.info.id, url:"" ,user:{}}  
     const ajax=(user)=>{
       var tokenObj = JSON.parse(localStorage.getItem('token')['id'])
+      var tokenObj = JSON.parse(localStorage.getItem('token'))
       obj1= Object.assign({} ,user)
     console.log(url)
     obj1['url'] = url
     obj1.category=props.location.info.id
     obj1.user = tokenObj
+    obj1.user = tokenObj['id']
     console.log(obj1)
      $.ajax({
        method: 'POST',
@@ -27,6 +31,7 @@ function ItemForm(props)  {
          window.location =`/seller/profile/${JSON.parse(localStorage.getItem('token'))['id']}`
         //  console.log(`${JSON.parse(localStorage.getItem('token')['id'])}`)
         // window.location = `/seller/profile/:id`
+
        },
        error: function(err){
          console.log(err)
@@ -243,9 +248,4 @@ const clothes=()=>{
      <div>{accessories()}</div></div> 
   )
   }
-  export default  ItemForm;
-
-
-
-
-
+  export default  ItemForm

@@ -1,77 +1,165 @@
-import React, { Component } from 'react'
-import $ from 'jquery';
-// import ItemList from "./itemList.js"
-// import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
-// import ToggleButton from 'react-bootstrap/ToggleButton'
-// import {useDispatch} from 'react-redux'
-// import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
-import NavbarSeller from "./layout/NavbarSeller.js";
-export default class CategorySeller extends Component {
-        constructor(){
-            super();
-            this.state={
-                data:[]
-            }
-        }
-      clicked(id){
-            console.log(id)
-           }
-    componentDidMount(){
-        // var cat = this.props.cat
-        var that = this;
-        $.ajax({
-            type: 'GET',
-            //  url:`http://127.0.0.1:8000/seller/${cat}`,
-             url:`http://127.0.0.1:8000/seller/food`,
-            // headers: {"Authorization": localStorage.getItem('token')},
-           
-            // headers: { 'x-my-custom-header': 'some value' },
-            success: function(data) {
-             console.log("data fom get request",data);
-            //  var action ={type:'getdata', text:data}
-            //  that.props.store.dispatch(that.disp(action))
-            //  console.log("dataaaa",that.props.store.getState().categoryReducer.data)
-             that.setState({
-                 data:data
-             },()=>{console.log(that.state.data,"statee")})
-             
-            },
-            error: function(err) {
-              console.log('error:' ,err)
-            }
-        })
-    }
-    render() {
-        return (
-
-            <div>
-                <NavbarSeller/><br/><br/>
-                <div className="row" style={{margin:"0 auto"}}>
-          {this.state.data.map((item,i) =>{
-         return  (
-      
-          <div className="col-sm-6" key= {item['pk']} >
-      
-        <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
-        <img src ={item['fields'].image} alt="car" style={{width:'100%', height:"500px", margin:" 0 auto"}}/>
-          <div className="card-body">
-          <h2  className="card-title">Store Name : {item['fields'].store_name}</h2>
-            <h3 className="card-text">Description: {item['fields'].description} </h3>
-
-            <h5 className="card-text">Location : {item['fields'].location}</h5>
-            
-                 <button onClick={()=>{this.clicked(item['pk'],item.name ,item.url)}}>
-            <Link to={{pathname: `/seller/visit/${item['pk']}`, id: item['pk']}}>
-           Visit
-                </Link></button>
-        </div>
-        </div><br/><br/>
-        </div> )
-         } )}
-        
-      </div>
-            </div>
-        )
-    }
+import React from 'react';
+import { connect } from 'react-redux';
+import { Form } from 'react-bootstrap';
+// import { Link} from 'react-router-dom';
+import $ from "jquery";
+import NavbarSeller from './layout/NavbarSeller'
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+var mapStateToProps = (state) => {
+  return {
+    email: state.reducer.email,
+    password: state.reducer.password,
+    storeName: state.reducer.storeName,
+    category: state.reducer.category,
+    description: state.reducer.description,
+    location: state.reducer.location,
+    deliveryOrder: state.reducer.deliveryOrder,
+    image: state.reducer.image
+  }
 }
+
+var action = { type: 'INPUT_CANGE', text: '' }
+
+var mapDispatchToProps = (dispatch) => {
+  return {
+
+    inputChanged: (event) => {
+      action = { type: 'INPUT_CANGE', text: event.target.value, name: event.target.name }
+      dispatch(action);
+
+    }
+  }
+}
+
+
+function SignUpSeller(props) {
+
+
+  var clickButton = () => {
+    // console.log( props.email)
+    var obj = {};
+    obj.email = props.email;
+    obj.email = props.email;
+    obj.password = props.password;
+    obj.storeName = props.storeName;
+    obj.category = props.category;
+    obj.description = props.description;
+    obj.location = props.location;
+    obj.deliveryOrder = props.deliveryOrder;
+    obj.image = props.image;
+    console.log(obj)
+    $.ajax({
+      url: "/seller/signup",
+      method: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+
+      success: function (data) {
+        //redirect to login page
+        console.log("POST sent successfully!");
+        // <Route  path ='/login' exact  component ={Login}></Route>
+
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  return (
+    <div>
+      <NavbarSeller />
+      <div style={{ maxWidth: "500px", margin: 'auto', padding: '0px 10px 10px 10px' }}>
+        <div className="card w-100">
+          {/* <div className="card-body"> */}
+          <div className="container">
+
+            <Form className="needs-validation" action="">
+              <Form.Group >
+                <Form.Label>Email address</Form.Label>
+                <Form.Control placeholder="Enter email" name="email" id="email" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+              <Form.Group >
+                <Form.Label>Password</Form.Label>
+                <Form.Control placeholder="Enter Password" name="password" id="password" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+
+              <Form.Group>
+                <div className='valid-feedback'>Valid</div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+                <Form.Label>Store Name</Form.Label>
+                <Form.Control placeholder="Enter Store Name" name="storeName" id="storeName" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+              <Form.Group >
+                <Form.Label>Description</Form.Label>
+                <Form.Control placeholder="Enter Description" name="description" id="Description" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+              <Form.Group >
+                <Form.Label>Location</Form.Label>
+                <Form.Control placeholder="Enter Location" name="Location" id="Location" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+              <Form.Group onChange={props.inputChanged} required>
+                <Form.Label>Choose Category</Form.Label>
+                <Form.Control as="select" custom name="category" style={{ padding: "2px 2px 2px 2px" }} required>
+                  <option></option>
+                  <option value="Foods">Food</option>
+                  <option value="clothes">clothes</option>
+                  <option value="Baby Show Product">Baby Products</option>
+                  <option value="Accessories">Accessories</option>
+                </Form.Control>
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+              <Form.Group name="deliveryOrder" onChange={props.inputChanged} required>
+                <Form.Label>Deliver Order WithIn</Form.Label>
+                <Form.Control as="select" custom name="deliveryOrder" style={{ padding: "2px 2px 2px 2px" }} required>
+
+                  <option></option>
+                  <option value="12 Hours">12 Hours</option>
+                  <option value="24 Hours">24 Hours</option>
+                  <option value="Day"> In Day</option>
+
+                </Form.Control>
+                <div className='valid-feedback'></div>
+                <div className="invalid-feedback">Please Fill Out This Field</div>
+              </Form.Group>
+
+
+
+              <button type="submit" className="btn btn-danger" onClick={clickButton} style={{ margin: '0px 180px', width: 100 }}>Sign Up</button>
+              <br /><br />
+              <Link to='/login'><a style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Sign In</a></Link>
+            </Form>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpSeller);

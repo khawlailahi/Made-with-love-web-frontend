@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import  { Redirect } from 'react-router-dom'
 export default function ItemList(props) {
+
+  console.log(props,'iteeeem props')
     
-    function clicked(id){
-        console.log(id)
-       }
+    
       
         return (
           <div className="row" style={{margin:"0 auto"}}>
@@ -22,11 +21,14 @@ export default function ItemList(props) {
             <h5 className="card-text">Description: {item['fields'].description} </h5>
 
             <p className="card-text">Store: {item['fields'].store}</p>
-            {/* <button onClick={()=>{clicked(item['pk'])}}> <Link to={{pathname: "/order", info: item.pk}}>
+            {/* <button onClick={()=>{clicked(item['pk'])}}> 
                 Order
-                </Link></button> */}
-                <button><Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>Order</Link></button>
-                {/* <Link to={{pathname: '/order', info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}></Link> */}
+                </button> */}
+                <button>
+                  <Link to={{pathname:"/order", info: {id:item['pk'], name:item['fields'].productname, url:item['fields'].image, store:item['fields'].store }}}>
+                  Order
+                  </Link>
+                  </button> 
         </div>
         </div><br/><br/>
         </div> )
