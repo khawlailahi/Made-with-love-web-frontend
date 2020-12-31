@@ -124,7 +124,9 @@ class MyGoogleMap extends Component {
 
 
         return (
-            <Wrapper>
+            
+            <Wrapper className="main-wrapper">
+             
                 {mapApiLoaded && (
                     <div>
                         <AutoComplete map={mapInstance} mapApi={mapApi} addplace={this.addPlace} />
