@@ -1,182 +1,253 @@
-import React,{useState} from 'react'
 import $ from 'jquery';
-import { Form, Button, FormControl, ControlLabel,Col } from "react-bootstrap";
-import {Link} from "react-router-dom";
-import { Control} from 'react-redux-form';
-
-
-
-export default class EditSellerProfile {
-
-  constructor(props){
-    
-    this.state= {
-        item_id :'',
-        store_id: '',
-        category_id: '',
-        productName  :'',
-        description     :'',
-        price     :''
-}
-
+import React, { useState ,useEffect} from "react";
+import { Control, Form } from 'react-redux-form';
+import { storage } from '../firebase';
+import NavbarSeller from "./layout/NavbarSeller.js";
+function EditProfile (props)  {
+  console.log("caaaat",props)
+  const category = props.location.info.category
+  const product =  props.location.info.product
+  const desc = props.location.info.desc
+  console.log(desc)
+  const price = props.location.info.price
+  console.log(category)
+  const [url, setUrl] = useState("");
+   const [image, setImage] = useState("");
+    var obj={category:"food"}
+var obj1;
+    const ajax=(edit)=>{
+      obj1= Object.assign({} ,edit)
+    console.log(url)
+    obj1['url'] = url
+    obj1.id=props.location.info.id
+    obj1['category'] = category
+    console.log(obj1)
+     $.ajax({
+       method: 'POST',
+       url:'http://127.0.0.1:8000/seller/editProfile/'+`${obj1.id}`,
+       data : JSON.stringify(obj1),
+       contentType: "application/json",
+       success:function(){
+         console.log(obj1)
+         var tokenObj = JSON.parse(localStorage.getItem('token'))['id']
+         window.location='/seller/profile/'+ tokenObj
+       },
+       error: function(err){
+         console.log(obj1)
+       }
+     })
+     
+   }
+const handleUpload=(e)=>{
+    const uploadTask = storage.ref(`imagee/${image.name}`).put(image);
+      uploadTask.on(
+        "state_changed",
+        snapshot => {
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref("imagee")
+            .child(image.name)
+            .getDownloadURL()
+            .then(url => {
+              setUrl(url);
+             console.log(url)
+            });
+        }
+      );}
+const uploadImage=(e)=>{
+   if (e.target.files[0]) {
+        setImage(e.target.files[0])
+   }}
+ const tr2=()=>{
+  if(image !== ""){
+return <div>
+<img src={url}/>
+<input type="button" value="upload" onClick={handleUpload}></input>
+</div>
   }
-   
-
-
-
-
-render() {
-
-return (
-
-  <div></div>
-)
-
-
 }
-
-
-};
-
-// export default function EditSellerProfile(props)  {
-
-
-// function handleSubmit(product) {
-//   console.log('jjj', product)
-
-// }
-// function ajax(product) {
-
-// $.ajax({
-// method: 'POST',
-// url:'http://localhost:3000/edit/profile',//fix it later
-// data : JSON.stringify(product),
-// contentType: "application/json",
-
-// success:function(){
-//   console.log('success')
-// },
-// error: function(err){
-//   console.log('error:' ,err)
-// }
-// })
-
-// }
-
-//  console.log(props,'proooooooops')
-// return (
-//   <div>
-//   <Form.Group model="product"
-//   onSubmit={(product) => ajax(product)}>
-
-//      <Form.Row style={{marginTop:'20px'}}>
-  
-
-//      <Form.Label column="lg" lg={2} htmlFor="product.product_Name">Name Of Product: </Form.Label>
-//   <Col>
-//   {/* <Control.text model="product.product_Name" id="product.product_Name" value= {props.location.info.title} /> */}
-//   </Col>
-//   </Form.Row>
-//   <br/>
-
-//   <Form.Row>
-//   <Form.Label column="lg" lg={2} htmlFor="product.product_description">Description:</Form.Label>
-//    <Col>
-//   <Control.text model="product.product_description" id="product.product_description" />
-//   </Col>
-//   </Form.Row>
-//   <br/>
-//   <Form.Row>
-//   <Form.Label column="lg" lg={2} htmlFor="product.price">Price:</Form.Label>
-//   <Col>
-//   <Control.text model="product.price" id="product.price" />
-//   </Col>
-//  </Form.Row>
-//  <br/>
-//   {/* <label htmlFor="pro.image">Add Picture:</label>
-//   <Control.text model="user.image" id="user.image" /> */}
- 
- 
-//   <button type="submit" style={{marginLeft:'50px', width:'70px'}}>
-//     Edit
-//   </button>
-//    <Link to='/seller/profile'>
-//   <button style={{marginLeft:'50px', width:'70px'}}>
-//     Cancle
-//   </button>
-//   </Link>
-  
-//  </Form.Group>
-//  </div>
-// );
-// }
-
-
-// export default function EditSellerProfile(props) {
-//   const [product_Name, setitemName] = useState('');
-//   const [product_description, setitemDescription] = useState('');
-//   const [product_price, setitemPrice] = useState('');
-//   // const [email, setEmail] = useState('');
-
-// const submitValue = (e) => {
-//   // const frmdetails = {
-//   //     'Item Name' :product_Name,
-//   //     'Item Description' : product_description,
-//   //     'Item Price' : product_price,
-//   //     // 'Email' : email
-//   // }
-//   // console.log(frmdetails);
-
-//   e.preventDefault();
-//   fetch('/edit/item', { 
-//       method: 'POST',
-//       data: {
-//         product_Name: product_Name,
-//         product_description: product_description,
-//         product_price: product_price
-//       }
-//     })
-    
-//     .then(function(response) {
-//       return response.json()
-//     }).then(function(body) {
-//       console.log(body);
-//     });
-// }
-
-//     console.log(props.location.info.title)
-//     return (
-//         <div>
-//             <Form.Group>
-//   <Form.Row>
-//     <Form.Label column="lg" lg={2}>
-//       Item Name
-//     </Form.Label>
-//     <Col>
-//       <Form.Control size="lg" type="text"  value= {props.location.info.title} onChange={e => setitemName(e.target.value)}/>
-//     </Col>
-//   </Form.Row>
-//   <br />
-//   <Form.Row>
-//     <Form.Label column="lg" lg={2}>
-//      Item Description 
-//     </Form.Label>
-//     <Col>
-//       <Form.Control  size="lg" type="text" placeholder="Item Description" onChange={e => setitemDescription(e.target.value)} />
-//     </Col>
-//   </Form.Row>
-//   <br />
-//   <Form.Row>
-//     <Form.Label column="lg" lg={2}>
-//      Item Price
-//     </Form.Label>
-//     <Col>
-//       <Form.Control size="lg" type="text" placeholder="Item Price" onChange={e => setitemPrice(e.target.value)} />
-//     </Col>
-//     <button onClick={submitValue}>Submit</button>
-//   </Form.Row>
-// </Form.Group>
-            
-//         </div>
-//     )
-// }
+const food=() => {
+  if (category === 100){
+    return(
+    <div>
+      <NavbarSeller/><br/><br/>
+      <Form
+      model="edit"
+     onSubmit={(edit) => ajax(edit)}
+    >
+    <div class="col-md-3">
+    <label  className="form-label">Category:</label><br></br>
+    <Control.select model="edit.type" className="form-select"  required>
+      <option selected disabled value="" >Choose The Type</option>
+      <option  value ="Salty">Salty</option>
+      <option  value ="Sweet">Sweet</option>
+       </Control.select>
+  </div><br></br>
+    <div className="col-md-4">
+      <label htmlFor="edit.product" className="form-label" >Name Of The Product:</label>
+      <Control.text model="edit.product"  placeHolder={product}  id="edit.product" className="form-control" required/>
+      </div>
+      <div className="col-md-3">
+       <label htmlFor="edit.description" className="form-label">Description:</label>
+      <Control.text model="edit.description" placeHolder={desc} id="edit.description" className="form-control" required />
+      </div>
+      <div className="col-md-3">
+      <label htmlFor="edit.price" className="form-label">Price:</label>
+      <Control.text model="edit.price" placeHolder={price} id="edit.price" className="form-control" required/>
+      </div>
+      <div className="mb-3">
+     <label htmlFor="edit.image" className="form-label">Add Picture:</label>
+    <input type="file" model="edit.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    {tr2()}
+ </div>
+      <div className="col-12">
+    <button className="btn btn-primary" type="submit"   >Submit</button>
+  </div>
+    </Form></div>
+    )
+  }
+}
+const clothes=()=>{
+  // console.log(obj1,'obbbbjjj1')
+if (category === 200)
+ return(
+    <div>
+      <NavbarSeller/><br/><br/>
+      <Form model="edit"
+      onSubmit={(edit) => ajax(edit)}
+    >
+  <div class="col-md-3">
+    <label  className="form-label">Gender:</label><br></br>
+    <Control.select model="edit.gender" className="form-select"  required>
+      <option selected disabled value="" >Choose the gender</option>
+      <option  value ="Male">Male</option>
+      <option  value ="Female">Female</option>
+       </Control.select>
+  </div><br></br>
+   <div class="col-md-3">
+    <label  className="form-label">Size:</label><br></br>
+    <Control.select model="edit.size" className="form-select"  required>
+      <option selected disabled value="" >Choose the size</option>
+      <option  value ="S">S</option>
+      <option  value ="M">M</option>
+      <option  value ="L">L</option>
+       </Control.select>
+  </div><br></br>
+    <div className="col-md-4">
+      <label htmlFor="edit.product"  className="form-label" >Name Of Product:</label>
+      <Control.text model="edit.product"  id="edit.product" className="form-control" required/>
+      </div>
+        <div className="col-md-3">
+       <label htmlFor="edit.description" className="form-label">Description:</label>
+      <Control.text model="edit.description" id="edit.description" className="form-control" required />
+      </div>
+       <div className="col-md-3">
+      <label htmlFor="edit.price" className="form-label">Price:</label>
+      <Control.text model="edit.price" id="edit.price" className="form-control" required/>
+      </div>
+        <div className="mb-3">
+     <label htmlFor="edit.image" className="form-label">Add Picture:</label>
+    <input type ="file" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    {tr2()}
+ </div>
+     <div className="col-12">
+    <button className="btn btn-primary" type="submit">Submit</button>
+  </div>
+    </Form></div>
+    )}
+    const babyproducts=() => {
+        if (category === 400){
+         return(
+        <div>
+          <NavbarSeller/><br/><br/>
+                <Form
+                model="edit"
+                onSubmit={(edit) => ajax(edit)}
+              >
+           <div class="col-md-3">
+          <label  className="form-label">Gender:</label><br></br>
+          <Control.select model="edit.gender" className="form-select"  required>
+            <option selected disabled value="" >Choose the gender</option>
+            <option  value ="Male">Boy</option>
+            <option  value ="Female">Girl</option>
+             </Control.select>
+        </div><br></br>
+        <div className="col-md-4">
+      <label htmlFor="edit.product"  className="form-label" >Name Of Product:</label>
+      <Control.text model="edit.product" id="edit.product" className="form-control" required/>
+      </div>
+      <div className="col-md-3">
+       <label htmlFor="edit.description" className="form-label">Description:</label>
+      <Control.text model="edit.description" id="edit.description" className="form-control" required />
+      </div>
+      <div className="col-md-3">
+      <label htmlFor="edit.price" className="form-label">Price:</label>
+      <Control.text model="edit.price" id="edit.price" className="form-control" required/>
+      </div>
+      <div className="mb-3">
+     <label htmlFor="edit.image" className="form-label">Add Picture:</label>
+    <input type="file"  model="edit.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    {tr2()}
+ </div>
+      <div className="col-12">
+    <button className="btn btn-primary" type="submit"  >Submit</button>
+  </div>
+    </Form></div>
+             )
+           }
+         }
+  const accessories=() => {
+    if (category === 300){
+     return(
+       <div>
+         <NavbarSeller/><br/><br/>
+       <Form
+        model="edit"
+      onSubmit={(edit) => ajax(edit)}
+             >
+          <div class="col-md-3">
+         <label  className="form-label">Material:</label><br></br>
+         <Control.select model="edit.material" className="form-select"  required>
+           <option selected disabled value="" >Choose the material</option>
+           <option  value ="Silver">Silver</option>
+           <option  value ="Gold">Gold</option>
+            </Control.select>
+       </div><br></br>
+       <div className="col-md-4">
+     <label htmlFor="edit.product"  className="form-label" >Name Of Product:</label>
+     <Control.text model="edit.product" id="edit.product" className="form-control" required/>
+     </div>
+     <div className="col-md-3">
+      <label htmlFor="edit.description" className="form-label">Description:</label>
+     <Control.text model="edit.description" id="edit.description" className="form-control" required />
+     </div>
+     <div className="col-md-3">
+     <label htmlFor="edit.price" className="form-label">Price:</label>
+     <Control.text model="edit.price" id="edit.price" className="form-control" required/>
+     </div>
+     <div className="mb-3">
+    <label htmlFor="edit.image" className="form-label">Add Picture:</label>
+   <input type="file" model="edit.image" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+   {tr2()}
+ </div>
+     <div className="col-12">
+   <button className="btn btn-primary" type="submit"  >Submit</button>
+ </div>
+   </Form></div>
+            )
+          }
+        }
+  return (
+    <div>
+     <div>{food()}</div>
+     <div>{clothes()}</div>
+     <div>{babyproducts()}</div>
+      <div>{accessories()}</div>
+  </div>
+  )
+  }
+  export default  EditProfile

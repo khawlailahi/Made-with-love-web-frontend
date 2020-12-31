@@ -58,8 +58,9 @@ function SignUpBuyer(props) {
 
       success: function (data) {
         console.log("POST sent successfully!");
+        window.location = `/login`;
 
-        window.location = "/login";
+        // window.location = "/login";
       },
       error: function (err) {
         console.log(err);

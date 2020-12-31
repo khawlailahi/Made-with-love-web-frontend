@@ -8,10 +8,11 @@ import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js";
 import addItem from "./component/addItem.js";
 // import Footer from "./component/Footer.js";
+
 // import Navbar from "./component/layout/Navbar.js";
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
-import EditSellerProfile from "./component/editeSellerProfile";
+import EditProfile from "./component/editSellerProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./component/Store.js";
 import CatBuyer from "./component/categoryBuyer.js";
@@ -22,6 +23,7 @@ import VisitSeller from "./component/VisitSeller";
 import CategorySeller from "./component/categorySeller";
 import ProtectedRoute from "./component/protectedRoute";
 import Notfound from "./component/404page";
+import settingsProfile from "./component/settings";
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -46,14 +48,15 @@ function App(props) {
             <Route
               path="/seller/editProfile/:id"
               exact
-              component={EditSellerProfile}
+              component={EditProfile}
             ></Route>
             <ProtectedRoute path="/home" component={home} />
-            <ProtectedRoute
+            <Route
               path="/seller/visit/:id"
               exact
               component={VisitSeller}
-            ></ProtectedRoute>
+            ></Route>
+            <Route path="/settings" exact component={settingsProfile}></Route>
             <Route path="/about" exact component={About}></Route>
             <Route path="/seller/addItem" exact component={ItemForm}></Route>
             <Route path="/login" exact component={Login}></Route>
@@ -71,7 +74,6 @@ function App(props) {
               exact
               component={() => <SignUpBuyer store={store} />}
             ></Route>
-
             <Route
               path="/buyer/category"
               exact
