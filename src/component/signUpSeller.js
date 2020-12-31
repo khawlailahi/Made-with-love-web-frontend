@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form,Button  } from 'react-bootstrap';
 import store from './Store';
 import ReactDOM from "react-dom";
+import { storage } from '../firebase';
 import { useState ,useEffect} from "react";
 
 // import { Link} from 'react-router-dom';
@@ -216,7 +217,6 @@ function SignUpSeller(props){
   <button type="button" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
 
   
-  <button type="submit" class="btn btn-danger" onClick ={clickButton} style = {{margin:'0px 180px', width:100}}>Sign Up</button>
   <Link to='/login'><p style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Sign In</p></Link>
 </Form>
 

@@ -19,6 +19,7 @@ import Order from "./component/order.js";
 import View from "./component/view.js";
 import SellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
+import settingsProfile from "./component/settingBuyer.js"
 import CategorySeller from "./component/categorySeller";
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -50,6 +51,10 @@ function App(props) {
             ></Route>
             <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
+       <Route path='/seller/editprofile/:id' exact
+              component={editSellerProfile}
+            ></Route>
+       <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>
        <Route  path ='/login' exact  component ={Login}></Route>
        <Route  path ='/order' exact  component ={Order}></Route>
@@ -65,12 +70,14 @@ function App(props) {
        <Route  path ='/buyer/clothes'  exact   component={() => <CatBuyer store={store} cat="clothes" />}></Route>
        <Route  path ='/buyer/babyproducts'  exact   component={() => <CatBuyer store={store} cat = "babyproducts"/>}></Route>
        <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route>
+
        <Route  path ='/order' exact   component={() => <Order/>}></Route>
 
        {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
        <Route  path ='/seller/food'  exact   component={() => <CategorySeller store={store} cat="food" />}></Route>
        <Route  path ='/seller/clothes'  exact   component={() => <CategorySeller store={store} cat="clothes" />}></Route>
        <Route  path ='/seller/babyproducts'  exact   component={() => <CategorySeller store={store} cat = "babyproducts"/>}></Route>
+
        <Route  path ='/seller/accessories'  exact   component={() => <CategorySeller store={store} cat = "accessories"/>}></Route>
      </Switch>
    {/* <Footer/> */}

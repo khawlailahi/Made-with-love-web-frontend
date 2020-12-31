@@ -112,7 +112,7 @@ function SignUpBuyer (props){
    <div className ="invalid-feedback">Please Fill Out This Field</div>
   </Form.Group>  
 
-  <button type="submit" className="btn btn-danger"  onClick ={clickButton} style = {{margin:'0px 150px 0px 150px', width:"100px"}}>Sign Up</button>
+  <button  className="btn btn-danger"  onClick ={clickButton} style = {{margin:'0px 150px 0px 150px', width:"100px"}}>Sign Up</button>
 <br/><br/>
   <div>
   <Link to ='/login'><a style={{margin:'0px 90px 0px 90px'}} >Already have an acount ? Sign In</a></Link> 

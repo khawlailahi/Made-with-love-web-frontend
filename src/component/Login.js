@@ -39,7 +39,7 @@ class Login extends React.Component {
     <b></b><br></br>
     <label for="validationCustom01" className="form-label">Password</label>
 
-<Control.text className="form-control" type="password" placeholder="Enter email" model="login.password" id="login.password" required style ={{padding:"7px 2px 2px 2px"}}/>
+<Control.text className="form-control" type="password" placeholder="Enter password"   model="login.password" id="login.password" required style ={{padding:"7px 2px 2px 2px"}}/>
 <div className="valid-feedback">
 Looks good!
 </div>

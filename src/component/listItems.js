@@ -60,7 +60,7 @@ const ListItems = (props) => {
                      <Link
                        to={{
                          pathname: "/seller/editProfile/"+item['pk'] ,
-                        //  info: { id: item['pk'] },
+                         info: { id: item['pk'], category:item['fields']['category'] ,product:item['fields']['productname'],desc:item['fields']['description'],price:item['fields']['price']},
                        }}
                      >
                        <Button

@@ -52,6 +52,7 @@ this.state={data:[],
  $.ajax({
    url:`http://127.0.0.1:8000/seller/profile/${this.props.match.params.id}`,
    type:'GET',
+   headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},
    success:function(data){
      console.log(data, 'Fetch the data')
      var data1 = JSON.parse(data)
@@ -73,6 +74,8 @@ fetchItems =(id)=>{
  $.ajax({
    url:('http://127.0.0.1:8000/seller/profile/items/1'),
    type:'GET',
+   headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},
+
    success:function(data){
      console.log(data, 'Fetch the data')
      var data1 = JSON.parse(data)

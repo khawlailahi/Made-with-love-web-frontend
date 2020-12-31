@@ -23,6 +23,13 @@ var signUpSeller = {
        location:"",
        phoneNumber:""
    } 
+   var settingsBuyer ={
+    email:"",
+    password:"",
+    userName:"",
+    location:"",
+    phoneNumber:""
+   }
    
   var loginState={
     email:"",
@@ -135,6 +142,22 @@ var reducerBuyer = (state =signUpBuyer, action) =>{
     }
 }
 
+var reducerSettings = (state =settingsBuyer, action) =>{
+    switch (action.type) {
+        case 'SETTINGS':
+            var obj = {}
+            obj[action.name]= action.text
+            // console.log("objj",obj)
+            return Object.assign({}, state, obj) 
+          
+    
+        default:
+           return state;
+    }
+}
+
+
+
 
 var reducer = (state = signUpSeller, action) =>{
     // console.log('reducer', state);
@@ -212,7 +235,20 @@ var orderForm={
     location:"",
     phoneNumber:"",
 }
+var editProfile ={
+    product: "" ,
+    description:"",
+    price:"",
+    type:"",
+    size:"",
+    gender:"",
+    material:""
+}
+var password ={
+    newPassword:"",
+    oldPassword :"",
 
+}
 
 var reducerAddItem =(state = initialState ,action) =>{
     switch(action.type){
@@ -260,12 +296,17 @@ const store = createStore(combineReducers({
     orderFormReducer:orderFormReducer,
     categoryReducer:categoryReducer,
     filterReducer:filterReducer,
-    filteringReducer:filteringReducer
+    filteringReducer:filteringReducer,
+    reducerSettings:reducerSettings
  ,
     ...createForms({
         user: initialState,
         login:loginState,
-        order:orderForm
+        order:orderForm,
+        edit : editProfile,
+        password:password
+        
+
 
      } )
     } )
