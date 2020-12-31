@@ -8,7 +8,7 @@ var NavbarBuyer = () =>{
   return (
 <div className="App">
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Navbar.Brand href="/view" >Made With Love</Navbar.Brand>
+  <Navbar.Brand href="/home" >Made With Love</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
@@ -22,8 +22,8 @@ var NavbarBuyer = () =>{
     </Nav>
     <Nav>
     <NavDropdown  id="collasible-nav-dropdown" style ={{margin :'0px 80px 0px 0px'}}>
-        <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item>
-        <NavDropdown.Item href="/setting">Setting</NavDropdown.Item>
+        {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
+        <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
         <NavDropdown.Item href="/" onClick={signout}>Sign Out</NavDropdown.Item>
         <NavDropdown.Divider />
       

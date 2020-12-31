@@ -25,11 +25,11 @@ this.state={data:[],
 
  fetchData =(id)=>{
   var that = this;
-  console.log(id)
+  console.log(this.props.location,"iddddd")
   console.log(1111111111111111)
   
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/1`),
+   url:(`http://127.0.0.1:8000/seller/visit/${that.props.location.id}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -47,14 +47,10 @@ this.state={data:[],
 
 fetchItems =(id)=>{
   var that = this;
-  console.log(id)
+  console.log(id,"fetchitems")
   console.log(1111111111111111)
  $.ajax({
-<<<<<<< HEAD
-   url:(`https://backend-made-with-love.herokuapp.com/seller/visit/items/${this.props.location.id}`),
-=======
-   url:(`http://127.0.0.1:8000/seller/visit/items/1`),
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
+   url:(`http://127.0.0.1:8000/seller/visit/items/${that.props.location.id}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -71,7 +67,7 @@ fetchItems =(id)=>{
  console.log("hhhhhhhhhhhh")
 }
  componentDidMount=()=>{
-
+  console.log(this.props.location,"iddddd")
 
   this.fetchData()
   this.fetchItems()
