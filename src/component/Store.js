@@ -6,7 +6,7 @@ import { createForms} from 'react-redux-form';
 
 
 var signUpSeller = {
-<<<<<<< HEAD
+
     email :"",
     password : "",
     storeName : "",
@@ -42,7 +42,7 @@ var signUpSeller = {
  }
 
   var sellerProfile = {
-=======
+
     email: "",
     password: "",
     storeName: "",
@@ -65,13 +65,19 @@ var loginState = {
     email: "",
     password: ""
 }
+var settingsBuyer ={
+    email:"",
+    password:"",
+    userName:"",
+    location:"",
+    phoneNumber:""
+   }
 
 var category = {
     name: ""
 }
 
 var sellerProfile = {
->>>>>>> 48b3235f0860dddfba6530e676cb432eb70ec390
     id: "",
     name: "",
     image: "",
@@ -332,27 +338,20 @@ const store = createStore(combineReducers({
     addItem: reducerAddItem,
     reducerBuyer: reducerBuyer,
     catReducer: catReducer,
-<<<<<<< HEAD
     orderFormReducer:orderFormReducer,
     categoryReducer:categoryReducer,
     filterReducer:filterReducer,
     filteringReducer:filteringReducer,
     reducerSettings:reducerSettings
- ,
-=======
-    orderFormReducer: orderFormReducer,
-    categoryReducer: categoryReducer,
-    filterReducer: filterReducer,
-    filteringReducer: filteringReducer
+
+   
     ,
->>>>>>> 48b3235f0860dddfba6530e676cb432eb70ec390
     ...createForms({
         user: initialState,
         login:loginState,
         order:orderForm,
         edit : editProfile,
         password:password
-        
 
 
      } )

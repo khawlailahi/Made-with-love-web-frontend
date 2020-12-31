@@ -137,8 +137,13 @@ var x =  <div> <Container fluid>
           {this.state.data[0]['fields'].location}
         </Card.Text>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
-          {this.state.data[0]['fields'].delivery_time}
+          {this.state.data[0]['fields'].deliverytime}
         </Card.Text>
+        <Link to={{
+  pathname: "/seller/addItem",
+   info: { id :this.state.data[0]['fields']['category']},
+  }}>
+        <Button style={{margin:'50px 0px 0px 400px' , backgroundColor:'#800000'}} bg='#80000' >Add Item</Button></Link>
         </Card.Body>
       </Col>
     </Row>
@@ -146,25 +151,14 @@ var x =  <div> <Container fluid>
 </CardGroup>
 </Container>
 <ListItems items={this.state.items}/></div>
- if(this.state.data[0])
- var a = <Link to={{
-  pathname: "/seller/addItem",
-   info: { id :this.state.data[0]['fields']['category']},
-  }}>
-     
-<Button>Add Item</Button>
-</Link>
-
+//   if(this.state.data[0])
+//  var a =
   return(
     <div>
       <NavbarSeller/>
       {x}
-      {a}
-     
     </div> 
   )
 }
-
 }
-
 export default SellerProfile; 

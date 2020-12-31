@@ -50,7 +50,7 @@ function SignUpBuyer(props) {
 
     console.log(obj)
     $.ajax({
-      url: "https://backend-made-with-love.herokuapp.com/buyer/signup",
+      url: "http://127.0.0.1:8000/buyer/signup",
       method: "POST",
       data: JSON.stringify(obj),
       contentType: "application/json",
@@ -58,7 +58,7 @@ function SignUpBuyer(props) {
       success: function (data) {
         //redirect to login page
         console.log("POST sent successfully!");
-        // window.location =`/login`
+        window.location =`/login`
 
       },
       error: function (err) {

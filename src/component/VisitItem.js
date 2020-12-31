@@ -29,10 +29,10 @@ const VisitItems = (props) => {
                      variant="top"
                      src={item['fields']['image']}
                    />
-                   <Card.Body>
+                  <Card.Body>
                      <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>
-                     <Card.Text> <label style={{color:'red', fontWeight:'bold'}}>Product Name :</label>Product Description : {item['fields']['description']}</Card.Text>
-                     <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label>Product Price : {item['fields']['price']}</Card.Text>
+                     <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> {item['fields']['description']}</Card.Text>
+                     <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price :</label> {item['fields']['price']}</Card.Text>
                    </Card.Body>
                  </Card>
                  </Col> 

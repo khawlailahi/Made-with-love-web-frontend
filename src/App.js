@@ -3,20 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./component/aboutus";
 import home from "./component/home.js";
 import SignUpSeller from "./component/signUpSeller.js";
-<<<<<<< HEAD
 import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js"
-=======
 import addItem from "./component/addItem.js";
 // import Footer from "./component/Footer.js";
-import listOfOrder from "./component/listOfOrder.js";
-import Login from "./component/Login.js";
+
 // import Navbar from "./component/layout/Navbar.js";
->>>>>>> 79fcb5d77bd63205ede57d91c50658805394cea8
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
-import EditSellerProfile from "./component/editeSellerProfile";
+import EditProfile from "./component/editSellerProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./component/Store.js";
 import CatBuyer from "./component/categoryBuyer.js";
@@ -28,7 +24,7 @@ import settingsProfile from "./component/settingBuyer.js"
 import CategorySeller from "./component/categorySeller";
 import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
-
+import settingsProfile from './component/settings'
 
 
 
@@ -56,10 +52,11 @@ function App(props) {
               <Route
               path='/seller/editProfile/:id'
               exact
-              component={EditSellerProfile}
+              component={EditProfile}
             ></Route>
             <ProtectedRoute path="/home" component ={home} />
-            <ProtectedRoute path="/seller/visit/:id" exact component={VisitSeller}></ProtectedRoute>
+            <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
+            <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
        <Route path='/seller/editprofile/:id' exact
               component={editSellerProfile}

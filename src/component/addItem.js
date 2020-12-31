@@ -10,7 +10,11 @@ function ItemForm (props)  {
   console.log("caaaat",props.location.info)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
+<<<<<<< HEAD
     var obj1={category:props.location.info.id, url:"" ,user:{}}  
+=======
+   var obj1={category:props.location.info.id, url:"" ,user:{}}
+>>>>>>> ef4fcd02ec3852deebc4a45bbf6ae618e36938f1
     const ajax=(user)=>{
       var tokenObj = JSON.parse(localStorage.getItem('token')['id'])
       var tokenObj = JSON.parse(localStorage.getItem('token'))
@@ -31,13 +35,13 @@ function ItemForm (props)  {
          window.location =`/seller/profile/${JSON.parse(localStorage.getItem('token'))['id']}`
         //  console.log(`${JSON.parse(localStorage.getItem('token')['id'])}`)
         // window.location = `/seller/profile/:id`
-
        },
        error: function(err){
          console.log(err)
        }
      })
    }
+   
 const handleUpload=(e)=>{ 
   console.log(this)  
     const uploadTask = storage.ref(`imagee/${image.name}`).put(image);

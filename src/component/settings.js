@@ -1,25 +1,20 @@
-
 import React, { useState } from "react";
 import { storage } from '../firebase';
 import { Control, Form } from 'react-redux-form';
-import {useEffect} from "react"
 
 // import store from './Store';
 // import ReactDOM from "react-dom";
 import $ from "jquery";
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import NavbarBuyer from './layout/NavbarBuyer'
+import NavbarSeller from './layout/NavbarSeller'
 function SettingProfile ()  {
+
     const [location, setLocation] = useState("");
     const [username, setUsername] = useState("");
     const [storeName, setstoreName] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [data1, setData1] = useState("");
-    const [data, setData] = useState("");
-
-    const [url1, setUrl1] = useState("");
 
     const [deliver, setDeliver] = useState("");
     const [phoneNumber , setPhoneNumber] = useState("");
@@ -31,54 +26,24 @@ function SettingProfile ()  {
     const [counter6 , setCounter6] = useState(false)
 
 
-    useEffect(()=>{
-      if (JSON.parse(localStorage.getItem('token'))['type'] === 'buyer'){
-      console.log('ggg',JSON.parse(localStorage.getItem('token'))['type'])
-      setUrl1("http://127.0.0.1:8000/buyer/getAll/")
-      }else{
-        setUrl1("http://127.0.0.1:8000/seller/getAll/")
-      }
-      console.log(url1)
-        $.ajax({
-        method:'GET',
-        url: url1,
-        contentType: "application/json",
-        headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},
-
-        success:function(res){
-          // window.location="/settings"     
-          setData1(res)
-          console.log(res)
-          console.log(res)
-          console.log(res)
-setData('yess')
 
 
-        },
-        error: function(err){
-          console.log(err)
-        }
-      })}
-, [data])
 
-
+console.log(JSON.parse(localStorage.getItem('token'))['type'])
 
 
 const buyerSettings=()=>{ 
-if (JSON.parse(localStorage.getItem('token'))['type'] === 'buyer' && data1 !== ""){
-
-  // setUrl1('http://127.0.0.1:8000/buyer/getAll/')
-
+if (JSON.parse(localStorage.getItem('token'))['type'] === 'buyer'){
     return <div>
+        <NavbarBuyer/><br/><br/>
+        <div>
     <button onClick={count}>change Password </button>{showInput()}<br></br><br></br>
     <button onClick={count2}> change Location</button>{locationn()}<br></br>
     <button onClick={count3}> change PhoneNumber</button>{phonee()}<br></br>
     <button onClick={count4}> change userName</button>{user()}<br></br>
-</div>
+</div></div>
 
-}
-
-}
+}}
 const count =()=>{
    setCounter(!counter)
    
@@ -100,8 +65,7 @@ const count2 =()=>{
   setCounter5(!counter5)
   
 }
-const count6 =()=>{ 
-
+const count6 =()=>{
   setCounter6(!counter4)
   
 }
@@ -134,7 +98,8 @@ return x
 const ajaxPass=(password)=>{
     $.ajax({
         method: 'POST',
-        url:'http://127.0.0.1:8000/buyer/changePassword',//fix it later
+        url:'http://127.0.0.1:8000/buyer/changePassword',
+        headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
         data : JSON.stringify(password),
         contentType: "application/json",
         success:function(){
@@ -154,7 +119,8 @@ const ajaxLoc=()=>{
   const obj = {location : location}
     $.ajax({
         method: 'POST',
-        url:'http://127.0.0.1:8000/buyer/location',//fix it later
+        url:'http://127.0.0.1:8000/buyer/location',
+        headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
         data : JSON.stringify(obj),
         contentType: "application/json",
         success:function(){
@@ -173,9 +139,9 @@ const locationn=()=>{
         return <div>
         <div className="col-md-3">
         <label  className="form-label">New Location :</label>
-        <input  className="form-control" defaultValue={data1[0].fields.location} onChange= {takevalue}/>
+        <input  className="form-control"  onChange= {takevalue}/>
         </div>
-        <button className="btn btn-primary"  name="location" onClick={ajaxLoc}>Submit</button>
+        <button className="btn btn-primary" name="location" onClick={ajaxLoc}>Submit</button>
 </div>
     }
 }
@@ -186,7 +152,7 @@ const phonee=()=>{
         return <div>
         <div className="col-md-3">
         <label  className="form-label">New PhoneNumber :</label>
-        <input  className="form-control" defaultValue={data1[0].fields.phonenumber} onChange={takevaluePH} />
+        <input  className="form-control" onChange={takevaluePH} />
         </div>
         <button className="btn btn-primary" onClick={ajaxphone}>Submit</button>
 </div>
@@ -201,7 +167,8 @@ const takevaluePH=(e)=>{
       const obj ={phoneNumber : phoneNumber}
         $.ajax({
             method: 'POST',
-            url:'http://127.0.0.1:8000/buyer/phoneNumber',//fix it later
+            url:'http://127.0.0.1:8000/buyer/phoneNumber',
+            headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
             data : JSON.stringify(obj),
             contentType: "application/json",
             success:function(){
@@ -218,7 +185,8 @@ const takevaluePH=(e)=>{
       const obj ={userName:username}
         $.ajax({
             method: 'POST',
-            url:'http://127.0.0.1:8000/buyer/userName',//fix it later
+            url:'http://127.0.0.1:8000/buyer/userName',
+            headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
             data : JSON.stringify(obj),
             contentType: "application/json",
             success:function(){
@@ -240,9 +208,9 @@ const takevaluePH=(e)=>{
             return <div>
             <div className="col-md-3">
             <label  className="form-label">New userName :</label>
-            <input  className="form-control" defaultValue={data1[0].fields.username} onChange= {takevalueUN}/>
+            <input  className="form-control"  onChange= {takevalueUN}/>
             </div>
-            <button className="btn btn-primary"  onClick={ajaxUN}>Submit</button>
+            <button className="btn btn-primary" name="location" onClick={ajaxUN}>Submit</button>
     </div>
         }
     }
@@ -252,12 +220,15 @@ const takevaluePH=(e)=>{
 const sellerSettings=()=>{ 
     if (JSON.parse(localStorage.getItem('token'))['type'] === 'seller'){
         return <div>
+            <NavbarSeller/><br/><br/>
+            <div>
         <button onClick={count}>Change Password </button>{showInputPass()}<br></br><br></br>
        <button onClick={count3}> Change storeName</button>{storeNamee()}<br></br>
        <button onClick={count2}> Change Location</button>{locationn2()}<br></br>
         <button onClick={count4}> Change Description</button>{descriptionn()}<br></br>
         <button onClick={count5}> Change Deliver Order WithIn:</button>{deliverrr()}<br></br>  
-        <button onClick={count6}> Change Your Store Image:</button>{imagee()}<br></br>  
+        <button onClick={count6}> Change Your Store Image:</button>{imagee()}<br></br>
+          </div>
 
   
     </div>
@@ -293,6 +264,7 @@ const showInputPass =()=>{
       $.ajax({
           method: 'POST',
           url:'http://127.0.0.1:8000/seller/changePassword',
+          headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},
           data : JSON.stringify(password),
           contentType: "application/json",
           success:function(){
@@ -313,9 +285,9 @@ const showInputPass =()=>{
           return <div>
           <div className="col-md-3">
           <label  className="form-label">New storeName :</label>
-          <input  className="form-control" defaultValue={data1[0].fields.store_name} onChange= {takevalueSN}/>
+          <input  className="form-control"  onChange= {takevalueSN}/>
           </div>
-          <button className="btn btn-primary"  onClick={ajaxSN}>Submit</button>
+          <button className="btn btn-primary" onClick={ajaxSN}>Submit</button>
   </div>
       }
   }
@@ -328,7 +300,8 @@ const showInputPass =()=>{
       const obj ={storeName : storeName}
       $.ajax({
           method: 'POST',
-          url:'http://127.0.0.1:8000/seller/storeName',//fix it later
+          url:'http://127.0.0.1:8000/seller/storeName',
+          headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
           data : JSON.stringify(obj),
           contentType: "application/json",
           success:function(){
@@ -346,7 +319,7 @@ const showInputPass =()=>{
           return <div>
           <div className="col-md-3">
           <label  className="form-label">New Location :</label>
-          <input  className="form-control" defaultValue={data1[0].fields.location} onChange= {takevalueLoc}/>
+          <input  className="form-control"  onChange= {takevalueLoc}/>
           </div>
           <button className="btn btn-primary" name="location" onClick={ajaxLoca}>Submit</button>
   </div>
@@ -361,7 +334,8 @@ const takevalueLoc=(e)=>{
     const obj = {location:location}
       $.ajax({
           method: 'POST',
-          url:'http://127.0.0.1:8000/seller/location',//fix it later
+          url:'http://127.0.0.1:8000/seller/location',
+          headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
           data : JSON.stringify(obj),
           contentType: "application/json",
           success:function(){
@@ -384,7 +358,7 @@ const takevalueLoc=(e)=>{
           return <div>
           <div className="col-md-3">
           <label  className="form-label">New Description :</label>
-          <input  className="form-control" defaultValue={data1[0].fields.description} onChange= {takevalueD}/>
+          <input  className="form-control"  onChange= {takevalueD}/>
           </div>
           <button className="btn btn-primary" onClick={ajaxD}>Submit</button>
   </div>
@@ -401,7 +375,8 @@ const takevalueLoc=(e)=>{
 
       $.ajax({
           method: 'POST',
-          url:'http://127.0.0.1:8000/seller/description',//fix it later
+          url:'http://127.0.0.1:8000/seller/description',
+          headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
           data : JSON.stringify(obj),
           contentType: "application/json",
           success:function(){
@@ -434,7 +409,8 @@ const takevalueLoc=(e)=>{
    const obj = {delivery : deliver}
      $.ajax({
         method: 'POST',
-         url:'http://127.0.0.1:8000/delivery',//fix it later
+         url:'http://127.0.0.1:8000/delivery',
+         headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
           data : JSON.stringify(obj),
          contentType: "application/json",
         success:function(){
@@ -455,7 +431,6 @@ const takevalueLoc=(e)=>{
     ///////////////////////image/////////////////////
     const imagee = ()=>{
       if (counter6 === true){
-       
             return <div>
     <input type="file" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
           {tr2()}
@@ -499,10 +474,11 @@ const takevalueLoc=(e)=>{
       }
     }
     const ajaxImage=()=>{
-      const obj = {Image : url}
+      const obj = {image : url}
         $.ajax({
            method: 'POST',
-            url:'http://127.0.0.1:8000/seller/image',//fix it later
+            url:'http://127.0.0.1:8000/seller/image',
+            headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},//fix it later
              data : JSON.stringify(obj),
             contentType: "application/json",
            success:function(){
