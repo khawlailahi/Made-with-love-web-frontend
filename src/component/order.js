@@ -131,7 +131,7 @@ _generateAddress() {
 }
 ///////////////////////////////////////
 
-
+//
 
    showMap=()=> {
      this.setState({
