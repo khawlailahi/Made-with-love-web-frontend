@@ -1,10 +1,12 @@
 .main-wrapper {
-  height: 60vh;
+  height: 40vh;
   margin: 10px 50px;
+  width: 500px;
   filter: drop-shadow(-1px 5px 3px #ccc);
 }
 .info-wrapper {
   margin-top: 15px;
+  width: 200px;
 }
 .map-details {
   text-align: center;
@@ -15,5 +17,5 @@
 }
 .search-input {
   font-size: 1.2em;
-  width: 80%;
+  width: 40%;
 }

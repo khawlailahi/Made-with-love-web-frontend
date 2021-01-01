@@ -1,5 +1,5 @@
 import React from 'react';
-import './Style/map.css';
+import '../Style/map.css';
 import MyGoogleMap from './map';
 
 

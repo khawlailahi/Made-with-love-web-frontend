@@ -22,7 +22,7 @@ import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
 import settingsProfile from './component/settings'
 import AddComment from './component/addComment'
-import MyGoogleMap from './component/map';
+import RenderMap from './component/renderTheMap';
 import './Style/map.css';
 
 var mapStateToProps = (state) => {
@@ -55,7 +55,7 @@ function App(props) {
             <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
        <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>
-       <Route  path ='/map' exact  component ={MyGoogleMap}></Route>
+       <Route  path ='/map' exact  component ={RenderMap}></Route>
        <Route  path ='/login' exact  component ={Login}></Route>
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/addComment' exact  component ={AddComment}></Route>
@@ -73,7 +73,7 @@ function App(props) {
        <Route  path ='/buyer/babyproducts'  exact   component={() => <CatBuyer store={store} cat = "babyproducts"/>}></Route>
        <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route>
        <Route  path ='/order' exact   component={() => <Order/>}></Route>
-       <Route  path ='/map' exact   component={() => <MyGoogleMap className="main-wrapper" />}></Route>
+       <Route  path ='/map' exact   component={() => <RenderMap />}></Route>
        {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
        <Route  path ='/seller/food'  exact   component={() => <CategorySeller store={store} cat="food" />}></Route>
        <Route  path ='/seller/clothes'  exact   component={() => <CategorySeller store={store} cat="clothes" />}></Route>

@@ -57,7 +57,7 @@ class AutoComplete extends Component {
     render() {
         return (
             <Wrapper>
-                <input
+                {/* <input
                     className="search-input"
                     ref={(ref) => {
                         this.searchInput = ref;
@@ -65,7 +65,7 @@ class AutoComplete extends Component {
                     type="text"
                     onFocus={this.clearSearchBox}
                     placeholder="Enter a location"
-                />
+                /> */}
             </Wrapper>
         );
     }
