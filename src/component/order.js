@@ -3,7 +3,6 @@ import { Control, Form } from 'react-redux-form';
 import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios'
 import {toast} from 'react-toastify';
-import { Link } from "react-router-dom";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react';
