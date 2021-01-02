@@ -42,7 +42,7 @@ var x ;
           }
 
           x =rating
-        },
+      },
         error: function(err){
           setData1('noooo')
           console.log(data1)
@@ -84,8 +84,16 @@ const ratingChange=(rating) => {
       })
       
     }
+
+
+
+
+
+
+
+
 const order =()=>{
-  if (data  ){
+  if (data.true ){
     console.log(rating)
    
     return  <div>   
@@ -118,11 +126,15 @@ const order =()=>{
 </div>
 
   }
-  else {
+}
+
+const tr2=()=>{
+  console.log(data.false)
+  if (data.false ===  false){
+  
+     return <div>   
     
-    return  <div>   
-    
-    {[...Array(5)].map((star, i) => {
+     {[...Array(5)].map((star, i) => {
       const valueRating =i+1;
       
       return  <label>
@@ -138,50 +150,37 @@ const order =()=>{
                 ? "#F9CD56"
                 : "#848481"
             } />
-        </label>
-    
-    })}
-    </div>
-}}
-
-
+        </label>})}</div>}}
 
  const tr1=()=>{
   if (JSON.parse(localStorage.getItem('token'))['type'] === 'seller' ){
-  
-return <div>   
-    
-{[...Array(5)].map((star, i) => {
-  const valueRating =i+1;
-  
-  return  <div>
-    <label>
-      <input
-        style={{ display: "none" }}
-        type="radio"
-        value={x}
-       
-      />
-      <FaStar
-      size ={20}
-        color={
-           valueRating <= ( rating)
-            ? "#F9CD56"
-            : "#848481"
-        }
-    
-      />
-    </label>
-</div>
-})}
-</div>
- }}
  
+    
+  return  <div>   
+    
+  {[...Array(5)].map((star, i) => {
+    const valueRating =i+1;
+    
+    return  <label>
+        <input
+          style={{ display: "none" }}
+          type="radio"
+          value={x}
+      
+        />
+        <FaStar 
+          color={
+             valueRating <= ( rating)
+              ? "#F9CD56"
+              : "#848481"
+          } />
+      </label>})}</div>}}
     
 
     return (
       <div>
         <div>{tr1()}</div>
+        <div>{tr2()}</div>
        <div>{order()}</div>
        </div>
   );
