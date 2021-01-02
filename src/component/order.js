@@ -158,7 +158,7 @@ ajax(order){
   quan= obj.order.quantity
   obj.location= link
   // location=link
-  console.log(location,'locaaaaation')
+ 
   total = quan * price * 100
 console.log(order, 'ordeeeeer')
 
