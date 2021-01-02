@@ -1,4 +1,5 @@
  import React  from "react";
+ import Rate from './rate'
 // import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
@@ -31,6 +32,7 @@ const Items = (props) => (
 </Card>
 )
  class SellerProfile extends React.Component{
+
  constructor(props){
    super(props)
   //  this.state={
@@ -144,6 +146,10 @@ var x =  <div> <Container fluid>
    info: { id :this.state.data[0]['fields']['category']},
   }}>
         <Button style={{margin:'50px 0px 0px 400px' , backgroundColor:'#800000'}} bg='#80000' >Add Item</Button></Link>
+        <Rate item={{rate : 3,pkSeller:this.state.data[0].pk}} />
+          
+  
+       
         </Card.Body>
       </Col>
     </Row>
@@ -157,6 +163,7 @@ var x =  <div> <Container fluid>
     <div>
       <NavbarSeller/>
       {x}
+      
     </div> 
   )
 }

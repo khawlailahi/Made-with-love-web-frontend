@@ -99,17 +99,10 @@ const ListItems = (props) => {
                      </Button>
                      </Link>
                      <Link
-<<<<<<< HEAD
-                       to={{
-                         pathname: "/seller/editProfile/"+item['pk'] ,
-                         info: { id: item['pk'], category:item['fields']['category'] ,product:item['fields']['productname'],desc:item['fields']['description'],price:item['fields']['price']},
-                       }}
-=======
                       to={{
                         pathname: "/seller/editProfile/"+item['pk'] ,
                         info: { id: item['pk'], category:item['fields']['category'] ,product:item['fields']['productname'],desc:item['fields']['description'],price:item['fields']['price']},
                       }}
->>>>>>> ef4fcd02ec3852deebc4a45bbf6ae618e36938f1
                      >
                        <Button
                          variant="primary"

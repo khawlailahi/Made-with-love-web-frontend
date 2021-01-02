@@ -10,24 +10,19 @@ function ItemForm (props)  {
   console.log("caaaat",props.location.info)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
-<<<<<<< HEAD
     var obj1={category:props.location.info.id, url:"" ,user:{}}  
-=======
-   var obj1={category:props.location.info.id, url:"" ,user:{}}
->>>>>>> ef4fcd02ec3852deebc4a45bbf6ae618e36938f1
+
     const ajax=(user)=>{
-      var tokenObj = JSON.parse(localStorage.getItem('token')['id'])
       var tokenObj = JSON.parse(localStorage.getItem('token'))
       obj1= Object.assign({} ,user)
     console.log(url)
     obj1['url'] = url
     obj1.category=props.location.info.id
-    obj1.user = tokenObj
     obj1.user = tokenObj['id']
     console.log(obj1)
      $.ajax({
        method: 'POST',
-       url:'http://127.0.0.1:8000/seller/addItem',//fix it later
+       url:'http://127.0.0.1:8000/seller/addItem',
        data : JSON.stringify(obj1),
        contentType: "application/json",
        success:function(){

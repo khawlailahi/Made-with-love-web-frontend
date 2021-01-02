@@ -12,11 +12,8 @@ function EditProfile (props)  {
   console.log(category)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
-    var obj={category:"food"}
-var obj1;
+  var obj1;
  
-​
-​
     const ajax=(edit)=>{
       obj1= Object.assign({} ,edit)
     console.log(url)
@@ -64,8 +61,6 @@ const uploadImage=(e)=>{
    if (e.target.files[0]) {
         setImage(e.target.files[0])
    }}
-​
-​
  const tr2=()=>{
   if(image !== ""){
 return <div>
@@ -74,8 +69,6 @@ return <div>
 </div>
   }
 }
-​
-​
 const food=() => {
   if (category === 100){
     return(
@@ -124,7 +117,6 @@ const food=() => {
     )
   }
 }
-​
 const clothes=()=>{
   // console.log(obj1,'obbbbjjj1')
 if (category === 200) 
@@ -254,8 +246,6 @@ if (category === 200)
             )
           }
         }
-​
-​
   return (
     
     <div>
@@ -266,7 +256,6 @@ if (category === 200)
   </div> 
   )
   }
-​
   export default  EditProfile
 
 
