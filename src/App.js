@@ -49,9 +49,9 @@ function App(props) {
               exact
               component={EditProfile}
             ></Route>
-            <ProtectedRoute path="/home" component ={home} />
-            <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
-            <Route  path ='/settings' exact  component ={settingsProfile}></Route>
+      <ProtectedRoute path="/home" component ={home} />
+      <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
+       <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
        <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>   
        <Route  path ='/login' exact  component ={Login}></Route>
@@ -63,8 +63,7 @@ function App(props) {
        <Route  path ='/' exact   component={View}></Route>
        <Route  path ='/buyer/signup' exact   component={() => <SignUpBuyer store={store} />}></Route>
        <Route  path ='/buyer/category' exact   component={() => <CatBuyer store={store} />}></Route>
-       <Route  path ='/orderList' exact   component={listOfOrder}></Route>
-       
+       <Route  path ='/orderList' exact   component={listOfOrder}></Route> 
        <Route  path ={''+url}  exact   component={() => <CatBuyer store={store} cat={props.name} />}></Route>
        <Route  path ='/buyer/food'  exact   component={() => <CatBuyer store={store} cat="food" />}></Route>
        <Route  path ='/buyer/clothes'  exact   component={() => <CatBuyer store={store} cat="clothes" />}></Route>
