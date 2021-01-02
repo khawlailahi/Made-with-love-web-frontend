@@ -58,7 +58,7 @@ var mapDispatchToProps = (dispatch) => {
     },
     error: function (err) {
      alert('email already exsit')
-    window.location = `/seller/signup`      
+    // window.location = `/seller/signup`      
       }
 })  
  }
