@@ -1,4 +1,4 @@
- import React  from "react";
+import React  from "react";
 // import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
@@ -78,9 +78,9 @@ fetchItems =(id)=>{
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
-     var data1 = JSON.parse(data)
+    //  var data1 = JSON.parse(data)
     // var data1 = data
-     that.setState({ items:data1},()=>{console.log("itemsss",that.state)})
+     that.setState({ items:data},()=>{console.log("itemsss",that.state)})
      // that.setState(data
      // console.log(that.state,'staaate')
    },
@@ -134,7 +134,7 @@ var x =  <div> <Container fluid>
           {this.state.data[0]['fields'].location}
         </Card.Text>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
-          {this.state.data[0]['fields'].deliverytime}
+          {this.state.data[0]['fields'].delivery_time}
         </Card.Text>
         <Link to={{
   pathname: "/seller/addItem",
@@ -147,9 +147,8 @@ var x =  <div> <Container fluid>
   </Card>
 </CardGroup>
 </Container>
-<ListItems items={this.state.items}/></div>
-//   if(this.state.data[0])
-//  var a =
+<ListItems items={this.state.items} cat={this.state.data[0]['fields'].category}/></div>
+
   return(
     <div>
       <NavbarSeller/>

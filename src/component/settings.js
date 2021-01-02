@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { storage } from '../firebase';
 import { Control, Form } from 'react-redux-form';
-
-// import store from './Store';
-// import ReactDOM from "react-dom";
 import $ from "jquery";
 import NavbarBuyer from './layout/NavbarBuyer'
 import NavbarSeller from './layout/NavbarSeller'
@@ -77,7 +74,7 @@ if(counter === true) {
  model="password"
  onSubmit={(password) => ajaxPass(password)}
 >
-<div class="col-md-3">
+<div className="col-md-3">
 <div className="col-md-4">
       <label htmlFor="password.oldPassword"  className="form-label" >Old Password:</label>
       <Control type='password' model="password.oldPassword" id="password.oldPassword" className="form-control" required/>
@@ -242,7 +239,7 @@ const showInputPass =()=>{
    model="password"
    onSubmit={(password) => ajaxPassword(password)}
   >
-  <div class="col-md-3">
+  <div className="col-md-3">
   <div className="col-md-4">
         <label htmlFor="password.oldPassword"  className="form-label" >Old Password:</label>
         <Control type='password' model="password.oldPassword" id="password.oldPassword" className="form-control" required/>
