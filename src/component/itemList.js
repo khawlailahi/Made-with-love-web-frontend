@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-export default function ItemList(props) {
+var  ItemList =(props) =>{
+  
 
   console.log(props,'iteeeem props')
     
-    
+    var clickImage = function(){
+     
+    }
       
         return (
           <div className="row" style={{margin:"0 auto"}}>
@@ -14,7 +17,7 @@ export default function ItemList(props) {
           <div className="col-sm-6" key= {item['pk']} >
       
         <div className="card"  style={{border: "solid  black 2px",width:'600px',cursor: 'pointer',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
-        <img src ={item['fields'].image} alt="car" style={{width:'100%', height:"500px", margin:" 0 auto"}}/>
+        <Link to ='/addComment'><img src ={item['fields'].image} alt="car" style={{width:'100%', height:"500px", margin:" 0 auto"}} /></Link>
           <div className="card-body">
           <h2  className="card-title">product: {item['fields'].productname}</h2>
           <h3 className="card-text">Price: {item['fields'].price} $</h3>
@@ -38,4 +41,4 @@ export default function ItemList(props) {
       
       )
       }
-      
+      export default ItemList

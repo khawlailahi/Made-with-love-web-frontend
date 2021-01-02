@@ -7,9 +7,6 @@ import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js";
 import addItem from "./component/addItem.js";
-// import Footer from "./component/Footer.js";
-
-// import Navbar from "./component/layout/Navbar.js";
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
 import EditProfile from "./component/editSellerProfile";
@@ -21,9 +18,12 @@ import View from "./component/view.js";
 import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
 import CategorySeller from "./component/categorySeller";
-import ProtectedRoute from "./component/protectedRoute";
 import Notfound from "./component/404page";
 import settingsProfile from "./component/settings";
+import ProtectedRoute from "./component/protectedRoute";
+import AddComment from "./component/addComment";
+
+import "./Style/map.css";
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -59,8 +59,10 @@ function App(props) {
             <Route path="/settings" exact component={settingsProfile}></Route>
             <Route path="/about" exact component={About}></Route>
             <Route path="/seller/addItem" exact component={ItemForm}></Route>
+
             <Route path="/login" exact component={Login}></Route>
             <Route path="/order" exact component={Order}></Route>
+            <Route path="/addComment" exact component={AddComment}></Route>
             <Route path="/404" exact component={Notfound}></Route>
             <Route path="/home" exact component={home}></Route>
             <Route
@@ -107,7 +109,6 @@ function App(props) {
               component={() => <CatBuyer store={store} cat="accessories" />}
             ></Route>
             <Route path="/order" exact component={() => <Order />}></Route>
-
             {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
             <Route
               path="/seller/food"

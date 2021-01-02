@@ -5,12 +5,12 @@ import { Form } from "react-bootstrap";
 // import ReactDOM from "react-dom";
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import GoogleLogin from "./social/social/google/google";
+import Facebook from "./social/social/facebook/facebook";
 // import { storage } from '../firebase/index';
 import NavBar from "./layout/Navbar";
 // import Social from "./social";
-import GoogleLogin from "./social/google/google";
-import loginGo from "./social/google/loginGo";
-import Facebook from "./social/facebook/facebook";
+import LoginGo from "./social/google/loginGo";
 
 //call the state I need from the store
 var mapStateToProps = (state) => {
@@ -200,7 +200,7 @@ function SignUpBuyer(props) {
                 </Link>
               </div>
               <GoogleLogin />
-              <loginGo />
+              <LoginGo />
               <Facebook />
             </Form>
           </div>
