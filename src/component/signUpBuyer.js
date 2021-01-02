@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NavBar from "./layout/Navbar";
 // import Social from "./social";
 import GoogleLogin from "./social/google/google";
+import loginGo from "./social/google/loginGo";
+import Facebook from "./social/facebook/facebook";
 
 //call the state I need from the store
 var mapStateToProps = (state) => {
@@ -198,6 +200,8 @@ function SignUpBuyer(props) {
                 </Link>
               </div>
               <GoogleLogin />
+              <loginGo />
+              <Facebook />
             </Form>
           </div>
         </div>

@@ -3,6 +3,9 @@ import $ from "jquery";
 import React from "react";
 import { Control, Form } from "react-redux-form";
 import Navbar from "./layout/Navbar";
+import LoginGo from "./social/google/loginGo";
+// import GoogleLogin from "./social/google/google";
+
 class Login extends React.Component {
   ajax(login) {
     $.ajax({
@@ -82,6 +85,8 @@ class Login extends React.Component {
                 </button>
               </div>
             </div>{" "}
+            {/* <GoogleLogin /> */}
+            <LoginGo />
           </Form>
         </div>{" "}
       </div>

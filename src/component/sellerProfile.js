@@ -1,5 +1,6 @@
 import React from "react";
 // import ReactDOM from "react-dom";
+import Rate from "./rating";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -175,6 +176,7 @@ class SellerProfile extends React.Component {
                           Add Item
                         </Button>
                       </Link>
+                      <Rate />
                     </Card.Body>
                   </Col>
                 </Row>

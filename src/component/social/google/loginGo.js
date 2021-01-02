@@ -6,7 +6,7 @@ import google from "./google.png";
 
 import config from "../config";
 
-class GoogleLogin extends Component {
+class LoginGo extends Component {
   constructor(props) {
     super(props);
   }
@@ -77,26 +77,32 @@ class GoogleLogin extends Component {
           var obj = {};
           obj.email = e.emails[0]["value"];
           obj.password = "";
-          obj.userName = e.name["givenName"];
-          obj.location = "";
-          obj.phoneNumber = "";
+          // obj.userName = e.name["givenName"];
+          // obj.location = "";
+          // obj.phoneNumber = "";
 
           console.log(obj);
+
           $.ajax({
-            url: "http://127.0.0.1:8000/buyer/signup",
             method: "POST",
+            url: "http://127.0.0.1:8000/login", //fix it later
             data: JSON.stringify(obj),
             contentType: "application/json",
-
-            success: function (data) {
-              console.log("POST sent successfully!");
-              window.location = `/login`;
-
-              // window.location = "/login";
+            success: function (res) {
+              localStorage.setItem("token", JSON.stringify(res));
+              console.log(JSON.parse(localStorage.getItem("token")));
+              var tokenObj = JSON.parse(localStorage.getItem("token"));
+              if (tokenObj.type === "buyer") window.location = "/home";
+              //if the user if a seller
+              if (tokenObj.type === "seller")
+                window.location = `/seller/profile/${tokenObj["id"]}`;
             },
             error: function (err) {
-              console.log(err);
-              alert("email already exist");
+              // window.location.replace('/login')
+              console.log("error:", err);
+              setTimeout(() => {
+                alert("Email Or Password Incorrect");
+              }, 300);
               window.location = "/login";
             },
           });
@@ -119,4 +125,4 @@ class GoogleLogin extends Component {
   }
 }
 
-export default GoogleLogin;
+export default LoginGo;
