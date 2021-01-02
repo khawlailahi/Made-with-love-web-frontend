@@ -1,5 +1,4 @@
 import $ from 'jquery';
-
 import React, { useState } from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
@@ -79,7 +78,7 @@ const food=() => {
       model="user"
       onSubmit={(user) => ajax(user)}
     >
-    <div class="col-md-3">
+    <div className="col-md-3">
     <label  className="form-label">Category:</label><br></br>
     <Control.select model="user.type" className="form-select"  required>
       <option selected disabled value="" >Choose The Type</option>
@@ -120,7 +119,7 @@ const clothes=()=>{
       model="user"
       onSubmit={(user) => ajax(user)}
     >
-    <div class="col-md-3">
+    <div className="col-md-3">
     <label  className="form-label">Gender:</label><br></br>
     <Control.select model="user.gender" className="form-select"  required>
       <option selected disabled value="" >Choose the gender</option>
@@ -128,7 +127,7 @@ const clothes=()=>{
       <option  value ="Female">Female</option>
        </Control.select>
   </div><br></br>
-  <div class="col-md-3">
+  <div className="col-md-3">
     <label  className="form-label">Size:</label><br></br>
     <Control.select model="user.size" className="form-select"  required>
       <option selected disabled value="" >Choose the size</option>
@@ -167,7 +166,7 @@ const clothes=()=>{
                 model="user"
                 onSubmit={(user) => ajax(user)}
               >
-           <div class="col-md-3">
+           <div className="col-md-3">
           <label  className="form-label">Gender:</label><br></br>
           <Control.select model="user.gender" className="form-select"  required>
             <option selected disabled value="" >Choose the gender</option>
@@ -207,7 +206,7 @@ const clothes=()=>{
         model="user"
       onSubmit={(user) => ajax(user)}
              >
-          <div class="col-md-3">
+          <div className="col-md-3">
          <label  className="form-label">Material:</label><br></br>
          <Control.select model="user.material" className="form-select"  required>
            <option selected disabled value="" >Choose the material</option>

@@ -4,7 +4,6 @@ import NavBar from './layout/Navbar'
 
 const About = () => {
  return (
-    
   <div>
        <NavBar/>
       <h1>About Us </h1>

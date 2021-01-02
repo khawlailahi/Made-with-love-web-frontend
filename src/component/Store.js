@@ -1,6 +1,5 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
-// import thunk from "redux-thunk";
 import { createForms} from 'react-redux-form';
 
 

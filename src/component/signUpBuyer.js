@@ -4,6 +4,8 @@ import { Form } from 'react-bootstrap';
 // import store from './Store';
 // import ReactDOM from "react-dom";
 import $ from "jquery";
+import GoogleLogin from "./social/social/google/google";
+import Facebook from "./social/social/facebook/facebook";
 import { BrowserRouter as Router,  Link } from 'react-router-dom';
 // import { storage } from '../firebase/index';
 import NavBar from './layout/Navbar'
@@ -120,6 +122,9 @@ function SignUpBuyer(props) {
               <div>
                 <Link to='/login'><a style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Login</a></Link>
               </div>
+              <GoogleLogin />
+              <Facebook />
+           
             </Form>
 
           </div>

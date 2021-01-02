@@ -77,7 +77,7 @@ const food=() => {
       model="edit"
      onSubmit={(edit) => ajax(edit)}
     >
-    <div class="col-md-3">
+    <div className="col-md-3">
     <label  className="form-label">Category:</label><br></br>
     <Control.select model="edit.type" className="form-select"  required>
       <option selected disabled value="" >Choose The Type</option>
@@ -127,7 +127,7 @@ if (category === 200)
       <Form model="edit"
       onSubmit={(edit) => ajax(edit)}
     >
-  <div class="col-md-3"> 
+  <div className="col-md-3">
     <label  className="form-label">Gender:</label><br></br>
     <Control.select model="edit.gender" className="form-select"  required>
       <option selected disabled value="" >Choose the gender</option>
@@ -135,7 +135,7 @@ if (category === 200)
       <option  value ="Female">Female</option>
        </Control.select>
   </div><br></br>
-   <div class="col-md-3">
+   <div className="col-md-3">
     <label  className="form-label">Size:</label><br></br>
     <Control.select model="edit.size" className="form-select"  required>
       <option selected disabled value="" >Choose the size</option>
@@ -174,7 +174,7 @@ if (category === 200)
                 model="edit"
                 onSubmit={(edit) => ajax(edit)}
               >
-           <div class="col-md-3">
+           <div className="col-md-3">
           <label  className="form-label">Gender:</label><br></br>
           <Control.select model="edit.gender" className="form-select"  required>
             <option selected disabled value="" >Choose the gender</option>
@@ -214,7 +214,7 @@ if (category === 200)
         model="edit"
       onSubmit={(edit) => ajax(edit)}
              >
-          <div class="col-md-3">
+          <div className="col-md-3">
          <label  className="form-label">Material:</label><br></br>
          <Control.select model="edit.material" className="form-select"  required>
            <option selected disabled value="" >Choose the material</option>
