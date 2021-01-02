@@ -70,8 +70,6 @@ function App(props) {
        <Route  path ='/buyer/babyproducts'  exact   component={() => <CatBuyer store={store} cat = "babyproducts"/>}></Route>
        <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route>
        <Route  path ='/order' exact   component={() => <Order/>}></Route>
-      
-       {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
        <Route  path ='/seller/food'  exact   component={() => <CategorySeller store={store} cat="food" />}></Route>
        <Route  path ='/seller/clothes'  exact   component={() => <CategorySeller store={store} cat="clothes" />}></Route>
        <Route  path ='/seller/babyproducts'  exact   component={() => <CategorySeller store={store} cat = "babyproducts"/>}></Route>
