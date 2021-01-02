@@ -24,7 +24,7 @@ import CategorySeller from "./component/categorySeller";
 import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
 import settingsProfile from './component/settings'
-
+import ItemPage from './component/itemPage'
 
 
 
@@ -57,6 +57,7 @@ function App(props) {
             <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
             <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
+       <Route  path ='/buyer/item' exact  component ={ItemPage}></Route>
        <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>
        <Route  path ='/login' exact  component ={Login}></Route>
        <Route  path ='/order' exact  component ={Order}></Route>
