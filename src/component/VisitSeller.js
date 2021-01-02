@@ -3,7 +3,8 @@ import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col } from 'react-bootstrap';
 import VisitItems from "./VisitItem";
 import NavbarSeller from './layout/NavbarSeller'
-
+import { useParams } from "react-router-dom";
+import Rate from './rate'
 const styles = {
   card: {
     backgroundColor: '#B7E0F2',
@@ -15,28 +16,27 @@ const styles = {
     borderRadius: 55
   }
 }
-
  class VisitSeller extends React.Component{
  constructor(props){
    super(props)
 this.state={data:[],
   items:[]}
  }
-
  fetchData =(id)=>{
   var that = this;
-  console.log(this.props.location,"iddddd")
-  console.log(1111111111111111)
-  
+  console.log( typeof this.props.location.pathname.slice(14),"iddddd")
+  // console.log(1111111111111111)
+  // var  { id } = useParams();
+  console.log(this.props.location.pathname.slice(14) , "idddddd")
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/${that.props.location.id}`),
+   url:(`http://127.0.0.1:8000/seller/visit/${this.props.location.pathname.slice(14)}`),
    type:'GET',
+   headers:{'Authorization':JSON.parse(localStorage.getItem('token')).token},
+
    success:function(data){
      console.log(data, 'Fetch the data')
      var data1 = JSON.parse(data)
-    
      that.setState({data:data1},()=>{console.log("22222222222222",that.state)})
-    
    },
    error : function(error){
      console.log(error, 'error in fetch the data')
@@ -44,13 +44,12 @@ this.state={data:[],
  })
  console.log("hhhhhhhhhhhh")
 }
-
 fetchItems =(id)=>{
   var that = this;
   console.log(id,"fetchitems")
   console.log(1111111111111111)
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/items/${that.props.location.id}`),
+   url:(`http://127.0.0.1:8000/seller/visit/items/${this.props.location.pathname.slice(15)}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -68,21 +67,14 @@ fetchItems =(id)=>{
 }
  componentDidMount=()=>{
   console.log(this.props.location,"iddddd")
-
   this.fetchData()
   this.fetchItems()
-  
  }
-
- 
-
 upState =(data)=>{
   this.setState ({
    store_name : data['fields']
-
   })
 }
-  
 render(){
 console.log(this.state,"staaaaaaaate")
 if(this.state.data[0])
@@ -105,6 +97,7 @@ var x =  <div> <Container fluid>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
           {this.state.data[0]['fields'].delivery_time}
         </Card.Text>
+        <Rate ttt ={{tr1:this.props.location.pathname.slice(14)}}/>
         </Card.Body>
       </Col>
     </Row>
@@ -116,11 +109,13 @@ var x =  <div> <Container fluid>
     <div>
       <NavbarSeller/>
       {x}
-      
     </div> 
   )
 }
-
 }
+export default VisitSeller;
 
-export default VisitSeller; 
+
+
+
+

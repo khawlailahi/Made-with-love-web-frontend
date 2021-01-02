@@ -146,7 +146,6 @@ var x =  <div> <Container fluid>
    info: { id :this.state.data[0]['fields']['category']},
   }}>
         <Button style={{margin:'50px 0px 0px 400px' , backgroundColor:'#800000'}} bg='#80000' >Add Item</Button></Link>
-        <Rate item={{rate : 3,pkSeller:this.state.data[0].pk}} />
           
   
        
