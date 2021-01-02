@@ -22,7 +22,6 @@ import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
 import settingsProfile from './component/settings'
 import AddComment from './component/addComment'
-
 import './Style/map.css';
 
 var mapStateToProps = (state) => {
@@ -54,8 +53,7 @@ function App(props) {
             <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
             <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
-       <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>
-     
+       <Route  path ='/seller/addItem' exact  component ={ItemForm}></Route>   
        <Route  path ='/login' exact  component ={Login}></Route>
        <Route  path ='/order' exact  component ={Order}></Route>
        <Route  path ='/addComment' exact  component ={AddComment}></Route>
