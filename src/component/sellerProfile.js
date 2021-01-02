@@ -1,4 +1,4 @@
- import React  from "react";
+import React  from "react";
 // import ReactDOM from "react-dom";
 import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col, Button } from 'react-bootstrap';
@@ -134,7 +134,7 @@ var x =  <div> <Container fluid>
           {this.state.data[0]['fields'].location}
         </Card.Text>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
-          {this.state.data[0]['fields'].deliverytime}
+          {this.state.data[0]['fields'].delivery_time}
         </Card.Text>
         <Link to={{
   pathname: "/seller/addItem",

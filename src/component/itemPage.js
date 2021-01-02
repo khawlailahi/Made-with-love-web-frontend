@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link } from 'react-router-dom'
 import $ from 'jquery';
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import { Card, Col} from 'react-bootstrap';
@@ -70,11 +71,22 @@ export default class ItemPage extends React.Component {
             })
       }
 render () {
+    //for the input comment 
    if(JSON.parse(localStorage.getItem('token'))['type']  === 'buyer' || JSON.parse(localStorage.getItem('token'))['id'] ===  this.props.location.info.item['fields']['store'] ){
        console.log(this.props.location.info.item['pk'])
        var com = <div><input type="comment" class="form-control"  id="exampleInputComment" name='addComment'  onChange={this.onChangeHandle.bind(this)} aria-describedby="emailHelp" placeholder="Add Comment"  style ={{width:'200px'}}></input>
        <button type="button" class="btn btn-danger" style ={{margin :'-50px 100px 0px 250px'}} onClick={this.submitHandle.bind(this)}>Comment</button></div>
    }
+// for the order button 
+if(JSON.parse(localStorage.getItem('token'))['type']  === 'buyer' ){
+    console.log(this.props.location.info.item['pk'])
+    var order = <Link to={{pathname:"/order", info: {id: this.props.location.info.item['pk'], name:this.props.location.info.item['fields'].productname, url: this.props.location.info.item['fields'].image, store: this.props.location.info.item['fields'].store, price: this.props.location.info.item['fields'].price }}}>
+    <button>Order </button> 
+          </Link>
+}
+
+
+
 
     console.log(this.props.location.info.cat)
     if (this.props.location.info.cat=== 'food')
@@ -110,7 +122,7 @@ render () {
                      <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> {this.props.location.info.item['fields'].description}</Card.Text>
                      {x} <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price : </label> {this.props.location.info.item['fields'].price}</Card.Text>
                      
-                     
+                     {order}
                    </div>  </Card.Body>
                    
                          

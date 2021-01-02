@@ -85,7 +85,7 @@ const ListItems = (props) => {
                       <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>
                       <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> {item['fields']['description']}</Card.Text>
                       <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price :</label> {item['fields']['price']}</Card.Text>
-                      <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Price :</label> {item['fields']['price']}</Card.Text>
+ 
                      <Link
                        to={{
                          pathname: "/seller/profile/1",

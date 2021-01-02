@@ -54,7 +54,7 @@
 //             {nav}
 //             <h1 style = {style2}>404 Page Not Found</h1>
 //             <img src={img} width ="100%" height ="900px"/>
-//             <button class="btn" style = {style}><Link to={url} style={{ color:'white'}}>Go Back Home</Link> </button>
+//             <button className="btn" style = {style}><Link to={url} style={{ color:'white'}}>Go Back Home</Link> </button>
 //             {/* {setTimeout(() => {
 //                 if(tokenObj)
 //                 window.location='/home'

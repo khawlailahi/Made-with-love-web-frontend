@@ -5,11 +5,8 @@ import home from "./component/home.js";
 import SignUpSeller from "./component/signUpSeller.js";
 import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
-import ItemForm from "./component/addItem.js"
+import ItemForm from "./component/addItem.js";
 import addItem from "./component/addItem.js";
-// import Footer from "./component/Footer.js";
-
-// import Navbar from "./component/layout/Navbar.js";
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
 import EditProfile from "./component/editSellerProfile";
@@ -27,6 +24,7 @@ import settingsProfile from './component/settings'
 import ItemPage from './component/itemPage'
 
 
+import "./Style/map.css";
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -35,21 +33,21 @@ var mapStateToProps = (state) => {
   };
 };
 function App(props) {
-  var url = `/buyer/${props.name}`
-  console.log(url)
- 
+  var url = `/buyer/${props.name}`;
+  console.log(url);
+
   return (
-   <div className="page-container">
-     <div className="content-wrap">
-    <Router>
-     <Switch>
-     <Route
-              path='/seller/profile/:id'
+    <div className="page-container">
+      <div className="content-wrap">
+        <Router>
+          <Switch>
+            <Route
+              path="/seller/profile/:id"
               exact
               component={sellerProfile}
             ></Route>
-              <Route
-              path='/seller/editProfile/:id'
+            <Route
+              path="/seller/editProfile/:id"
               exact
               component={EditProfile}
             ></Route>
@@ -76,16 +74,62 @@ function App(props) {
        <Route  path ='/buyer/accessories'  exact   component={() => <CatBuyer store={store} cat = "accessories"/>}></Route>
        <Route  path ='/order' exact   component={() => <Order/>}></Route>
 
-       {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
-       <Route  path ='/seller/food'  exact   component={() => <CategorySeller store={store} cat="food" />}></Route>
-       <Route  path ='/seller/clothes'  exact   component={() => <CategorySeller store={store} cat="clothes" />}></Route>
-       <Route  path ='/seller/babyproducts'  exact   component={() => <CategorySeller store={store} cat = "babyproducts"/>}></Route>
-       <Route  path ='/seller/accessories'  exact   component={() => <CategorySeller store={store} cat = "accessories"/>}></Route>
- 
-     </Switch>
-   {/* <Footer/> */}
-    </Router>
-    </div></div>
+            <Route
+              path={"" + url}
+              exact
+              component={() => <CatBuyer store={store} cat={props.name} />}
+            ></Route>
+            <Route
+              path="/buyer/food"
+              exact
+              component={() => <CatBuyer store={store} cat="food" />}
+            ></Route>
+            <Route
+              path="/buyer/clothes"
+              exact
+              component={() => <CatBuyer store={store} cat="clothes" />}
+            ></Route>
+            <Route
+              path="/buyer/babyproducts"
+              exact
+              component={() => <CatBuyer store={store} cat="babyproducts" />}
+            ></Route>
+            <Route
+              path="/buyer/accessories"
+              exact
+              component={() => <CatBuyer store={store} cat="accessories" />}
+            ></Route>
+            <Route path="/order" exact component={() => <Order />}></Route>
+            {/* <Route  path ={''+url1}  exact   component={() => <CategorySeller store={store} cat={props.name} />}></Route> */}
+            <Route
+              path="/seller/food"
+              exact
+              component={() => <CategorySeller store={store} cat="food" />}
+            ></Route>
+            <Route
+              path="/seller/clothes"
+              exact
+              component={() => <CategorySeller store={store} cat="clothes" />}
+            ></Route>
+            <Route
+              path="/seller/babyproducts"
+              exact
+              component={() => (
+                <CategorySeller store={store} cat="babyproducts" />
+              )}
+            ></Route>
+            <Route
+              path="/seller/accessories"
+              exact
+              component={() => (
+                <CategorySeller store={store} cat="accessories" />
+              )}
+            ></Route>
+          </Switch>
+          {/* <Footer/> */}
+        </Router>
+      </div>
+    </div>
   );
 }
 export default App;

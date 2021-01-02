@@ -112,7 +112,7 @@ var x =  <div> <Container fluid>
   </Card>
 </CardGroup>
 </Container>
-<VisitItems items={this.state.items}/></div>
+<VisitItems items={this.state.items} cat ={this.state.data[0]['fields'].category}/></div>
   return(
     <div>
       <NavbarSeller/>

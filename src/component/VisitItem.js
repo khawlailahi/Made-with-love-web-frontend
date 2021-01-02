@@ -30,10 +30,10 @@ const VisitItems = (props) => {
               <Col>
        
            <Card style={{ width: "400px", marginTop: "50px", marginLeft:'50px' }}>
-                   <Card.Img
+           <Link to={{pathname:"/buyer/item", info: {item:item, cat:props.cat}}}>   <Card.Img
                      variant="top"
                      src={item['fields']['image']}
-                   />
+                   /></Link>
                   <Card.Body>
                      <Card.Title style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Product Name :</label> {item['fields']['productname']}</Card.Title>
                      <Card.Text style={{fontWeight:'normal'}}><label style={{color:'red', fontWeight:'bold'}}>Description :</label> {item['fields']['description']}</Card.Text>

@@ -84,10 +84,10 @@ export default function Home(props) {
            <div className="col-sm-6" onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryfood()) }} >
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={1000}  className="col-sm-6">
     <img
       className="d-block w-100"
-      src='https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300'
+      src='https://previews.123rf.com/images/golubovy/golubovy1603/golubovy160300104/54302200-food-photography-of-baked-pork-with-fresh-vegetables-home-made-food-photo-for-social-networks-top-vi.jpg'
       alt="First slide"
     />
     <Carousel.Caption>
@@ -98,7 +98,7 @@ export default function Home(props) {
   <Carousel.Item interval={500}>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://static2.bigstockphoto.com/0/8/3/large1500/380596804.jpg"
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -109,7 +109,7 @@ export default function Home(props) {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://thumbs.dreamstime.com/b/cinnamon-rolls-sinabon-made-home-lying-grey-table-homemade-cakes-brown-wooden-sweet-141014176.jpg"width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -126,10 +126,10 @@ export default function Home(props) {
           <div className="col-sm-6"  onClick={()=>{  console.log("clickeeed"); dispatch(getcategoryclothes()) }} >
         <div className="card"  style={{border: "solid  black 2px",width:'700px',cursor: 'pointer',marginTop:"150px",marginLeft:'100px',  boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.6)' }}  >
         <Carousel>
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={1000}  className="col-sm-6">
     <img
       className="d-block w-100"
-      src='https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300'
+      src='https://www.next.co.uk/nxtcms/resource/blob/804278/b27903a48e38e6e0c04a077af12851f2/next-girls--bridesmaid-dresses-data.jpg'width = '500px' height = '500px'
       alt="First slide"
     />
     <Carousel.Caption>
@@ -139,7 +139,7 @@ export default function Home(props) {
   <Carousel.Item interval={500}>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://www.landsend.com/article/best-work-from-home-clothes-men/images/feat-m.jpg" width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -150,7 +150,7 @@ export default function Home(props) {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://media.istockphoto.com/photos/women-clothes-hanging-on-hangers-clothing-rails-fashion-design-picture-id916092484?k=6&m=916092484&s=612x612&w=0&h=tUKYM82W1Vecsjeat6rl6kTnq7iCFq0JYhI2uR3VxMU=" width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -169,7 +169,7 @@ export default function Home(props) {
   <Carousel.Item interval={1000}>
     <img
       className="d-block w-100"
-      src='https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300'
+      src='https://st3.depositphotos.com/3737897/15110/i/1600/depositphotos_151106036-stock-photo-clothing-and-accessories-for-women.jpg'width = '500px' height = '500px'
       alt="First slide"
     />
     <Carousel.Caption>
@@ -180,7 +180,7 @@ export default function Home(props) {
   <Carousel.Item interval={500}>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://previews.123rf.com/images/belchonock/belchonock1802/belchonock180292570/96250582-stylish-women-accessories-on-wooden-background.jpg"width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -191,7 +191,7 @@ export default function Home(props) {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://gedaramade.com/wp-content/uploads/2020/11/GiftNfab-natural-stone-hand-made-bracelets-on-GedaraMade-372x400.jpg"width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -210,7 +210,7 @@ export default function Home(props) {
   <Carousel.Item interval={1000}>
     <img
       className="d-block w-100"
-      src='https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300'
+      src='https://www.stylishboard.com/wp-content/uploads/2013/05/fi3.jpg' width = '500px' height = '500px'
       alt="First slide"
     />
     <Carousel.Caption>
@@ -221,7 +221,7 @@ export default function Home(props) {
   <Carousel.Item interval={500}>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://hipdysplasia.org/wp-content/uploads/2020/05/learn-about-cause.jpg"  width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
@@ -232,7 +232,7 @@ export default function Home(props) {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="https://tse4.mm.bing.net/th?id=OIP.taYH3jLJdjG1qJhUSl6zVAHaHa&pid=Api&P=0&w=300&h=300"
+      src="https://ae01.alicdn.com/kf/H30992dcc27d7495c8498858f9b357886E/2019-Baby-Kids-Winter-Warm-Clothes-Newborn-Baby-Boy-Girl-Children-s-Solid-Hooded-Sweater-3D.jpg" width = '500px' height = '500px'
       alt="Third slide"
     />
     <Carousel.Caption>
