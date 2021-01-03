@@ -210,7 +210,7 @@ if (this.props.cat === 'babyproducts'){
 console.log(this.state)
         if(this.state.data.length >0){
             console.log ('i got dataa')
-            var z= <ItemList items ={ this.state.data} /> 
+            var z= <ItemList items ={ this.state.data}  cat={this.props.cat}/> 
         }
         return (
             <div>
