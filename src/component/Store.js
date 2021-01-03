@@ -293,7 +293,9 @@ const store = createStore(combineReducers({
         login:loginState,
         order:orderForm,
         edit : editProfile,
-        password:password
+        password:password,
+        signUpSeller:signUpSeller,
+        signUpBuyer:signUpBuyer
 
      } )
 })
