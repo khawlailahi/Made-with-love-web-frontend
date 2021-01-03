@@ -200,8 +200,8 @@ function SignUpBuyer(props) {
                 </Link>
               </div>
               <GoogleLogin />
-              <LoginGo />
-              <Facebook />
+              {/* <LoginGo /> */}
+              {/* <Facebook /> */}
             </Form>
           </div>
         </div>
