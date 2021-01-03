@@ -91,7 +91,7 @@ var mapDispatchToProps = (dispatch) => {
 var takingTheUrl = ()=>{
 if(image !== ""){
   return <div>
-    <img src={url}></img>
+    <img src={url} width='250px' height='250px'></img>
     <button type="button" onClick={tr1}>Upload</button>
   </div>
 }

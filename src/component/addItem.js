@@ -66,7 +66,7 @@ const uploadImage=(e)=>{
    console.log(url)
   if(image !== ""){
 return <div>
-<img src={url}/>
+<img src={url} width='300px' height='300px'/>
 <input type ='button' value ='Upload' onClick={handleUpload}/>
 </div>
   }

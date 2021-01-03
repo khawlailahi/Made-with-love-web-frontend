@@ -10,38 +10,21 @@ var NavbarSeller = () =>{
   return (
 <div className="App">
 
-{/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" bac="red">
-  <Navbar.Brand href="/home" >Made With Love</Navbar.Brand>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="mr-auto">
-  
-      <Nav.Link href="/home" style={{padding:'22px 880px 0px 0px'}}>HOME</Nav.Link>
-      <Nav.Link  href={url+''} style ={{fontSize:"20px", padding:'15px '}}>Profile
 
-      </Nav.Link>
-      <NavDropdown  id="collasible-nav-dropdown" style ={{padding :'15px'}}>
-        <NavDropdown.Item href="/orderList"> Views Orders</NavDropdown.Item>
-        <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
-        <NavDropdown.Item href="/" onClick={signout}>Sign Out</NavDropdown.Item>
-        <NavDropdown.Divider />
-      
-      </NavDropdown>
-    </Nav>
-    <Nav>
-
-     
-    </Nav>
-  </Navbar.Collapse>
-</Navbar> */}
 
 <Navbar collapseOnSelect expand="lg" bg="#800000" variant="dark">
   <Navbar.Brand href="/home" >Made With Love</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
   <Navbar.Brand href="/home" >HOME</Navbar.Brand>
-    <Nav className="mr-auto">
-  
+  <Nav className="mr-auto">
+      <NavDropdown title="category" id="collasible-nav-dropdown">
+        <NavDropdown.Item href="/buyer/food">Food</NavDropdown.Item>
+        <NavDropdown.Item href="/buyer/clothes">Clothes</NavDropdown.Item>
+        <NavDropdown.Item href="/buyer/accessories">Accessories</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="/buyer/babyproducts">Baby  Accessories</NavDropdown.Item>
+      </NavDropdown>
     </Nav>
     <Nav>
     <NavDropdown  id="collasible-nav-dropdown" style ={{padding :'15px'}}>
