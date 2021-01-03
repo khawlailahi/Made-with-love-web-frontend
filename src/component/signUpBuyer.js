@@ -8,7 +8,7 @@ import GoogleLogin from "./social/social/google/google";
 import Facebook from "./social/social/facebook/facebook";
 import { BrowserRouter as Router,  Link } from 'react-router-dom';
 // import { storage } from '../firebase/index';
-import NavBar from './layout/Navbar'
+import NavbarBuyer from './layout/NavbarBuyer'
 //call the state I need from the store
 var mapStateToProps = (state) => {
   console.log(state, 'staaaaat')
@@ -74,9 +74,15 @@ function SignUpBuyer(props) {
 
   return (
 
-    <div>
-      <NavBar />
-      <div style={{ maxWidth: "500px", margin: 'auto', padding: '0px 10px 10px 10px' }}>
+    <div style={{  
+      backgroundImage: "url(" + "https://cdn.pizap.com/pizapfiles/images/photo_backgrounds_textures_app05.jpg" + ")",
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      hight:'1000px'
+    }}>
+      <NavbarBuyer />
+      <div style={{ maxWidth: "500px", margin: 'auto',  padding: '50px 10px 10px 10px' , }} >
 
         <div className="card w-100">
           <div className="card-body">
@@ -118,7 +124,7 @@ function SignUpBuyer(props) {
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
 
-              <button type="button" className="btn btn-danger" onClick={clickButton} style={{ margin: '0px 150px 0px 150px', width: "100px" }}>Sign Up</button>
+              <button type="button"  style={{'background-color': "blue"}} className="btn btn-danger" onClick={clickButton} style={{ margin: '0px 150px 0px 150px', width: "100px" }}>Sign Up</button>
               <br /><br />
               <div>
                 <Link to='/login'><a style={{ margin: '0px 90px 0px 90px' }} >Already have an acount ? Login</a></Link>

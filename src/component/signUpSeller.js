@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { useState } from "react";
 import $ from "jquery";
 import { storage } from '../firebase/index';
-import NavBar from './layout/Navbar'
+import NavbarSeller from './layout/NavbarSeller'
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
 var mapStateToProps = (state) => {
   return {
@@ -98,8 +98,8 @@ if(image !== ""){
 }
   return (
     <div>
-      <NavBar />
-      <div style={{ maxWidth: "500px", margin: 'auto', padding: '0px 10px 10px 10px' }}>
+      <NavbarSeller />
+      <div style={{ maxWidth: "500px", margin: 'auto',  padding: '50px 10px 10px 10px'  }}>
         <div className="card w-100">
           {/* <div className="card-body"> */}
           <div className="container">
@@ -157,7 +157,8 @@ if(image !== ""){
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
-              <input type ="file" name="image" onChange = {handleUpload}/><br></br>
+              <div class="custom-file">
+              <input type ="file"  name="image" onChange = {handleUpload}/></div><br></br>
               {takingTheUrl()}
               <button type="button" className="btn btn-danger"  onClick={clickButton}  style={{ margin: '0px 180px', width: 100 }}>Sign Up</button>
               <br /><br />

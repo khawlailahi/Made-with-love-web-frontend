@@ -224,17 +224,23 @@ render() {
 //   :'not'}
 //   console.log(this.props,'proooooops')
 // console.log(this.props.location.info.price, 'priiiiiiiice')
+
 if(this.state.show = true)
-var map =<div>   
-<div className="main-wrapper" width="50px">
-<Wrapper className="main-wrapper">
-   
+var map =
+  
+  
+<div className="main-wrapper" >
+
+ <Wrapper  >
+
    {mapApiLoaded && (
-       <div className="main-wrapper"> 
-           <AutoComplete map={mapInstance} mapApi={mapApi} addplace={this.addPlace} />
-       </div>
-   )}
-   <GoogleMapReact
+        <div> 
+            <AutoComplete map={mapInstance} mapApi={mapApi} addplace={this.addPlace} />
+
+        </div>
+    )}
+    
+    <GoogleMapReact
        center={this.state.center}
        zoom={this.state.zoom}
        draggable={this.state.draggable}
@@ -250,32 +256,18 @@ var map =<div>
        }}
        yesIWantToUseGoogleMapApiInternals
        onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)}
-   >
-
-       <Marker
+   > 
+    <Marker
            text={this.state.address}
            lat={this.state.lat}
            lng={this.state.lng}
        />
-
-
-   </GoogleMapReact>
-{
- this.state.show = true?
-<div className="info-wrapper">
-       <div className="map-details">Latitude: <span>{this.state.lat}</span>, Longitude: <span>{this.state.lng}</span></div>
-       <div className="map-details">Zoom: <span>{this.state.zoom}</span></div>
-       <div className="map-details">Address: <span>{this.state.address}</span></div>
-       <button onClick={this.location}>
-     
-    Add My Location
-     </button> 
-   </div>:null
-}
    
+       </GoogleMapReact>
+
 </Wrapper >
 </div>
-</div>
+
 
 var link = 'https://www.google.com/maps/search/'+ this.state.lat +','+ this.state.lng+'?sa=X&ved=2ahUKEwiRo7PR4frtAhXVURUIHfmeDe4Q8gEwAHoECAEQAQ'
     return ( 
@@ -288,12 +280,12 @@ var link = 'https://www.google.com/maps/search/'+ this.state.lat +','+ this.stat
        <div >
         <h4 style= {{textAlign:"center"}}>YOUR ORDER</h4>
         <br/><br/>
-        <h5 style= {{textAlign:"center", marginTop :"40px"}}>{this.props.location.info.name}</h5>
+        <h5 style= {{textAlign:"center"}}>{this.props.location.info.name}</h5>
         </div>
 
       <div className="d-flex"  >
         <br/>
-        <div className="p-2" style= {{marginRight :"30px"}}>
+        <div >
           
         {/* <h5>{this.props.location.info.store}</h5><br/><br/> */}
         <br/><br/> <img src = {this.props.location.info.url} style= {{width:"300px", height:"300px", marginBottton:"30px"}}/>
@@ -310,16 +302,22 @@ var link = 'https://www.google.com/maps/search/'+ this.state.lat +','+ this.stat
         <label for="validationDefault01" classNameName="form-label">Quantity:</label>
         <Control.text name="order" className="form-control" type="number" model="order.quantity"  min="1" id="validationDefault01" required />
         <br></br>
-      
+        <label for="validationDefault02">Phone Number:</label>
+        <Control.text className="form-control" model="order.phoneNumber" id="order.phoneNumber" required/>
+        
         <label  for="validationDefault02" className="form-label">Location:</label>
         <Control.text className="form-control" model="order.location" id="order.location" required value ={link} />
         <button onClick={this.showMap}>
       Your Location</button>
+      {map}
+      
+        <br></br><br></br><br></br>
         
-        <br></br>
-         <label for="validationDefault02">Phone Number:</label>
-        <Control.text className="form-control" model="order.phoneNumber" id="order.phoneNumber" required/>
-        <br/><br/><br/><br/>
+        
+       
+          <button className="btn btn-success" style={{ width:"200px" ,textAlign:"center", margin:'40px 150px 0px 150px'}}>
+        Pay Cash
+        </button>
         <StripeCheckout
             stripeKey = 'pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq'
             token = {this.handleToken}
@@ -327,14 +325,11 @@ var link = 'https://www.google.com/maps/search/'+ this.state.lat +','+ this.stat
             name={this.props.location.info.productname}
             // billingAddress
             // shippingAddress
-            style={{marign:"0 auto", width:"200px" ,textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}
+            style={{marign:"10px auto", width:"200px" ,textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}
             />
-          <button className="btn btn-success" style={{marign:"0 auto", width:"200px", textAlign:"center", marginLeft:"30%", marginBottom:'50px'}}>
-        Pay Cash
-        </button>
       </Form> 
       </div></div> </div>
-    {map}
+      
       </div>
     )
  }

@@ -7,7 +7,7 @@ var NavbarBuyer = () =>{
   }
   return (
 <div className="App">
-<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+<Navbar collapseOnSelect expand="lg" bg="#800000" variant="dark">
   <Navbar.Brand href="/home" >Made With Love</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
