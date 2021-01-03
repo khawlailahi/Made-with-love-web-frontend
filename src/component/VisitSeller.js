@@ -123,14 +123,5 @@ var x =  <div> <Container fluid>
 }
 
 }
-<<<<<<< HEAD
-export default VisitSeller;
-
-
-
-
-
-=======
 
 export default VisitSeller; 
->>>>>>> cfcf829720200efc7aef873a259f9c16d23ffc45
