@@ -3,7 +3,7 @@ import $ from "jquery";
 import { Container, CardGroup, Card, Row, Col } from 'react-bootstrap';
 import VisitItems from "./VisitItem";
 import NavbarSeller from './layout/NavbarSeller'
-
+import { useParams } from "react-router-dom";
 const styles = {
   card: {
     backgroundColor: '#B7E0F2',
@@ -25,11 +25,12 @@ this.state={data:[],
 
  fetchData =(id)=>{
   var that = this;
-  console.log(this.props.location,"iddddd")
-  console.log(1111111111111111)
-  
+  console.log( typeof this.props.location.pathname.slice(15),"iddddd")
+  // console.log(1111111111111111)
+  // var  { id } = useParams();
+  console.log(this.props.location.pathname.slice(14) , "idddddd")
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/${that.props.location.id}`),
+   url:(`http://127.0.0.1:8000/seller/visit/${this.props.location.pathname.slice(14)}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
@@ -50,13 +51,13 @@ fetchItems =(id)=>{
   console.log(id,"fetchitems")
   console.log(1111111111111111)
  $.ajax({
-   url:(`http://127.0.0.1:8000/seller/visit/items/${that.props.location.id}`),
+   url:(`http://127.0.0.1:8000/seller/visit/items/${this.props.location.pathname.slice(14)}`),
    type:'GET',
    success:function(data){
      console.log(data, 'Fetch the data')
-     var data1 = JSON.parse(data)
+    //  var data1 = JSON.parse(data)
     // var data1 = data
-     that.setState({ items:data1},()=>{console.log("itemsss",that.state)})
+     that.setState({ items:data},()=>{console.log("itemsss",that.state)})
      // that.setState(data
      // console.log(that.state,'staaate')
    },
@@ -111,7 +112,7 @@ var x =  <div> <Container fluid>
   </Card>
 </CardGroup>
 </Container>
-<VisitItems items={this.state.items}/></div>
+<VisitItems items={this.state.items} cat ={this.state.data[0]['fields'].category}/></div>
   return(
     <div>
       <NavbarSeller/>

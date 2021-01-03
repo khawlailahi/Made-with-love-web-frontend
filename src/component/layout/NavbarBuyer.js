@@ -1,10 +1,10 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import '../../Style/navbar.css'
-var NavbarBuyer = () =>{
-  var signout=()=>{
-    localStorage.removeItem('token')
-  }
+import React from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import "../../Style/navbar.css";
+var NavbarBuyer = () => {
+  var signout = () => {
+    localStorage.removeItem("token");
+  };
   return (
 <div className="App">
 <Navbar collapseOnSelect expand="lg" bg="#800000" variant="dark">

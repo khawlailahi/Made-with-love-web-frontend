@@ -58,7 +58,7 @@ var mapDispatchToProps = (dispatch) => {
     },
     error: function (err) {
      alert('email already exsit')
-    window.location = `/seller/signup`      
+    // window.location = `/seller/signup`      
       }
 })  
  }
@@ -106,37 +106,37 @@ if(image !== ""){
             <Form className="needs-validation" action="" >
               <Form.Group >
                 <Form.Label>Email address</Form.Label>
-                <Form.Control placeholder="Enter email" name="email" id="email" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <Form.Control   autocomplete="off" placeholder="Enter email" name="email" id="email" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
               <Form.Group >
                 <Form.Label>password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" name="password" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <Form.Control  autocomplete="off" type="password" placeholder="Enter password" name="password" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Store Name</Form.Label>
-                <Form.Control placeholder="Enter Store Name" name="storeName" id="storeName" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <Form.Control  autocomplete="off" placeholder="Enter Store Name" name="storeName" id="storeName" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
               <Form.Group >
                 <Form.Label>Description</Form.Label>
-                <Form.Control placeholder="Enter Description" name="description" id="Description" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <Form.Control  autocomplete="off" placeholder="Enter Description" name="description" id="Description" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
               <Form.Group >
                 <Form.Label>Location</Form.Label>
-                <Form.Control placeholder="Enter Location" name="location" id="Location" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
+                <Form.Control  autocomplete="off" placeholder="Enter Location" name="location" id="Location" onChange={props.inputChanged} style={{ padding: "2px 2px 2px 2px" }} required />
                 <div className='valid-feedback'></div>
                 <div className="invalid-feedback">Please Fill Out This Field</div>
               </Form.Group>
               <Form.Group onChange={props.inputChanged} required>
                 <Form.Label>Choose Category</Form.Label>
-                <Form.Control as="select" custom name="category" style={{ padding: "2px 2px 2px 2px" }} required>
+                <Form.Control  autocomplete="off" as="select" custom name="category" style={{ padding: "2px 2px 2px 2px" }} required>
                   <option></option>
                   <option value="food">Food</option>
                   <option value="clothes">clothes</option>
@@ -148,7 +148,7 @@ if(image !== ""){
               </Form.Group>
               <Form.Group name="deliveryOrder" onChange={props.inputChanged} required>
                 <Form.Label>Deliver Order WithIn</Form.Label>
-                <Form.Control as="select" custom name="deliveryOrder" style={{ padding: "2px 2px 2px 2px" }} required>
+                <Form.Control  autocomplete="off" as="select" custom name="deliveryOrder" style={{ padding: "2px 2px 2px 2px" }} required>
                   <option></option>
                   <option value="12 Hours">12 Hours</option>
                   <option value="24 Hours">24 Hours</option>

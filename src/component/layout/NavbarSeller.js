@@ -1,12 +1,12 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import '../../Style/navbar.css'
-var NavbarSeller = () =>{
-  var signout=()=>{
-    localStorage.removeItem('token')
-  }
-  var id = JSON.parse(localStorage.getItem('token'))['id']
-  var url = `/seller/profile/${id}`
+import React from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import "../../Style/navbar.css";
+var NavbarSeller = () => {
+  var signout = () => {
+    localStorage.removeItem("token");
+  };
+  var id = JSON.parse(localStorage.getItem("token"))["id"];
+  var url = `/seller/profile/${id}`;
   return (
 <div className="App">
 
