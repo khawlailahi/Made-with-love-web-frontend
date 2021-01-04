@@ -34,15 +34,15 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <Navbar />
         <Card style={{width:'500px', padding:'20px 20px 20px 20px'}}>
         <div >
           
-          <Form  class="row g-3 needs-validation" model="login" type="submit"  onSubmit={(login) => this.ajax(login)} novalidate>
+          <Form  className="row g-3 needs-validation" model="login" type="submit"  onSubmit={(login) => this.ajax(login)} novalidate>
 
             <div >
-              <label for="validationCustom01" class="form-label">
+              <label for="validationCustom01" className="form-label">
                 Email address
               </label>
               <b></b>
@@ -57,7 +57,7 @@ class Login extends React.Component {
                 required
                 style={{width:"300px"}}
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
               <b></b>
               <br></br>
               <label for="validationCustom01" className="form-label">
@@ -73,11 +73,11 @@ class Login extends React.Component {
                 required
                 style={{width:"300px"}}
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
               <b></b>
               <br></br>
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">
+              <div className="col-12">
+                <button className="btn btn-primary" type="submit">
                   Log in
                 </button>
               </div>

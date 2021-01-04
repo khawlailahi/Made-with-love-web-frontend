@@ -152,7 +152,7 @@ import logo1 from "../images/logo1.png"
     <Col style={{padding:'100px'}}>
     <h3 style={{color:'#fcfbed'}}>Have a Question?</h3><br/>
 
-    <i class="far fa-clock fa-2x" style={{fontSize:'20px', color:'#fcfbed'}} >  Saturday - Thursday: 09:00AM - 18:30PM</i>
+    <i className="far fa-clock fa-2x" style={{fontSize:'20px', color:'#fcfbed'}} >  Saturday - Thursday: 09:00AM - 18:30PM</i>
     </Col>
 </Row>
    </Container>
