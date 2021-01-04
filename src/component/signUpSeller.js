@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Control, Form } from "react-redux-form";
 import { useState } from "react";
 import $ from "jquery";
+
 import { storage } from '../firebase/index';
 import NavbarSeller from './layout/NavbarSeller'
 // import { BrowserRouter as Router, Link } from 'react-router-dom';

@@ -5,7 +5,7 @@ import { Control, Form } from "react-redux-form";
 import Navbar from "./layout/Navbar";
 import LoginGo from "./social/google/loginGo";
 // import GoogleLogin from "./social/google/google";
-
+import { Card } from 'react-bootstrap';
 class Login extends React.Component {
   ajax(login) {
     $.ajax({
@@ -34,19 +34,14 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div class="container">
         <Navbar />
-        <div style={{ marginLeft: "700px" }}>
-          <br></br>
-          <br></br>
-          <Form
-            class="row g-3 needs-validation"
-            model="login"
-            type="submit"
-            onSubmit={(login) => this.ajax(login)}
-            novalidate
-          >
-            <div class="col-md-4">
+        <Card style={{width:'500px', padding:'20px 20px 20px 20px'}}>
+        <div >
+          
+          <Form  class="row g-3 needs-validation" model="login" type="submit"  onSubmit={(login) => this.ajax(login)} novalidate>
+
+            <div >
               <label for="validationCustom01" class="form-label">
                 Email address
               </label>
@@ -60,7 +55,7 @@ class Login extends React.Component {
                 model="login.email"
                 id="login.email"
                 required
-                style={{ padding: "2px 2px 2px 2px" }}
+                style={{width:"300px"}}
               />
               <div class="valid-feedback">Looks good!</div>
               <b></b>
@@ -76,7 +71,7 @@ class Login extends React.Component {
                 model="login.password"
                 id="login.password"
                 required
-                style={{ padding: "7px 2px 2px 2px" }}
+                style={{width:"300px"}}
               />
               <div class="valid-feedback">Looks good!</div>
               <b></b>
@@ -93,7 +88,9 @@ class Login extends React.Component {
           </Form>
           <LoginGo />
         </div>{" "}
+        </Card>
       </div>
+      
     );
   }
 }

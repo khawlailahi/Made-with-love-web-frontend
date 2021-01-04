@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import {Button  } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/view.css";
+import back from "../images/back.jpg"
+import logo from "../images/logo.png"
 
 // const player = {
 //     color : 'red',
@@ -14,33 +16,35 @@ import "../Style/view.css";
 // }
  function View(){
      return (
-         <div>
+         <div style={{  width: "100%",
+         height: "1030px", backgroundImage: `url(${back})`}}>
+
         <NavBar/> 
-        
-     <ReactPlayer  url ='https://www.youtube.com/watch?v=5yOwCsF7KU8'  width ="50%" height= "500px" style={{marginTop:"20px"}} /><br/>
-     <div className='styleFont' style={{marginLeft:"55%", marginTop:'-400px'}}>
-     <h1>- When you support a small business,  </h1><br/><h1 >you are supporting a dream.</h1>
-     <h1 style={{marginTop:'70px'}}>- When life gives you hands,  </h1><br/><h1 >make handmade.</h1>
-     </div>
-
-     <div style={{marginTop:"120px"}}>
+     <div>
+ <img  className="text-center col-md-3 col-md-offset-3" src={logo} width='auto' height="auto" style={{margin: '0px 700px 0px 700px'}}></img>
+ </div> 
       
 
-      
-            <Link to="/buyer/signup">
-
-             <Button variant="primary" size="lg" active style={{width:'48%', backgroundColor:'#807978',borderRadius:'9px', marginLeft:'20px',borderColor:'black',borderStyle:'solid', borderWidth:'2px'}}>
-   Find The Best Homemade Products
-  </Button></Link>
-  <Link  to="/seller/signup">
-  <Button  size="lg" active style={{width:'48%', backgroundColor:'#807978',borderRadius:'9px', marginLeft:'20px', borderColor:'black',borderStyle:'solid', borderWidth:'2px'}} >
- Get Started With Your Business
-  </Button></Link>
+  <div className="container">
+    <div className="row">
+   
+    <Link  to="/seller/signup" style={{textDecoration: 'none'}}><div class="col-md-12">
+       <p className="mb-0"style={{color:'#fcfbed', fontSize:'20px'}}>Get Started With Your Business</p>
+        </div></Link>
 
 
+        <Link to="/buyer/signup" style={{textDecoration: 'none'}}><div class="col-md-12">
+            <p  className="mb-0" style={{color:'#fcfbed',  fontSize:'20px'}}> Find The Best Homemade Products</p>
+        </div></Link>
+
+
+    </div>
+</div>
+<div tyle={{  width: "100%",
+backgroundImage: "url(" + 'https://www.althemist.com/zass/wp-content/themes/zass/image/ripoff.png' + ")"}}></div>
         
         
-        </div>
+        
         </div>
     )
 }
