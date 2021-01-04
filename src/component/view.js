@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
-import NavBar from "./layout/Navbar.js";
 import { Link } from 'react-router-dom'
-import {Button , Container , Row , Col, Card } from 'react-bootstrap';
+import { Container , Row , Col, Card } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/view.css";
 import back from "../images/back.jpg"
