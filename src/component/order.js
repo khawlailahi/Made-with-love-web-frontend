@@ -4,7 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios'
 import {toast} from 'react-toastify';
 import NavbarBuyer from "./layout/NavbarBuyer.js";
-import React, { Component } from 'react'
+import React from 'react'
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
 import $ from 'jquery';

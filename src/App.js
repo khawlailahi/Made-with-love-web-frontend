@@ -125,7 +125,7 @@ function App(props) {
               )}
             ></Route>
           </Switch>
-          {/* <Footer/> */}
+         
         </Router>
       </div>
     </div>

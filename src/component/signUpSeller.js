@@ -7,18 +7,6 @@ import $ from "jquery";
 import { storage } from '../firebase/index';
 import NavbarSeller from './layout/NavbarSeller'
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
-var mapStateToProps = (state) => {
-  return {
-    email: state.reducer.email,
-    password: state.reducer.password,
-    storeName: state.reducer.storeName,
-    category: state.reducer.category,
-    description: state.reducer.description,
-    location: state.reducer.location,
-    delieveryTime: state.reducer.deliveryOrder,
-    url: state.reducer.image
-  }
-}
 
 var action = { type: 'INPUT_CANGE', text: '' }
 var mapDispatchToProps = (dispatch) => {
@@ -37,16 +25,7 @@ var mapDispatchToProps = (dispatch) => {
 
   var clickButton = (signUpSeller) => {
     // console.log( props.email)
-    var obj = {};
-    obj.email = props.email;
-    obj.password = props.password;
-    obj.storeName = props.storeName;
-    obj.category = props.category;
-    obj.description = props.description;
-    obj.location = props.location;
-    obj.delieveryTime = props.delieveryTime;
-    obj.url = url;
-    console.log(obj)
+    
     $.ajax({
       url: "http://127.0.0.1:8000/seller/signup",
       method: "POST",
