@@ -15,7 +15,6 @@ const Wrapper = styled.main`
   width: 100%;
   height: 100%;
 `;
-
 // import MyGoogleMap from './renderTheMap';
 var time = new Date().toDateString();
 var price;

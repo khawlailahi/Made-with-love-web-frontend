@@ -193,13 +193,15 @@ function SignUpBuyer(props) {
               <br />
               <br />
               <div>
-                {/* <Link to="/login">
+                <Link to="/login">
                   <a style={{ margin: "0px 90px 0px 90px" }}>
                     Already have an acount ? Login
                   </a>
-                </Link> */}
+                </Link>
               </div>
               <GoogleLogin />
+              {/* <LoginGo /> */}
+              {/* <Facebook /> */}
             </Form>
           </div>
         </div>
