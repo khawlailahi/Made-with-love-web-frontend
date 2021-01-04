@@ -6,7 +6,6 @@ import "../Style/view.css";
 import back from "../images/back.jpg"
 import down from "../images/down.jpg"
 import heart from "../images/heart.jpg"
-
 import logo1 from "../images/logo1.png"
 
 // const player = {
