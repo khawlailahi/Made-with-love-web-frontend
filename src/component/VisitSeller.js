@@ -123,5 +123,4 @@ var x =  <div> <Container fluid>
 }
 
 }
-
 export default VisitSeller; 
