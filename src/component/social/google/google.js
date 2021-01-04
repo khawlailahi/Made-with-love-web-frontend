@@ -94,15 +94,13 @@ class GoogleLogin extends Component {
               console.log(JSON.parse(localStorage.getItem("token")));
               var tokenObj = JSON.parse(localStorage.getItem("token"));
               if (tokenObj.type === "buyer") window.location = "/home";
-              //if the user if a seller
+              // if the user if a seller
               if (tokenObj.type === "seller")
                 window.location = `/seller/profile/${tokenObj["id"]}`;
-              // window.location = "/login";
             },
             error: function (err) {
               console.log(err);
               alert("email already exist");
-              window.location = "/login";
             },
           });
 

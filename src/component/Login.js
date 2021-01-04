@@ -24,10 +24,11 @@ class Login extends React.Component {
       },
       error: function (err) {
         // window.location.replace('/login')
-        console.log("error:", err);
-        setTimeout(() => {
-          alert("Email Or Password Incorrect");
-        }, 300);
+        console.log("erroddddr:", err.responseJSON.Error);
+        alert(err.responseJSON.Error);
+        // setTimeout(() => {
+        //   alert("Email Or Password Incorrect");
+        // }, 300);
         window.location = "/login";
       },
     });

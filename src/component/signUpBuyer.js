@@ -66,8 +66,8 @@ function SignUpBuyer(props) {
       },
       error: function (err) {
         console.log(err);
-        alert("email already exist");
-        // window.location='/login'
+        alert(err.responseJSON.error);
+        window.location = "/buyer/signup";
       },
     });
   };
@@ -193,15 +193,13 @@ function SignUpBuyer(props) {
               <br />
               <br />
               <div>
-                <Link to="/login">
+                {/* <Link to="/login">
                   <a style={{ margin: "0px 90px 0px 90px" }}>
                     Already have an acount ? Login
                   </a>
-                </Link>
+                </Link> */}
               </div>
               <GoogleLogin />
-              {/* <LoginGo /> */}
-              {/* <Facebook /> */}
             </Form>
           </div>
         </div>

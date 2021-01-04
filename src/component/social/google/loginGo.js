@@ -103,7 +103,6 @@ class LoginGo extends Component {
               setTimeout(() => {
                 alert("Email Or Password Incorrect");
               }, 300);
-              window.location = "/login";
             },
           });
 
