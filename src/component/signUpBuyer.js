@@ -104,4 +104,4 @@ function SignUpBuyer(props) {
     </div>
   );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpBuyer);
+export default connect( mapDispatchToProps)(SignUpBuyer);

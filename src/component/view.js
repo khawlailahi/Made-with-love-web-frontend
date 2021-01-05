@@ -18,7 +18,7 @@ import logo1 from "../images/logo1.png"
      return (
          <div>
          <div  style={{  width: "100%",
-         height: "1030px", backgroundImage: `url(${back})`}}>
+         height: "1050px", backgroundImage: `url(${back})`, backgroundRepeat:'no-repeat', backgroundSize: "cover"}}>
 
         <Container>
                     
@@ -26,23 +26,24 @@ import logo1 from "../images/logo1.png"
     {/* <Col xs lg="3">
       1 of 3
     </Col> */}
-    <div style={{float: "none",
-    marginLeft: "360px",
-    marginRight: "100px",
-    marginBottom: "20px",
-    marginTop: "0",
-    paddingTop: "10px"}}>
-        <a href='/'>
-            <img src={logo1} width="200" height="180"/>
-        </a>
-    </div>
+    <div
+              style={{
+                float: "none",
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginBottom: "20px",
+                marginTop: "0",
+                paddingTop: "10px",
+              }}
+            >
+              <a href="/">
+                <img src={logo1} width="200" height="180" />
+              </a>
+            </div>
     
-    <Col md="auto"><hr style={{color:'white', height:'50px'}}/></Col>
-  <hr style={{
-  
-  border:"0",
-  borderTop: '1px solid rgba(0, 0, 0, 0.1)'}}/>
+
   </Row>
+  <hr style={{ marginLeft: "20px", border: "0.5px solid white" }}></hr>
   <Row>
     <Col style={{padding:'0px 20px 0px 100px', }}>
     <a href="/" style={{color:'#fcfbed', fontSize:'25px', fontFamily: 'Yanone Kaffeesatz'}}>Home</a>
@@ -146,15 +147,26 @@ import logo1 from "../images/logo1.png"
 </div> */}
 
 <div style={{  width: "100%", marginTop:'150px',
-         height: "500px", backgroundImage: `url(${down})`}}>
+         height: "600px", backgroundImage: `url(${down})`, backgroundRepeat:'no-repeat',  backgroundSize: "cover"}}>
    <Container >
    <Row >
-    <Col style={{padding:'100px'}}>
+    <Col style={{padding:'130px'}}>
     <h3 style={{color:'#fcfbed'}}>Have a Question?</h3><br/>
 
-    <i className="far fa-clock fa-2x" style={{fontSize:'20px', color:'#fcfbed'}} >  Saturday - Thursday: 09:00AM - 18:30PM</i>
+    <i className="far fa-clock fa-2x" style={{fontSize:'20px', color:'#fcfbed'}} >  Saturday - Thursday: 09:00AM - 18:30PM</i><br/><br/>
+    <i class="fas fa-map-marker-alt fa-2x" style={{fontSize:'20px', color:'#fcfbed'}} >  Jordan,Amman</i><br/><br/>
+    <i class="fas fa-phone-alt fa-2x" style={{fontSize:'20px', color:'#fcfbed'}}>  +962796720978</i><br/><br/>
+    <i class="fas fa-envelope fa-2x" style={{fontSize:'20px', color:'#fcfbed'}}><a href="mailto:lovemadewith817@gmail.com" style={{color:'#fcfbed'}}>  Made_With_Love</a></i>
     </Col>
+ <Col style={{padding:'130px'}}>
+ <h3 style={{color:'#fcfbed'}}>Informations</h3><br/>
+ <Link to ='/about'><i class="far fa-sticky-note fa-2x" style={{fontSize:'20px', color:'#fcfbed'}}>  About Us</i></Link><br/><br/>
+ <Link to ='/contact'><i class="far fa-sticky-note fa-2x" style={{fontSize:'20px', color:'#fcfbed'}}>  Contact Us</i></Link><br/><br/>
+ </Col>
 </Row>
+
+
+
    </Container>
 </div>
 </div>

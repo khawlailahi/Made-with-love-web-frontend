@@ -143,7 +143,7 @@ if(image !== ""){
     </div>
   )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpSeller);
+export default connect( mapDispatchToProps)(SignUpSeller);
 
 
 
