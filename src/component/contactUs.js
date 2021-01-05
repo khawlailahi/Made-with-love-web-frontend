@@ -7,18 +7,18 @@ import back from "../images/back.jpg"
 import down from "../images/down.jpg"
 import heart from "../images/heart.jpg"
 import logo1 from "../images/logo1.png"
-
+import contactUs  from '../images/contactUs.jpg'
 // const player = {
 //     color : 'red',
 //     fontFamily: 'Gochi Hand'
     
 
 // }
- function View(){
+ function ContactUs(){
      return (
          <div>
          <div  style={{  width: "100%",
-         height: "1050px", backgroundImage: `url(${back})`, backgroundRepeat:'no-repeat', backgroundSize: "cover"}}>
+         height: "1050px", backgroundImage: `url(${contactUs})`, backgroundRepeat:'no-repeat', backgroundSize: "cover"}}>
 
         <Container>
                     
@@ -72,6 +72,16 @@ import logo1 from "../images/logo1.png"
     </div>
       </Col>
   </Row>
+  <Row>
+      <Col style={{marginLeft: "340px",
+                marginRight: "340px",
+                marginBottom: "20px"}}>
+      <div style={{fontFamily: 'Yanone Kaffeesatz', float: "none",
+                 fontSize:'80px', color:'#fcfbed', width:"auto", height:'auto'}}>
+      Contacts
+      </div>
+      </Col>
+  </Row>
 <Row style={{padding:'200px 10px 0px 80px'}}>
     <Col>
     <Link  to="/seller/signup" style={{textDecoration: 'none'}}>
@@ -95,46 +105,25 @@ import logo1 from "../images/logo1.png"
 </div>
 
 <br/>
-<div style={{padding:'150px 0px 0px 0px'}}>
+
+<div style={{padding:'150px 10px 0px 10px'}}>
 <Container>
     <Row>
-<Col style={{padding:'0px 300px 0px 0px'}}>
-<Card style={{ width: '22rem'}}>
-  <Card.Img variant="top" src="https://i0.wp.com/www.althemist.com/zass/wp-content/uploads/2017/03/baby_cat.jpg?resize=350%2C350&ssl=1" />
-  <Card.Body>
-    
-    <Card.Title>
-     His Little Hands Stole My Heart,
-     His Little Feet Ran Away With it.
-    </Card.Title>
-  </Card.Body>
-</Card>
-</Col>
-<Col style={{padding:'0px 300px 0px 0px'}}>
-<Card style={{ width: '22rem'}}>
-  <Card.Img variant="top" src="https://i0.wp.com/www.althemist.com/zass/wp-content/uploads/2017/03/jewelry_cat.jpg?resize=350%2C350&ssl=1" />
-  <Card.Body>
-    <Card.Title>
-    Life Isn't Perfect,
-    But Your Accessories Can Be.
-    </Card.Title>
-    
-  </Card.Body>
-</Card>
+<Col style ={{
+                marginBottom: "20px"}}>
+<h2 style={{fontFamily: 'Yanone Kaffeesatz', float: "none", marginRight: "400px", marginLeft: "400px",
+                 fontSize:'70px'}}>Contact Us</h2>
+                 <div><hr style={{ marginLeft: "-100px",marginRight:"-100px", border: "0.5px solid black" }}></hr></div><br/>
+                 <div ><p className="mb-0" style ={{fontFamily: 'Yanone Kaffeesatz', fontSize:'30px', marginRight: "200px", marginLeft: "200px"}}>     We Always Support And Welcome Creative Open-Minded People Who Would Like To Share Their Unique Creation. Feel Free To Say Hello!</p></div>
 
 </Col>
-<Col style={{padding:'0px 300px 0px 0px'}}>
-<Card style={{ width: '22rem' }}>
-  <Card.Img variant="top" src="https://i.pinimg.com/originals/dc/b5/d1/dcb5d1d21a3531e0e7577ed0a949229e.jpg" />
-  <Card.Body>
-    <Card.Title>
-    Cooking Is At One Child's Play And Adult Joy.
-    And Cooking Done With Care Is An Act Of Love.
-    </Card.Title>
-  </Card.Body>
-</Card>
-</Col>
-
+    </Row><br/>
+    <Row>
+        <Col style={{ marginRight: "400px", marginLeft: "400px"}}>
+        <i class="fas fa-map-marker-alt fa-2x" style={{fontSize:'25px'}} >   Jordan,Amman</i><br/><br/><br/>
+        <i class="fas fa-phone-alt fa-2x" style={{fontSize:'25px'}}>  +962796720978</i><br/><br/><br/>
+        <i class="fas fa-envelope fa-2x" style={{fontSize:'25px'}}><a href="mailto:lovemadewith817@gmail.com" style={{color:'black'}}>  Made_With_Love</a></i>
+        </Col>
     </Row>
 </Container>
 </div>
@@ -182,4 +171,4 @@ import logo1 from "../images/logo1.png"
     )
 }
 
-export default View;
+export default ContactUs;

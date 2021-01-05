@@ -14,6 +14,16 @@ import NavBar from "./layout/Navbar";
 import LoginGo from "./social/google/loginGo";
 
 //call the state I need from the store
+var mapStateToProps = (state) => {
+  console.log(state, "staaaaat");
+  return {
+    email: state.reducerBuyer.email,
+    password: state.reducerBuyer.password,
+    userName: state.reducerBuyer.userName,
+    location: state.reducerBuyer.location,
+    phoneNumber: state.reducerBuyer.phoneNumber,
+  };
+};
 
 var action = { type: "INPUT_BUYER", text: "" };
 var mapDispatchToProps = (dispatch) => {
@@ -34,10 +44,19 @@ function SignUpBuyer(props) {
   //console.log(props)
   //make ajax to send values of inputs
   var clickButton = (signUpBuyer) => {
+    console.log(props);
+    var obj = {};
+    obj.email = props.email;
+    obj.password = props.password;
+    obj.userName = props.userName;
+    obj.location = props.location;
+    obj.phoneNumber = props.phoneNumber;
+
+    console.log(obj);
     $.ajax({
       url: "http://127.0.0.1:8000/buyer/signup",
       method: "POST",
-      data: JSON.stringify(signUpBuyer),
+      data: JSON.stringify(obj),
       contentType: "application/json",
 
       success: function (data) {
@@ -104,4 +123,4 @@ function SignUpBuyer(props) {
     </div>
   );
 }
-export default connect( mapDispatchToProps)(SignUpBuyer);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpBuyer);

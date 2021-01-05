@@ -22,7 +22,7 @@ import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
 import settingsProfile from './component/settings'
 import ItemPage from './component/itemPage'
-
+import ContactUs from './component/contactUs'
 
 import "./Style/map.css";
 
@@ -51,6 +51,8 @@ function App(props) {
               exact
               component={EditProfile}
             ></Route>
+            
+            <Route path="/contactUs" exact component={ContactUs}></Route>
       <ProtectedRoute path="/home" component ={home} />
       <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
        <Route  path ='/settings' exact  component ={settingsProfile}></Route>
