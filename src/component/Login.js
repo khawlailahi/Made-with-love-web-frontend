@@ -5,9 +5,55 @@ import { Control, Form } from "react-redux-form";
 import Navbar from "./layout/Navbar";
 import LoginGo from "./social/google/loginGo";
 // import GoogleLogin from "./social/google/google";
+import app  from './fireConfig'
+//  import firebase from 'firebase'
+// import {app} from  "./component/order.js"
+// var mapStateToProps = (state) => {
+//   console.log(state, "staaaaat");
+//   return {
+//     name: state.catReducer.name,
+//   };
+// };
+console.log(app)
 
+ if( localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))["type"] === 'seller' &&   JSON.parse(localStorage.getItem('token'))["id"] === 141){
+ var database =  app.database().ref('notification')
+ console.log(database)
+ var childkey ;
+ var value ;
+ var exist = false
+//  app.database().ref('notification').on("value", function(snapshot) {
+  
+//    snapshot.forEach(function(childSnapshot) {
+//      childSnapshot.forEach(function(child) {
+ 
+//        if(child.key ===JSON.parse(localStorage.getItem('token'))['id']){
+//          exist = true ; 
+//          console.log("done")
+//         childkey = childSnapshot.key ; 
+       
+//         value =Number( child.val())
+
+//         localStorage.setItem("not",childkey )
+//         // localStorage.setItem("val",value )
+//           }
+          
+        
+//  });
+  
+//  })
+
+//  // const data = snapshot.val();
+
+// });
+
+  // app.database().ref('notification').child(childkey+'').on('value',  (snapshot) => {
+  // //  if (value > localStorage.getItem("not"))
+  // alert("you have " + value + "orders" ) }) 
+}
 class Login extends React.Component {
   ajax(login) {
+    var that = this 
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:8000/login", //fix it later
@@ -17,10 +63,43 @@ class Login extends React.Component {
         localStorage.setItem("token", JSON.stringify(res));
         console.log(JSON.parse(localStorage.getItem("token")));
         var tokenObj = JSON.parse(localStorage.getItem("token"));
-        if (tokenObj.type === "buyer") window.location = "/home";
-        //if the user if a seller
-        if (tokenObj.type === "seller")
-          window.location = `/seller/profile/${tokenObj["id"]}`;
+        
+        if( localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))["type"] === 'seller' ){
+          
+          var database =  app.database().ref('notification')
+          console.log(database)
+          var childkey ;
+          var value ;
+          var exist = false
+          app.database().ref('notification').on("value", function(snapshot) {
+           
+            snapshot.forEach(function(childSnapshot) {
+              childSnapshot.forEach(function(child) {
+          
+                if(Number(child.key) ===JSON.parse(localStorage.getItem('token'))['id']){
+                  console.log("iiin")
+                  exist = true ; 
+                  console.log("done")
+                 childkey = childSnapshot.key ; 
+                 value =Number( child.val())
+                 localStorage.setItem("not2",childkey+"" )
+                   }             
+          });
+
+          })
+          if ( !exist ){
+            app.database().ref('notification').push({[JSON.parse(localStorage.getItem('token'))['id']] : 0 })
+         }
+         });
+         
+        
+        
+        }
+        // if (tokenObj.type === "buyer") window.location = "/home";
+        // //if the user if a seller
+        // if (tokenObj.type === "seller")
+        //   window.location = `/seller/profile/${tokenObj["id"]}`;
+
       },
       error: function (err) {
         // window.location.replace('/login')

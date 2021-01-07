@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { useState } from "react";
 import $ from "jquery";
-import { storage } from '../firebase/index';
+import app from './fireConfig';
 import NavBar from './layout/Navbar'
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
+import {storage} from './fireConfig';
 var mapStateToProps = (state) => {
   return {
     email: state.reducer.email,

@@ -1,31 +1,44 @@
-import React, { Component} from "react";
-// import ReactDOM from 'react-dom';   
+import React, { Component} from "react"; 
 import $ from "jquery";
-// import { Form,Button  } from 'react-bootstrap';
 import { Card, Row , Col} from 'react-bootstrap';
 import NavbarSeller from './layout/NavbarSeller'
-// import StripeCheckout from "react-stripe-checkout";
-
-
-
+import{ app }from  './order'
 export default class listOfOrder extends Component {
   constructor(props){
     super(props)
     this.state={data:[]}
+    this.database = app.database().ref('notification')
   }
   componentDidMount(){
     var id = JSON.parse(localStorage.getItem('token'))['id']
     var that = this;
+     // get store id 
+     var urlRef = that.database;
+     urlRef.once("value", function(snapshot) {
+        
+       snapshot.forEach(function(childSnapshot) {
+         childSnapshot.forEach(function(child) {
+     
+           if(Number(child.key) ===  id){
+       
+             that.database.child(childSnapshot.key).set({[child.key]: 0})  }
+     });
+      
+     })
+     
+     }) 
+
+
     $.ajax({
         type: 'GET',
         url:'http://127.0.0.1:8000/seller/order/list/'+id,
-        //  url:'http://127.0.0.1:8000/seller/order/list/1',
         // headers: {"Authorization": localStorage.getItem('token')},
        
-        // headers: { 'x-my-custom-header': 'some value' },
+
         success: function(data) {
          console.log("data fom get request",data);
-
+         var store = data[0]["store"]
+      
          that.setState({
              data:data
          },()=>{console.log(that.state.data,"staaaaaaaaaaate")})

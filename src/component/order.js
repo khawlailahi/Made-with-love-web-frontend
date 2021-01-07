@@ -10,10 +10,28 @@ import $ from 'jquery';
 import AutoComplete from './AutoComplete';
 import Marker from './Marker';
 import '../Style/map.css';
+import app from './fireConfig'
 const Wrapper = styled.main`
   width: 100%;
   height: 100%;
 `;
+
+//notification firebase
+
+
+//  const firebaseConfig = {     apiKey :"AIzaSyCv5xBj2zrUcsMa0lY5AEt4GxmRE43bvhA" , 
+//         authDomain : "madewithlove-66030.firebaseapp.com" ,  
+//            DatabaseURL : "https://madewithlove-66030-default-rtdb.firebaseio.com" , 
+//                projectId : "madewithlove-66030" ,  
+//                   storageBucket : "madewithlove-66030 .appspot.com " ,
+//                        messagingSenderId : " 775277027301 " ,  
+//                           appId : " 1: 775277027301: web: 9d334a027ce3118e42990c " , 
+//                               measurementId : " G-TL22YMYX6M " }; 
+//  const app = firebase.initializeApp(firebaseConfig)
+
+
+
+
 // import MyGoogleMap from './renderTheMap';
    var  time =new Date().toDateString() 
    var price ;
@@ -24,6 +42,7 @@ class Order extends React.Component {
   constructor(props) {
     super(props)
     console.log(props,'prooooops')
+    this.database = app.database().ref('notification')
  this.state = {
    data:{},
    mapApiLoaded: false,
@@ -138,11 +157,15 @@ ajax(order){
   var obj={order}
   quan= obj.order.quantity
   obj.location= link
-  // location=link
+ 
   total = quan * price * 100
 console.log(order, 'ordeeeeer')
 obj["item_id"]=this.props.location.info.id
   obj["store_id"]=this.props.location.info.store
+  var fire = obj["store_id"] + ""
+  var that=this 
+  
+
   obj['date']=time
   // obj['location'] =  this.props.location.info.location
 this.setState({data:obj})
@@ -150,6 +173,7 @@ this.setState({data:obj})
   // obj["store_id"]=this.props.location.info.store
   // obj['date']=time
   console.log(obj,'objjjjj')
+  console.log('storeeeeee', this.props.location.info.storeId)
     $.ajax({
       url:'http://127.0.0.1:8000/buyer/order',
         method:'POST',
@@ -159,6 +183,28 @@ this.setState({data:obj})
         success:function(){
           console.log('success')
           // window.location =`/home`
+
+          //Notification 
+          var urlRef = that.database;
+          urlRef.once("value", function(snapshot) {
+            var exist = false ; 
+            snapshot.forEach(function(childSnapshot) {
+              childSnapshot.forEach(function(child) {
+                // if the store id exist in firebase  increment number of orders
+                if(Number(child.key) ===  that.props.location.info.storeId){
+                  exist = true ; 
+                  console.log(typeof  child.val() , child.val())
+                  var x =Number(child.val()) +1
+                  console.log(x)
+                  that.database.child(childSnapshot.key).set({[child.key]: x})  }
+          });
+           
+          })
+          // if the store id does nto exist in firebase create it and set it to 1 (first order)
+           if ( !exist ){
+            urlRef.push({[that.props.location.info.storeId] : 1 })
+           }
+          })
         },
         error: function(err){
         }
@@ -173,7 +219,7 @@ this.setState({data:obj})
       const {status} = response.data;
       if(status === 'success') {
         toast('Success! check email for details', {type:"success"})
-        window.location =`/home`
+        // window.location =`/home`
       }
       else {
         toast('somthing went wrong', {type:"error"})
@@ -307,4 +353,5 @@ var link = 'https://www.google.com/maps/search/'+ this.state.lat +','+ this.stat
  }
 //
 }
-  export default Order
+  export {app , Order }  
+  

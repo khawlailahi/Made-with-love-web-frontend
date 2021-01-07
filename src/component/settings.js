@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { storage } from '../firebase';
+import app from './fireConfig';
 import { Control, Form } from 'react-redux-form';
 import $ from "jquery";
 import NavbarBuyer from './layout/NavbarBuyer'
 import NavbarSeller from './layout/NavbarSeller'
+var storage = app.storage();
 function SettingProfile ()  {
 
     const [location, setLocation] = useState("");

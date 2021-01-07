@@ -6,14 +6,14 @@ import SignUpSeller from "./component/signUpSeller.js";
 import listOfOrder from "./component/listOfOrder.js";
 import Login from "./component/Login.js";
 import ItemForm from "./component/addItem.js";
-import addItem from "./component/addItem.js";
+
 import SignUpBuyer from "./component/signUpBuyer.js";
 import "./Style/app.css";
 import EditProfile from "./component/editSellerProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./component/Store.js";
 import CatBuyer from "./component/categoryBuyer.js";
-import Order from "./component/order.js";
+import{ Order} from "./component/order.js";
 import View from "./component/view.js";
 import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
@@ -22,16 +22,7 @@ import ProtectedRoute from './component/protectedRoute'
 import Notfound from './component/404page';
 import settingsProfile from './component/settings'
 import ItemPage from './component/itemPage'
-
-
-import "./Style/map.css";
-
-var mapStateToProps = (state) => {
-  console.log(state, "staaaaat");
-  return {
-    name: state.catReducer.name,
-  };
-};
+ import "./Style/map.css"; 
 function App(props) {
   var url = `/buyer/${props.name}`;
   console.log(url);
@@ -52,7 +43,9 @@ function App(props) {
               component={EditProfile}
             ></Route>
             <ProtectedRoute path="/home" component ={home} />
+       
             <Route path="/seller/visit/:id" exact component={VisitSeller}></Route>
+
             <Route  path ='/settings' exact  component ={settingsProfile}></Route>
        <Route  path ='/about' exact  component ={About}></Route>
        <Route  path ='/buyer/item' exact  component ={ItemPage}></Route>
