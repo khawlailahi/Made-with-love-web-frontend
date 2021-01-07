@@ -71,7 +71,7 @@ class Login extends React.Component {
               <Control.text
                 className="form-control"
                 type="password"
-                placeholder="Enter email"
+                placeholder="Enter Password"
                 model="login.password"
                 id="login.password"
                 required

@@ -8,6 +8,10 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import $ from "jquery";
+import ReactNotifications from "react-notifications-component";
+import { store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+// import "animate.css";
 import AutoComplete from "./AutoComplete";
 import Marker from "./Marker";
 import "../Style/map.css";
@@ -192,7 +196,9 @@ class Order extends React.Component {
     token.total = total;
     const response = await axios.post(
       "http://127.0.0.1:8000/payments/checkout",
+      
       { token, addresses }
+      
     );
     console.log(response.data, "resppoooooonse");
     // const { status } = response.data;
@@ -200,8 +206,10 @@ class Order extends React.Component {
     if (response.data === "ok") {
       toast("Success! check email for details", { type: "success" });
       // this.ajax();
+
       console.log("okkkkkkkk");
       window.location = `/home`;
+     
     } else {
       toast("somthing went wrong", { type: "error" });
     }

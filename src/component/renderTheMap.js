@@ -1,15 +1,15 @@
-import React from 'react';
-import '../Style/map.css';
-import MyGoogleMap from './map';
+// import React from 'react';
+// import '../Style/map.css';
+// import MyGoogleMap from './map';
 
 
-function RenderMap() {
+// function RenderMap() {
 
-  return (
-    <div className="main-wrapper">
-      <MyGoogleMap />
-    </div>
-  );
-}
+//   return (
+//     <div className="main-wrapper">
+//       <MyGoogleMap />
+//     </div>
+//   );
+// }
 
-export default RenderMap;
+// export default RenderMap;

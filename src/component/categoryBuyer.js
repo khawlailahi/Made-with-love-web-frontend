@@ -68,6 +68,8 @@ var mapStateToProps = (state) => {
             //  url:` http://127.0.0.1:8000/buyer/food`,
             // headers: {"Authorization": localStorage.getItem('token')},
             // headers: { 'x-my-custom-header': 'some value' },
+            headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+
             success: function(data) {
              console.log("data fom get request",data);
              var action ={type:'getdata', text:data}
