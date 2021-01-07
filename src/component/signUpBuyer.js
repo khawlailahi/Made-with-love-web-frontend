@@ -66,8 +66,8 @@ function SignUpBuyer(props) {
       },
       error: function (err) {
         console.log(err);
-        alert("email already exist");
-        // window.location='/login'
+        alert(err.responseJSON.error);
+        window.location = "/buyer/signup";
       },
     });
   };
@@ -201,7 +201,7 @@ function SignUpBuyer(props) {
               </div>
               <GoogleLogin />
               {/* <LoginGo /> */}
-              <Facebook />
+              {/* <Facebook /> */}
             </Form>
           </div>
         </div>
