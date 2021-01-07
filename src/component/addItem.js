@@ -77,7 +77,7 @@ function ItemForm(props) {
       return (
         <div>
           <Form model="user" onSubmit={(user) => ajax(user)}>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <label className="form-label">Category:</label>
               <br></br>
               <Control.select
@@ -155,7 +155,7 @@ function ItemForm(props) {
         <div>
           <NavbarSeller />
           <Form model="user" onSubmit={(user) => ajax(user)}>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <label className="form-label">Gender:</label>
               <br></br>
               <Control.select
@@ -171,7 +171,7 @@ function ItemForm(props) {
               </Control.select>
             </div>
             <br></br>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <label className="form-label">Size:</label>
               <br></br>
               <Control.select
@@ -193,6 +193,7 @@ function ItemForm(props) {
                 Name Of Product:
               </label>
               <Control.text
+               autocomplete="off"
                 model="user.product"
                 id="user.product"
                 className="form-control"
@@ -204,6 +205,7 @@ function ItemForm(props) {
                 Description:
               </label>
               <Control.text
+               autocomplete="off"
                 model="user.description"
                 id="user.description"
                 className="form-control"
@@ -215,6 +217,7 @@ function ItemForm(props) {
                 Price:
               </label>
               <Control.text
+               autocomplete="off"
                 model="user.price"
                 id="user.price"
                 className="form-control"
@@ -249,7 +252,7 @@ function ItemForm(props) {
       return (
         <div>
           <Form model="user" onSubmit={(user) => ajax(user)}>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <label className="form-label">Gender:</label>
               <br></br>
               <Control.select
@@ -326,7 +329,7 @@ function ItemForm(props) {
       return (
         <div>
           <Form model="user" onSubmit={(user) => ajax(user)}>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <label className="form-label">Material:</label>
               <br></br>
               <Control.select

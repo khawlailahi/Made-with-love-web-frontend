@@ -19,9 +19,11 @@ import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
 import CategorySeller from "./component/categorySeller";
 import ProtectedRoute from "./component/protectedRoute";
-import Notfound from "./component/404page";
+
 import settingsProfile from "./component/settings";
 import ItemPage from "./component/itemPage";
+
+import Notfound from "./component/404page";
 import ContactUs from "./component/contactUs";
 
 import "./Style/map.css";
@@ -163,7 +165,6 @@ function App(props) {
               )}
             ></Route>
           </Switch>
-          {/* <Footer/> */}
         </Router>
       </div>
     </div>
