@@ -2,23 +2,16 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import heart from "../../images/heart.jpg";
-import logo1 from "../../images/logo1.png";
-import back from "../../images/back.jpg";
+import logo from "../../images/logo.png";
+import homePage from "../../images/homePage.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
     localStorage.removeItem("token");
   };
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "1030px",
-        backgroundImage: `url(${back})`,
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <Container>
-        <Row className="justify-content-md-center">
+    <div>
+      <Container className="justify-content-md-center">
+        <Row>
           {/* <Col xs lg="3">
       1 of 3
     </Col> */}
@@ -33,12 +26,10 @@ var NavbarBuyer = () => {
             }}
           >
             <a href="/">
-              <img src={logo1} width="200" height="180" />
+              <img src={logo} width="200" height="180" />
             </a>
           </div>
-          <Col md="auto">
-            <hr style={{ color: "white", height: "50px" }} />
-          </Col>
+          <Col md="auto"></Col>
           <hr
             style={{
               border: "0",
@@ -46,13 +37,13 @@ var NavbarBuyer = () => {
             }}
           />
         </Row>
-        <hr style={{ marginLeft: "170px", border: "0.5px solid white" }}></hr>
+        <hr style={{ marginLeft: "100px", border: "0.5px solid #826105" }}></hr>
         <Row style={{ marginLeft: "90px" }}>
           <Col style={{ padding: "0px 20px 0px 150px" }}>
             <a
               href="/buyer/food"
               style={{
-                color: "#FCFBED",
+                color: "#826105",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
@@ -64,7 +55,7 @@ var NavbarBuyer = () => {
             <a
               href="/buyer/accessories"
               style={{
-                color: "#FCFBED",
+                color: "#826105",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
@@ -76,7 +67,7 @@ var NavbarBuyer = () => {
             <a
               href="/buyer/babyproducts"
               style={{
-                color: "#FCFBED",
+                color: "#826105",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
               }}
@@ -84,7 +75,6 @@ var NavbarBuyer = () => {
               Baby Stuff
             </a>
           </Col>
-
           <Col>
             <NavDropdown
               id="collasible-nav-dropdown"
@@ -117,7 +107,6 @@ var NavbarBuyer = () => {
         </Row>
       </Container>
     </div>
-
     // <div className="App">
     //   <Navbar
     //     collapseOnSelect

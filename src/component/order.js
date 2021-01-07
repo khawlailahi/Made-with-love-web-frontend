@@ -2,16 +2,11 @@ import { Control, Form } from "react-redux-form";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import $ from "jquery";
-import ReactNotifications from "react-notifications-component";
-import { store } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
-// import "animate.css";
 import AutoComplete from "./AutoComplete";
 import Marker from "./Marker";
 import "../Style/map.css";
@@ -19,6 +14,7 @@ const Wrapper = styled.main`
   width: 100%;
   height: 100%;
 `;
+
 // import MyGoogleMap from './renderTheMap';
 var time = new Date().toDateString();
 var price;
@@ -145,10 +141,6 @@ class Order extends React.Component {
     console.log(this.state.lat);
   };
 
-  click() {
-    window.location = `/home`;
-  }
-
   ajax(order) {
     var link =
       "https://www.google.com/maps/search/" +
@@ -162,7 +154,7 @@ class Order extends React.Component {
     quan = obj.order.quantity;
     obj.location = link;
     // location=link
-    // console.log(location, "locaaaaation");
+
     total = quan * price * 100;
     console.log(order, "ordeeeeer");
 
@@ -185,7 +177,7 @@ class Order extends React.Component {
       },
       success: function () {
         console.log("success");
-        // window.location = `/home`;
+        // window.location =`/home`
       },
       error: function (err) {},
     });
@@ -196,24 +188,15 @@ class Order extends React.Component {
     token.total = total;
     const response = await axios.post(
       "http://127.0.0.1:8000/payments/checkout",
-      
       { token, addresses }
-      
     );
-    console.log(response.data, "resppoooooonse");
-    // const { status } = response.data;
-    // console.log(status, "statuuuuuuuus");
-    if (response.data === "ok") {
+    const { status } = response.data;
+    if (status === "success") {
       toast("Success! check email for details", { type: "success" });
-      // this.ajax();
-
-      console.log("okkkkkkkk");
       window.location = `/home`;
-     
     } else {
       toast("somthing went wrong", { type: "error" });
     }
-
     //  var obj = this.state.data
     //   $.ajax({
     //     url:'http://127.0.0.1:8000/buyer/order',
@@ -227,76 +210,56 @@ class Order extends React.Component {
     //         console.log(err)
     //       }
     //     })
-
-    // window.location = `/home`;
   }
   render() {
     const { places, mapApiLoaded, mapInstance, mapApi } = this.state;
-
-    // console.log("this.props", this.props.location.info.id);
+    // console.log('this.props', this.props.location.info.id)
     // var x;
     //   {this.state.data ?  x = <Redirect to={'/seller/profile'}/>
     //   :'not'}
     //   console.log(this.props,'proooooops')
     // console.log(this.props.location.info.price, 'priiiiiiiice')
+
     if ((this.state.show = true))
       var map = (
-        <div>
-          <div className="main-wrapper" width="50px">
-            <Wrapper className="main-wrapper">
-              {mapApiLoaded && (
-                <div className="main-wrapper">
-                  <AutoComplete
-                    map={mapInstance}
-                    mapApi={mapApi}
-                    addplace={this.addPlace}
-                  />
-                </div>
-              )}
-              <GoogleMapReact
-                center={this.state.center}
-                zoom={this.state.zoom}
-                draggable={this.state.draggable}
-                onChange={this._onChange}
-                onChildMouseDown={this.onMarkerInteraction}
-                onChildMouseUp={this.onMarkerInteractionMouseUp}
-                onChildMouseMove={this.onMarkerInteraction}
-                onChildClick={() => console.log("child click")}
-                onClick={this._onClick}
-                bootstrapURLKeys={{
-                  key: "AIzaSyDhdSw1QzkXBrYnLSt3EF3izfHEhUj6LMc",
-                  libraries: ["places", "geometry"],
-                }}
-                yesIWantToUseGoogleMapApiInternals
-                onGoogleApiLoaded={({ map, maps }) =>
-                  this.apiHasLoaded(map, maps)
-                }
-              >
-                <Marker
-                  text={this.state.address}
-                  lat={this.state.lat}
-                  lng={this.state.lng}
+        <div className="main-wrapper">
+          <Wrapper>
+            {mapApiLoaded && (
+              <div>
+                <AutoComplete
+                  map={mapInstance}
+                  mapApi={mapApi}
+                  addplace={this.addPlace}
                 />
-              </GoogleMapReact>
-              {
-                (this.state.show = true ? (
-                  <div className="info-wrapper">
-                    <div className="map-details">
-                      Latitude: <span>{this.state.lat}</span>, Longitude:{" "}
-                      <span>{this.state.lng}</span>
-                    </div>
-                    <div className="map-details">
-                      Zoom: <span>{this.state.zoom}</span>
-                    </div>
-                    <div className="map-details">
-                      Address: <span>{this.state.address}</span>
-                    </div>
-                    <button onClick={this.location}>Add My Location</button>
-                  </div>
-                ) : null)
+              </div>
+            )}
+
+            <GoogleMapReact
+              center={this.state.center}
+              zoom={this.state.zoom}
+              draggable={this.state.draggable}
+              onChange={this._onChange}
+              onChildMouseDown={this.onMarkerInteraction}
+              onChildMouseUp={this.onMarkerInteractionMouseUp}
+              onChildMouseMove={this.onMarkerInteraction}
+              onChildClick={() => console.log("child click")}
+              onClick={this._onClick}
+              bootstrapURLKeys={{
+                key: "AIzaSyDhdSw1QzkXBrYnLSt3EF3izfHEhUj6LMc",
+                libraries: ["places", "geometry"],
+              }}
+              yesIWantToUseGoogleMapApiInternals
+              onGoogleApiLoaded={({ map, maps }) =>
+                this.apiHasLoaded(map, maps)
               }
-            </Wrapper>
-          </div>
+            >
+              <Marker
+                text={this.state.address}
+                lat={this.state.lat}
+                lng={this.state.lng}
+              />
+            </GoogleMapReact>
+          </Wrapper>
         </div>
       );
 
@@ -306,8 +269,6 @@ class Order extends React.Component {
       "," +
       this.state.lng +
       "?sa=X&ved=2ahUKEwiRo7PR4frtAhXVURUIHfmeDe4Q8gEwAHoECAEQAQ";
-
-    console.log("proooooops", this.props.location.info.name);
     return (
       <div>
         <NavbarBuyer />
@@ -327,13 +288,13 @@ class Order extends React.Component {
             <h4 style={{ textAlign: "center" }}>YOUR ORDER</h4>
             <br />
             <br />
-            <h5 style={{ textAlign: "center", marginTop: "40px" }}>
+            <h5 style={{ textAlign: "center" }}>
               {this.props.location.info.name}
             </h5>
           </div>
           <div className="d-flex">
             <br />
-            <div className="p-2" style={{ marginRight: "30px" }}>
+            <div>
               {/* <h5>{this.props.location.info.store}</h5><br/><br/> */}
               <br />
               <br />{" "}
@@ -375,6 +336,13 @@ class Order extends React.Component {
                   required
                 />
                 <br></br>
+                <label for="validationDefault02">Phone Number:</label>
+                <Control.text
+                  className="form-control"
+                  model="order.phoneNumber"
+                  id="order.phoneNumber"
+                  required
+                />
 
                 <label for="validationDefault02" className="form-label">
                   Location:
@@ -387,29 +355,18 @@ class Order extends React.Component {
                   value={link}
                 />
                 <button onClick={this.showMap}>Your Location</button>
+                {map}
 
                 <br></br>
-                <label for="validationDefault02">Phone Number:</label>
-                <Control.text
-                  className="form-control"
-                  model="order.phoneNumber"
-                  id="order.phoneNumber"
-                  required
-                />
-                <br />
-                <br />
-                <br />
-                <br />
+                <br></br>
+                <br></br>
 
                 <button
                   className="btn btn-success"
-                  onClick={this.click}
                   style={{
-                    marign: "0 auto",
                     width: "200px",
                     textAlign: "center",
-                    marginLeft: "30%",
-                    marginBottom: "50px",
+                    margin: "40px 150px 0px 150px",
                   }}
                 >
                   Pay Cash
@@ -421,9 +378,8 @@ class Order extends React.Component {
                   name={this.props.location.info.productname}
                   // billingAddress
                   // shippingAddress
-                  onClick={this.ajax}
                   style={{
-                    marign: "0 auto",
+                    marign: "10px auto",
                     width: "200px",
                     textAlign: "center",
                     marginLeft: "30%",
@@ -434,11 +390,9 @@ class Order extends React.Component {
             </div>
           </div>{" "}
         </div>
-        {map}
       </div>
     );
   }
-
   //
 }
 export default Order;
