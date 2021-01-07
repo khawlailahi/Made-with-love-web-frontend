@@ -4,9 +4,12 @@ import $ from 'jquery';
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import { Card, Col} from 'react-bootstrap';
 import axios from 'axios';
+import app from './fireConfig'
 export default class ItemPage extends React.Component {
     constructor(props){
         super(props);
+        this.database = app.database().ref('comments')
+
         this.state={
             addComment:"", 
             data :[]
@@ -72,7 +75,27 @@ export default class ItemPage extends React.Component {
                     success: (data) => {
                    that.setState({data: data})
                    console.log(data)
-                      
+                         //Notification 
+          // var urlRef = that.database;
+          // urlRef.once("value", function(snapshot) {
+          //   var exist = false ; 
+          //   snapshot.forEach(function(childSnapshot) {
+          //     childSnapshot.forEach(function(child) {
+          //       // if thebuyer id exist in firebase  increment number of orders
+          //       if(Number(child.key) === JSON.stringify(localStorage.getItem("token"))["id"]){
+          //         exist = true ; 
+          //         console.log(typeof  child.val() , child.val())
+          //         var x =Number(child.val()) +1
+          //         console.log(x)
+          //         that.database.child(childSnapshot.key).set({[child.key]: x})  }
+          // });
+           
+          // })
+          // // if the store id does nto exist in firebase create it and set it to 1 (first order)
+          //  if ( !exist ){
+          //   urlRef.push({[that.props.location.info.storeId] : 1 })
+          //  }
+          // })      
                    },
                     error: (err) => { console.log(err) }
                   })

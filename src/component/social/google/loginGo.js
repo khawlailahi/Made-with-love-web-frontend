@@ -6,12 +6,12 @@ import google from "./google.png";
 
 import config from "../config";
 
-class LoginGo extends Component {
+class GoogleLogin extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
     (function () {
       var e = document.createElement("script");
       e.type = "text/javascript";
@@ -20,7 +20,6 @@ class LoginGo extends Component {
       var t = document.getElementsByTagName("script")[0];
       t.parentNode.insertBefore(e, t);
     })();
-    console.log(props, "proooops");
   }
 
   // saveData() {
@@ -77,33 +76,23 @@ class LoginGo extends Component {
           var obj = {};
           obj.email = e.emails[0]["value"];
           obj.password = "";
-          // obj.userName = e.name["givenName"];
-          // obj.location = "";
-          // obj.phoneNumber = "";
 
           console.log(obj);
-
           $.ajax({
+            url: "http://127.0.0.1:8000/login",
             method: "POST",
-            url: "http://127.0.0.1:8000/login", //fix it later
             data: JSON.stringify(obj),
             contentType: "application/json",
-            success: function (res) {
-              localStorage.setItem("token", JSON.stringify(res));
+            success: function (data) {
+              console.log("POST sent successfully!");
+              localStorage.setItem("token", JSON.stringify(data));
               console.log(JSON.parse(localStorage.getItem("token")));
               var tokenObj = JSON.parse(localStorage.getItem("token"));
               if (tokenObj.type === "buyer") window.location = "/home";
-              //if the user if a seller
-              if (tokenObj.type === "seller")
-                window.location = `/seller/profile/${tokenObj["id"]}`;
             },
             error: function (err) {
-              // window.location.replace('/login')
-              console.log("error:", err);
-              setTimeout(() => {
-                alert("Email Or Password Incorrect");
-              }, 300);
-              window.location = "/login";
+              console.log(err);
+              alert("email already exist");
             },
           });
 
@@ -125,4 +114,4 @@ class LoginGo extends Component {
   }
 }
 
-export default LoginGo;
+export default GoogleLogin;

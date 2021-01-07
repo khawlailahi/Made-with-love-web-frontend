@@ -1,4 +1,4 @@
-                 import React, { Component } from "react";
+import React, { Component } from "react";
 import $ from "jquery";
 
 //Assets
@@ -90,14 +90,14 @@ class GoogleLogin extends Component {
 
             success: function (data) {
               console.log("POST sent successfully!");
-              window.location = `/login`;
-
-              // window.location = "/login";
+              localStorage.setItem("token", JSON.stringify(data));
+              console.log(JSON.parse(localStorage.getItem("token")));
+              var tokenObj = JSON.parse(localStorage.getItem("token"));
+              if (tokenObj.type === "buyer") window.location = "/home";
             },
             error: function (err) {
               console.log(err);
               alert("email already exist");
-              window.location = "/login";
             },
           });
 
