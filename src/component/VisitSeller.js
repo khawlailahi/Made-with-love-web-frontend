@@ -4,6 +4,7 @@ import { Container, CardGroup, Card, Row, Col } from 'react-bootstrap';
 import VisitItems from "./VisitItem";
 import NavbarSeller from './layout/NavbarSeller'
 import { useParams } from "react-router-dom";
+import Rate from './rate'
 const styles = {
   card: {
     backgroundColor: '#B7E0F2',
@@ -106,6 +107,7 @@ var x =  <div> <Container fluid>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
           {this.state.data[0]['fields'].delivery_time}
         </Card.Text>
+        <Rate ttt={ this.state.data[0].pk}/>
         </Card.Body>
       </Col>
     </Row>
@@ -123,5 +125,4 @@ var x =  <div> <Container fluid>
 }
 
 }
-
 export default VisitSeller; 

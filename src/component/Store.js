@@ -5,6 +5,43 @@ import { createForms} from 'react-redux-form';
 
 
 var signUpSeller = {
+
+    email :"",
+    password : "",
+    storeName : "",
+    category : "",
+    description : "",
+    location : "",
+    deliveryOrder : "",
+    image:""
+   };
+   
+   var signUpBuyer = {
+       email:"",
+       password:"",
+       userName:"",
+       location:"",
+       phoneNumber:""
+   } 
+   var settingsBuyer ={
+    email:"",
+    password:"",
+    userName:"",
+    location:"",
+    phoneNumber:""
+   }
+   
+  var loginState={
+    email:"",
+    password:""
+ }
+
+ var category = {
+    name:""
+ }
+
+  var sellerProfile = {
+
     email: "",
     password: "",
     storeName: "",
@@ -143,6 +180,22 @@ var reducerBuyer = (state = signUpBuyer, action) => {
     }
 }
 
+var reducerSettings = (state =settingsBuyer, action) =>{
+    switch (action.type) {
+        case 'SETTINGS':
+            var obj = {}
+            obj[action.name]= action.text
+            // console.log("objj",obj)
+            return Object.assign({}, state, obj) 
+          
+    
+        default:
+           return state;
+    }
+}
+
+
+
 
 var reducer = (state = signUpSeller, action) => {
     // console.log('reducer', state);
@@ -232,6 +285,7 @@ var editProfile ={
 var password ={
     newPassword:"",
     oldPassword :"",
+
 }
 
 var reducerAddItem = (state = initialState, action) => {
@@ -283,10 +337,13 @@ const store = createStore(combineReducers({
     addItem: reducerAddItem,
     reducerBuyer: reducerBuyer,
     catReducer: catReducer,
-    orderFormReducer: orderFormReducer,
-    categoryReducer: categoryReducer,
-    filterReducer: filterReducer,
-    filteringReducer: filteringReducer
+    orderFormReducer:orderFormReducer,
+    categoryReducer:categoryReducer,
+    filterReducer:filterReducer,
+    filteringReducer:filteringReducer,
+    reducerSettings:reducerSettings
+
+   
     ,
     ...createForms({
         user: initialState,
@@ -294,6 +351,7 @@ const store = createStore(combineReducers({
         order:orderForm,
         edit : editProfile,
         password:password
+
 
      } )
 })
