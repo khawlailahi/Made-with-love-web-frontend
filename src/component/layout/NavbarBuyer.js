@@ -9,9 +9,9 @@ var NavbarBuyer = () => {
     localStorage.removeItem("token");
   };
   return (
-   <div>
-      <Container>
-        <Row className="justify-content-md-center">
+    <div>
+      <Container className="justify-content-md-center">
+        <Row>
           {/* <Col xs lg="3">
       1 of 3
     </Col> */}
@@ -29,9 +29,7 @@ var NavbarBuyer = () => {
               <img src={logo} width="200" height="180" />
             </a>
           </div>
-          <Col md="auto">
-            <hr style={{ color: "#826105", height: "50px" }} />
-          </Col>
+          <Col md="auto"></Col>
           <hr
             style={{
               border: "0",
@@ -39,7 +37,7 @@ var NavbarBuyer = () => {
             }}
           />
         </Row>
-        <hr style={{ marginLeft: "20px", border: "0.5px solid #826105" }}></hr>
+        <hr style={{ marginLeft: "100px", border: "0.5px solid #826105" }}></hr>
         <Row style={{ marginLeft: "90px" }}>
           <Col style={{ padding: "0px 20px 0px 150px" }}>
             <a

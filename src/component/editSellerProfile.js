@@ -2,7 +2,6 @@ import $ from 'jquery';
 import React, { useState ,useEffect} from "react";
 import { Control, Form } from 'react-redux-form';
 import { storage } from '../firebase';
-import NavbarSeller from "./layout/NavbarSeller.js";
 function EditProfile (props)  {
   console.log("caaaat",props)
   const category = props.location.info.category
@@ -13,8 +12,8 @@ function EditProfile (props)  {
   console.log(category)
   const [url, setUrl] = useState("");
    const [image, setImage] = useState("");
-    var obj={category:"food"}
-var obj1;
+  var obj1;
+ 
     const ajax=(edit)=>{
       obj1= Object.assign({} ,edit)
     console.log(url)
@@ -29,20 +28,19 @@ var obj1;
        contentType: "application/json",
        success:function(){
          console.log(obj1)
-         var tokenObj = JSON.parse(localStorage.getItem('token'))['id']
-         window.location='/seller/profile/'+ tokenObj
        },
        error: function(err){
          console.log(obj1)
        }
      })
-     
+     window.location('seller/profile/')
    }
-const handleUpload=(e)=>{
+const handleUpload=(e)=>{ 
     const uploadTask = storage.ref(`imagee/${image.name}`).put(image);
       uploadTask.on(
         "state_changed",
         snapshot => {
+         
         },
         error => {
           console.log(error);
@@ -58,6 +56,7 @@ const handleUpload=(e)=>{
             });
         }
       );}
+    
 const uploadImage=(e)=>{
    if (e.target.files[0]) {
         setImage(e.target.files[0])
@@ -66,7 +65,7 @@ const uploadImage=(e)=>{
   if(image !== ""){
 return <div>
 <img src={url}/>
-<input type="button" value="upload" onClick={handleUpload}></input>
+<input type="button" value="Add to favorites" onClick={handleUpload}></input>
 </div>
   }
 }
@@ -74,7 +73,6 @@ const food=() => {
   if (category === 100){
     return(
     <div>
-      <NavbarSeller/><br/><br/>
       <Form
       model="edit"
      onSubmit={(edit) => ajax(edit)}
@@ -84,26 +82,34 @@ const food=() => {
     <Control.select model="edit.type" className="form-select"  required>
       <option selected disabled value="" >Choose The Type</option>
       <option  value ="Salty">Salty</option>
-      <option  value ="Sweet">Sweet</option>
+      <option  value ="Sweet">Sweet</option>     
        </Control.select>
+​
   </div><br></br>
+​
     <div className="col-md-4">
       <label htmlFor="edit.product" className="form-label" >Name Of The Product:</label>
-      <Control.text model="edit.product"  placeHolder={product}  id="edit.product" className="form-control" required/>
+      <Control.text model="edit.product" defaultValue={product} id="edit.product" className="form-control" required/>
       </div>
+​
       <div className="col-md-3">
        <label htmlFor="edit.description" className="form-label">Description:</label>
-      <Control.text model="edit.description" placeHolder={desc} id="edit.description" className="form-control" required />
+      <Control.text model="edit.description"  defaultValue={desc} id="edit.description" className="form-control" required />
       </div>
+​
       <div className="col-md-3">
       <label htmlFor="edit.price" className="form-label">Price:</label>
-      <Control.text model="edit.price" placeHolder={price} id="edit.price" className="form-control" required/>
+      <Control.text model="edit.price" defaultValue={price} id="edit.price" className="form-control" required/>
       </div>
-      <div className="mb-3">
+​
+​
+​
+      <div className="mb-3">   
      <label htmlFor="edit.image" className="form-label">Add Picture:</label>
-    <input type="file" model="edit.image"className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    <input type="file" model="edit.image" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
     {tr2()}
  </div>
+  
       <div className="col-12">
     <button className="btn btn-primary" type="submit"   >Submit</button>
   </div>
@@ -113,10 +119,11 @@ const food=() => {
 }
 const clothes=()=>{
   // console.log(obj1,'obbbbjjj1')
-if (category === 200)
+if (category === 200) 
+  
  return(
     <div>
-      <NavbarSeller/><br/><br/>
+ 
       <Form model="edit"
       onSubmit={(edit) => ajax(edit)}
     >
@@ -144,26 +151,25 @@ if (category === 200)
         <div className="col-md-3">
        <label htmlFor="edit.description" className="form-label">Description:</label>
       <Control.text model="edit.description" id="edit.description" className="form-control" required />
-      </div>
+      </div> 
        <div className="col-md-3">
       <label htmlFor="edit.price" className="form-label">Price:</label>
       <Control.text model="edit.price" id="edit.price" className="form-control" required/>
       </div>
         <div className="mb-3">
      <label htmlFor="edit.image" className="form-label">Add Picture:</label>
-    <input type ="file" className="form-control" aria-label="file example" onChange={uploadImage}  required/>
+    <input type ="file" className="form-control" aria-label="file example" onChange={uploadImage}  required/> 
     {tr2()}
- </div>
+ </div> 
      <div className="col-12">
     <button className="btn btn-primary" type="submit">Submit</button>
-  </div>
+  </div> 
     </Form></div>
     )}
     const babyproducts=() => {
         if (category === 400){
          return(
         <div>
-          <NavbarSeller/><br/><br/>
                 <Form
                 model="edit"
                 onSubmit={(edit) => ajax(edit)}
@@ -204,7 +210,6 @@ if (category === 200)
     if (category === 300){
      return(
        <div>
-         <NavbarSeller/><br/><br/>
        <Form
         model="edit"
       onSubmit={(edit) => ajax(edit)}
@@ -242,12 +247,19 @@ if (category === 200)
           }
         }
   return (
+    
     <div>
      <div>{food()}</div>
      <div>{clothes()}</div>
-     <div>{babyproducts()}</div>
+     <div>{babyproducts()}</div>  
       <div>{accessories()}</div>
-  </div>
+  </div> 
   )
   }
   export default  EditProfile
+
+
+
+
+
+
