@@ -136,7 +136,7 @@ console.log(child )
   }
 render(){
   if (this.state.not){
-    var  notification =  <Navbar.Brand  >{this.state.not}<i class="fas fa-bell"></i></Navbar.Brand>
+    var  notification =  <Navbar.Brand  >{this.state.not}<i class="fas fa-bell" style={{color:"hotPink"}}></i></Navbar.Brand>
    }
   return (
     <div

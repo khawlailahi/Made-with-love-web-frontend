@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import $ from "jquery";
 import { Card, Row , Col} from 'react-bootstrap';
 import NavbarSeller from './layout/NavbarSeller'
-import{ app }from  './order'
+import{ app }from  './fireConfig'
 export default class listOfOrder extends Component {
   constructor(props){
     super(props)
@@ -67,20 +67,11 @@ var c = <Row>
             <Card.Title style={{fontWeight:'normal',}}><label style={{backgroundColor:'maroon',color:"white", fontWeight:'bold', textAlign:'center'}}> {item['fields']['item']}</label> </Card.Title>
             <Card.Text> <label style={{color:'red', fontWeight:'bold'}}>Quantity : </label> {item['fields']['quantity']}</Card.Text>
             <Card.Text> <label style={{color:'red', fontWeight:'bold'}}>Order Date : </label> {item['fields']['order_date']}</Card.Text>
-            <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Location : </label> {item['fields']['location']}</Card.Text>
+            <Card.Text ><label style={{color:'red', fontWeight:'bold'}}>Location : </label><a href={item['fields']['location']}> {item['fields']['location']}</a></Card.Text>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Buyer : </label> {item['fields']['buyer']}</Card.Text>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Phone Number : </label> {item['fields']['phonenumber']}</Card.Text>
             <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Total Price : </label> {item['fields']['price']}</Card.Text>
-
-            {/* <StripeCheckout
-            stripeKey = 'pk_test_51I2FktCNmtNvriYQGjLYu0G8wYecRexcoEiC52AMMZwsISRlg1irJgpBFMKJ2qwvFSOB48zEuxLlnRaC6lfGbMCs006oNLTZZq'
-            token = {this.handleToken}
-            amount = {item['fields']['price']}
-            name={item['fields']['item']}
-            billingAddress
-            shippingAddress
-            /> */}
-
+            <Card.Text><label style={{color:'red', fontWeight:'bold'}}>Payement Status: </label> {item['fields']['is_payed']}</Card.Text>
             </Card.Body>
                  </Card>
                  </Col> <br/></div>

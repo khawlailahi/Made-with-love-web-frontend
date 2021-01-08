@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form } from "react-bootstrap";
+
 // import store from './Store';
 // import ReactDOM from "react-dom";
 import $ from "jquery";
+import { Control, Form } from "react-redux-form";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import GoogleLogin from "./social/social/google/google";
 import Facebook from "./social/social/facebook/facebook";
@@ -42,7 +43,7 @@ var mapDispatchToProps = (dispatch) => {
 function SignUpBuyer(props) {
   //console.log(props)
   //make ajax to send values of inputs
-  var clickButton = () => {
+  var clickButton = (signUpBuyer) => {
     console.log(props);
     var obj = {};
     obj.email = props.email;
@@ -74,138 +75,51 @@ function SignUpBuyer(props) {
 
   return (
     <div
-      style={{
-        backgroundImage: `url("https://images.unsplash.com/photo-1508796079212-a4b83cbf734d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8&w=1000&q=80")`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        height: "2000px",
-      }}
     >
       <NavBar />
-      <div
-        style={{
-          maxWidth: "500px",
-          margin: "auto",
-          padding: "0px 10px 10px 10px",
-        }}
-      >
+      <div style={{ maxWidth: "500px", margin: 'auto',  padding: '50px 10px 10px 10px'  }}>
         <div className="card w-100">
-          <div className="card-body">
-            <Form
-              action="/action_page.php"
-              className="needs-Validation"
-              novalidate
-            >
-              <Form.Group>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
-                  onChange={props.inputChanged}
-                  style={{ padding: "2px 2px 2px 2px" }}
-                  required
-                />
-                <div className="valid-feedback"></div>
-                <div className="invalid-feedback">
-                  Please Fill Out This Field
-                </div>
-              </Form.Group>
+          {/* <div className="card-body"> */}
+          <div className="container">
+          <Form
+            class="row g-3 needs-validation"
+            model="login"
+            type="submit"
+            onSubmit={(signUpBuyer) => clickButton(signUpBuyer)}
+            novalidate
+           
+          >
+            <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Email address</label>
+<Control.text autocomplete="off" name="email"  className="form-control" type="email" placeholder="Enter email" model="signUpBuyer.email"  id="signUpBuyer.email" required  style={{ padding: "2px 2px 2px 2px" }} onChange={props.inputChanged} />
 
-              <Form.Group>
-                <Form.Label>password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter password"
-                  name="password"
-                  onChange={props.inputChanged}
-                  style={{ padding: "2px 2px 2px 2px" }}
-                  required
-                />
-                <div className="valid-feedback"></div>
-                <div className="invalid-feedback">
-                  Please Fill Out This Field
-                </div>
-              </Form.Group>
+<label for="validationCustom01" class="form-label">password</label>
+<Control.text autocomplete="off" name="password"  className="form-control" type="password" placeholder="Enter password"  model="signUpBuyer.password"  id="signUpBuyer.password" required  style={{ padding: "2px 2px 2px 2px" }} onChange={props.inputChanged} />       
 
-              <Form.Group>
-                <Form.Label>userName</Form.Label>
-                <Form.Control
-                  type="userName"
-                  placeholder="Enter userName"
-                  name="userName"
-                  onChange={props.inputChanged}
-                  style={{ padding: "2px 2px 2px 2px" }}
-                  required
-                />
-                <div className="valid-feedback"></div>
-                <div className="invalid-feedback">
-                  Please Fill Out This Field
-                </div>
-              </Form.Group>
+<label for="validationCustom01" class="form-label">userName</label>
+<Control.text autocomplete="off" name="userName"  className="form-control" type="userName" placeholder="Enter userName"  model="signUpBuyer.userName"  id="signUpBuyer.userName" required  style={{ padding: "2px 2px 2px 2px" }} onChange={props.inputChanged} />       
 
-              <div class="form-group">
-                 {" "}
-                <label for="sel1" name="location" onChange={props.inputChanged}>
-                  Location
-                </label>
-                 {" "}
-                <select class="form-control" id="sel1">
-                  <option></option>
-                  <option>Amman</option>
-                  <option>Irbid</option> <option>Ajloun</option> 
-                  <option>Jerash</option> <option>Mafraq</option>
-                  <option>Balqa</option>
-                  <option>Zarqa</option>
-                  <option>Karak</option>
-                  <option>Tafilah</option>
-                  <option>Ma'an</option>
-                  <option>Aqaba</option> {" "}
-                </select>
+<label for="validationCustom01" class="form-label">Phone Number</label>
+<Control.text autocomplete="off" name="phoneNumber"  className="form-control" type="userName" placeholder="Enter phone Number"  model="signUpBuyer.phoneNumber"  id="signUpBuyer.phoneNumber" required  style={{ padding: "2px 2px 2px 2px" }} onChange={props.inputChanged} />       
+
+<div class="col-12">
+              <button type="submit" className="btn btn-danger" style={{ margin: '0px 180px', width: 100 }}>Sign Up</button>
               </div>
-              <div className="valid-feedback"></div>
-              <div className="invalid-feedback">Please Fill Out This Field</div>
 
-              <Form.Group>
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control
-                  type="phoneNumber"
-                  placeholder="Enter phone Number"
-                  name="phoneNumber"
-                  onChange={props.inputChanged}
-                  style={{ padding: "2px 2px 2px 2px" }}
-                  required
-                />
-                <div className="valid-feedback"></div>
-                <div className="invalid-feedback">
-                  Please Fill Out This Field
-                </div>
-              </Form.Group>
-
-              <button
-                type="button"
-                className="btn btn-danger"
-                onClick={clickButton}
-                style={{ margin: "0px 150px 0px 150px", width: "100px" }}
-              >
-                Sign Up
-              </button>
-              <br />
-              <br />
-              <div>
-                <Link to="/login">
+              <Link to="/login">
                   <a style={{ margin: "0px 90px 0px 90px" }}>
                     Already have an acount ? Login
                   </a>
                 </Link>
-              </div>
-              <GoogleLogin />
-              {/* <LoginGo /> */}
-              {/* <Facebook /> */}
-            </Form>
+                <GoogleLogin />
+                <Facebook />
+             
+           
           </div>
+          </Form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

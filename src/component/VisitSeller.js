@@ -107,7 +107,7 @@ var x =  <div> <Container fluid>
         <Card.Text as="h4" style={styles.cardText}>Delievery Time :
           {this.state.data[0]['fields'].delivery_time}
         </Card.Text>
-        <Rate ttt={ this.state.data[0].pk}/>
+        <Rate ttt={this.state.data[0].pk}/>
         </Card.Body>
       </Col>
     </Row>

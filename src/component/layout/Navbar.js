@@ -4,7 +4,7 @@ import "../../Style/navbar.css";
 var NavBar = () => {
   return (
     <div className="App">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="#800000" variant="dark">
         <Navbar.Brand href="/" style={{ padding: "0px 1000px 0px 0px" }}>
           Made With Love
         </Navbar.Brand>

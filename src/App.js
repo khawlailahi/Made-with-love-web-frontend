@@ -13,7 +13,7 @@ import EditProfile from "./component/editSellerProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./component/Store.js";
 import CatBuyer from "./component/categoryBuyer.js";
-import{ Order} from "./component/order.js";
+import {Order} from "./component/order.js";
 import View from "./component/view.js";
 import sellerProfile from "./component/sellerProfile";
 import VisitSeller from "./component/VisitSeller";
@@ -121,7 +121,6 @@ function App(props) {
               )}
             ></Route>
           </Switch>
-          {/* <Footer/> */}
         </Router>
       </div>
     </div>

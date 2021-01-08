@@ -4,9 +4,11 @@ import React from "react";
 import { Control, Form } from "react-redux-form";
 import Navbar from "./layout/Navbar";
 import LoginGo from "./social/google/loginGo";
-// import GoogleLogin from "./social/google/google";
 import app  from './fireConfig'
+import { Card } from 'react-bootstrap';
+
 //  import firebase from 'firebase'
+// import GoogleLogin from "./social/google/google";
 // import {app} from  "./component/order.js"
 // var mapStateToProps = (state) => {
 //   console.log(state, "staaaaat");
@@ -51,7 +53,15 @@ console.log(app)
   // //  if (value > localStorage.getItem("not"))
   // alert("you have " + value + "orders" ) }) 
 }
+var alerts;
+
 class Login extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      alert :""
+    }
+  }
   ajax(login) {
     var that = this 
     $.ajax({
@@ -89,87 +99,96 @@ class Login extends React.Component {
           })
           if ( !exist ){
             app.database().ref('notification').push({[JSON.parse(localStorage.getItem('token'))['id']] : 0 })
+            
          }
          });
          
         
         
         }
-        // if (tokenObj.type === "buyer") window.location = "/home";
-        // //if the user if a seller
-        // if (tokenObj.type === "seller")
-        //   window.location = `/seller/profile/${tokenObj["id"]}`;
+        if (tokenObj.type === "buyer") window.location = "/home";
+        //if the user if a seller
+        if (tokenObj.type === "seller")
+          window.location = `/seller/profile/${tokenObj["id"]}`;
 
       },
       error: function (err) {
         // window.location.replace('/login')
-        console.log("erroddddr:", err.responseJSON.Error);
-        alert(err.responseJSON.Error);
-        // setTimeout(() => {
-        //   alert("Email Or Password Incorrect");
-        // }, 300);
-        window.location = "/login";
+        console.log("erroddddr:", err);
+        that.setState({alerts:err.responseText},()=>{console.log(that.state.alerts)})
+      
+        // alert(err.responseJSON.Error);
+        setTimeout(() => {
+          window.location = "/login";
+        }, 300);
+        ;
       },
     });
   }
   render() {
+     if(this.state.alerts )
+     var x =<div class="alert alert-danger" role="alert">
+     {this.state.alerts}
+   </div>
     return (
-      <div>
+      <div className="container">
         <Navbar />
-        <div style={{ marginLeft: "700px" }}>
-          <br></br>
-          <br></br>
-          <Form
-            class="row g-3 needs-validation"
-            model="login"
-            type="submit"
-            onSubmit={(login) => this.ajax(login)}
-            novalidate
-          >
-            <div class="col-md-4">
-              <label for="validationCustom01" class="form-label">
+        {x}
+        <Card style={{width:'500px', padding:'20px 20px 20px 20px'}}>
+        <div >
+          
+          <Form  className="row g-3 needs-validation" model="login" type="submit"  onSubmit={(login) => this.ajax(login)} novalidate>
+
+            <div >
+              <label for="validationCustom01" className="form-label">
                 Email address
               </label>
               <b></b>
               <br></br>
               <Control.text
+              autocomplete="off"
                 className="form-control"
                 type="email"
                 placeholder="Enter email"
                 model="login.email"
                 id="login.email"
                 required
-                style={{ padding: "2px 2px 2px 2px" }}
+                style={{width:"300px"}}
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
               <b></b>
               <br></br>
               <label for="validationCustom01" className="form-label">
                 Password
               </label>
               <Control.text
+              autocomplete="off"
                 className="form-control"
                 type="password"
                 placeholder="Enter Password"
                 model="login.password"
                 id="login.password"
                 required
-                style={{ padding: "7px 2px 2px 2px" }}
+                style={{width:"300px"}}
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
               <b></b>
               <br></br>
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">
+              <div className="col-12">
+                <button className="btn btn-primary" type="submit">
                   Log in
                 </button>
               </div>
             </div>{" "}
             {/* <GoogleLogin /> */}
-            <LoginGo />
+            <br/><br/>
+          
           </Form>
+          <LoginGo />
         </div>{" "}
+        </Card>
       </div>
+      
     );
   }
 }
