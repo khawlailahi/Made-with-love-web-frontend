@@ -92,7 +92,7 @@ class GoogleLogin extends Component {
             },
             error: function (err) {
               console.log(err);
-              alert("email already exist");
+              // alert("email already existtttt");
             },
           });
 

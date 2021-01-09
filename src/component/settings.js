@@ -4,6 +4,7 @@ import { Control, Form } from "react-redux-form";
 import $ from "jquery";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NavbarBuyer from "./layout/NavbarBuyer";
+import { Button } from 'bootstrap'
 function SettingProfile() {
   const [location, setLocation] = useState("");
   const [username, setUsername] = useState("");
@@ -28,9 +29,9 @@ function SettingProfile() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("token"))["type"] === "buyer") {
       console.log("ggg", JSON.parse(localStorage.getItem("token"))["type"]);
-      setUrl1("http://127.0.0.1:8000/buyer/getAll/");
+      setUrl1("https://safe-lowlands-63189.herokuapp.com/buyer/getAll/");
     } else {
-      setUrl1("http://127.0.0.1:8000/seller/getAll/");
+      setUrl1("https://safe-lowlands-63189.herokuapp.com/seller/getAll/");
     }
     console.log(url1);
     $.ajax({
@@ -175,6 +176,9 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(obj);
       },
@@ -236,6 +240,9 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(obj);
       },
@@ -252,9 +259,13 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(obj);
       },
+
     });
   };
   const takevalueUN = (e) => {
@@ -369,6 +380,9 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(password);
       },
@@ -409,6 +423,9 @@ function SettingProfile() {
       contentType: "application/json",
       success: function () {
         console.log("success");
+      },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
       },
       error: function (err) {
         console.log(obj);
@@ -454,6 +471,9 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(obj);
       },
@@ -493,10 +513,14 @@ function SettingProfile() {
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:8000/seller/description", //fix it later
+      headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
       data: JSON.stringify(obj),
       contentType: "application/json",
       success: function () {
         console.log("success");
+      },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
       },
       error: function (err) {
         console.log(obj);
@@ -539,6 +563,9 @@ function SettingProfile() {
       contentType: "application/json",
       success: function () {
         console.log("success");
+      },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
       },
       error: function (err) {
         console.log(obj);
@@ -623,6 +650,9 @@ function SettingProfile() {
       success: function () {
         console.log("success");
       },
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("token")).token,
+      },
       error: function (err) {
         console.log(obj);
       },
@@ -632,6 +662,12 @@ function SettingProfile() {
     <div>
       <div>{buyerSettings()}</div>
       <div>{sellerSettings()}</div>
+     <div><button type="button" class="btn btn-success" onClick={()=>{  
+         var id = JSON.parse(localStorage.getItem("token"))['id']
+        window.location='/seller/profile/'+`${id}` 
+     }}>Finished</button></div>
+
+
     </div>
   );
 }

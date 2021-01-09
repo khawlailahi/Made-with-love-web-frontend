@@ -189,7 +189,7 @@ that.setState({
   credit:true
 },()=>{
   $.ajax({
-  url: "http://127.0.0.1:8000/buyer/order",
+  url: "https://safe-lowlands-63189.herokuapp.com/buyer/order",
   method: "POST",
   data: JSON.stringify(obj),
   contentType: "application/json",
@@ -239,7 +239,7 @@ that.setState({
 if(cash){
   obj.is_payed =false;
     $.ajax({
-      url: "http://127.0.0.1:8000/buyer/order",
+      url: "https://safe-lowlands-63189.herokuapp.com/buyer/order",
       method: "POST",
       data: JSON.stringify(obj),
       contentType: "application/json",

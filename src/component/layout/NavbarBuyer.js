@@ -1,15 +1,22 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import { NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import heart from "../../images/heart.jpg";
 import logo from "../../images/logo.png";
-import homePage from "../../images/homePage.jpg";
+import back3 from "../../images/back3.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
     localStorage.removeItem("token");
   };
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${back3})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "500px",
+      }}
+    >
       <Container className="justify-content-md-center">
         <Row>
           {/* <Col xs lg="3">
@@ -37,48 +44,72 @@ var NavbarBuyer = () => {
             }}
           />
         </Row>
-        <hr style={{ marginLeft: "100px", border: "0.5px solid #826105" }}></hr>
-        <Row style={{ marginLeft: "90px" }}>
-          <Col style={{ padding: "0px 20px 0px 150px" }}>
-            <a
-              href="/buyer/food"
+        <hr
+          style={{ marginLeft: "100px", border: "0.5px solid  #FCFBED" }}
+        ></hr>
+        <Row>
+          <Col style={{ color: "white" }}>
+          <span style ={{coloe:"white"}}> <NavDropdown
+              title="Category"
+              id="collasible-nav-dropdown"
+              color="#FCFBED"
               style={{
-                color: "#826105",
-                fontSize: "25px",
+                textDecoration:'none',
+                margin: "0px 0px 0px 80px",
+                fontSize: "20px",
+                color: "white",
+                padding: "0px 0px 0px 100px ",
                 fontFamily: "Yanone Kaffeesatz",
+                fontSize: "25px",
               }}
             >
-              Food
-            </a>
+              {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
+              <NavDropdown.Item
+                href="/buyer/food"
+                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none'}}
+              >
+                Food
+              </NavDropdown.Item>
+                <NavDropdown.Item
+                href="/buyer/clothes"
+                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none' }}
+              >
+                Clothes
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href="/buyer/babyproducts"
+                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none'}}
+              >
+                Baby Products
+              </NavDropdown.Item>
+               <NavDropdown.Item 
+                 href="/buyer/accessories"
+                 >
+                Accessories
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown></span>
           </Col>
-          <Col style={{ padding: "0px 20px 0px 20px" }}>
+          <Col style={{ padding: "0px 20px 0px 100px" }}>
             <a
-              href="/buyer/accessories"
+              href="/home"
               style={{
-                color: "#826105",
+                color: "#FCFBED",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
+                padding: "0px 180px ",
               }}
             >
-              Accessories
+              Home
             </a>
           </Col>
-          <Col style={{ padding: "0px 20px 0px 20px" }}>
-            <a
-              href="/buyer/babyproducts"
-              style={{
-                color: "#826105",
-                fontSize: "25px",
-                fontFamily: "Yanone Kaffeesatz",
-              }}
-            >
-              Baby Stuff
-            </a>
-          </Col>
+          <Col style={{ padding: "0px 20px 0px 20px" }}></Col>
           <Col>
             <NavDropdown
+              color="#FCFBED"
               id="collasible-nav-dropdown"
               style={{ margin: "0px 80px 0px 0px" }}
+              // title=<i class="fas fa-bars fa-2x"></i>
             >
               {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
               <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
@@ -107,51 +138,6 @@ var NavbarBuyer = () => {
         </Row>
       </Container>
     </div>
-    // <div className="App">
-    //   <Navbar
-    //     collapseOnSelect
-    //     expand="lg"
-    //     bg="#800000"
-    //     variant="dark"
-    //     style={{ width: "100%" }}
-    //   >
-    //     <Navbar.Brand href="/">Made With Love</Navbar.Brand>
-    //     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    //       <Navbar.Brand href="/home">Made With Love</Navbar.Brand>
-    //       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    //       <Navbar.Collapse id="responsive-navbar-nav">
-    //         <Nav className="mr-auto">
-    //           <NavDropdown title="category" id="collasible-nav-dropdown">
-    //             <NavDropdown.Item href="/buyer/food">Food</NavDropdown.Item>
-    //             <NavDropdown.Item href="/buyer/clothes">
-    //               Clothes
-    //             </NavDropdown.Item>
-    //             <NavDropdown.Item href="/buyer/accessories">
-    //               Accessories
-    //             </NavDropdown.Item>
-    //             <NavDropdown.Item href="/buyer/babyproducts">
-    //               Baby Accessories
-    //             </NavDropdown.Item>
-    //             <NavDropdown.Divider />
-    //           </NavDropdown>
-    //         </Nav>
-    //         <Nav>
-    //           <NavDropdown
-    //             id="collasible-nav-dropdown"
-    //             style={{ margin: "0px 80px 0px 0px" }}
-    //           >
-    //             {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
-    //             <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
-    //             <NavDropdown.Item href="/" onClick={signout}>
-    //               Sign Out
-    //             </NavDropdown.Item>
-    //             <NavDropdown.Divider />
-    //           </NavDropdown>
-    //         </Nav>
-    //       </Navbar.Collapse>
-    //     </Navbar>
-    //   </Navbar>
-    // </div>
   );
 };
 export default NavbarBuyer;

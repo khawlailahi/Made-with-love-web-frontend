@@ -55,7 +55,7 @@ var mapDispatchToProps = (dispatch) => {
      // <Route  path ='/login' exact  component ={Login}></Route>
     },
     error: function (err) {
-     alert('email already exsit')
+    //  alert('email already exsit')
     window.location = `/seller/signup`      
       }
 })  

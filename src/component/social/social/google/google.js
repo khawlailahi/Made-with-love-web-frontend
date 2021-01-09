@@ -9,6 +9,9 @@ import config from "../config";
 class GoogleLogin extends Component {
   constructor(props) {
     super(props);
+    this.state ={
+      alerts : ""
+    }
   }
 
   componentDidMount(props) {
@@ -82,6 +85,7 @@ class GoogleLogin extends Component {
           obj.phoneNumber = "";
 
           console.log(obj);
+          var that = this 
           $.ajax({
             url: "http://127.0.0.1:8000/buyer/signup",
             method: "POST",
@@ -97,8 +101,13 @@ class GoogleLogin extends Component {
             },
             error: function (err) {
               console.log(err);
-              alert("email already exist");
-            },
+              that.setState({alerts:err.responseText},()=>{console.log(that.state.alerts)})
+      
+              // alert(err.responseJSON.Error);
+              // setTimeout(() => {
+              //   window.location = "/buyer/signup";
+              // }, 8000);
+                    },
           });
 
           return;
@@ -108,13 +117,18 @@ class GoogleLogin extends Component {
   };
 
   render() {
-    return (
+    if(this.state.alerts )
+    var x =<div class="alert alert-danger" role="alert">
+    {this.state.alerts}
+  </div>
+    return (<div>
+     
       <img
         src={google}
         title="google login"
         alt="google"
         onClick={() => this.googleLogin()}
-      />
+      /></div>
     );
   }
 }

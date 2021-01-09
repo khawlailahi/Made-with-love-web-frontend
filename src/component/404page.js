@@ -1,5 +1,5 @@
 import React from 'react'
-import img from  '../images/4042.gif'
+import img from  '../images/404.gif'
 import { Link} from "react-router-dom";
 import NavbarBuyer from "./layout/NavbarBuyer.js";
 import NavbarSeller from "./layout/NavbarSeller.js";
@@ -25,9 +25,9 @@ var style2={
     left:' 50%',
     transform: 'translate(-50%, -50%)',
     // -msTransform: 'translate(-50%, -50%)',
-    backgroundColor: '#556',
-    color: 'white',
-    fontSize: '16px',
+    // backgroundColor: '#556',
+    color: 'orange',
+    fontSize: '60px',
     padding: '30px 200px',
     border: 'none',
     cursor: 'pointer',
@@ -36,7 +36,7 @@ var style2={
 }
 export default function Notfound() {
     var tokenObj = JSON.parse(localStorage.getItem('token'))
-//   console.log(tokenObj['type'])
+
   if(!tokenObj){
   var url = '/'
   var nav = <Navbar/>
@@ -44,17 +44,22 @@ export default function Notfound() {
   if(tokenObj){
   if(tokenObj.type ==='buyer'){
   var url = '/home'
-  var nav = <NavbarBuyer/>}
+ }
   if(tokenObj.type === 'seller'){
   var url = '/home'
-  var nav = <NavbarSeller/>}}
+}
+var x = setTimeout(()=>{
+    window.location=""+url
+}, 4000)
+  }
 
     return (
         <div>
-            {nav}
-            <h1 style = {style2}>404 Page Not Found</h1>
+           {/* <NavbarSeller/> */}
+            <h1 style = {style2}>Oops Something Went Wrong </h1>
             <img src={img} width ="100%" height ="900px"/>
-            <button className="btn" style = {style}><Link to={url} style={{ color:'white'}}>Go Back Home</Link> </button>
+            {x}
+            {/* <button className="btn" style = {style}><Link to={url} style={{ color:'white'}}>Go Back Home</Link> </button> */}
             {/* {setTimeout(() => {
                 if(tokenObj)
                 window.location='/home'
