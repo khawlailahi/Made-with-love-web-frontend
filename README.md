@@ -1,76 +1,32 @@
 
 
-  
-   
-   
-     
-     # Getting Started with Create React App
+  # Made-with-love-frontend
+** This is the front-end for the Made With Love Project **
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Concept :
+Made with love is a website that supports homemade businesses by providing them with space (online store ) to showcase and sell their unique products, introducing them to a larger market, and offering them the chance to grow and develop their businesses in a competitive and inspiring environment.
 
-## Available Scripts
+While also providing the consumers of homemade products with an easy to access and all-inclusive market where they can find any homemade product they may need in one place, one website, with an easy to order system.
 
-In the project directory, you can run:
+# Needs:
+Currently there is no market specifically for home/handmade products, these creative and dedicated small business owners have no place to display their products, and they are currently scattered between different social media platform, which makes harder for the client to find them. we aim to eliminate this problem by providing a website where all homemade products will be accessible and easier to purchase, and by so increase the client flow and enlarge the market for the business owners/stores.
 
-### `npm start`
+# Target market:
+-Sellers of homemade/handmade products
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Technologies:
+Front-end : React JS , Redux , React-hooks
+Backend : Django, Python
+Databse : MySQL - MySQL Workbench
+Other technologies used :
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Heroku
+Firebase
+Team:
+Product Owner: khawlailahi. Scrum Master: Rana Alhmoud. Development Team Members: khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# How to get started:
+- Clone or download this repo .
+- Open it in a code editor (exemple: Visual Studio Code ) .
+- In the root directory install the dependencies : npm install 
+- Run the Command : npm start 
