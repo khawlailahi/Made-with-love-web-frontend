@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import loogo from "../images/loogo.png";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Card, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import down from "../images/down.jpg";
 import $ from "jquery";
 import { Control, Form } from "react-redux-form";
@@ -9,6 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import buyer2 from "../images/buyer2.jpg";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import logo11 from "../images/logo11.png";
+// import store from './Store';
 
 var mapStateToProps = (state) => {
   console.log(state, "staaaaat");
@@ -60,8 +61,8 @@ const responseFacebook = (response) => {
     },
     error: function (err) {
       console.log(err);
-      alert("email already exist");
-      window.location = "/login";
+      alert(err.responseText);
+      window.location.reload()
     },
   });
 };
@@ -74,12 +75,14 @@ var responseGoogle = (response) => {
   obj.userName = response.profileObj["givenName"];
   obj.location = "";
   obj.phoneNumber = "";
+
   console.log(obj);
   $.ajax({
     url: "http://127.0.0.1:8000/buyer/signup",
     method: "POST",
     data: JSON.stringify(obj),
     contentType: "application/json",
+
     success: function (response) {
       console.log("POST sent successfully!");
       localStorage.setItem("token", JSON.stringify(response));
@@ -92,12 +95,11 @@ var responseGoogle = (response) => {
     },
     error: function (err) {
       console.log(err);
-      alert("email already exist");
-      window.location = "/login";
+      alert(err.responseText);
+      window.location.reload()
     },
   });
 };
-
 //make sign up buyer component
 function SignUpBuyer(props) {
   //console.log(props)
@@ -163,7 +165,7 @@ function SignUpBuyer(props) {
               }}
             >
               <a href="/">
-                <img src={loogo} width="200" height="180" />
+                <img src={logo11} width="200" height="180" />
               </a>
             </div>
             <Col md="auto"></Col>
@@ -183,7 +185,7 @@ function SignUpBuyer(props) {
                 href="/"
                 style={{
                   color: "#FCFBED",
-                  fontSize: "25px",
+                  fontSize: "30px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
@@ -192,35 +194,19 @@ function SignUpBuyer(props) {
             </Col>
             <Col style={{ padding: "0px 20px 0px 20px" }}></Col>
           </Row>
-          {/* <Row style={{ padding: "40px" }}>
-            <Col>
-              <div
-                style={{
-                  float: "none",
-                  marginLeft: "360px",
-                  marginRight: "100px",
-                  marginTop: "60px",
-                }}
-              >
-                <a href="/">
-                  <img src={heart} width="180" height="150" />
-                </a>
-              </div>
-            </Col>
-          </Row> */}
           <Row>
             <Col
               style={{
                 marginLeft: "110px",
                 marginRight: "110px",
-                marginTop: "140px",
+                marginTop: "100px",
               }}
             >
               <div
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "40px",
+                  fontSize: "55px",
                   color: "#FCFBED",
                 }}
               >
@@ -233,9 +219,10 @@ function SignUpBuyer(props) {
         <br />
         <br />
         <br />
-        
-        
-       
+        <br />
+        <br />
+        <br />
+        <br />
 
         <Row>
           <Col>
@@ -243,8 +230,8 @@ function SignUpBuyer(props) {
               style={{
                 fontFamily: "Yanone Kaffeesatz",
                 float: "none",
-                margin: "50px 500px 0px 670px",
-                fontSize: "80px",
+                margin: "-20px 400px 0px 670px",
+                fontSize: "90px",
               }}
             >
               Sign Up
@@ -254,15 +241,15 @@ function SignUpBuyer(props) {
       </div>
       <Card
         style={{
-          width: "550px",
+          width: "800px",
           margin: "200px auto",
-          height: "700px",
+
           padding: "25px 0px 10px 25px",
         }}
       >
         <div>
           {/* <div className="card-body"> */}
-          <div className="container">
+          <div className="container" style={{ marginLeft: "40px" }}>
             <Form
               class="row g-3 needs-validation"
               model="login"
@@ -276,16 +263,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   Email address
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="email"
@@ -303,16 +290,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   password
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="password"
@@ -330,16 +317,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   userName
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="userName"
@@ -357,16 +344,16 @@ function SignUpBuyer(props) {
                   class="form-label"
                   style={{
                     fontFamily: "Yanone Kaffeesatz",
-                    fontSize: "23px",
+                    fontSize: "28px",
                   }}
                 >
                   Phone Number
                 </label>
                 <Control.text
                   style={{
-                    width: "350px",
+                    width: "600px",
 
-                    height: "50px",
+                    height: "60px",
                   }}
                   autocomplete="off"
                   name="phoneNumber"
@@ -379,17 +366,21 @@ function SignUpBuyer(props) {
                   onChange={props.inputChanged}
                 />
 
-                <div class="col-12">
+                <div class="col-12" style={{
+                  marginLeft: "70px"
+                }}>
                   <button
-                    type="submit"
+                    type="button"
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "20px",
+                      fontSize: "25px",
                       padding: "14px 28px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",
+                      marginLeft: "50px"
                     }}
+                    onClick={clickButton}
                   >
                     Sign Up
                   </button>
@@ -400,28 +391,25 @@ function SignUpBuyer(props) {
                     Already have an acount ? Login
                   </a>
                 </Link> */}
-                <br/>
-                <div className="d-flex">
-                  <div className="p-2">
-                <GoogleLogin
+                <br /> <div style={{ padding: "20px", marginLeft: "350px", marginTop: "-110px", width: "100px" }}><GoogleLogin
                   clientId="618615503064-dlp8abcbs4u3l9gd0r3g41hrdigirah7.apps.googleusercontent.com"
                   buttonText="Sign Up"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy={"single_host_origin"}
+
                   onClick={responseGoogle}
-                  
                 /></div>
-                <div className="p-2" style={{height:"2px", width:"4px"}}><FacebookLogin
+                <br />
+                {/* <div style={{ padding: "20px", marginLeft:"140px"}}><FacebookLogin
                   appId="3491517994290436"
-                  autoLoad={true}
+                  autoLoad={false}
                   fields="name,email,picture"
                   callback={responseFacebook}
-                  style={{ fontSize:"5px"}}
-                  // cssClass="my-facebook-button-class"
-                  style={{size:"10px"}}
-                  icon= {<i class="fab fa-facebook-square" style={{ color:"DarkBlue"}}></i>}
-                /></div></div>
+                  cssClass="my-facebook-button-class"
+                  icon={<i class="fab fa-facebook-square"></i>}
+                  style={{ padding: "20px", margin:"300px, 100px, 400px, 100px" }}
+                /></div> */}
               </div>
             </Form>
           </div>
@@ -512,6 +500,7 @@ function SignUpBuyer(props) {
           </Row>
         </Container>
       </div>
+
     </div>
   );
 }

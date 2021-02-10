@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const VisitItems = (props) => {
   console.log(props);
   return (
-    <div>
+    <div style={{ marginLeft: "100px" }}>
       <Row>
         {props.items.map((item) => {
           if (JSON.parse(localStorage.getItem("token"))["type"] === "buyer")
@@ -18,7 +18,9 @@ const VisitItems = (props) => {
                     name: item["fields"].productname,
                     url: item["fields"].image,
                     store: item["fields"].store,
+                    storeId: item["fields"].["store_id"],
                     price: item["fields"].price,
+
                   },
                 }}
               >
@@ -41,7 +43,10 @@ const VisitItems = (props) => {
                   }}
                 >
                   {" "}
-                  <Card.Img variant="top" src={item["fields"]["image"]} />
+                  <Card.Img variant="top"
+                    width="500px"
+                    height="500px"
+                    src={item["fields"]["image"]} />
                 </Link>
                 <Card.Body>
                   <Card.Title style={{ fontWeight: "normal" }}>
@@ -60,7 +65,7 @@ const VisitItems = (props) => {
                     <label style={{ color: "red", fontWeight: "bold" }}>
                       Product Price :
                     </label>{" "}
-                    {item["fields"]["price"]}
+                    {item["fields"]["price"]} $
                   </Card.Text>
                   {button}
                 </Card.Body>

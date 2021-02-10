@@ -94,7 +94,7 @@ const ListItems = (props) => {
                     <label style={{ color: "red", fontWeight: "bold" }}>
                       Product Price :
                     </label>{" "}
-                    {item["fields"]["price"]}
+                    {item["fields"]["price"]} $
                   </Card.Text>
                   <Link
                     to={{

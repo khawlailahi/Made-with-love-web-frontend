@@ -1,46 +1,46 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
-import { createForms} from 'react-redux-form';
+import { createForms } from 'react-redux-form';
 
 
 
 var signUpSeller = {
 
-    email :"",
-    password : "",
-    storeName : "",
-    category : "",
-    description : "",
-    location : "",
-    deliveryOrder : "",
-    image:""
-   };
-   
-   var signUpBuyer = {
-       email:"",
-       password:"",
-       userName:"",
-       location:"",
-       phoneNumber:""
-   } 
-   var settingsBuyer ={
-    email:"",
-    password:"",
-    userName:"",
-    location:"",
-    phoneNumber:""
-   }
-   
-  var loginState={
-    email:"",
-    password:""
- }
+    email: "",
+    password: "",
+    storeName: "",
+    category: "",
+    description: "",
+    location: "",
+    deliveryOrder: "",
+    image: ""
+};
 
- var category = {
-    name:""
- }
+var signUpBuyer = {
+    email: "",
+    password: "",
+    userName: "",
+    location: "",
+    phoneNumber: ""
+}
+var settingsBuyer = {
+    email: "",
+    password: "",
+    userName: "",
+    location: "",
+    phoneNumber: ""
+}
 
-  var sellerProfile = {
+var loginState = {
+    email: "",
+    password: ""
+}
+
+var category = {
+    name: ""
+}
+
+var sellerProfile = {
 
     email: "",
     password: "",
@@ -64,13 +64,13 @@ var loginState = {
     email: "",
     password: ""
 }
-var settingsBuyer ={
-    email:"",
-    password:"",
-    userName:"",
-    location:"",
-    phoneNumber:""
-   }
+var settingsBuyer = {
+    email: "",
+    password: "",
+    userName: "",
+    location: "",
+    phoneNumber: ""
+}
 
 var category = {
     name: ""
@@ -180,17 +180,17 @@ var reducerBuyer = (state = signUpBuyer, action) => {
     }
 }
 
-var reducerSettings = (state =settingsBuyer, action) =>{
+var reducerSettings = (state = settingsBuyer, action) => {
     switch (action.type) {
         case 'SETTINGS':
             var obj = {}
-            obj[action.name]= action.text
+            obj[action.name] = action.text
             // console.log("objj",obj)
-            return Object.assign({}, state, obj) 
-          
-    
+            return Object.assign({}, state, obj)
+
+
         default:
-           return state;
+            return state;
     }
 }
 
@@ -273,18 +273,18 @@ var orderForm = {
     location: "",
     phoneNumber: "",
 }
-var editProfile ={
-    product: "" ,
-    description:"",
-    price:"",
-    type:"",
-    size:"",
-    gender:"",
-    material:""
+var editProfile = {
+    product: "",
+    description: "",
+    price: "",
+    type: "",
+    size: "",
+    gender: "",
+    material: ""
 }
-var password ={
-    newPassword:"",
-    oldPassword :"",
+var password = {
+    newPassword: "",
+    oldPassword: "",
 
 }
 
@@ -322,9 +322,9 @@ var order = {
 var orderFormReducer = (state = {}, action) => {
     switch (action.types) {
         case 'RECEIVE_DATA':
-          order=  Object.assign({},...state,{ data: action.data}) 
-          console.log(order,"gshdjgkh")
-        return Object.assign({},...state,{ data: action.data}) 
+            order = Object.assign({}, ...state, { data: action.data })
+            console.log(order, "gshdjgkh")
+            return Object.assign({}, ...state, { data: action.data })
         default:
             return state
     }
@@ -337,25 +337,25 @@ const store = createStore(combineReducers({
     addItem: reducerAddItem,
     reducerBuyer: reducerBuyer,
     catReducer: catReducer,
-    orderFormReducer:orderFormReducer,
-    categoryReducer:categoryReducer,
-    filterReducer:filterReducer,
-    filteringReducer:filteringReducer,
-    reducerSettings:reducerSettings
+    orderFormReducer: orderFormReducer,
+    categoryReducer: categoryReducer,
+    filterReducer: filterReducer,
+    filteringReducer: filteringReducer,
+    reducerSettings: reducerSettings
 
-   
+
     ,
     ...createForms({
         user: initialState,
-        login:loginState,
-        order:orderForm,
-        edit : editProfile,
-        password:password,
-        signUpSeller:signUpSeller,
-        signUpBuyer:signUpBuyer
+        login: loginState,
+        order: orderForm,
+        edit: editProfile,
+        password: password,
+        signUpSeller: signUpSeller,
+        signUpBuyer: signUpBuyer
 
 
-     } )
+    })
 })
 );
 export default store;

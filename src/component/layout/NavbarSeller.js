@@ -1,104 +1,18 @@
 
-// import React , {Component} from 'react';
-// import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-// import '../../Style/navbar.css'
-// import app  from '../fireConfig'
-// import { render } from '@testing-library/react';
-// if(localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))["type"] === 'seller' ){
-//    var id = JSON.parse(localStorage.getItem('token'))['id']
-//   var url = `/seller/profile/${id}`}
-
-  
-// //  import firebase from 'firebase'
-
- 
-// class NavbarSeller extends Component {
-//   constructor(props){
-//     super(props)
-//   this.state={
-//     not:0
-//   }
-//   }
-
-//   componentDidMount(){
-//     var that = this
-   
-//     if(localStorage.getItem('token') && JSON.parse(localStorage.getItem('token'))["type"] === 'seller' ){
-//     var store = JSON.parse(localStorage.getItem('token'))['id']
-//          var child = localStorage.getItem('not2')
-//     console.log(store,child, "heeeeeelp")
-
-//     app.database().ref('notification').child(child+'').on('value', snap =>{
-// console.log(child )
-//       console.log("iiiin")
-//       if(snap.val()){
-//       console.log(snap.val()[JSON.parse(localStorage.getItem('token'))['id']], "vaaaaal")
-//       that.setState({
-//           not:snap.val()[JSON.parse(localStorage.getItem('token'))['id']]
-//       })}
-
-//   }) 
-//   }
-// }
-//    signout=()=>{
-//     localStorage.removeItem('token')
-//     localStorage.removeItem('not2')
-//   }
- 
-//   render(){
-//      if (this.state.not){
-//       var  notification =  <Navbar.Brand  >{this.state.not}<i class="fas fa-bell"></i></Navbar.Brand>
-//      }
-//   return (
-// <div className="App">
-// <Navbar collapseOnSelect expand="lg" bg="#800000" variant="dark">
-//   <Navbar.Brand href="/home" >Made With Love</Navbar.Brand>
-//   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//   <Navbar.Collapse id="responsive-navbar-nav">
-//   <Navbar.Brand href="/home" >HOME</Navbar.Brand>
-//   <Nav className="mr-auto">
-//       <NavDropdown title="category" id="collasible-nav-dropdown">
-//         <NavDropdown.Item href="/buyer/food">Food</NavDropdown.Item>
-//         <NavDropdown.Item href="/buyer/clothes">Clothes</NavDropdown.Item>
-//         <NavDropdown.Item href="/buyer/accessories">Accessories</NavDropdown.Item>
-//         <NavDropdown.Divider />
-//         <NavDropdown.Item href="/buyer/babyproducts">Baby  Accessories</NavDropdown.Item>
-//       </NavDropdown>
-//     </Nav>
-//    {notification}
-//     <Nav>
-//     <NavDropdown  id="collasible-nav-dropdown" style ={{padding :'15px'}}>
-//         <NavDropdown.Item href="/orderList"> Views Orders</NavDropdown.Item>
-//         <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
-//         <NavDropdown.Item href="/" onClick={this.signout}>Sign Out</NavDropdown.Item>
-//         <NavDropdown.Divider />
-//       </NavDropdown>
-//     </Nav>
-//   </Navbar.Collapse>
-// </Navbar>
-//         </div>
-//         )}
-// }
-// export default NavbarSeller
-
-
-
-
-
-
-
-
-
 import { Component } from "react";
 import React from "react";
 import "../../Style/navbar.css";
 import app from "../fireConfig";
-import { Navbar, Nav, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import rose from "../../images/rose.png";
 import logo11 from "../../images/logo11.png";
 import back from "../../images/back.jpg";
 import heart from "../../images/heart.jpg";
+import { Navbar, NavDropdown, Row, Col, Container } from "react-bootstrap";
+import "../../Style/navbar.css";
+import { Link } from "react-router-dom";
+import loogo from "../../images/loogo.png";
+import back3 from "../../images/back3.jpg";
 if (
   localStorage.getItem("token") &&
   JSON.parse(localStorage.getItem("token"))["type"] === "seller"
@@ -113,12 +27,15 @@ class NavbarSeller extends Component {
       not: 0,
     };
   }
+
   componentDidMount() {
     var that = this;
+
     if (
       localStorage.getItem("token") &&
       JSON.parse(localStorage.getItem("token"))["type"] === "seller"
     ) {
+      console.log("111111111111111111111")
       var store = JSON.parse(localStorage.getItem("token"))["id"];
       var child = localStorage.getItem("not2");
       console.log(store, child, "heeeeeelp");
@@ -148,30 +65,26 @@ class NavbarSeller extends Component {
   render() {
     if (this.state.not) {
       var notification = (
-        <Navbar.Brand>
+        <Link to="/orderlist"> <Navbar.Brand style={{ color: "white", fontFamily: "Yanone Kaffeesatz" }}>
           {this.state.not}
-          <i class="fas fa-bell" style={{ color: "hotPink" }}></i>
-        </Navbar.Brand>
+          <i class="fas fa-bell" style={{ color: "#FFC966" }}></i>
+        </Navbar.Brand></Link>
       );
     }
     return (
       <div
         style={{
           width: "100%",
-          height: "1000px",
-          backgroundImage: `url(${back})`,
-          // backgroundRepeat: "no-repeat",
+          height: "440px",
+          backgroundImage: `url(${back3})`,
         }}
       >
         <Container>
           <Row className="justify-content-md-center">
-            {/* <Col xs lg="3">
-    1 of 3
-  </Col> */}
             <div
               style={{
                 float: "none",
-                marginLeft: "450px",
+                marginLeft: "510px",
                 marginRight: "100px",
                 marginBottom: "20px",
                 marginTop: "0",
@@ -179,9 +92,10 @@ class NavbarSeller extends Component {
               }}
             >
               <a href="/">
-                <img src={logo11} width="200" height="180" />
+                <img src={loogo} width="200" height="180" />
               </a>
             </div>
+
             <hr
               style={{
                 border: "0",
@@ -191,36 +105,37 @@ class NavbarSeller extends Component {
           </Row>
           <hr style={{ marginLeft: "170px", border: "0.5px solid white" }}></hr>
           <Row style={{ marginLeft: "90px" }}>
-            <Col style={{ padding: "0px 20px 0px 150px" }}>
+            <Col style={{ padding: "0px 20px 0px 120px" }}>
               <a
                 href="/home"
                 style={{
                   color: "#FCFBED",
-                  fontSize: "25px",
+                  fontSize: "23px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
                 Home
               </a>
             </Col>
-            <Col style={{ padding: "0px 20px 0px 20px" }}>
+            <Col style={{ padding: "0px 20px 0px 120px" }}>
               <a
                 href={url + ""}
                 style={{
                   color: "#FCFBED",
-                  fontSize: "25px",
+                  fontSize: "23px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
                 Profile
               </a>
             </Col>
-            <Col style={{ padding: "0px 20px 0px 20px" }}>
+
+            <Col>
               <a
                 href={url + ""}
                 style={{
-                  color: "#826105",
-                  fontSize: "25px",
+                  color: "#FCFBED",
+                  fontSize: "23px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
@@ -232,32 +147,19 @@ class NavbarSeller extends Component {
                 href="/orderList"
                 style={{
                   color: "#FCFBED",
-                  fontSize: "25px",
+                  fontSize: "23px",
                   fontFamily: "Yanone Kaffeesatz",
                 }}
               >
                 View Orders
               </a>
             </Col>
-          </Row>
-          <Row style={{ padding: "40px" }}>
-            <Col>
-              <div
-                style={{
-                  float: "none",
-                  marginLeft: "360px",
-                  marginRight: "100px",
-                  marginTop: "100px",
-                }}
-              >
-                <a href="/">
-                  <img src={heart} width="200" height="180" />
-                </a>
-              </div>
-            </Col>{" "}
             <NavDropdown
+              title={
+                <span style={{ color: "white" }}> <i class="fas fa-bars"></i></span>
+              }
               id="collasible-nav-dropdown"
-              style={{ padding: "15px", color: "#826105" }}
+              style={{ color: "#826105" }}
             >
               <NavDropdown.Item href="/settings" style={{ color: "#826105" }}>
                 Setting

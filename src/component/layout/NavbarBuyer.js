@@ -1,8 +1,7 @@
 import React from "react";
 import { NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
-import heart from "../../images/heart.jpg";
-import logo from "../../images/logo.png";
+import logo from "../../images/loogo.png";
 import back3 from "../../images/back3.jpg";
 var NavbarBuyer = () => {
   var signout = () => {
@@ -19,9 +18,7 @@ var NavbarBuyer = () => {
     >
       <Container className="justify-content-md-center">
         <Row>
-          {/* <Col xs lg="3">
-      1 of 3
-    </Col> */}
+
           <div
             style={{
               float: "none",
@@ -47,14 +44,15 @@ var NavbarBuyer = () => {
         <hr
           style={{ marginLeft: "100px", border: "0.5px solid  #FCFBED" }}
         ></hr>
-        <Row>
+        <Row style={{ color: "white" }}>
           <Col style={{ color: "white" }}>
-          <span style ={{coloe:"white"}}> <NavDropdown
-              title="Category"
+            <NavDropdown
+              title={<span style={{ color: "white" }}>Category</span>
+              }
+              // title="Choose Category"
               id="collasible-nav-dropdown"
-              color="#FCFBED"
+              color="white"
               style={{
-                textDecoration:'none',
                 margin: "0px 0px 0px 80px",
                 fontSize: "20px",
                 color: "white",
@@ -63,38 +61,36 @@ var NavbarBuyer = () => {
                 fontSize: "25px",
               }}
             >
-              {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
               <NavDropdown.Item
                 href="/buyer/food"
-                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none'}}
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
               >
                 Food
               </NavDropdown.Item>
-                <NavDropdown.Item
+              <NavDropdown.Item
                 href="/buyer/clothes"
-                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none' }}
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
               >
                 Clothes
               </NavDropdown.Item>
               <NavDropdown.Item
                 href="/buyer/babyproducts"
-                style={{ fontFamily: "Yanone Kaffeesatz", textDecoration:'none'}}
+                style={{ fontFamily: "Yanone Kaffeesatz" }}
               >
                 Baby Products
               </NavDropdown.Item>
-               <NavDropdown.Item 
-                 href="/buyer/accessories"
-                 >
+              <NavDropdown.Item href="/buyer/accessories">
                 Accessories
               </NavDropdown.Item>
               <NavDropdown.Divider />
-            </NavDropdown></span>
+            </NavDropdown>
           </Col>
           <Col style={{ padding: "0px 20px 0px 100px" }}>
             <a
               href="/home"
               style={{
                 color: "#FCFBED",
+                margin: "0px 0px 0px 20px",
                 fontSize: "25px",
                 fontFamily: "Yanone Kaffeesatz",
                 padding: "0px 180px ",
@@ -106,34 +102,18 @@ var NavbarBuyer = () => {
           <Col style={{ padding: "0px 20px 0px 20px" }}></Col>
           <Col>
             <NavDropdown
+              title={
+                <span style={{ color: "white" }}> <i class="fas fa-bars"></i></span>
+              }
               color="#FCFBED"
               id="collasible-nav-dropdown"
-              style={{ margin: "0px 80px 0px 0px" }}
-              // title=<i class="fas fa-bars fa-2x"></i>
-            >
-              {/* <NavDropdown.Item href="/notification">View Notifications</NavDropdown.Item> */}
+              style={{ margin: "0px 80px 0px 0px" }}>
               <NavDropdown.Item href="/settings">Setting</NavDropdown.Item>
               <NavDropdown.Item href="/" onClick={signout}>
                 Sign Out
               </NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
-          </Col>
-        </Row>
-        <Row style={{ padding: "40px" }}>
-          <Col>
-            <div
-              style={{
-                float: "none",
-                marginLeft: "360px",
-                marginRight: "100px",
-                marginTop: "100px",
-              }}
-            >
-              <a href="/">
-                <img src={heart} width="200" height="180" />
-              </a>
-            </div>
           </Col>
         </Row>
       </Container>

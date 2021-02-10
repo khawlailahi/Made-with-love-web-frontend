@@ -1,18 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/view.css";
-import back from "../images/back.jpg";
 import down from "../images/down.jpg";
 import heart from "../images/heart.jpg";
-import logo1 from "../images/logo1.png";
+import loogo from "../images/loogo.png";
 import contactUs from "../images/contactUs.jpg";
-// const player = {
-//     color : 'red',
-//     fontFamily: 'Gochi Hand'
 
-// }
 function ContactUs() {
   return (
     <div>
@@ -27,9 +22,7 @@ function ContactUs() {
       >
         <Container>
           <Row className="justify-content-md-center">
-            {/* <Col xs lg="3">
-      1 of 3
-    </Col> */}
+
             <div
               style={{
                 float: "none",
@@ -41,7 +34,7 @@ function ContactUs() {
               }}
             >
               <a href="/">
-                <img src={logo1} width="200" height="180" />
+                <img src={loogo} width="200" height="180" />
               </a>
             </div>
           </Row>
@@ -94,7 +87,7 @@ function ContactUs() {
                 }}
               >
                 <a href="/">
-                  <img src={heart} width="200" height="180" />
+                  <img src={heart} width="150" height="120" />
                 </a>
               </div>
             </Col>
@@ -111,7 +104,7 @@ function ContactUs() {
                 style={{
                   fontFamily: "Yanone Kaffeesatz",
                   float: "none",
-                  fontSize: "80px",
+                  fontSize: "60px",
                   color: "#FCFBED",
                   width: "auto",
                   height: "auto",
@@ -242,13 +235,7 @@ function ContactUs() {
           </Row>
         </Container>
       </div>
-      {/* <div style={{ marginLeft: "360px",
-    marginRight: "100px",
-    marginBottom: "20px",
-    marginTop: "100px",
-    paddingTop: "10px"}}>
-    <p style={{fontFamily: 'Yanone Kaffeesatz',  fontSize:'50px'}}>When Life Gives You Hand Make Handmade</p>
-</div> */}
+ 
       <div
         style={{
           width: "100%",

@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { storage } from "../firebase";
+import { storage } from "./fireConfig";
 import { Control, Form } from "react-redux-form";
+import { Row, Col, Container } from "react-bootstrap";
 import $ from "jquery";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import down from "../images/down.jpg";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NavbarSeller from "./layout/NavbarSeller";
 import NavbarBuyer from "./layout/NavbarBuyer";
 import { Button } from 'bootstrap'
+
 function SettingProfile() {
+  var tokenObj = JSON.parse(localStorage.getItem("token"));
+  if (!tokenObj) { window.location = "/404" }
+
+  if (JSON.parse(localStorage.getItem("token"))) {
+
+    if (tokenObj.type === "buyer") var nav = <NavbarBuyer />;
+    if (tokenObj.type === "seller") var nav = <NavbarSeller />;
+  }
   const [location, setLocation] = useState("");
   const [username, setUsername] = useState("");
   const [storeName, setstoreName] = useState("");
@@ -56,28 +68,80 @@ function SettingProfile() {
     });
   }, [data]);
 
+  //>>>>>>>>>>>>>>>> SETTINGS FOR BUYER <<<<<<<<<<<<<<<//
+
   const buyerSettings = () => {
     if (
       JSON.parse(localStorage.getItem("token"))["type"] === "buyer" &&
       data1 !== ""
     ) {
-      // setUrl1('http://127.0.0.1:8000/buyer/getAll/')
-
       return (
         <div>
-          <button onClick={count}>change Password </button>
-          {showInput()}
-          <br></br>
-          <br></br>
-          <button onClick={count2}> change Location</button>
-          {locationn()}
-          <br></br>
-          <button onClick={count3}> change PhoneNumber</button>
-          {phonee()}
-          <br></br>
-          <button onClick={count4}> change userName</button>
-          {user()}
-          <br></br>
+          {nav}
+          <Row>
+            <Col>
+              <button
+                onClick={count}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "18px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                change Password{" "}
+              </button>
+              {showInput()}
+              <br></br>
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                onClick={count3}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "18px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                {" "}
+                change PhoneNumber
+              </button>
+              {phonee()}
+              <br></br>
+            </Col>
+
+          </Row>
+
+          <Row>
+
+            <Col>
+              <button
+                onClick={count4}
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "18px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+              >
+                {" "}
+                change userName
+              </button>
+              {user()}
+              <br></br>
+            </Col>
+          </Row>
         </div>
       );
     }
@@ -101,7 +165,7 @@ function SettingProfile() {
   const count6 = () => {
     setCounter6(!counter4);
   };
-  ////////////PASSS///////////////
+  /////>>>>>>>>> BUYER PASSWORD
   const showInput = () => {
     if (counter === true) {
       var x = (
@@ -109,10 +173,16 @@ function SettingProfile() {
           <Form model="password" onSubmit={(password) => ajaxPass(password)}>
             <div className="col-md-3">
               <div className="col-md-4">
-                <label htmlFor="password.oldPassword" className="form-label">
+                <label htmlFor="password.oldPassword" className="form-label" style={{ fontSize: "14px" }}>
                   Old Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.oldPassword"
                   id="password.oldPassword"
@@ -120,11 +190,17 @@ function SettingProfile() {
                   required
                 />
               </div>
-              <div className="col-md-4">
-                <label htmlFor="password.newPassword" className="form-label">
-                  New Password
+              <div className="col-md-6">
+                <label htmlFor="password.newPassword" className="form-label" style={{ fontSize: "14px" }}>
+                  New Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.newPassword"
                   id="password.newPassword"
@@ -132,7 +208,15 @@ function SettingProfile() {
                   required
                 />
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">
+                  <button
+                    style={{
+                      backgroundColor: "#edb55c",
+                      borderRadius: "10px",
+                      border: "2px solid white",
+                      padding: "10px 15px",
+                    }}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -150,7 +234,7 @@ function SettingProfile() {
   const ajaxPass = (password) => {
     $.ajax({
       method: "POST",
-      url: "http://127.0.0.1:8000/buyer/changePassword", //fix it later
+      url: "http://127.0.0.1:8000/buyer/changePassword",
       data: JSON.stringify(password),
       contentType: "application/json",
       success: function () {
@@ -161,7 +245,7 @@ function SettingProfile() {
       },
     });
   };
-  ///////////////LOCATION//////////////////
+  ///>>>>>> BUYER LOCATION
   const takevalue = (e) => {
     setLocation(e.target.value);
     console.log(location);
@@ -192,33 +276,67 @@ function SettingProfile() {
           <div className="col-md-3">
             <label className="form-label">New Location :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.location}
               onChange={takevalue}
             />
           </div>
-          <button className="btn btn-primary" name="location" onClick={ajaxLoc}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            name="location"
+            onClick={ajaxLoc}
+          >
             Submit
           </button>
         </div>
       );
     }
   };
-  //////////////////////////NUMBER//////////////
+  ///>>>>>>>>>>> BUYER NUMBER
 
   const phonee = () => {
     if (counter3 === true) {
       return (
         <div>
-          <div className="col-md-3">
-            <label className="form-label">New PhoneNumber :</label>
+          <div className="col-md-4" style={{
+            marginLeft: "20px"
+          }}>
+            <label className="form-label" style={{
+              fontSize: "14px"
+            }}>New PhoneNumber :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.phonenumber}
               onChange={takevaluePH}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxphone}>
+          <button
+            style={{
+              marginLeft: "60px",
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxphone}
+          >
             Submit
           </button>
         </div>
@@ -234,7 +352,7 @@ function SettingProfile() {
     const obj = { phoneNumber: phoneNumber };
     $.ajax({
       method: "POST",
-      url: "http://127.0.0.1:8000/buyer/phoneNumber", //fix it later
+      url: "http://127.0.0.1:8000/buyer/phoneNumber/", //fix it later
       data: JSON.stringify(obj),
       contentType: "application/json",
       success: function () {
@@ -248,7 +366,7 @@ function SettingProfile() {
       },
     });
   };
-  ////////////////////////////////username
+  ////>>>>>> BUYER USERNAME 
   const ajaxUN = () => {
     const obj = { userName: username };
     $.ajax({
@@ -278,14 +396,29 @@ function SettingProfile() {
       return (
         <div>
           <div className="col-md-3">
-            <label className="form-label">New userName :</label>
+            <label className="form-label" >New userName :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.username}
               onChange={takevalueUN}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxUN}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              marginLeft: "60px",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+            }}
+            onClick={ajaxUN}
+          >
             Submit
           </button>
         </div>
@@ -293,36 +426,136 @@ function SettingProfile() {
     }
   };
 
-  /////////////////////////////////////////////////////////////////////////for sellerr//////////////////////////////////////////////////////////////////////////////////////////
+  //>>>>>>>>>>>>>>>> SETTINGS FOR SELLER <<<<<<<<<<<<<<<//
 
   const sellerSettings = () => {
     if (JSON.parse(localStorage.getItem("token"))["type"] === "seller") {
       return (
         <div>
-          <button onClick={count}>Change Password </button>
-          {showInputPass()}
-          <br></br>
-          <br></br>
-          <button onClick={count3}> Change storeName</button>
-          {storeNamee()}
-          <br></br>
-          <button onClick={count2}> Change Location</button>
-          {locationn2()}
-          <br></br>
-          <button onClick={count4}> Change Description</button>
-          {descriptionn()}
-          <br></br>
-          <button onClick={count5}> Change Deliver Order WithIn:</button>
-          {deliverrr()}
-          <br></br>
-          <button onClick={count6}> Change Your Store Image:</button>
-          {imagee()}
-          <br></br>
+          {nav}
+          <Row style={{ margin: "0px 40px 0px 40px" }}>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count}
+              >
+                Change Password{" "}
+              </button>
+              {showInputPass()}
+              <br></br>
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count3}
+              >
+                {" "}
+                Change storeName
+              </button>
+              {storeNamee()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count2}
+              >
+                {" "}
+                Change Location
+              </button>
+              {locationn2()}
+              <br></br>
+            </Col>
+          </Row>
+          <Row style={{ margin: "20px 40px 0px 40px" }}>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count4}
+              >
+                {" "}
+                Change Description
+              </button>
+              {descriptionn()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count5}
+              >
+                {" "}
+                Change Deliver Order WithIn:
+              </button>
+              {deliverrr()}
+              <br></br>
+            </Col>
+            <Col>
+              <button
+                style={{
+                  borderRadius: "10px",
+                  border: "2px solid white",
+                  fontSize: "20px",
+                  padding: "10px 25px",
+                  fontFamily: "Yanone Kaffeesatz",
+                  marginTop: "50px",
+                  width: "250px",
+                }}
+                onClick={count6}
+              >
+                {" "}
+                Change Your Store Image:
+              </button>
+              {imagee()}
+              <br></br>
+            </Col>
+          </Row>
         </div>
       );
     }
   };
-  ///////////////PASS
+  /////>>>>>>>> SELLER PASSWORD
   const showInputPass = () => {
     if (counter === true) {
       var x = (
@@ -337,6 +570,12 @@ function SettingProfile() {
                   Old Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.oldPassword"
                   id="password.oldPassword"
@@ -344,11 +583,17 @@ function SettingProfile() {
                   required
                 />
               </div>
-              <div className="col-md-4">
+              <div className="col-md-3" >
                 <label htmlFor="password.newPassword" className="form-label">
-                  New Password
+                  New Password:
                 </label>
                 <Control
+                  style={{
+                    width: "200px",
+
+                    height: "40px",
+                  }}
+                  autocomplete="off"
                   type="password"
                   model="password.newPassword"
                   id="password.newPassword"
@@ -356,7 +601,16 @@ function SettingProfile() {
                   required
                 />
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">
+                  <button
+                    style={{
+                      backgroundColor: "#edb55c",
+                      borderRadius: "10px",
+                      border: "2px solid white",
+                      padding: "10px 15px",
+                      marginLeft: "45px"
+                    }}
+                    type="submit"
+                  >
                     Submit
                   </button>
                 </div>
@@ -389,20 +643,35 @@ function SettingProfile() {
     });
   };
 
-  ///////////STORE
+  ////>>>>>>>>>> SELLER STORE NAME
   const storeNamee = () => {
     if (counter3 === true) {
       return (
         <div>
           <div className="col-md-3">
-            <label className="form-label">New storeName :</label>
+            <label style={{ fontSize: "15px" }}>New storeName :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.store_name}
               onChange={takevalueSN}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxSN}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+              marginLeft: "70px"
+            }}
+            onClick={ajaxSN}
+          >
             Submit
           </button>
         </div>
@@ -432,21 +701,33 @@ function SettingProfile() {
       },
     });
   };
-  ////////////////////////////////////////////////////////////////////LOCATION
+  ////////>>>>>> SELLER LOCATION
   const locationn2 = () => {
     if (counter2 === true) {
       return (
         <div>
           <div className="col-md-3">
-            <label className="form-label">New Location :</label>
+            <label className="form-label" >New Location :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.location}
               onChange={takevalueLoc}
             />
           </div>
           <button
-            className="btn btn-primary"
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+              marginLeft: "70px"
+            }}
             name="location"
             onClick={ajaxLoca}
           >
@@ -480,21 +761,36 @@ function SettingProfile() {
     });
   };
 
-  /////////////////////////DESCRIPTION
+  ///////>>>>>>>> SELLER DESCRIPTION
 
   const descriptionn = () => {
     if (counter4 === true) {
       return (
         <div>
           <div className="col-md-3">
-            <label className="form-label">New Description :</label>
+            <label className="form-label" style={{ fontSize: "14px" }}>New Description :</label>
             <input
+              style={{
+                width: "200px",
+
+                height: "40px",
+              }}
+              autocomplete="off"
               className="form-control"
               defaultValue={data1[0].fields.description}
               onChange={takevalueD}
             />
           </div>
-          <button className="btn btn-primary" onClick={ajaxD}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+              marginLeft: "70px"
+            }}
+            onClick={ajaxD}
+          >
             Submit
           </button>
         </div>
@@ -513,7 +809,7 @@ function SettingProfile() {
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:8000/seller/description", //fix it later
-      headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+      headers: { 'Authorization': JSON.parse(localStorage.getItem('token'))['token'] },
       data: JSON.stringify(obj),
       contentType: "application/json",
       success: function () {
@@ -527,9 +823,9 @@ function SettingProfile() {
       },
     });
   };
-  ///////////////////////////////////////////////////////////////////
+  ///////>>>>>> SELLER DELIEVERY TIME
 
-  /////////DELIVERY
+
 
   const deliverrr = () => {
     if (counter5 === true) {
@@ -537,7 +833,17 @@ function SettingProfile() {
         <div>
           <label className="form-label">Change Delivery Time:</label>
           <br></br>
-          <select className="form-select" onChange={takevalueDe} required>
+          <select
+            className="form-select"
+            onChange={takevalueDe}
+            required
+            style={{
+              width: "200px",
+
+              height: "40px",
+            }}
+            autocomplete="off"
+          >
             <option selected disabled value="">
               Choose The Type
             </option>
@@ -546,7 +852,17 @@ function SettingProfile() {
             <option value="Day">Day</option>
           </select>
 
-          <button className="btn btn-primary" name="location" onClick={ajaxDe}>
+          <button
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+              marginLeft: "70px"
+            }}
+            name="location"
+            onClick={ajaxDe}
+          >
             Submit
           </button>
           <br></br>
@@ -577,12 +893,18 @@ function SettingProfile() {
     console.log(deliver);
   };
 
-  ///////////////////////image/////////////////////
+  ////>>>>> SELLER IMAGE
   const imagee = () => {
     if (counter6 === true) {
       return (
         <div>
           <input
+            style={{
+              width: "220px",
+
+              height: "40px",
+            }}
+            autocomplete="off"
             type="file"
             className="form-control"
             aria-label="file example"
@@ -591,7 +913,13 @@ function SettingProfile() {
           />
           {tr2()}
           <button
-            className="btn btn-primary"
+            style={{
+              backgroundColor: "#edb55c",
+              borderRadius: "10px",
+              border: "2px solid white",
+              padding: "10px 15px",
+              marginLeft: "70px"
+            }}
             name="location"
             onClick={ajaxImage}
           >
@@ -608,7 +936,7 @@ function SettingProfile() {
     const uploadTask = storage.ref(`imagee/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
+      (snapshot) => { },
       (error) => {
         console.log(error);
       },
@@ -634,14 +962,15 @@ function SettingProfile() {
     if (image !== "") {
       return (
         <div>
-          <img src={url} />
+          {url ?
+            <img src={url} width="200" height="180" /> : null}
           <input type="button" value="Upload" onClick={handleUpload} />
         </div>
       );
     }
   };
   const ajaxImage = () => {
-    const obj = { Image: url };
+    const obj = { image: url };
     $.ajax({
       method: "POST",
       url: "http://127.0.0.1:8000/seller/image", //fix it later
@@ -662,12 +991,117 @@ function SettingProfile() {
     <div>
       <div>{buyerSettings()}</div>
       <div>{sellerSettings()}</div>
-     <div><button type="button" class="btn btn-success" onClick={()=>{  
-         var id = JSON.parse(localStorage.getItem("token"))['id']
-        window.location='/seller/profile/'+`${id}` 
-     }}>Finished</button></div>
+      <div className="col-12">
+        <br />
+        <button
+          style={{
+            backgroundColor: "green",
+            color: "white",
+            borderRadius: "10px",
+            fontSize: "30px",
+            marginLeft: "700px",
+            border: "2px solid white",
+            padding: "10px 15px",
+          }}
+          onClick={() => {
+            if (JSON.parse(localStorage.getItem("token"))["type"] === "buyer") {
+              window.location = '/home'
+            }
+            if (JSON.parse(localStorage.getItem("token"))["type"] === "seller") {
+              window.location = `/seller/profile/${JSON.parse(localStorage.getItem("token"))["id"]}`
+            }
+          }}
 
+        >
+          Finished
+                  </button>
+      </div>
 
+      <div
+        style={{
+          width: "100%",
+          marginTop: "150px",
+          height: "600px",
+          backgroundImage: `url(${down})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <Container>
+          <Row>
+            <Col style={{ padding: "130px" }}>
+              <h3 style={{ color: "#fcfbed" }}>Have a Question?</h3>
+              <br />
+
+              <i
+                className="far fa-clock fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                Saturday - Thursday: 09:00AM - 18:30PM
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-map-marker-alt fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                Jordan,Amman
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-phone-alt fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                {" "}
+                +962796720978
+              </i>
+              <br />
+              <br />
+              <i
+                class="fas fa-envelope fa-2x"
+                style={{ fontSize: "20px", color: "#fcfbed" }}
+              >
+                <a
+                  href="mailto:lovemadewith817@gmail.com"
+                  style={{ color: "#fcfbed" }}
+                >
+                  {" "}
+                  Made_With_Love
+                </a>
+              </i>
+            </Col>
+            <Col style={{ padding: "130px" }}>
+              <h3 style={{ color: "#fcfbed" }}>Informations</h3>
+              <br />
+              <Link to="/about">
+                <i
+                  class="far fa-sticky-note fa-2x"
+                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                >
+                  {" "}
+                  About Us
+                </i>
+              </Link>
+              <br />
+              <br />
+              <Link to="/contactUs">
+                <i
+                  class="far fa-sticky-note fa-2x"
+                  style={{ fontSize: "20px", color: "#fcfbed" }}
+                >
+                  {" "}
+                  Contact Us
+                </i>
+              </Link>
+              <br />
+              <br />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }

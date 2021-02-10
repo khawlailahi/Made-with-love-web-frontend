@@ -16,12 +16,14 @@ import back3 from "../images/back3.jpg";
 import { Link } from "react-router-dom";
 import down from "../images/down.jpg";
 import ListItems from "./listItems";
+import NavbarSeller from "./layout/NavbarSeller"
 var signout = () => {
   localStorage.removeItem("token");
 };
-if (JSON.parse(localStorage.getItem("token"))){
-var id = JSON.parse(localStorage.getItem("token"))["id"];
-var url = `/seller/profile/${id}`;}
+if (JSON.parse(localStorage.getItem("token"))) {
+  var id = JSON.parse(localStorage.getItem("token"))["id"];
+  var url = `/seller/profile/${id}`;
+}
 const styles = {
   card: {
     borderRadius: 55,
@@ -106,13 +108,10 @@ class SellerProfile extends React.Component {
       type: "GET",
       success: function (data) {
         console.log(data, "Fetch the data");
-        //  var data1 = JSON.parse(data)
-        // var data1 = data
         that.setState({ items: data }, () => {
           console.log("itemsss", that.state);
         });
-        // that.setState(data
-        // console.log(that.state,'staaate')
+
       },
       error: function (error) {
         console.log(error, "error in fetch the data");
@@ -135,7 +134,7 @@ class SellerProfile extends React.Component {
       var x = (
         <div>
           {" "}
-          <Container fluid style={{ marginTop: "-500px" }}>
+          <Container fluid style={{ marginTop: "-580px" }}>
             <CardGroup className="m-5 d-block">
               <Card className=" shadow" style={styles.card}>
                 <Row>
@@ -143,33 +142,153 @@ class SellerProfile extends React.Component {
                     <Card.Img
                       src={this.state.data[0]["fields"].image}
                       style={styles.cardImage}
+                      style={{ height: "400px", width: "550px" }}
                     />
                   </Col>
                   <Col>
                     <Card.Body>
-                      <Card.Text as="h2">
-                        <span style={{ fontWeight: "bold" }}>Store Name :</span>
-                        {this.state.data[0]["fields"].store_name}
+                      <Card.Text
+                        as="h2"
+                        style={{
+                          fontSize: "28px",
+                          fontFamily: "Yanone Kaffeesatz",
+                          color: "#A3A1A0",
+                        }}
+                      >
+
+                        <pre
+                          style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            color: "#787371",
+                            fontWeight: "bold",
+                            fontSize: "29px"
+                          }}
+                        >
+                          {" "}
+                            Store Name:{" "}
+                          <span
+                            style={{
+                              // fontSize: "30px",
+                              fontFamily: "Yanone Kaffeesatz",
+                              fontWeight: "normal",
+                              fontSize: "28px"
+                            }}
+                          >   {this.state.data[0]["fields"].store_name}</span>
+                        </pre>
+
                       </Card.Text>
-                      <Card.Text as="h2">
-                        <span style={{ fontWeight: "bold" }}>
-                          Description :
-                        </span>
-                        {this.state.data[0]["fields"].description}
+                      <br />
+                      <Card.Text
+                        as="h2"
+                        style={{
+                          fontSize: "28px",
+                          fontFamily: "Yanone Kaffeesatz",
+                          color: "#787371",
+                        }}
+                      >
+
+                        <pre
+                          style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            color: "#787371",
+                            fontWeight: "bold",
+                            fontSize: "29px"
+                          }}
+                        >
+                          Description:{" "}
+                          <span
+                            style={{
+                              fontFamily: "Yanone Kaffeesatz",
+                              fontWeight: "normal",
+                              fontSize: "28px"
+                            }}
+                          >   {this.state.data[0]["fields"].description}  </span>
+                        </pre>
+
                       </Card.Text>
-                      <Card.Text as="h2">
-                        <span style={{ fontWeight: "bold" }}>Location :</span>
-                        {this.state.data[0]["fields"].location}
+                      <br />
+                      <Card.Text
+                        as="h2"
+                        style={{
+                          fontSize: "28px",
+                          fontFamily: "Yanone Kaffeesatz",
+                          color: "#544F4E",
+                        }}
+                      >
+
+                        <pre
+                          style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            color: "#787371",
+                            fontWeight: "bold",
+                            fontSize: "29px"
+                          }}
+                        >
+                          Location :
+                         <span style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            fontWeight: "normal",
+                            fontSize: "28px"
+                          }}
+                          >   {this.state.data[0]["fields"].location}</span>
+                        </pre>
+
                       </Card.Text>
-                      <Card.Text as="h4" style={styles.cardText}>
-                        Delievery Time :
-                        {this.state.data[0]["fields"].delivery_time}
+                      <br />
+                      <Card.Text
+                        as="h4"
+                        style={{
+                          fontSize: "28px",
+                          fontFamily: "Yanone Kaffeesatz",
+                          color: "#544F4E",
+                        }}
+                      >
+                        <pre
+                          style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            color: "#787371",
+                            fontWeight: "bold",
+                            fontSize: "29px"
+                          }}
+                        >
+                          Delievery Time :{" "}
+                          <span style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            fontWeight: "normal",
+                            fontSize: "28px"
+                          }}
+                          >    {this.state.data[0]["fields"].delivery_time}</span>
+                        </pre>
                       </Card.Text>
-                      <Card.Text  as="h4" style={styles.cardText}>
-                        Email:
-                        {this.state.data[0]["fields"].email}
+                      <br />
+
+                      <Card.Text
+                        as="h2"
+                        style={{
+                          fontSize: "28px",
+                          fontFamily: "Yanone Kaffeesatz",
+                          color: "#544F4E",
+                        }}
+                      >
+
+                        <pre
+                          style={{
+                            fontFamily: "Yanone Kaffeesatz",
+                            color: "#787371",
+                            fontWeight: "bold",
+                            fontSize: "29px"
+                          }}
+                        >
+                          Email : <span
+                            style={{
+                              fontFamily: "Yanone Kaffeesatz",
+                              fontWeight: "normal",
+                              fontSize: "28px"
+                            }}
+                          > {this.state.data[0]["fields"].email} </span>
+                        </pre>
+
                       </Card.Text>
-                     
                       <Link
                         to={{
                           pathname: "/seller/addItem",
@@ -180,10 +299,14 @@ class SellerProfile extends React.Component {
                       >
                         <Button
                           style={{
+                            borderRadius: "10px",
+                            border: "2px solid white",
+                            fontSize: "18px",
+                            padding: "12px 25px",
+                            fontFamily: "Yanone Kaffeesatz",
                             margin: "50px 0px 0px 400px",
-                            backgroundColor: "#800000",
+                            backgroundColor: "#EDB55C",
                           }}
-                          bg="#80000"
                         >
                           Add Item
                         </Button>
@@ -232,207 +355,9 @@ class SellerProfile extends React.Component {
       );
     return (
       <div>
-        <div
-          style={{
-            width: "100%",
-            height: "1030px",
-            backgroundImage: `url(${back3})`,
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <Container>
-            <Row className="justify-content-md-center">
-              {/* <Col xs lg="3">
-    1 of 3
-  </Col> */}
-              <div
-                style={{
-                  float: "none",
-                  marginLeft: "450px",
-                  marginRight: "100px",
-                  marginBottom: "20px",
-                  marginTop: "0",
-                  paddingTop: "10px",
-                }}
-              >
-                <a href="/">
-                  <img src={logo11} width="200" height="180" />
-                </a>
-              </div>
-​
-              <hr
-                style={{
-                  border: "0",
-                  borderTop: "1px solid red",
-                }}
-              />
-            </Row>
-            <hr
-              style={{ marginLeft: "170px", border: "0.5px solid white" }}
-            ></hr>
-            <Row style={{ marginLeft: "90px" }}>
-              <Col style={{ padding: "0px 20px 0px 150px" }}>
-                <a
-                  href="/home"
-                  style={{
-                    color: "#FCFBED",
-                    fontSize: "25px",
-                    fontFamily: "Yanone Kaffeesatz",
-                  }}
-                >
-                  Home
-                </a>
-              </Col>
-              <Col style={{ padding: "0px 20px 0px 20px" }}>
-                <a
-                  href={url + ""}
-                  style={{
-                    color: "#FCFBED",
-                    fontSize: "25px",
-                    fontFamily: "Yanone Kaffeesatz",
-                  }}
-                >
-                  Profile
-                </a>
-              </Col>
-​
-              <Col style={{ padding: "0px 20px 0px 20px" }}>
-                <a
-                  href="/orderList"
-                  style={{
-                    color: "#FCFBED",
-                    fontSize: "25px",
-                    fontFamily: "Yanone Kaffeesatz",
-                  }}
-                >
-                  View Orders
-                </a>
-              </Col>
-            </Row>
-            <Row style={{ padding: "40px" }}>
-              <Col>
-                {/* <div
-                  style={{
-                    float: "none",
-                    marginLeft: "360px",
-                    marginRight: "100px",
-                    marginTop: "100px",
-                  }}
-                >
-                  <a href="/">
-                    <img src={heart} width="200" height="180" />
-                  </a>
-                </div> */}
-              </Col>{" "}
-              <NavDropdown
-                style={{
-                  padding: "15px",
-                  color: "#FCFBED",
-                  marginTop: "-100px",
-                  textDecoration: "none",
-                }}
-              >
-                <NavDropdown.Item href="/settings" style={{ color: "#826105" }}>
-                  Setting
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/"
-                  style={{ color: "#826105" }}
-                  onClick={signout}
-                >
-                  Sign Out
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-              </NavDropdown>
-            </Row>
-          </Container>
-        </div>
+        <NavbarSeller />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         {x}
-        <div
-          style={{
-            width: "100%",
-            marginTop: "150px",
-            height: "600px",
-            backgroundImage: `url(${down})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-        >
-          <Container>
-            <Row>
-              <Col style={{ padding: "130px" }}>
-                <h3 style={{ color: "#fcfbed" }}>Have a Question?</h3>
-                <br />
-​
-                <i
-                  className="far fa-clock fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
-                >
-                  {" "}
-                  Saturday - Thursday: 09:00AM - 18:30PM
-                </i>
-                <br />
-                <br />
-                <i
-                  class="fas fa-map-marker-alt fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
-                >
-                  {" "}
-                  Jordan,Amman
-                </i>
-                <br />
-                <br />
-                <i
-                  class="fas fa-phone-alt fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
-                >
-                  {" "}
-                  +962796720978
-                </i>
-                <br />
-                <br />
-                <i
-                  class="fas fa-envelope fa-2x"
-                  style={{ fontSize: "20px", color: "#fcfbed" }}
-                >
-                  <a
-                    href="mailto:lovemadewith817@gmail.com"
-                    style={{ color: "#fcfbed" }}
-                  >
-                    {" "}
-                    Made_With_Love
-                  </a>
-                </i>
-              </Col>
-              <Col style={{ padding: "130px" }}>
-                <h3 style={{ color: "#fcfbed" }}>Informations</h3>
-                <br />
-                <Link to="/about">
-                  <i
-                    class="far fa-sticky-note fa-2x"
-                    style={{ fontSize: "20px", color: "#fcfbed" }}
-                  >
-                    {" "}
-                    About Us
-                  </i>
-                </Link>
-                <br />
-                <br />
-                <Link to="/contactUs">
-                  <i
-                    class="far fa-sticky-note fa-2x"
-                    style={{ fontSize: "20px", color: "#fcfbed" }}
-                  >
-                    {" "}
-                    Contact Us
-                  </i>
-                </Link>
-                <br />
-                <br />
-              </Col>
-            </Row>
-          </Container>
-        </div>
       </div>
     );
   }
