@@ -1,59 +1,50 @@
 import $ from "jquery";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Control, Form } from "react-redux-form";
-import app from "./fireConfig";
-import NavbarSeller from "./layout/NavbarSeller.js";
-import { Card, Row, Col, Container } from "react-bootstrap";
+import NavbarSeller from "../layout/NavbarSeller";
+import { storage } from "../fireConfig.js";
 import down from "../images/down.jpg";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-//protected route
-// var tokenObj = JSON.parse(localStorage.getItem("token"));
-// if(! tokenObj || tokenObj.type !== "seller" ){ window.location="/404"}
-
-var storage = app.storage();
-function EditProfile(props) {
-  console.log("caaaat", props);
-  const category = props.location.info.category;
-  const product = props.location.info.product;
-  const desc = props.location.info.desc;
-  console.log(desc);
-  const price = props.location.info.price;
-  console.log(category);
+function ItemForm(props) {
+  console.log("caaaat", props.location.info);
   const [url, setUrl] = useState("");
   const [image, setImage] = useState("");
-  var obj1;
-
-  const ajax = (edit) => {
-    obj1 = Object.assign({}, edit);
+  var obj1 = { category: props.location.info.id, url: "", user: {} };
+  const ajax = (user) => {
+    var tokenObj = JSON.parse(localStorage.getItem("token"));
+    obj1 = Object.assign({}, user);
     console.log(url);
     obj1["url"] = url;
-    obj1.id = props.location.info.id;
-    obj1["category"] = category;
+    obj1.category = props.location.info.id;
+    obj1.user = tokenObj["id"];
     console.log(obj1);
     $.ajax({
       method: "POST",
-      url: "http://127.0.0.1:8000/seller/editProfile/" + `${obj1.id}`,
+      url: "http://127.0.0.1:8000/seller/addItem", //fix it later
       data: JSON.stringify(obj1),
       contentType: "application/json",
       success: function () {
-        console.log(obj1);
-        window.location = `/seller/profile/${
-          JSON.parse(localStorage.getItem("token"))["id"]
-        }`
+        console.log(obj1, "success");
+        window.location = `/seller/profile/${JSON.parse(localStorage.getItem("token"))["id"]
+          }`;
+        console.log(`${JSON.parse(localStorage.getItem('token')['id'])}`)
+        // window.location = `/seller/profile/${JSON.parse(localStorage.getItem('token')['id'])}`
       },
       error: function (err) {
-        console.log(obj1);
+        console.log(err);
       },
     });
-    window.location="seller/profile/"+JSON.parse(localStorage.getItem("token")['id']);
   };
+
   const handleUpload = (e) => {
+    console.log(this);
     const uploadTask = storage.ref(`imagee/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
+      (snapshot) => { },
       (error) => {
-        console.log(error);
+        console.log(error, "lll");
       },
       () => {
         storage
@@ -67,48 +58,51 @@ function EditProfile(props) {
       }
     );
   };
-
   const uploadImage = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
   const tr2 = () => {
+    console.log(url);
     if (image !== "") {
+
       return (
         <div>
-        {url?
-        <img src={url} width="200" height="180" />:null}
-        <br/>
-        <input 
-        style={{
-          borderRadius: "10px",
-          border: "2px solid white",
-          fontSize: "20px",
-          padding: "6px 15px",
-          fontFamily: "Yanone Kaffeesatz",
-        }}
-        type="button" value="Upload" onClick={handleUpload} />
-      </div>
+          {url ?
+            <img src={url} width="200" height="180" /> : null}
+          <br />
+          <input
+            style={{
+              borderRadius: "10px",
+              border: "2px solid white",
+              fontSize: "20px",
+              padding: "6px 15px",
+              fontFamily: "Yanone Kaffeesatz",
+            }}
+            type="button" value="Upload" onClick={handleUpload} />
+        </div>
       );
     }
   };
   const food = () => {
-    if (category === 100) {
+    if (obj1.category === "food") {
       return (
         <div>
           <Card
             style={{
               width: "550px",
               margin: "200px auto",
-              
-              padding: "25px 0px 10px 25px",
+
+              padding: "25px 0px 10px 15px",
               marginTop: "30px",
             }}
           >
-  
-            <div className="container">
-              <Form model="edit" onSubmit={(edit) => ajax(edit)}>
+            {/* <div className="card-body"> */}
+            <div className="container" style={{
+              marginLeft: "60px auto"
+            }}>
+              <Form model="user" onSubmit={(user) => ajax(user)}>
                 <div className="col-md-3">
                   <label
                     className="form-label"
@@ -126,7 +120,7 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.type"
+                    model="user.type"
                     className="form-select"
                     required
                   >
@@ -144,12 +138,11 @@ function EditProfile(props) {
                     <option value="Salty">Salty</option>
                     <option value="Sweet">Sweet</option>
                   </Control.select>
-                  ​
                 </div>
-                <br></br>​
+                <br></br>
                 <div className="col-md-4">
                   <label
-                    htmlFor="edit.product"
+                    htmlFor="user.product"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -164,17 +157,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.product"
-                    defaultValue={product}
-                    id="edit.product"
+                    model="user.product"
+                    id="user.product"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
-                ​
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.description"
+                    htmlFor="user.description"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -189,17 +181,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.description"
-                    defaultValue={desc}
-                    id="edit.description"
+                    model="user.description"
+                    id="user.description"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
-                ​
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.price"
+                    htmlFor="user.price"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -214,17 +205,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.price"
-                    defaultValue={price}
-                    id="edit.price"
+                    model="user.price"
+                    id="user.price"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
-                ​ ​ ​
-                <div className="mb-3">
+                <div className="mb-3" style={{ marginLeft: "15px" }}>
                   <label
-                    htmlFor="edit.image"
+                    htmlFor="user.image"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -233,9 +223,13 @@ function EditProfile(props) {
                   >
                     Add Picture:
                   </label>
-                  <input
-                    type="file"
-                    model="edit.image"
+                  <Control.file
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    model="user.image"
                     className="form-control"
                     aria-label="file example"
                     onChange={uploadImage}
@@ -245,16 +239,18 @@ function EditProfile(props) {
                 </div>
                 <div className="col-12">
                   <button
-                    type="submit"
-                    className="btn btn-success"
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "20px",
-                      padding: "10px 25px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",
+                      backgroundColor: "#edb55c",
+                      marginLeft: "120px",
+                      border: "2px solid white",
+                      fontSize: "25px",
+                      padding: "14px 28px"
                     }}
+                    type="submit"
                   >
                     Submit
                   </button>
@@ -267,228 +263,20 @@ function EditProfile(props) {
     }
   };
   const clothes = () => {
- 
-    if (category === 200)
+    if (obj1.category === "clothes") {
       return (
         <div>
           <Card
             style={{
               width: "550px",
               margin: "200px auto",
-              
-              padding: "25px 0px 10px 25px",
-              marginTop: "30px",
-            }}
-          >
-            <div>
-
-              <div className="container">
-                <Form model="edit" onSubmit={(edit) => ajax(edit)}>
-                  <div className="col-md-3">
-                    <label
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Gender:
-                    </label>
-                    <br></br>
-                    <Control.select
-                      style={{
-                        width: "350px",
-
-                        height: "50px",
-                      }}
-                      model="edit.gender"
-                      className="form-select"
-                      required
-                    >
-                      <option
-                        selected
-                        disabled
-                        value=""
-                        style={{
-                          fontFamily: "Yanone Kaffeesatz",
-                          fontSize: "21px",
-                        }}
-                      >
-                        Choose the gender
-                      </option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </Control.select>
-                  </div>
-                  <br></br>
-                  <div className="col-md-3">
-                    <label
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Size:
-                    </label>
-                    <br></br>
-                    <Control.select
-                      style={{
-                        width: "350px",
-
-                        height: "50px",
-                      }}
-                      model="edit.size"
-                      className="form-select"
-                      required
-                    >
-                      <option
-                        selected
-                        disabled
-                        value=""
-                        style={{
-                          fontFamily: "Yanone Kaffeesatz",
-                          fontSize: "21px",
-                        }}
-                      >
-                        Choose the size
-                      </option>
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                    </Control.select>
-                  </div>
-                  <br></br>
-                  <div className="col-md-4">
-                    <label
-                      htmlFor="edit.product"
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Name Of Product:
-                    </label>
-                    <Control.text
-                      style={{
-                        width: "350px",
-
-                        height: "50px",
-                      }}
-                      model="edit.product"
-                      id="edit.product"
-                      className="form-control"
-                      required
-                    />
-                  </div>
-                  <div className="col-md-3">
-                    <label
-                      htmlFor="edit.description"
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Description:
-                    </label>
-                    <Control.text
-                      style={{
-                        width: "350px",
-
-                        height: "50px",
-                      }}
-                      model="edit.description"
-                      id="edit.description"
-                      className="form-control"
-                      required
-                    />
-                  </div>
-                  <div className="col-md-3">
-                    <label
-                      htmlFor="edit.price"
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Price:
-                    </label>
-                    <Control.text
-                      style={{
-                        width: "350px",
-
-                        height: "50px",
-                      }}
-                      model="edit.price"
-                      id="edit.price"
-                      className="form-control"
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label
-                      htmlFor="edit.image"
-                      className="form-label"
-                      style={{
-                        fontFamily: "Yanone Kaffeesatz",
-                        fontSize: "21px",
-                      }}
-                    >
-                      Add Picture:
-                    </label>
-                    <input
-                      type="file"
-                      className="form-control"
-                      aria-label="file example"
-                      onChange={uploadImage}
-                      required
-                    />
-                    {tr2()}
-                  </div>
-                  <div className="col-12">
-                    <button
-                      type="submit"
-                      className="btn btn-success"
-                      style={{
-                        borderRadius: "10px",
-                        border: "2px solid white",
-                        fontSize: "20px",
-                        padding: "10px 25px",
-                        fontFamily: "Yanone Kaffeesatz",
-                        marginTop: "15px",
-                        marginLeft: "160px",
-                        marginRight: "160px",
-                      }}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </Form>
-              </div>
-            </div>
-          </Card>
-        </div>
-      );
-  };
-  const babyproducts = () => {
-    if (category === 400) {
-      return (
-        <div>
-          <Card
-            style={{
-              width: "550px",
-              margin: "200px auto",
-              
               padding: "25px 0px 10px 25px",
               marginTop: "30px",
             }}
           >
             {/* <div className="card-body"> */}
             <div className="container">
-              <Form model="edit" onSubmit={(edit) => ajax(edit)}>
+              <Form model="user" onSubmit={(user) => ajax(user)}>
                 <div className="col-md-3">
                   <label
                     className="form-label"
@@ -506,7 +294,221 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.gender"
+                    model="user.gender"
+                    className="form-select"
+                    required
+                  >
+                    <option
+                      selected
+                      disabled
+                      value=""
+                      style={{
+                        fontFamily: "Yanone Kaffeesatz",
+                        fontSize: "21px",
+                      }}
+                    >
+                      Choose the gender
+                    </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </Control.select>
+                </div>
+                <br></br>
+                <div className="col-md-3">
+                  <label
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Size:
+                  </label>
+                  <br></br>
+                  <Control.select
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    model="user.size"
+                    className="form-select"
+                    required
+                  >
+                    <option
+                      selected
+                      disabled
+                      value=""
+                      style={{
+                        fontFamily: "Yanone Kaffeesatz",
+                        fontSize: "21px",
+                      }}
+                    >
+                      Choose the size
+                    </option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                  </Control.select>
+                </div>
+                <br></br>
+                <div className="col-md-4">
+                  <label
+                    htmlFor="user.product"
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Name Of Product:
+                  </label>
+                  <Control.text
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    autocomplete="off"
+                    model="user.product"
+                    id="user.product"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="col-md-3">
+                  <label
+                    htmlFor="user.description"
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Description:
+                  </label>
+                  <Control.text
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    autocomplete="off"
+                    model="user.description"
+                    id="user.description"
+                    autocomplete="off"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="col-md-3">
+                  <label
+                    htmlFor="user.price"
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Price:
+                  </label>
+                  <Control.text
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    autocomplete="off"
+                    model="user.price"
+                    id="user.price"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="mb-3" style={{ marginLeft: "15px" }}>
+                  <label
+                    htmlFor="user.image"
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Add Picture:
+                  </label>
+                  <Control.file
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    model="user.image"
+                    className="form-control"
+                    aria-label="file example"
+                    onChange={uploadImage}
+                    required
+                  />
+                  {tr2()}
+                </div>
+                <div className="col-12">
+                  <button
+                    style={{
+                      borderRadius: "10px",
+                      border: "2px solid white",
+                      fontFamily: "Yanone Kaffeesatz",
+                      marginTop: "50px",
+                      backgroundColor: "#edb55c",
+                      marginLeft: "120px",
+                      border: "2px solid white",
+                      fontSize: "25px",
+                      padding: "14px 28px"
+                    }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </Form>
+            </div>
+          </Card>
+        </div>
+      );
+    }
+  };
+  const babyproducts = () => {
+    if (obj1.category === "babyproducts") {
+      return (
+        <div>
+          <Card
+            style={{
+              width: "550px",
+              margin: "200px auto",
+
+              padding: "25px 0px 10px 25px",
+              marginTop: "30px",
+            }}
+          >
+            {/* <div className="card-body"> */}
+            <div className="container">
+              <Form model="user" onSubmit={(user) => ajax(user)}>
+                <div className="col-md-3">
+                  <label
+                    className="form-label"
+                    style={{
+                      fontFamily: "Yanone Kaffeesatz",
+                      fontSize: "21px",
+                    }}
+                  >
+                    Gender:
+                  </label>
+                  <br></br>
+                  <Control.select
+                    style={{
+                      width: "350px",
+
+                      height: "50px",
+                    }}
+                    model="user.gender"
                     className="form-select"
                     required
                   >
@@ -528,7 +530,7 @@ function EditProfile(props) {
                 <br></br>
                 <div className="col-md-4">
                   <label
-                    htmlFor="edit.product"
+                    htmlFor="user.product"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -543,15 +545,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.product"
-                    id="edit.product"
+                    model="user.product"
+                    id="user.product"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.description"
+                    htmlFor="user.description"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -566,15 +569,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.description"
-                    id="edit.description"
+                    model="user.description"
+                    id="user.description"
+                    autocomplete="off"
                     className="form-control"
                     required
                   />
                 </div>
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.price"
+                    htmlFor="user.price"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -589,15 +593,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.price"
-                    id="edit.price"
+                    model="user.price"
+                    id="user.price"
+                    autocomplete="off"
                     className="form-control"
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3" style={{ marginLeft: "15px" }}>
                   <label
-                    htmlFor="edit.image"
+                    htmlFor="user.image"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -606,14 +611,13 @@ function EditProfile(props) {
                   >
                     Add Picture:
                   </label>
-                  <input
+                  <Control.file
                     style={{
                       width: "350px",
 
                       height: "50px",
                     }}
-                    type="file"
-                    model="edit.image"
+                    model="user.image"
                     className="form-control"
                     aria-label="file example"
                     onChange={uploadImage}
@@ -623,16 +627,18 @@ function EditProfile(props) {
                 </div>
                 <div className="col-12">
                   <button
-                    type="submit"
-                    className="btn btn-success"
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "20px",
-                      padding: "10px 25px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",
+                      backgroundColor: "#edb55c",
+                      marginLeft: "120px",
+                      border: "2px solid white",
+                      fontSize: "25px",
+                      padding: "14px 28px"
                     }}
+                    type="submit"
                   >
                     Submit
                   </button>
@@ -645,21 +651,21 @@ function EditProfile(props) {
     }
   };
   const accessories = () => {
-    if (category === 300) {
+    if (obj1.category === "accessories") {
       return (
         <div>
           <Card
             style={{
               width: "550px",
               margin: "200px auto",
-              
+
               padding: "25px 0px 10px 25px",
               marginTop: "30px",
             }}
           >
             {/* <div className="card-body"> */}
             <div className="container">
-              <Form model="edit" onSubmit={(edit) => ajax(edit)}>
+              <Form model="user" onSubmit={(user) => ajax(user)}>
                 <div className="col-md-3">
                   <label
                     className="form-label"
@@ -677,7 +683,7 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.material"
+                    model="user.material"
                     className="form-select"
                     required
                   >
@@ -699,7 +705,7 @@ function EditProfile(props) {
                 <br></br>
                 <div className="col-md-4">
                   <label
-                    htmlFor="edit.product"
+                    htmlFor="user.product"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -714,15 +720,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.product"
-                    id="edit.product"
+                    model="user.product"
+                    id="user.product"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.description"
+                    htmlFor="user.description"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -737,15 +744,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.description"
-                    id="edit.description"
+                    model="user.description"
+                    id="user.description"
+                    autocomplete="off"
                     className="form-control"
                     required
                   />
                 </div>
                 <div className="col-md-3">
                   <label
-                    htmlFor="edit.price"
+                    htmlFor="user.price"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -760,15 +768,16 @@ function EditProfile(props) {
 
                       height: "50px",
                     }}
-                    model="edit.price"
-                    id="edit.price"
+                    model="user.price"
+                    id="user.price"
                     className="form-control"
+                    autocomplete="off"
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3" style={{ marginLeft: "15px" }}>
                   <label
-                    htmlFor="edit.image"
+                    htmlFor="user.image"
                     className="form-label"
                     style={{
                       fontFamily: "Yanone Kaffeesatz",
@@ -777,14 +786,13 @@ function EditProfile(props) {
                   >
                     Add Picture:
                   </label>
-                  <input
+                  <Control.file
                     style={{
                       width: "350px",
 
                       height: "50px",
                     }}
-                    type="file"
-                    model="edit.image"
+                    model="user.image"
                     className="form-control"
                     aria-label="file example"
                     onChange={uploadImage}
@@ -794,16 +802,18 @@ function EditProfile(props) {
                 </div>
                 <div className="col-12">
                   <button
-                    type="submit"
-                    className="btn btn-success"
                     style={{
                       borderRadius: "10px",
                       border: "2px solid white",
-                      fontSize: "20px",
-                      padding: "10px 25px",
                       fontFamily: "Yanone Kaffeesatz",
                       marginTop: "50px",
+                      backgroundColor: "#edb55c",
+                      marginLeft: "120px",
+                      border: "2px solid white",
+                      fontSize: "25px",
+                      padding: "14px 28px"
                     }}
+                    type="submit"
                   >
                     Submit
                   </button>
@@ -910,4 +920,4 @@ function EditProfile(props) {
     </div>
   );
 }
-export default EditProfile;
+export default ItemForm;

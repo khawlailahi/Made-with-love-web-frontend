@@ -3,7 +3,7 @@ import $ from "jquery";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
-import NavbarSeller from "./layout/NavbarSeller.js";
+import NavbarSeller from "../layout/NavbarSeller.js";
 import down from "../images/down.jpg";
 
 export default class CategorySeller extends Component {

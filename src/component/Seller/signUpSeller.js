@@ -11,7 +11,7 @@ import down from "../images/down.jpg";
 import { Link } from "react-router-dom";
 
 // import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { storage } from "./fireConfig";
+import { storage } from "../fireConfig";
 var mapStateToProps = (state) => {
   return {
     email: state.reducer.email,

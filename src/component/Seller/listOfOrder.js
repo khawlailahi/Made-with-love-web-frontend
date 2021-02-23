@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import $ from "jquery";
 import { Card, Row, Col } from "react-bootstrap";
-import NavbarSeller from "./layout/NavbarSeller";
-import { app } from "./fireConfig";
+import NavbarSeller from "../layout/NavbarSeller";
+import { app } from "../fireConfig";
 
 export default class listOfOrder extends Component {
   constructor(props) {

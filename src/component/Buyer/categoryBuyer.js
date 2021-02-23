@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import $ from "jquery";
-import ItemList from "./itemList.js";
+import ItemList from "../Seller/itemList.js";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import NavbarBuyer from "./layout/NavbarBuyer.js";
+import NavbarBuyer from "../layout/NavbarBuyer.js";
 import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
 
 var mapStateToProps = (state) => {

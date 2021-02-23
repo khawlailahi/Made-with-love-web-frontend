@@ -4,10 +4,7 @@ import React from "react";
 import "../../Style/navbar.css";
 import app from "../fireConfig";
 import "../../Style/navbar.css";
-import rose from "../../images/rose.png";
-import logo11 from "../../images/logo11.png";
-import back from "../../images/back.jpg";
-import heart from "../../images/heart.jpg";
+
 import { Navbar, NavDropdown, Row, Col, Container } from "react-bootstrap";
 import "../../Style/navbar.css";
 import { Link } from "react-router-dom";

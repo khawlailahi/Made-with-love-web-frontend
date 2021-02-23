@@ -3,12 +3,11 @@ import Carousel from "react-bootstrap/Carousel";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import rose from "../images/rose.png";
-import app from "./fireConfig"
-import { useState , useEffect } from "react";
+import app from "../fireConfig"
+import { useState, useEffect } from "react";
 import $ from "jquery";
-import NavbarSeller from "./layout/NavbarSeller";
-import NavbarBuyer from "./layout/NavbarBuyer";
+import NavbarSeller from "./NavbarSeller";
+import NavbarBuyer from "./NavbarBuyer";
 import down from "../images/down.jpg";
 var action = { type: "food_category" };
 var actionclothes = { type: "clothes_category" };
@@ -70,73 +69,73 @@ export default function Home(props) {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [tr1, settr1] = useState(null);
-  const [populor, setData1] =useState([])
+  const [populor, setData1] = useState([])
 
-  useEffect(()=>{
-    var max=0;
+  useEffect(() => {
+    var max = 0;
     var maxId
     var database = app.database().ref('notification')
-    var superStore ;
-  database.once("value", function(snapshot) {
-  
-    snapshot.forEach(function(childSnapshot) {
-      childSnapshot.forEach(function(child) {
-        // if the store id exist in firebase  increment number of orders
-       
-          var x =Number(child.val())
-          if(x>= max ){
-            max=x;
+    var superStore;
+    database.once("value", function (snapshot) {
+
+      snapshot.forEach(function (childSnapshot) {
+        childSnapshot.forEach(function (child) {
+          // if the store id exist in firebase  increment number of orders
+
+          var x = Number(child.val())
+          if (x >= max) {
+            max = x;
             maxId = child.key
           }
-  });
-   
-  })
- superStore = maxId;
-  console.log(maxId, "maaxxx")
-  $.ajax({
-    method:'GET',
-    url: 'http://127.0.0.1:8000/seller/profile/'+maxId,
-    contentType: "application/json",
-    headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+        });
 
-    success:function(res){
-      console.log(res, "supeeeeeeeer")
-    setData(JSON.parse(res))
-    settr1(true)
-    console.log(data, "imaaaavjvjvaage")
-    },
-    error: function(err){
-    
-    }
-  })
-  })
-    
-  $.ajax({
-    method:'GET',
-    url: 'http://127.0.0.1:8000/populer',
-    contentType: "application/json",
-    headers:{'Authorization':JSON.parse(localStorage.getItem('token'))['token']},
+      })
+      superStore = maxId;
+      console.log(maxId, "maaxxx")
+      $.ajax({
+        method: 'GET',
+        url: 'http://127.0.0.1:8000/seller/profile/' + maxId,
+        contentType: "application/json",
+        headers: { 'Authorization': JSON.parse(localStorage.getItem('token'))['token'] },
 
-    success:function(res){
-  
-      //filter descendingly 
-      var data =res.sort(function(a, b) {
-        return (b.fields.review) - (a.fields.review);
-    }) 
-   
-    data = data.slice(0,4)
-     setData1(data)  
-    settr1(true)
-    console.log(Array.isArray(res))
-    },
-    error: function(err){
-    console.log(err,"errrr")
-    }
-  })
+        success: function (res) {
+          console.log(res, "supeeeeeeeer")
+          setData(JSON.parse(res))
+          settr1(true)
+          console.log(data, "imaaaavjvjvaage")
+        },
+        error: function (err) {
+
+        }
+      })
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: 'http://127.0.0.1:8000/populer',
+      contentType: "application/json",
+      headers: { 'Authorization': JSON.parse(localStorage.getItem('token'))['token'] },
+
+      success: function (res) {
+
+        //filter descendingly 
+        var data = res.sort(function (a, b) {
+          return (b.fields.review) - (a.fields.review);
+        })
+
+        data = data.slice(0, 4)
+        setData1(data)
+        settr1(true)
+        console.log(Array.isArray(res))
+      },
+      error: function (err) {
+        console.log(err, "errrr")
+      }
+    })
 
 
-},[tr1]
-)
+  }, [tr1]
+  )
 
 
   var tokenObj = JSON.parse(localStorage.getItem("token"));
@@ -150,7 +149,7 @@ export default function Home(props) {
 
 
   return (
-  
+
     <div>
       {nav}
 
@@ -182,7 +181,7 @@ export default function Home(props) {
               >
                 <Link to="/buyer/food">
                   <Carousel
-           
+
                     onClick={() => {
                       console.log("clickeeed");
                       dispatch(getcategoryfood());
@@ -242,10 +241,10 @@ export default function Home(props) {
             </div>
           </Col>
           <Col>
-         
-          
+
+
             <div className="col-sm-12">
-             <div
+              <div
                 className="card"
                 style={{
                   border: "solid  white 3px",
@@ -259,37 +258,37 @@ export default function Home(props) {
                   marginLeft: "-150px",
                 }}
               >
-                
-                  <Carousel
-                 
-                    onClick={() => {
-                      console.log("clickeeed");
-                      
-                    }}
-                  >
-                  {data[0]? <Carousel.Item >
-                      <img
-                        style={{
-                          border: "solid  white 3px",
-                          borderRadius: "10px",
-                        }}
-                        className="d-block w-100"
-                        src={data[0].fields.image+''}
-                        alt="Third slide"
-                        width="600px"
-                        height="700px"
-                      />
-                     <Link to={"seller/visit/"+data[0].pk}> <Carousel.Caption>
-                        <h2 style={{color :"black", marginBottom:"500px", backgroundColor:"pink"}}>Our Super Store :</h2>
-                        <h3  style={{color :"black", marginBottom:"20px", backgroundColor:"white"}}>{data[0].fields.store_name}</h3>
-                        <h5  style={{color :"black", marginBottom:"10px",backgroundColor:"white"}}>{data[0].fields.description}</h5>
-                      </Carousel.Caption></Link>
-                    </Carousel.Item> 
+
+                <Carousel
+
+                  onClick={() => {
+                    console.log("clickeeed");
+
+                  }}
+                >
+                  {data[0] ? <Carousel.Item >
+                    <img
+                      style={{
+                        border: "solid  white 3px",
+                        borderRadius: "10px",
+                      }}
+                      className="d-block w-100"
+                      src={data[0].fields.image + ''}
+                      alt="Third slide"
+                      width="600px"
+                      height="700px"
+                    />
+                    <Link to={"seller/visit/" + data[0].pk}> <Carousel.Caption>
+                      <h2 style={{ color: "black", marginBottom: "500px", backgroundColor: "pink" }}>Our Super Store :</h2>
+                      <h3 style={{ color: "black", marginBottom: "20px", backgroundColor: "white" }}>{data[0].fields.store_name}</h3>
+                      <h5 style={{ color: "black", marginBottom: "10px", backgroundColor: "white" }}>{data[0].fields.description}</h5>
+                    </Carousel.Caption></Link>
+                  </Carousel.Item>
                     //while loading the super store show a spinner
-                    :<Carousel.Item > 
-                        <h2 style={{color :"White", marginTop:"200px", backgroundColor:"orange", fontSize:"50px",textAlign:"center", padding:"20px , 20px , 10px , 10px"}}> The Store With The Most Orders Is ...</h2><br/><br/><div class="spinner-border "  style ={{  width:"7rem", height: "7rem", marginBottom:"100px", marginLeft:"250px", color:"orange"}}></div></Carousel.Item >}
-                  </Carousel>
-                
+                    : <Carousel.Item >
+                      <h2 style={{ color: "White", marginTop: "200px", backgroundColor: "orange", fontSize: "50px", textAlign: "center", padding: "20px , 20px , 10px , 10px" }}> The Store With The Most Orders Is ...</h2><br /><br /><div class="spinner-border " style={{ width: "7rem", height: "7rem", marginBottom: "100px", marginLeft: "250px", color: "orange" }}></div></Carousel.Item >}
+                </Carousel>
+
               </div>
             </div>
           </Col>
@@ -310,7 +309,7 @@ export default function Home(props) {
               >
                 <Link to="/buyer/clothes">
                   <Carousel
-                  
+
                     onClick={() => {
                       console.log("clickeeed");
                       dispatch(getcategoryclothes());
@@ -390,7 +389,7 @@ export default function Home(props) {
               >
                 <Link to="/buyer/accessories">
                   <Carousel
-                
+
                     onClick={() => {
                       console.log("clickeeed");
                       dispatch(getcategoryacc());
@@ -517,7 +516,7 @@ export default function Home(props) {
                         src="https://i1.wp.com/dadfixeseverything.com/wp-content/uploads/2019/01/wash_baby_clothes.jpg?resize=600%2C400&ssl=1"
                         width="400px"
                         height="300px"
-                        
+
                         alt="Third slide"
                       />
                       <Carousel.Caption>
@@ -535,107 +534,107 @@ export default function Home(props) {
       </Container>
       <br />
       <br />
-    
-     
+
+
       <Container>
-            <Row style={{ marginTop: "25px" }}>
-              <Col>
-                <hr
-                  style={{
-                    color: "black",
-                    marginLeft: "-5px",
-                    width: "100%",
-                    borderWidth: "2px",
-                    height: "5px",
-                  }}
-                />
+        <Row style={{ marginTop: "25px" }}>
+          <Col>
+            <hr
+              style={{
+                color: "black",
+                marginLeft: "-5px",
+                width: "100%",
+                borderWidth: "2px",
+                height: "5px",
+              }}
+            />
+          </Col>
+          <Col>
+            <h3 style={{ marginLeft: "50px" }}>Most Populor Stores</h3>
+          </Col>
+          <Col>
+            {" "}
+            <hr
+              style={{
+                color: "black",
+                marginRight: "-5px",
+                width: "90%",
+                borderWidth: "2px",
+                height: "5px",
+              }}
+            />
+          </Col>
+        </Row>
+      </Container>
+
+      {populor.length > 0 ?
+
+        <div style={{ padding: "80px 0px 0px 0px" }}>
+          <Container>
+            <Row>
+              <Col style={{ padding: "0px 300px 0px 0px" }}>
+                <Card style={{ width: "22rem" }}>
+                  <Link to={"/seller/visit/" + populor[0]["fields"].store}>  <Card.Img
+                    variant="top"
+                    width="500px"
+                    height="400px"
+                    src={populor[0]["fields"].image}
+                  /></Link>
+                  <Card.Body>
+                    <Card.Title style={{ backgroundColor: "orange", textAlign: "center" }}>
+
+                      {populor[0]["fields"].store_name}
+                    </Card.Title>
+                    <Card.Text>
+                      <span style={{ fontWeight: "bold" }}>Description: </span>{populor[0]["fields"].description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
-              <Col>
-                <h3 style={{ marginLeft: "50px" }}>Most Populor Stores</h3>
+              <Col style={{ padding: "0px 300px 0px 0px" }}>
+                <Card style={{ width: "22rem" }}>
+                  <Link to={"/seller/visit/" + populor[1]["fields"].store}>  <Card.Img
+                    variant="top"
+                    width="500px"
+                    height="400px"
+                    src={populor[1]["fields"].image}
+                  /></Link>
+                  <Card.Body>
+                    <Card.Title style={{ backgroundColor: "orange", textAlign: "center" }}>
+
+                      {populor[1]["fields"].store_name}
+                    </Card.Title>
+                    <Card.Text>
+                      <span style={{ fontWeight: "bold" }}>Description: </span> {populor[1]["fields"].description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
-              <Col>
-                {" "}
-                <hr
-                  style={{
-                    color: "black",
-                    marginRight: "-5px",
-                    width: "90%",
-                    borderWidth: "2px",
-                    height: "5px",
-                  }}
-                />
+              <Col style={{ padding: "0px 300px 0px 0px" }}>
+                <Card style={{ width: "22rem" }}>
+                  <Link to={"/seller/visit/" + populor[2]["fields"].store}> <Card.Img
+                    variant="top"
+                    width="500px"
+                    height="400px"
+                    src={populor[2]["fields"].image}
+                  /></Link>
+                  <Card.Body>
+                    <Card.Title style={{ backgroundColor: "orange", textAlign: "center" }}>
+
+                      {populor[2]["fields"].store_name}
+                    </Card.Title>
+                    <Card.Text>
+                      <span style={{ fontWeight: "bold" }}>Description: </span>{populor[2]["fields"].description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
             </Row>
           </Container>
-      
-     {populor.length>0?
-     
-     <div style={{ padding: "80px 0px 0px 0px" }}>
-     <Container>
-       <Row>
-         <Col style={{ padding: "0px 300px 0px 0px" }}>
-          <Card style={{ width: "22rem" }}>
-            <Link to ={"/seller/visit/"+populor[0]["fields"].store}>  <Card.Img
-               variant="top"
-                width ="500px"
-                height="400px"
-               src={populor[0]["fields"].image}
-             /></Link>
-             <Card.Body>
-               <Card.Title style ={{backgroundColor:"orange", textAlign:"center"}}>
-               
-              {populor[0]["fields"].store_name}
-               </Card.Title>
-               <Card.Text>
-            <span style ={{fontWeight:"bold"}}>Description: </span>{populor[0]["fields"].description}
-               </Card.Text>
-             </Card.Body>
-           </Card>
-         </Col>
-         <Col style={{ padding: "0px 300px 0px 0px" }}>
-         <Card style={{ width: "22rem" }}>
-            <Link to ={"/seller/visit/"+populor[1]["fields"].store}>  <Card.Img
-               variant="top"
-               width ="500px"
-                height="400px"
-               src={populor[1]["fields"].image}
-             /></Link>
-             <Card.Body>
-               <Card.Title style ={{backgroundColor:"orange", textAlign:"center"}}>
-               
-              {populor[1]["fields"].store_name}
-               </Card.Title>
-               <Card.Text>
-               <span style ={{fontWeight:"bold"}}>Description: </span> {populor[1]["fields"].description}
-               </Card.Text>
-             </Card.Body>
-           </Card>
-         </Col>
-         <Col style={{ padding: "0px 300px 0px 0px" }}>
-         <Card style={{ width: "22rem" }}>
-             <Link to ={"/seller/visit/"+populor[2]["fields"].store}> <Card.Img
-               variant="top"
-               width ="500px"
-                height="400px"
-               src={populor[2]["fields"].image}
-             /></Link>
-             <Card.Body>
-               <Card.Title style ={{backgroundColor:"orange", textAlign:"center"}}>
-               
-              {populor[2]["fields"].store_name}
-               </Card.Title>
-               <Card.Text>
-               <span style ={{fontWeight:"bold"}}>Description: </span>{populor[2]["fields"].description}
-               </Card.Text>
-             </Card.Body>
-           </Card>
-         </Col>
-       </Row>
-     </Container>
-   </div>
-     :null}
-        
-        
+        </div>
+        : null}
+
+
       <div
         style={{
           width: "100%",
@@ -721,6 +720,6 @@ export default function Home(props) {
           </Row>
         </Container>
       </div>
-      </div>
+    </div>
   );
 }
