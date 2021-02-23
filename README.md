@@ -12,7 +12,7 @@ While also providing the consumers of homemade products with an easy to access a
 Currently there is no market specifically for home/handmade products, these creative and dedicated small business owners have no place to display their products, and they are currently scattered between different social media platform, which makes harder for the client to find them. we aim to eliminate this problem by providing a website where all homemade products will be accessible and easier to purchase, and by so increase the client flow and enlarge the market for the business owners/stores.
 
 # Target market:
--Sellers of homemade/handmade products
+Sellers & Buyers of homemade/handmade products.
 
 # Technologies:
 Front-end : React JS , Redux , React-hooks
@@ -20,10 +20,14 @@ Backend : Django, Python
 Databse : MySQL - MySQL Workbench
 Other technologies used :
 
-# Heroku
-Firebase
-Team:
-Product Owner: khawlailahi. Scrum Master: Rana Alhmoud. Development Team Members: khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
+- Heroku
+- Firebase
+# Team:
+- Product Owner: khawlailahi. 
+- Scrum Master: Rana Alhmoud.
+- 
+**  Development Team Members: 
+ khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
 
 # How to get started:
 - Clone or download this repo .
