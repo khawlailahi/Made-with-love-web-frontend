@@ -6,8 +6,8 @@
 
 
 
-<img src= "images/madecol.jpg" width = "1000">
-![](images/madecol.jpg)
+<img src= "src/images/madecol.jpg" width = "1000">
+![](src/images//madecol.jpg)
 
 
 
