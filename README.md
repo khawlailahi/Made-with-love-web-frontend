@@ -7,7 +7,7 @@
 
 
 <img src= "src/images/madecol.jpg" width = "1000">
-![](src/images//madecol.jpg)
+
 
 
 
