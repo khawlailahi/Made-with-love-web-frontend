@@ -20,9 +20,9 @@ Backend : Django, Python
 Databse : MySQL - MySQL Workbench
 Other technologies used :
 
-# Heroku
-Firebase
-Team:
+- Heroku
+- Firebase
+# Team:
 Product Owner: khawlailahi. Scrum Master: Rana Alhmoud. Development Team Members: khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
 
 # How to get started:
