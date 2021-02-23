@@ -23,7 +23,11 @@ Other technologies used :
 - Heroku
 - Firebase
 # Team:
-Product Owner: khawlailahi. Scrum Master: Rana Alhmoud. Development Team Members: khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
+- Product Owner: khawlailahi. 
+- Scrum Master: Rana Alhmoud.
+- 
+**  Development Team Members: 
+ khawlailahi, Rana Alhmoud , Amal Allaham , Fedaa Alhaki.
 
 # How to get started:
 - Clone or download this repo .
